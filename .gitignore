@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 生成物 —— 作品和缓存不进库（图/视频会越滚越大）
+作品/*/
+# 但保留示例作品（给人看这东西能出什么）
+!作品/示例/
+!作品/示例/**
+!作品/README.md
+assets/角色/*.png
+*.log
+
+# ComfyUI 的临时上传（引擎会自动重命名去重，不需要留）
+input/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+
+# 模型（太大，且各自机器不同）
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.gguf
