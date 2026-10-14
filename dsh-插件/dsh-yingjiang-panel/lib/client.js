@@ -105,12 +105,8 @@ window.__ModuleLoader__.load({
                 guide: [
                   {
                     order: 60,
-                    title: function () {
-                      return 标题;
-                    },
-                    description: function () {
-                      return "这一轮读了哪些文件、做了哪些动作（DSH 记的，不是我上报的）";
-                    },
+                    title: 标题,
+                    description: "这一轮读了哪些文件、做了哪些动作（DSH 记的，不是我上报的）",
                   },
                 ],
               })
@@ -136,6 +132,12 @@ window.__ModuleLoader__.load({
                   );
                 })
               );
+            }
+            // 挂上了就往控制台写一句 —— 用户在浏览器 F12 里能看见到底挂成没挂成
+            try {
+              console.info("[影匠依据] 已挂上右侧栏页签：" + 面板号 + " → " + 台址);
+            } catch (e4) {
+              /* 无 console 也不能抛 */
             }
           } catch (e) {
             for (var k = 0; k < 注销s.length; k++) {

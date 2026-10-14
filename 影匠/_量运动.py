@@ -43,17 +43,23 @@ import sys
 FFMPEG = os.path.join(根, "_bin", "ffmpeg.exe")
 
 
-def 量一格(路, 宽=160):
+def 量一格(路, 宽=160, 去噪=0.0):
     """用 ffmpeg 把片缩到很小再逐帧比 —— 比开 numpy 读全分辨率快得多，也够用。
 
     ★ `metadata=print` 默认**写到文件**，不加 `file=-` 就什么都不输出到 stdout，
       脚本会静默地一格都读不出来。这是踩过的坑。
     ★ `format=gray` 必须在 `tblend` **前**面，否则 tblend 在 YUV 上做差，
       signalstats 量到的不是纯亮度差。
+    ★★ `去噪`（`gblur=sigma=N`，放在 tblend **前**面）：**这个数会骗人**。
+      实测 2026-10-15：一格改完提示词后 0.62 → 0.71（1.15×），
+      但先模糊掉传感器噪点再量，是 0.29 → 0.27（0.94×）——
+      **涨的那部分是噪点/压缩抖动，不是动作**。
+      所以要判「是不是真的动了」，必须 `去噪=3` 再量一次，两次一起看。
     """
+    前 = f"scale={宽}:-2,gblur=sigma={去噪}," if 去噪 else f"scale={宽}:-2,"
     cmd = [
         FFMPEG, "-v", "error", "-i", 路,
-        "-vf", f"scale={宽}:-2,format=gray,tblend=all_mode=difference,"
+        "-vf", f"{前}format=gray,tblend=all_mode=difference,"
                f"signalstats,metadata=print:file=-",
         "-f", "null", "-",
     ]
@@ -87,6 +93,9 @@ def main():
     ap.add_argument("戏")
     ap.add_argument("--只格", default="")
     ap.add_argument("--宽", type=int, default=160)
+    ap.add_argument("--去噪", type=float, default=0.0,
+                    help="打差之前先 gblur 掉传感器噪点（建议 3）。"
+                         "★ 不加这个，噪点会被算成动作 —— 2026-10-15 实测一格 1.15× 的『提升』其实是噪点")
     参 = ap.parse_args()
 
     段 = 段文件(参.戏)
@@ -97,12 +106,13 @@ def main():
         print(f"  ✗ 作品\\{参.戏}\\段\\ 下没有段")
         return 1
 
-    print(f"  量 {len(段)} 格的运动量（相邻帧灰度差平均，0=冻住）")
+    印 = "相邻帧灰度差平均，0=冻住" + (f"（已去噪 sigma={参.去噪}）" if 参.去噪 else "（★ 没去噪，噪点也算动作）")
+    print(f"  量 {len(段)} 格的运动量（{印}）")
     print(f"  {'格':<6}{'运动量':>9}   {'判':<8}文件")
     print("  " + "─" * 68)
     果 = {}
     for n, p in 段.items():
-        值, 帧 = 量一格(p, 参.宽)
+        值, 帧 = 量一格(p, 参.宽, 参.去噪)
         if 值 is None:
             print(f"  {n:<6}{'读不出':>9}")
             continue

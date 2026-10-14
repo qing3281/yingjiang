@@ -154,6 +154,11 @@ def main():
                     help="★ 这个目录里放 `末_格N.png`（这一格**结束**时的姿势）就会走 FL2VA："
                          "首帧+末帧都钉住，模型必须演出中间过程。没有对应末帧的格子"
                          "自动退回原来的 I2VA。")
+    ap.add_argument("--词尾", default="", choices=["", "原", "动"],
+                    help="★ 送给模型的那句英文任务尾巴。原版整句都在说「保持不变」"
+                         "（Preserve… / Keep the same…），一个字都没让模型动 —— "
+                         "怀疑它压住了动作。`动` 换成「首尾姿势必须明显不同」的写法。"
+                         "留空＝用原版。")
     参 = ap.parse_args()
     步数 = 参.步数
 
@@ -186,10 +191,19 @@ def main():
         光 = g.get("光色") or ""
         # H3 的提示词要英文更稳；这里用「中文动作 + 英文任务句」的混合写法，
         # 实测中文动作能被理解，英文尾巴负责钉住「保身份、保皮肤、环境音」。
-        词 = (f"{动作}。环境：{光}。"
-              f"A continuous cinematic shot. Preserve facial identity and natural skin texture. "
-              f"Keep the same person, the same clothing and the same location as the reference image. "
-              f"Natural ambient sound matching the scene; no dialogue.")
+        词尾原 = ("A continuous cinematic shot. Preserve facial identity and natural skin texture. "
+                  "Keep the same person, the same clothing and the same location as the reference image. "
+                  "Natural ambient sound matching the scene; no dialogue.")
+        # `动`：把「保持不变」换成「必须变」。原版只有保身份/保衣服/保地点，
+        # 没有一句让模型动 —— 而 64% 的格子去噪运动量 < 0.6，怀疑就是它压住的。
+        词尾动 = ("One single continuous take. The movement described above happens visibly and "
+                  "gradually, starting in the first second and finishing by the last; the pose at "
+                  "the end of the clip is clearly different from the pose at the start. Keep the "
+                  "same person, the same clothing and the same location as the reference image, "
+                  "and preserve facial identity and natural skin texture. Natural ambient sound "
+                  "matching the scene; no dialogue.")
+        词尾 = 词尾动 if 参.词尾 == "动" else 词尾原
+        词 = (f"{动作}。环境：{光}。{词尾}")
         前缀 = f"觉醒_格{号:02d}_{参.端点}"
 
         try:
@@ -250,8 +264,25 @@ def main():
                                 except Exception as e:
                                     print(f"  ✗ 格{号} 下载失败 {type(e).__name__}: {e}")
                             else:
-                                源 = os.path.join(r"D:\Comfy-Desktop\ComfyUI-Shared\output",
-                                                  子, f["filename"])
+                                # ★ 本机这条路 2026-10-15 一天里踩的两个坑：
+                                #   ① VHS_VideoCombine 在「片子带音轨」时会给文件名加一个
+                                #      -audio 后缀：节点报 觉醒_格14_本机_00001-audio.mp4，
+                                #      老代码去找 觉醒_格14_本机_00001.mp4 —— **片子明明出好了，
+                                #      每格都记「没出」**，白等一整轮。
+                                #   ② 输出目录不是写死的 D:\Comfy-Desktop\ComfyUI-Shared\output：
+                                #      这一版 ComfyUI 落在 D:\Comfy-Desktop\ComfyUI-Installs\ComfyUI\ComfyUI\output。
+                                #      节点自己在 ullpath 里报了真路径 —— **信它，别猜**。
+                                源 = f.get("fullpath") or os.path.join(
+                                    r"D:\Comfy-Desktop\ComfyUI-Shared\output", 子, f["filename"])
+                                if not os.path.isfile(源):
+                                    夹 = os.path.dirname(源)
+                                    茎 = os.path.splitext(os.path.basename(f["filename"]))[0].replace("-audio", "")
+                                    同 = [c for c in (os.listdir(夹) if os.path.isdir(夹) else [])
+                                          if c.startswith(茎) and c.lower().endswith(".mp4")]
+                                    if 同:
+                                        同.sort(key=lambda c: os.path.getmtime(os.path.join(夹, c)))
+                                        源 = os.path.join(夹, 同[-1])
+                                        print(f"      · 名字对不上，按前缀找到了 {同[-1]}")
                                 if os.path.isfile(源):
                                     import shutil
                                     shutil.move(源, 出)
