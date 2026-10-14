@@ -46,6 +46,16 @@ sys.stdout.reconfigure(encoding="utf-8")
      "甲 仪表盘 / 乙 剪辑台 / 丙 任务队列 —— 挑一个，或者说混搭。"),
 ]
 
+剧本 = [
+    ("《觉醒》剧本（74 格 · 66 句台词）", r"影匠\作品\觉醒\_剧本.html",
+     "**谁都能读的一版。** 一句话故事 → 人物（带定妆照）→ 五幕 → 逐格表。"
+     "逐格表每格只有三列：第几格和它的时刻 / 画面上是什么 / 谁说了什么。"),
+    ("《磨刀》剧本（45 格 · 50 句台词）", r"影匠\作品\磨刀\_剧本.html", "同上。"),
+    ("《雪线》剧本（45 格 · 6 句台词）", r"影匠\作品\雪线\_剧本.html",
+     "它没有 `00-故事.md`，所以没有一句话故事和五幕表 —— 台词是从配音的 srt 按时刻反推回格子的。"),
+    ("《试镜》剧本（9 格）", r"影匠\作品\试镜\_剧本.html", "最早的一条，单场戏。"),
+]
+
 证据 = [
     ("定妆照总表（三部戏 11 个人物）", r"影匠\作品\_定妆照总表.png",
      "每张是「正面半身 + 正面全身」同一个人的影棚图，「定位」逐字抄自各戏的锚点表。"),
@@ -102,13 +112,24 @@ def 尺寸(相对):
     return f"{n / 1048576:.1f} MB" if n >= 1048576 else f"{n / 1024:.0f} KB"
 
 
+def 美化(s):
+    """卡片说明里的 `**粗体**` 和 `` `代码` `` 要真渲染出来 —— 不然页面上是一堆星号。"""
+    import html as _h
+    import re as _re
+    s = _h.escape(s)
+    s = s.replace("&lt;br&gt;", "<br>")
+    s = _re.sub(r"\*\*(.+?)\*\*", r"<b>\1</b>", s)
+    s = _re.sub(r"`(.+?)`", r"<code>\1</code>", s)
+    return s
+
+
 def 卡(标题, 说明, 相对=None, 是图=False):
     在 = 相对 is None or os.path.isfile(os.path.join(根, 相对))
     尺 = 尺寸(相对) if 相对 else None
     徽 = f'<span class="尺">{尺}</span>' if 尺 else ""
     if not 在:
         徽 = '<span class="尺 缺">文件不在</span>'
-    h = f'<div class="卡"><div class="头"><b>{标题}</b>{徽}</div><p>{说明}</p>'
+    h = f'<div class="卡"><div class="头"><b>{标题}</b>{徽}</div><p>{美化(说明)}</p>'
     if 相对 and 在:
         u = 相对.replace("\\", "/")
         if 是图:
@@ -120,11 +141,20 @@ def 卡(标题, 说明, 相对=None, 是图=False):
 
 
 def 链接卡(标题, 网址, 说明):
-    return (f'<div class="卡"><div class="头"><b>{标题}</b></div><p>{说明}</p>'
+    return (f'<div class="卡"><div class="头"><b>{标题}</b></div><p>{美化(说明)}</p>'
             f'<a class="钮" href="{网址}" target="_blank">打开 →</a></div>')
 
 
 现在 = datetime.now().strftime("%Y-%m-%d %H:%M")
+
+剧本卡 = ""
+for 题, 路, 说 in 剧本:
+    尺 = 尺寸(路)
+    徽 = f'<span class="尺">{尺}</span>' if 尺 else '<span class="尺 缺">文件不在</span>'
+    u = 路.replace("\\", "/")
+    r = f"""<div class="卡"><div class="头"><b>{题}</b>{徽}</div><p>{美化(说)}</p>""" + \
+        f'<a class="钮" href="{u}" target="_blank">打开剧本 →</a></div>'
+    剧本卡 += r
 
 页 = f"""<!doctype html>
 <html lang="zh-CN"><head><meta charset="utf-8">
@@ -168,7 +198,14 @@ code{{background:#1b2130;padding:2px 7px;border-radius:4px;font-size:13px;color:
 {''.join(卡(标题, 说明, 相对) for 标题, 相对, 说明 in 四部戏)}
 </div>
 
-<h2>三、这次做出来的东西（点开看图 / 看片）</h2>
+<h2>三、剧本（谁都能读的那一版）</h2>
+<p class="副">原先的「剧本」是四份给机器看的 md，加起来 188 KB，没有人会读它。
+这一版把它抽成一条线：<b>一句话故事 → 人物（带定妆照）→ 五幕 → 逐格表</b>。一个字都没有新写。</p>
+<div class="格">
+{剧本卡}
+</div>
+
+<h2>四、这次做出来的东西（点开看图 / 看片）</h2>
 <div class="格">
 {''.join(卡(标题, 说明, 相对, 是图=not 相对.lower().endswith(".mp4")) for 标题, 相对, 说明 in 证据)}
 </div>
@@ -176,7 +213,7 @@ code{{background:#1b2130;padding:2px 7px;border-radius:4px;font-size:13px;color:
 <h2>四、还欠你的（没做完就说没做完）</h2>
 <table>
 <tr><th>哪一件</th><th>卡在哪</th><th>说明</th></tr>
-{''.join(f'<tr><td><b>{a}</b></td><td class="警">{b}</td><td>{c}</td></tr>' for a, b, c in 还欠)}
+{''.join(f'<tr><td><b>{a}</b></td><td class="警">{美化(b)}</td><td>{美化(c)}</td></tr>' for a, b, c in 还欠)}
 </table>
 
 <h2>五、这一整轮踩的坑（原样留着，不美化）</h2>
