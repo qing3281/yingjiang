@@ -64,6 +64,39 @@ except Exception:
 根 = os.path.dirname(os.path.abspath(__file__))
 作品 = os.path.join(根, "作品")
 本机Python = sys.executable
+打包了 = bool(getattr(sys, "frozen", False))
+
+if 打包了:
+    # ★ 打包成 exe 之后有两件事会**静默地**变坏，必须在这儿掰回来：
+    #   ① `__file__` 指向 PyInstaller 解出来的临时目录（`_MEIPASS`），
+    #      不是 exe 所在的目录 —— 照着它去找 `作品\` 会找到临时目录里去，
+    #      于是「一部戏都没有」，看着像整个软件坏了。
+    #   ② `sys.executable` 是 **exe 自己**。拿它去跑 `_出H3.py`，
+    #      等于再开一个控制台，参数全被当成它自己的命令行 —— 也不报错。
+    根 = os.path.dirname(os.path.abspath(sys.executable))
+    作品 = os.path.join(根, "作品")
+    资源 = getattr(sys, "_MEIPASS", 根)
+    if 资源 not in sys.path:
+        sys.path.insert(0, 资源)
+
+    def _找真Python():
+        """exe 自己不能当解释器用，得去找一个真的 python.exe。"""
+        候选 = [
+            r"D:\Comfy-Desktop\ComfyUI-Installs\ComfyUI\ComfyUI\.venv\Scripts\python.exe",
+            os.path.join(根, "python.exe"),
+            os.path.join(根, "..", "python", "python.exe"),
+        ]
+        import shutil as _sh
+        w = _sh.which("python") or _sh.which("py")
+        if w:
+            候选.append(w)
+        for c in 候选:
+            if c and os.path.isfile(c):
+                return os.path.abspath(c)
+        return None
+
+    本机Python = _找真Python()
+
 允许后缀 = {".png", ".jpg", ".jpeg", ".webp", ".mp4", ".gif"}
 远端 = "100.127.224.106:8188"
 远端主机 = "776bjta"
@@ -349,7 +382,10 @@ def _直调出段(戏, 格s, 端点, 吐):
         "参": lambda o: [o["戏"]],
     },
     "超分": {
-        "脚本": "_超分.py",
+        # ★ 这个脚本**不在 `影匠\` 下**，在工作区根 `D:\DSHworkspace\_超分.py`。
+        #   写 `"_超分.py"` 会让 `os.path.join(根, "_超分.py")` 指到一个不存在的
+        #   文件 —— 按了「开始」只会弹一句「脚本不在」。写相对路径才对。
+        "脚本": r"..\_超分.py",
         "说": "SeedVR2 2× 超分（远端跑，挑下面那个片）",
         # ★ `_超分.py` 认本机路径会自己传过去（远端已有同名的就不重传）
         "参": lambda o: ["--跑", "--倍数", str(o.get("倍数") or 2),
@@ -369,9 +405,83 @@ def _直调出段(戏, 格s, 端点, 吐):
 }
 
 
+def 查任务表():
+    r"""开工先自查：任务表里写的脚本文件是不是真的都在？
+
+    ★ 为什么要这么一条：`超分` 写 `"_超分.py"` 而那个文件在工作区根、
+    不在 `影匠\` 下 —— 页面上一切正常，只有**按了「开始」的那一刻**才弹
+    「脚本不在」。这类错「看得见的地方全绿、真要用的地方是坏的」，
+    必须在开工时自己先喊出来。
+    """
+    毛病 = []
+    for 名, t in 任务表.items():
+        if t.get("类") == "直调":
+            if "脚本" in t:
+                毛病.append(f"{名}：直调类不该有「脚本」字段")
+            if not callable(t.get("干")):
+                毛病.append(f"{名}：直调类没有可调用的「干」")
+            continue
+        脚 = t.get("脚本")
+        if not 脚:
+            毛病.append(f"{名}：既不是直调类，也没写「脚本」")
+        elif not os.path.isfile(os.path.join(根, 脚)):
+            毛病.append(f"{名}：脚本不在 {os.path.normpath(os.path.join(根, 脚))}")
+        if not callable(t.get("参")):
+            毛病.append(f"{名}：没有可调用的「参」")
+    return 毛病
+
+
+_格线 = re.compile(r"\[(\d+)\s*/\s*(\d+)\]")
+_秒线 = re.compile(r"([\d.]+)\s*秒")
+
+
+def 读格进度(行):
+    """从日志里读「第几格 / 共几格」，用来算进度百分比。
+
+    日志长这样（`_出H3.py` 和 `_出片.py` 都这么打）：
+        [1/6] ✓ 格17 179.8 秒  0.96 MB  窗台上的阿棠
+        [2/6] ✓ 格18 175.2 秒  2.00 MB  合上册子
+
+    ★ 为什么进度要自己从日志里抠，而不用 ComfyUI 的 WebSocket：
+    进度条的「一格」是**用户能看懂的单位**（还差几格），而 ComfyUI 的
+    `progress` 是采样步（8 步里的第 3 步），对用户没有意义 —— 他关心的是
+    「还要几分钟」。同一份日志里已经有每格的真实耗时，用它算剩余最准。
+
+    返回 `(完成格数, 总格数, 最近一格耗时秒)`；读不出来就是 `(0, 0, None)`。
+    """
+    完 = 总 = 0
+    秒 = None
+    for s in 行:
+        m = _格线.search(s)
+        if m:
+            i, n = int(m.group(1)), int(m.group(2))
+            总 = max(总, n)
+            if i <= n:
+                完 = max(完, i)
+        if "✓" in s:
+            mm = _秒线.search(s)
+            if mm:
+                try:
+                    秒 = float(mm.group(1))
+                except ValueError:
+                    pass
+    return 完, 总, 秒
+
+
+def 加进度(d, 行):
+    """往快照里补上「格完 / 格总 / 格秒 / 预计剩秒」。"""
+    完, 总, 秒 = 读格进度(行)
+    d["格完"], d["格总"], d["格秒"] = 完, 总, 秒
+    d["预计剩秒"] = None
+    if 总 and 秒 and 完 < 总:
+        d["预计剩秒"] = int(秒 * (总 - 完))
+    elif 总 and 完 >= 总:
+        d["预计剩秒"] = 0
+    return d
+
+
 class 活:
     """一个正在跑的子进程 + 它的输出缓冲。"""
-
     def __init__(self, 名, 脚本, 参数):
         self.名 = 名
         self.脚本 = 脚本
@@ -404,10 +514,10 @@ class 活:
     def 快照(self, 尾=60):
         with self.锁:
             尾行 = self.行[-尾:]
-        return {"名": self.名, "脚本": self.脚本, "参数": self.参数,
-                "起": time.strftime("%H:%M:%S", time.localtime(self.起)),
-                "跑秒": int(time.time() - self.起), "在跑": self.还活着(),
-                "退出码": self.码, "行": 尾行}
+            return 加进度({"名": self.名, "脚本": self.脚本, "参数": self.参数,
+                           "起": time.strftime("%H:%M:%S", time.localtime(self.起)),
+                           "跑秒": int(time.time() - self.起), "在跑": self.还活着(),
+                           "退出码": self.码, "行": 尾行}, self.行)
 
     def 停(self):
         try:
@@ -474,10 +584,10 @@ class 直调活:
     def 快照(self, 尾=60):
         with self.锁:
             尾行 = self.行[-尾:]
-        return {"名": self.名, "脚本": self.脚本, "参数": self.参数, "说": self.说,
-                "起": time.strftime("%H:%M:%S", time.localtime(self.起)),
-                "跑秒": int(time.time() - self.起), "在跑": self.还活着(),
-                "退出码": self.码, "行": 尾行}
+            return 加进度({"名": self.名, "脚本": self.脚本, "参数": self.参数, "说": self.说,
+                           "起": time.strftime("%H:%M:%S", time.localtime(self.起)),
+                           "跑秒": int(time.time() - self.起), "在跑": self.还活着(),
+                           "退出码": self.码, "行": 尾行}, self.行)
 
     def 停(self):
         """直调的活没法从外面杀（它跑在自己的线程里）。
@@ -761,12 +871,29 @@ async function 刷(){
 
   const p = d.在跑;
   if(p){
+    // ★ 进度条：一格 = 一个镜头。用户关心的是「还差几格、还要几分钟」，
+    //   不是 ComfyUI 那种「8 步里的第 3 步」。数字全从日志的 `[i/N] ✓ … 秒`
+    //   里抠出来（服务端 `读格进度`），所以它跟日志永远对得上。
+    let 条 = '';
+    if(p.格总 > 0){
+      const 完 = p.格完||0, 百 = Math.round(100*完/p.格总);
+      const 剩 = p.预计剩秒;
+      const 剩文 = (剩===null||剩===undefined) ? '还算不出还要多久'
+                 : (剩<=0 ? '收尾了' : '预计还要 '+Math.floor(剩/60)+' 分 '+(剩%60)+' 秒');
+      条 = '<div style="display:flex;align-items:center;gap:10px;margin:8px 0 4px">'
+         + '<span class="小" style="white-space:nowrap">格 '+完+' / '+p.格总+'</span>'
+         + '<div style="flex:1;height:8px;background:#1b2230;border-radius:5px;overflow:hidden">'
+         + '<div style="width:'+百+'%;height:100%;background:linear-gradient(90deg,#3ddc84,#f5c542);transition:width .4s"></div>'
+         + '</div>'
+         + '<span class="小" style="white-space:nowrap">'+百+'%　'+剩文+'</span></div>';
+    }
     $('在跑').innerHTML =
       '<div class="机"><span class="灯 '+(p.在跑?'绿':'灰')+'"></span><b>'+p.名+'</b>'
       + '<span class="tag">'+p.脚本+' '+p.参数.join(' ')+'</span>'
       + '<span class="小">起于 '+p.起+' · 已跑 '+Math.floor(p.跑秒/60)+' 分 '+(p.跑秒%60)+' 秒</span>'
       + '<span style="flex:1"></span>'
       + '<button class="钮 危" onclick="停()" '+(p.在跑?'':'disabled')+'>停</button></div>'
+      + 条
       + '<pre>'+p.行.join('\\n').replace(/</g,'&lt;')+'</pre>';
   } else {
     $('在跑').innerHTML = '<div class="小">现在没有活。挑一个按「开始」。</div>';
@@ -968,6 +1095,14 @@ class 手(BaseHTTPRequestHandler):
                         脚本 = os.path.join(根, t["脚本"])
                         if not os.path.isfile(脚本):
                             return self._JSON({"ok": False, "错": f"脚本不在：{t['脚本']}"})
+                        if not 本机Python:
+                            # ★ 打包成 exe 之后，exe 自己不能当解释器用；
+                            #   找不到真的 python.exe 就得说清楚，不能让用户
+                            #   按了「开始」只看到一个莫名的失败。
+                            return self._JSON({"ok": False,
+                                "错": "这条活要另起一个 python 脚本来跑，但这台机器上没找到 "
+                                      "python.exe。改用名字里带「直调」的活 —— 那些在当前"
+                                      "进程里直接跑，不需要解释器。"})
                         现在["活"] = 活(名, 脚本, t["参"](o))
                 except Exception as e:
                     return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
@@ -982,14 +1117,25 @@ def main():
 
     戏目 = 列戏()
     if not 戏目:
-        print(f"  ✗ 作品\\ 下没有戏")
+        print(f"  ✗ 作品\\ 下没有戏　（根 = {根}）")
+        print(f"    打包成 exe 之后，exe 必须摆在 `作品\\` 的同一个目录里。")
+        return 1
+
+    # ★ 开工自查：任务表里写的脚本到底在不在（详见 查任务表 的注释）
+    毛病 = 查任务表()
+    if 毛病:
+        print("  ✗ 任务表有问题，这些活按了「开始」也是坏的：")
+        for m in 毛病:
+            print(f"      · {m}")
         return 1
 
     srv = ThreadingHTTPServer(("127.0.0.1", 参.口), 手)
     址 = f"http://127.0.0.1:{参.口}/"
     print(f"  影匠控制台 → {址}")
+    print(f"  根：{根}{'　（打包运行）' if 打包了 else ''}")
     print(f"  戏：{'、'.join(戏目)}")
     print(f"  能起的活：{'、'.join(任务表)}")
+    print(f"  另起脚本用的解释器：{本机Python or '（没找到 —— 只有「直调」那一类活能用）'}")
     print(f"  Ctrl+C 停")
     if not 参.不开:
         def 开():
