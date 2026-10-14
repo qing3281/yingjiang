@@ -28,7 +28,6 @@ import sys
     "影匠/_配长片.py": os.path.join(工作区, "影匠", "_配长片.py"),
     "影匠/_烧字幕.py": os.path.join(工作区, "影匠", "_烧字幕.py"),
     # 诊断与出图工具
-    "影匠/_量动作语气.py": os.path.join(工作区, "影匠", "_量动作语气.py"),
     "影匠/_出定妆照.py": os.path.join(工作区, "影匠", "_出定妆照.py"),
     "_量动作语气.py": os.path.join(工作区, "_量动作语气.py"),
     "影匠/_超分.py": os.path.join(工作区, "_超分.py"),
