@@ -23,6 +23,13 @@ import sys
     "影匠/引擎.py": os.path.join(工作区, "影匠", "引擎.py"),
     "影匠/_出H3.py": os.path.join(工作区, "影匠", "_出H3.py"),
     "影匠/_出片.py": os.path.join(工作区, "影匠", "_出片.py"),
+    # 后期链条：拼段 → 配音 → 烧字幕。这三步是「改一句话就能重出一条片子」的那条路
+    "影匠/_拼长片.py": os.path.join(工作区, "影匠", "_拼长片.py"),
+    "影匠/_配长片.py": os.path.join(工作区, "影匠", "_配长片.py"),
+    "影匠/_烧字幕.py": os.path.join(工作区, "影匠", "_烧字幕.py"),
+    # 诊断与出图工具
+    "影匠/_量动作语气.py": os.path.join(工作区, "影匠", "_量动作语气.py"),
+    "影匠/_出定妆照.py": os.path.join(工作区, "影匠", "_出定妆照.py"),
     "影匠/_超分.py": os.path.join(工作区, "_超分.py"),
     "影匠/_成片_觉醒.py": os.path.join(工作区, "影匠", "_成片_觉醒.py"),
     "影匠/_配台词_觉醒.py": os.path.join(工作区, "影匠", "_配台词_觉醒.py"),
@@ -54,7 +61,7 @@ import sys
     "_查假字幕.py": os.path.join(工作区, "_查假字幕.py"),
     "_拼运动差图.py": os.path.join(工作区, "_拼运动差图.py"),
     "_拼超分对比mp4.py": os.path.join(工作区, "_拼超分对比mp4.py"),
-    "_定妆照总表.py": os.path.join(工作区, "_拼定妆照.py"),
+    "_拼定妆照.py": os.path.join(工作区, "_拼定妆照.py"),
     "_核台账.py": os.path.join(工作区, "_核台账.py"),
     "_用户原话.py": os.path.join(工作区, "_用户原话.py"),
 }
