@@ -46,6 +46,15 @@ import sys
     "_推仓库.py": os.path.join(工作区, "_推仓库.py"),
     "_导出仓库.py": os.path.join(工作区, "_导出仓库.py"),
     "界面草图.html": os.path.join(工作区, "_界面草图.html"),
+    # 验收页（用户双击桌面上的「验收」就开这一个）
+    "_验收.py": os.path.join(工作区, "_验收.py"),
+    # 查假字幕 / 拼对比图 —— 这两条是「判据」本身，值得跟着代码走
+    "_查假字幕.py": os.path.join(工作区, "_查假字幕.py"),
+    "_拼运动差图.py": os.path.join(工作区, "_拼运动差图.py"),
+    "_拼超分对比mp4.py": os.path.join(工作区, "_拼超分对比mp4.py"),
+    "_定妆照总表.py": os.path.join(工作区, "_拼定妆照.py"),
+    "_核台账.py": os.path.join(工作区, "_核台账.py"),
+    "_用户原话.py": os.path.join(工作区, "_用户原话.py"),
 }
 
 # ── DSH 客户端插件（挂右侧栏那个页签） ──

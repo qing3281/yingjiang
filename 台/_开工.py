@@ -226,6 +226,49 @@ def 动记忆():
     return 小, 条, f"{哪}（{datetime.fromtimestamp(最新, 北京).strftime('%m-%d %H:%M')}）"
 
 
+def 原话账():
+    """他的原话存档还新不新、覆盖到哪儿 —— 台账 #6 要的那件事。
+
+    用户 2026-10-15 原话（台账 #6）：
+        「**记忆系统搞好，把我给你说的每个指令都记一下**」
+    10-14 13:12 又说过：
+        「我感觉你的记忆系统是不是有问题，优化下，怎么经常以前做过的任务，
+          安排过的事要给忘了」
+
+    `_用户原话.py` 抽的就是他本人敲的每一句（判据 `kind=='user'` 且 `source.rpcId` 存在）。
+    可它**不会自己跑** —— 跑完一次是几点，记忆台看到的就停在几点。
+    所以这里每轮开工打一个数：**距上次刷新几小时**。
+    达标线 2 小时（他醒着的时候，说的话不该在半天里看不见）。
+    """
+    import json
+    from datetime import datetime, timedelta, timezone
+    北京 = timezone(timedelta(hours=8))
+    p = os.path.join(根, "_用户原话.json")
+    if not os.path.isfile(p):
+        print("    ✗ 还没有 `_用户原话.json` —— 先跑 `python _用户原话.py`")
+        return
+    try:
+        d = json.load(open(p, encoding="utf-8"))
+    except Exception as e:
+        print(f"    ✗ 读不了 `_用户原话.json`：{e}")
+        return
+    改 = os.path.getmtime(p)
+    小 = (datetime.now(北京).timestamp() - 改) / 3600
+    fmt = lambda t: datetime.fromtimestamp(t / 1000, 北京).strftime("%m-%d %H:%M")
+    末 = fmt(d[-1]["时"]) if d else "—"
+    首 = fmt(d[0]["时"]) if d else "—"
+    字 = sum(len(x["话"]) for x in d)
+    print(f"    他本人敲过的：{len(d)} 条　{首} → {末}　合计 {字:,} 字")
+    print(f"    上次刷新：{小:.1f} 小时前")
+    if 小 < 2:
+        print("    ✓ 达标（2 小时内刷过）")
+        return
+    print(f"    ✗ 超了（>2 小时）。记忆台看的就是这个文件，**它现在停在第 {末}**。")
+    print("      这一轮开工前先跑：`python _用户原话.py`")
+    if 小 > 12:
+        print("      ★ 超过 12 小时了 —— 他的新指令一条都没进记忆台。先刷它，再干别的。")
+
+
 def 压缩段位():
     """当前上下文到哪一档了 —— `AGENTS.md` 第 0.9 条 / 用户 m20016 立的判据。
 
@@ -328,6 +371,9 @@ def main():
             print( "      ② 跑 `python _整理记忆.py --写索引`")
 
     文, 欠 = 欠账()
+    print("\n【零点七】他的原话存档（台账 #6「把我给你说的每个指令都记一下」）")
+    原话账()
+
     print("\n【零点六】上下文段位（`AGENTS.md` 第 0.9 条 / 用户 m20016 要的「压缩红线」）")
     级, 话 = 压缩段位()
     print(f"    {级} {话}")
