@@ -1,0 +1,5 @@
+// dsh-yingjiang-panel —— 把自己挂进 DSH 的插件栈。
+// 形状照抄 dsh-free-search / dsh-better-sidebar 的 patch 层。
+- insert:
+    - id: yingjiang-panel
+      name: dsh-yingjiang-panel
