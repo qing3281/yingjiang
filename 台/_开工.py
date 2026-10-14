@@ -226,6 +226,40 @@ def 动记忆():
     return 小, 条, f"{哪}（{datetime.fromtimestamp(最新, 北京).strftime('%m-%d %H:%M')}）"
 
 
+def 复发(根):
+    """把 `_找复发.py` 数出来的「犯过两次以上的病」打在最上面。
+
+    这个函数**故意只读数、不重新扫**：`_找复发.py` 是全量扫（72 条经验），
+    开工自查要快。所以流程是「开工时读上次的结果，开工后有空就重扫一遍」。
+
+    用户 2026-10-15 02:06 原话：「**记住你前面出现过的所有问题，我不想再看见了。**」
+    """
+    路 = os.path.join(根, "记忆", "模式.md")
+    if not os.path.isfile(路):
+        print("    ✗ `记忆\\模式.md` 还没有 —— 先跑一次 `python _找复发.py`")
+        return
+    import io
+    import re as _re
+    import time as _time
+    文 = io.open(路, encoding="utf-8").read()
+    行们 = [l for l in 文.splitlines() if l.startswith("## ")]
+    m = _re.search(r"^##\s+(.+?)　（(\d+) 次）", 文, _re.M)
+    龄 = (_time.time() - os.path.getmtime(路)) / 3600
+    脏 = []
+    for l in 行们:
+        mm = _re.search(r"^##\s+(.+?)　（(\d+) 次）", l)
+        if mm and int(mm.group(2)) >= 3:
+            脏.append((mm.group(1), int(mm.group(2))))
+    print(f"    共 {len(行们)} 类复发，其中 {len(脏)} 类已经犯到 3 次以上（{龄:.1f} 小时前数的）")
+    if 龄 > 24:
+        print("    ⚠ 这份数超过一天没重扫了，跑一下 `python _找复发.py`")
+    for 名, 次 in 脏[:5]:
+        print(f"      ★ {名}　—— {次} 次")
+    if len(脏) > 5:
+        print(f"      …… 还有 {len(脏) - 5} 类，全在 `记忆\\模式.md`")
+    print("    ★ **这一轮开始动手之前，先看一眼上面这几种是不是又要犯。**")
+
+
 def 原话账():
     """他的原话存档还新不新、覆盖到哪儿 —— 台账 #6 要的那件事。
 
@@ -371,6 +405,13 @@ def main():
             print( "      ② 跑 `python _整理记忆.py --写索引`")
 
     文, 欠 = 欠账()
+
+    # ★ 这一节是用户 2026-10-15 02:06「记住你前面出现过的所有问题，我不想再看见了」要的那道闸。
+    #   `AGENTS.md` 第 0.7 条写了「出现 ≥2 次的升级成模式写进 记忆\模式.md」，
+    #   但一直没落地 —— `_找复发.py` 就是它。数不出来才算合格。
+    print("\n【零点八】犯过两次以上的病（`AGENTS.md` 第 0.7 条 / 用户 02:06「我不想再看见了」）")
+    复发(根)
+
     print("\n【零点七】他的原话存档（台账 #6「把我给你说的每个指令都记一下」）")
     原话账()
 
