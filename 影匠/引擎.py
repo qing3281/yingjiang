@@ -451,10 +451,15 @@ def 图生视频(
     前缀: str = "影匠片",
     报=None,
     存到: str | None = None,
+    尾图: str | None = None,
 ) -> dict:
-    """拿一张图 + 一句话，出一段视频。
+    """拿一张图（或首帧+尾帧）+ 一句话，出一段视频。
 
     先把图上传进 ComfyUI，再按模板派工。
+
+    尾图  给了就**自动改走首尾帧模板**（默认 minimax_h3_flf2v）——两帧之间的中间过程
+          由模型补。这是让相邻两格真正缝上的做法：这一格结束的那一帧就是下一格开始的那一帧，
+          而不是各出各的再靠交叉溶解糊过去。
     """
     报 = 报 or (lambda _: None)
     种 = 种子 if 种子 is not None else random.randint(1, 2**31)
@@ -463,6 +468,16 @@ def 图生视频(
 
     上 = 上传图(图路)
     报(f"上传 {os.path.basename(图路)} → {上['name']}")
+
+    # ★ 给了尾图 → 自动换首尾帧模板（除非调用方自己点名了别的模板）
+    尾上 = None
+    if 尾图:
+        if not os.path.exists(尾图):
+            raise RuntimeError(f"找不到尾图：{尾图}")
+        if 模板 in ("", "wan22_i2v", "minimax_h3_i2v"):
+            模板 = "minimax_h3_flf2v"
+        尾上 = 上传图(尾图)
+        报(f"上传尾帧 {os.path.basename(尾图)} → {尾上['name']}")
 
     wf = 读模板(模板)
     # 模板里允许有 "_说明" 这类注释键，值不是 dict，先剔掉
@@ -485,6 +500,11 @@ def 图生视频(
 
     正号, 负号, 潜号, 采号 = _认()
 
+    # 首帧 = 节点号最小的 LoadImage；尾帧 = 第二小的。
+    _图槽 = sorted((号 for 号, 节 in wf.items() if 节.get("class_type") == "LoadImage"),
+                  key=lambda x: (len(str(x)), str(x)))
+    _尾槽 = _图槽[1] if len(_图槽) >= 2 and 尾上 is not None else None
+
     for 号, 节 in wf.items():
         类 = 节.get("class_type", "")
         ins = 节.setdefault("inputs", {})
@@ -496,15 +516,32 @@ def 图生视频(
                 ins["text"] = 负面 or "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走"
 
         elif 类 == "LoadImage":
-            ins["image"] = 上["name"]
+            # ★ 按节点号从小到大：第一个槽给首帧，第二个给尾帧。
+            #   没有尾帧时第二个槽也得填一张，否则 ComfyUI 报「没给图」——
+            #   那种模板（i2v）本来就只有一张 LoadImage，所以这里不会走到第二支。
+            if 尾上 is not None and 号 == _尾槽:
+                ins["image"] = 尾上["name"]
+            else:
+                ins["image"] = 上["name"]
 
-        elif 类 in ("KSampler", "KSamplerAdvanced"):
+        elif 类 in ("KSampler", "KSamplerAdvanced", "RandomNoise"):
+            # ★ RandomNoise 是 SamplerCustomAdvanced 那条链上的种子节点 ——
+            #   MiniMax-H3 的官方骨架走的就是它，不在这里换，模板里的 __SEED__ 会原样送进
+            #   ComfyUI，报 `invalid literal for int() with base 10: '__SEED__'`。
             if "seed" in ins:
                 ins["seed"] = 种
             if "noise_seed" in ins:
                 ins["noise_seed"] = 种
 
-        elif 类 in ("WanImageToVideo", "Wan22ImageToVideoLatent", "WanFirstLastFrameToVideo"):
+        elif 类 in ("WanImageToVideo", "Wan22ImageToVideoLatent", "WanFirstLastFrameToVideo",
+                    "MiniMaxH3ImageToVideo"):
+            # ★ MiniMax-H3 和 wan 的骨架不一样：它的提示词**不在 CLIPTextEncode 里**，
+            #   而是这个节点自己的 `prompt` 字段；条件也从它这里吐出来（[0]=条件 [1]=隐变量）。
+            #   所以提示词要在这儿塞，不能等下面那圈 CLIPTextEncode。
+            if 类 == "MiniMaxH3ImageToVideo":
+                if "prompt" in ins:
+                    ins["prompt"] = 提示词
+                正号 = 号          # 让下面「找不到正向节点」那道检查放行
             if "length" in ins:
                 ins["length"] = 帧数
             if 宽 > 0 and "width" in ins:

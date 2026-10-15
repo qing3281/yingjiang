@@ -1320,6 +1320,7 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
       <span class="钮" onclick="jc刷()">重新扫</span>
       <label class="小"><input type="checkbox" id="jc空跑"> 空跑（只解析、不渲染）</label>
       <label class="小"><input type="checkbox" id="jc强跑"> 强跑（无视卡门硬闯）</label>
+      <label class="小" title="给模型两张图：这一格的开头 + 下一格的开头，中间由模型补。★ 实测：头对准（差 3.13/255），尾只是个方向（差 35.34/255）—— 所以效果是「动作朝下一格走」，不是「无缝」"><input type="checkbox" id="jc缝" checked> ★ 补中间（首尾帧）</label>
       <span class="小" id="jc错"></span>
     </div>
     <div class="行">
@@ -1329,6 +1330,13 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
         <option value="qwen_t2i">Qwen-Image 2.1 —— 慢（28 秒），天空/背景更电影感</option>
       </select>
       <span class="小" id="mt说"></span>
+    </div>
+    <div class="行">
+      <span class="小">出片用哪个引擎（「出片」那一步，改了立刻生效）：</span>
+      <select id="mt视频" onchange="mt存()">
+        <option value="wan22_i2v">Wan 2.2 5B —— 快（约 30 秒），3 秒，没有声音</option>
+        <option value="minimax_h3_i2v">MiniMax-H3 —— 慢（约 65 秒），5 秒，自带声音</option>
+      </select>
     </div>
     <div id="jc门" class="行"></div>
     <div class="行" id="jc下"></div>
@@ -1502,15 +1510,16 @@ let jc数据 = [], jc满 = false;
 function mt读(){
   fetch('/api/setting').then(r=>r.json()).then(j=>{
     if(j.出图模板){ $('mt出图').value = j.出图模板; }
-    $('mt说').textContent = '现在用：' + ($('mt出图').selectedOptions[0] || {}).text || '';
+    if(j.视频模板){ $('mt视频').value = j.视频模板; }
+    $('mt说').textContent = '用着的：' + $('mt出图').value + ' / ' + $('mt视频').value;
   }).catch(()=>{});
 }
 function mt存(){
-  const v = $('mt出图').value;
+  const 体 = {出图模板: $('mt出图').value, 视频模板: $('mt视频').value};
   fetch('/api/setting', {method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({出图模板: v})})
+    body: JSON.stringify(体)})
     .then(r=>r.json()).then(j=>{
-      $('mt说').innerHTML = j.ok ? '<span class="吉">✓ 换成 '+j.出图模板+' 了</span>'
+      $('mt说').innerHTML = j.ok ? '<span class="吉">✓ 出图 '+j.出图模板+'，出片 '+j.视频模板+'</span>'
                                  : '<span class="凶">✗ '+(j.错||'')+'</span>';
     }).catch(e=>{ $('mt说').innerHTML = '<span class="凶">✗ '+e+'</span>'; });
 }
@@ -1551,7 +1560,7 @@ function jc推(名){
   $('jc错').textContent = '正在起：剧组·' + 名 + ' …';
   fetch('/api/run', {method:'POST', headers:{'Content-Type':'application/json'},
     body: JSON.stringify({任务:'剧组·'+名, 戏:$('jc戏').value,
-      空跑:$('jc空跑').checked, 强跑:$('jc强跑').checked})})
+      空跑:$('jc空跑').checked, 强跑:$('jc强跑').checked, 缝上:$('jc缝').checked})})
    .then(r=>r.json()).then(j=>{
      if(!j.ok){ $('jc错').innerHTML = '<span class="凶">✗ '+j.错+'</span>'; return; }
      $('jc错').textContent = '✓ 起来了：剧组·' + 名; 刷();
@@ -1970,7 +1979,8 @@ class 手(BaseHTTPRequestHandler):
             try:
                 import 导演 as _导
                 return self._JSON({"ok": True, **(_导.读设置() or {}),
-                                   "出图模板": _导.当前出图模板()})
+                                   "出图模板": _导.当前出图模板(),
+                                   "视频模板": _导.当前视频模板()})
             except Exception as e:
                 return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
 
@@ -2066,8 +2076,15 @@ class 手(BaseHTTPRequestHandler):
         if u.path == "/api/setting":
             try:
                 import 导演 as _导
-                新 = _导.写设置({"出图模板": (体.get("出图模板") or "").strip()})
-                return self._JSON({"ok": True, **新, "出图模板": _导.当前出图模板()})
+                改 = {}
+                if (体.get("出图模板") or "").strip():
+                    改["出图模板"] = 体["出图模板"].strip()
+                if (体.get("视频模板") or "").strip():
+                    改["视频模板"] = 体["视频模板"].strip()
+                新 = _导.写设置(改)
+                return self._JSON({"ok": True, **新,
+                                   "出图模板": _导.当前出图模板(),
+                                   "视频模板": _导.当前视频模板()})
             except Exception as e:
                 return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
 
@@ -2114,6 +2131,8 @@ class 手(BaseHTTPRequestHandler):
                         闸.append("--空跑")
                     if 体.get("强跑"):
                         闸.append("--强跑")
+                    if 体.get("缝上") and 名 in ("剧组·出片", "剧组·全部"):
+                        闸.append("--首尾帧")
                 o = {"戏": 戏, "格": 格s, "片": 片, "倍数": 体.get("倍数"),
                      "重做": bool(体.get("重做")), "强跑": bool(体.get("强跑")), "闸": 闸}
                 try:
