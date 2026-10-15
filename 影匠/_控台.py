@@ -1232,6 +1232,18 @@ $('戏').value = 戏;
 $('戏').onchange = () => { 戏 = $('戏').value;
   history.replaceState(null,'','/?戏='+encodeURIComponent(戏)); 刷(); };
 
+// ★ 这两个是页面脚本的地基，**必须定义在第一个用到它们的地方之前**。
+//   `esc`：把用户看得见的中文标题塞进 HTML 属性/正文之前先转义（不然一个引号就把标签拆了）。
+//   `f`  ：把磁盘相对路径变成 `/f?p=…` —— 中文和空格要 encodeURIComponent，
+//          不然浏览器把「影匠/作品/修鞋/片/《修鞋》成片.mp4」里的斜杠当成路径分隔。
+function esc(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+function f(路){
+  return '/f?p=' + encodeURIComponent(String(路 == null ? '' : 路));
+}
 function 条(用, 总){
   const p = 总 ? Math.min(100, 用/总*100) : 0;
   return '<div class="条"><i style="width:'+p+'%"></i></div>';
@@ -1321,7 +1333,7 @@ function jc画(){
   $('jc下').innerHTML = '<span class="小">现在该干：</span> '+(x.下一步||'')+'<span class="小">'+数+'</span>';
   const 钮 = ['检查','出图','出图四宫格','出片','拼图','进度','全部'];
   $('jc钮').innerHTML = 钮.map(名=>
-    '<button class="钮'+(名==='全部'?' 主':'')+'" onclick="jc推(\''+名+'\')">'+名+'</button>'
+    '<button class="钮'+(名==='全部'?' 主':'')+'" data-n="'+名+'" onclick="jc推(this.dataset.n)">'+名+'</button>'
   ).join('');
 }
 function jc推(名){
@@ -1591,6 +1603,7 @@ function 放格(路, 名){
 }
 
 拉看片();
+jc刷();          // ★ 不调这一句，「剧组流水线」那张卡要等用户按一次「重新扫」才有内容
 
 // 支持 ?任=超分 直接选好某个任务（也方便我自己截图核对页面）
 const 想任 = new URLSearchParams(location.search).get('任');
@@ -1709,9 +1722,16 @@ class 手(BaseHTTPRequestHandler):
             if not 相:
                 self._发(400, b"no p")
                 return
-            绝 = os.path.realpath(os.path.join(根, 相))
-            if not 绝.startswith(os.path.realpath(根) + os.sep) or \
-                    os.path.splitext(绝)[1].lower() not in 允许后缀 or not os.path.isfile(绝):
+            # ★ `相` 可能是**工作区**相对的（`影匠/作品/…`，`_看片.py` 就是那么写的），
+            #   也可能是**影匠**相对的。两个根都试一次 —— 只认一个根的表现是页面上裂图，
+            #   而那看起来跟「图本身就坏了」一模一样，查不到这里来。
+            for 基 in (根, os.path.dirname(os.path.realpath(根))):
+                试 = os.path.realpath(os.path.join(基, 相))
+                if 试.startswith(os.path.realpath(基) + os.sep) and \
+                        os.path.splitext(试)[1].lower() in 允许后缀 and os.path.isfile(试):
+                    绝 = 试
+                    break
+            else:
                 self._发(403, b"forbidden")
                 return
             型 = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg",
