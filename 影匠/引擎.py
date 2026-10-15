@@ -452,6 +452,7 @@ def 图生视频(
     报=None,
     存到: str | None = None,
     尾图: str | None = None,
+    参考图: list | None = None,
 ) -> dict:
     """拿一张图（或首帧+尾帧）+ 一句话，出一段视频。
 
@@ -469,9 +470,20 @@ def 图生视频(
     上 = 上传图(图路)
     报(f"上传 {os.path.basename(图路)} → {上['name']}")
 
-    # ★ 给了尾图 → 自动换首尾帧模板（除非调用方自己点名了别的模板）
+    # ★ 给几张图 → 自动改走对应的模板（除非调用方自己点名了别的）
+    #   给了参考图 → r2v（锁形象）；给了尾图 → flf2v（首尾帧）；都没有 → 单图 i2v
     尾上 = None
-    if 尾图:
+    参上 = []
+    if 参考图:
+        if 模板 in ("", "wan22_i2v", "minimax_h3_i2v", "minimax_h3_flf2v"):
+            模板 = "minimax_h3_r2v"
+        for i, q in enumerate([x for x in 参考图 if x][:3]):
+            if not os.path.exists(q):
+                raise RuntimeError(f"找不到参考图：{q}")
+            u = 上传图(q)
+            参上.append(u)
+            报(f"上传参考图{i + 1} {os.path.basename(q)} → {u['name']}")
+    elif 尾图:
         if not os.path.exists(尾图):
             raise RuntimeError(f"找不到尾图：{尾图}")
         if 模板 in ("", "wan22_i2v", "minimax_h3_i2v"):
@@ -500,10 +512,22 @@ def 图生视频(
 
     正号, 负号, 潜号, 采号 = _认()
 
-    # 首帧 = 节点号最小的 LoadImage；尾帧 = 第二小的。
+    # ★ 模板声明自己吃几张图（_规格.图槽），引擎按节点号从小到大一张张填。
+    #   没声明就按老规矩：第 1 槽 = 首帧，第 2 槽 = 尾帧。
+    _槽名 = (wf.get("_规格") or {}).get("图槽") or ["首帧", "尾帧"]
     _图槽 = sorted((号 for 号, 节 in wf.items() if 节.get("class_type") == "LoadImage"),
                   key=lambda x: (len(str(x)), str(x)))
-    _尾槽 = _图槽[1] if len(_图槽) >= 2 and 尾上 is not None else None
+    _槽图 = {}
+    if 参上:
+        for i, u in enumerate(参上):
+            if i < len(_图槽):
+                _槽图[_图槽[i]] = u
+    else:
+        if _图槽:
+            _槽图[_图槽[0]] = 上
+        if 尾上 is not None and len(_图槽) >= 2:
+            _槽图[_图槽[1]] = 尾上
+    _尾槽 = None
 
     for 号, 节 in wf.items():
         类 = 节.get("class_type", "")
@@ -515,14 +539,18 @@ def 图生视频(
             elif 号 == 负号:
                 ins["text"] = 负面 or "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走"
 
+        elif "prompt" in ins and 正号 is None:
+            # ★ 有些模板（MiniMax-H3 的 r2v）**没有 CLIPTextEncode** ——
+            #   提示词是直接挂在 MiniMaxH3ReferenceToVideo 的 prompt 输入上的。
+            #   找不到正向词节点时，就把提示词写进带 prompt 槽的那个节点。
+            ins["prompt"] = 提示词
+
         elif 类 == "LoadImage":
-            # ★ 按节点号从小到大：第一个槽给首帧，第二个给尾帧。
-            #   没有尾帧时第二个槽也得填一张，否则 ComfyUI 报「没给图」——
-            #   那种模板（i2v）本来就只有一张 LoadImage，所以这里不会走到第二支。
-            if 尾上 is not None and 号 == _尾槽:
-                ins["image"] = 尾上["name"]
-            else:
-                ins["image"] = 上["name"]
+            # ★ 每个 LoadImage 槽按节点号顺序领一张图（_槽图 是上面算好的）。
+            #   没领到图的槽留着不动 —— ComfyUI 会报「没给图」，那正是我们要的错。
+            u = _槽图.get(号)
+            if u is not None:
+                ins["image"] = u["name"]
 
         elif 类 in ("KSampler", "KSamplerAdvanced", "RandomNoise"):
             # ★ RandomNoise 是 SamplerCustomAdvanced 那条链上的种子节点 ——
@@ -560,7 +588,7 @@ def 图生视频(
             if "filename_prefix" in ins:
                 ins["filename_prefix"] = 前缀
 
-    if 正号 is None:
+    if 正号 is None and not any("prompt" in (节.get("inputs") or {}) for 节 in wf.values()):
         raise RuntimeError(f"模板 {模板} 里找不到正向文本节点（采样器没接 CLIPTextEncode）")
     if not any(节.get("class_type") == "LoadImage" for 节 in wf.values()):
         raise RuntimeError(f"模板 {模板} 里没有 LoadImage 节点，接不上图")

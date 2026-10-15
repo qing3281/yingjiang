@@ -80,6 +80,9 @@ import sys
     # 飞彩 × 影匠 × ComfyUI 三合一的对照清单
     "知识_两边一起用.md": os.path.join(工作区, "影匠", "知识", "两边一起用.md"),
     "minimax_h3_flf2v.json": os.path.join(工作区, "影匠", "模板", "minimax_h3_flf2v.json"),
+    "minimax_h3_r2v.json": os.path.join(工作区, "影匠", "模板", "minimax_h3_r2v.json"),
+    # ★ 读 safetensors 文件头算「这个模型下完了没有」—— 本机就有个缺 0.72 GB 的
+    "查模型完整.py": os.path.join(工作区, "_查模型完整.py"),
     # ★ 台账 #13/#14「提示词先给我看」「正式生成前必须把内容给我审核」——
     #   说了四遍都没成为动作，于是给它一个**位置**：这张表 + 这个增删查工具。
     "_候你点头.py": os.path.join(工作区, "_候你点头.py"),
