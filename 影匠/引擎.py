@@ -453,10 +453,20 @@ def 图生视频(
     存到: str | None = None,
     尾图: str | None = None,
     参考图: list | None = None,
+    角色LoRA: str = "",
+    LoRA强度: float = 1.0,
 ) -> dict:
     """拿一张图（或首帧+尾帧）+ 一句话，出一段视频。
 
     先把图上传进 ComfyUI，再按模板派工。
+
+    角色LoRA  ★ 锁角色用。H3 模板里本来就挂着一个「加速 LoRA」（turbo 4/8 步），
+              这个是在它**后面再接一个**，两个串着走：
+                  UNETLoader → 加速 LoRA → 角色 LoRA → 引导器
+              本机能用的：`h3-realism-people-t2v-i2v-r2v.safetensors`（真人质感，
+              t2v/i2v/r2v 都能挂）、`h3_character_swap_pro4500_1000.safetensors`（换人）。
+              ★ 实测：模板里原本那个 LoRA 的输出被谁吃，就把它接到谁身上 ——
+                不能写死节点号，每个模板的编号都不一样。
 
     尾图  给了就**自动改走首尾帧模板**（默认 minimax_h3_flf2v）——两帧之间的中间过程
           由模型补。这是让相邻两格真正缝上的做法：这一格结束的那一帧就是下一格开始的那一帧，
@@ -494,6 +504,25 @@ def 图生视频(
     wf = 读模板(模板)
     # 模板里允许有 "_说明" 这类注释键，值不是 dict，先剔掉
     wf = {号: 节 for 号, 节 in wf.items() if isinstance(节, dict) and "class_type" in 节}
+
+    # ── ★ 角色 LoRA：接在模板里那个「加速 LoRA」**后面**，两个串着走 ──
+    #    判据不是节点号，是「谁的输出被非 LoRA 的节点吃了」—— 那就是这条链的末端 LoRA。
+    #    写死节点号会在换模板时悄悄挂错地方（挂错不报错，只是不生效，最难发现）。
+    if 角色LoRA:
+        若 = _挂角色LoRA(wf, 角色LoRA, LoRA强度)
+        if 若:
+            # ★ 挂之前先看一眼「配不配」：H3 的 LoRA 挂到 Wan 的主模型上不会报错，
+            #   只会出一段垃圾（LoRA 的键名对不上就被静默忽略，或者更糟）。
+            主模型 = " ".join(str(节.get("inputs", {}).get("unet_name", ""))
+                            for 节 in wf.values()
+                            if isinstance(节, dict) and 节.get("class_type") == "UNETLoader")
+            小名 = 角色LoRA.lower()
+            if "h3" in 小名 and "wan" in 主模型.lower():
+                报(f"⚠ 角色 LoRA「{角色LoRA}」看着是给 MiniMax-H3 配的，"
+                   f"而这个模板的主模型是 Wan（{主模型}）—— 多半不生效，甚至会出垃圾")
+            报(f"挂上角色 LoRA：{角色LoRA}（强度 {LoRA强度}，接在 {若} 后面）")
+        else:
+            报(f"⚠ 这个模板里既没有 LoRA 节点、也没有 UNETLoader，角色 LoRA {角色LoRA} 没挂上")
 
     def _认():
         """顺着采样器的连线倒推：哪个是正向词节点、哪个是负向词节点。"""
@@ -602,6 +631,72 @@ def 图生视频(
 
 
 # ───────────────────────────── 上传 ─────────────────────────────
+
+
+def _挂角色LoRA(wf: dict, 名: str, 强度: float = 1.0) -> str:
+    """在模板的模型链末端再接一个 LoRA，返回被接的那个节点号（没接成返回 ""）。
+
+    ★ 为什么不能写死节点号：`wan22_i2v` / `minimax_h3_i2v` / `_flf2v` / `_r2v`
+      四个模板的 LoRA 编号分别是 145 / 121 / …，而且以后照官方模板再抄一份又会变。
+    ★ 怎么认出「末端 LoRA」：模型链是**线性**的（A→B→C），末端那个 LoRA 的输出
+      会被一个**不是 LoRA** 的节点消费（引导器 / 采样器 / guider）。
+      中间那个 LoRA 的输出只会被另一个 LoRA 消费。
+    ★ 挂错不报错 —— 只是不生效。所以这里认不出来就明说，不要硬塞一个节点进去。
+    """
+    loras = {号: 节 for 号, 节 in wf.items()
+             if 节.get("class_type") == "LoraLoaderModelOnly"}
+    if not loras:
+        # ★ 模板里一个 LoRA 都没有（`wan22_i2v` 就是这样）——
+        #   那就直接接在**主模型**（UNETLoader）后面。别因为「没有现成的 LoRA 可接」
+        #   就放弃：那等于告诉他「这个模板不支持角色 LoRA」，而其实是支持的。
+        主 = [号 for 号, 节 in wf.items()
+              if 节.get("class_type") in ("UNETLoader", "CheckpointLoaderSimple")]
+        if not 主:
+            return ""
+        源0 = sorted(主, key=lambda x: (len(str(x)), str(x)))[0]
+    else:
+        源0 = None
+
+    if 源0 is None:
+        # 谁吃了谁：把「模型口」的引用记下来
+        被吃 = set()
+        for 号, 节 in wf.items():
+            for k, v in (节.get("inputs") or {}).items():
+                if isinstance(v, list) and len(v) == 2 and isinstance(v[0], str):
+                    if v[0] in loras and v[0] != 号:
+                        被吃.add(v[0])
+
+        末端 = [号 for 号 in loras if 号 not in 被吃]
+        if not 末端:
+            # 环形（理论上不会有）—— 退而求其次，取号最大的那个
+            末端 = [sorted(loras, key=lambda x: (len(str(x)), str(x)))[-1]]
+        源 = 末端[0]
+    else:
+        源 = 源0
+
+    # 新节点号：不跟现有号撞
+    新号 = "角色LoRA"
+    while 新号 in wf:
+        新号 += "_"
+
+    wf[新号] = {"class_type": "LoraLoaderModelOnly",
+                "inputs": {"model": [源, 0], "lora_name": 名,
+                           "strength_model": float(强度)}}
+
+    # 把所有「原来吃 源 的地方」改成吃新节点
+    改了几处 = 0
+    for 号, 节 in wf.items():
+        if 号 == 新号:
+            continue
+        for k, v in (节.get("inputs") or {}).items():
+            if isinstance(v, list) and len(v) == 2 and v[0] == 源:
+                # 只改「模型口」——同一节点也可能吐别的东西，但 LoRA 只吐 MODEL
+                节["inputs"][k] = [新号, v[1]]
+                改了几处 += 1
+    if 改了几处 == 0:
+        wf.pop(新号, None)
+        return ""
+    return 源
 
 
 def 上传图(图路: str) -> dict:

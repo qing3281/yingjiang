@@ -1401,6 +1401,27 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
     <div id="cf果" style="max-height:340px;overflow:auto"></div>
   </div>
 
+  <!-- ★ 用户 2026-10-15：「想要的是这种，而不是一步步慢慢迁移扩充，最后自己做出来个 comfyui」。
+       所以这一卡**不是把 ComfyUI 重写一遍** —— 它只干两件事：挑一条、填一下、交过去。
+       交过去的东西进的是 ComfyUI 自己的「工作流」列表，他在 ComfyUI 里能打开、能改、能另存。 -->
+  <div class="卡"><h2>产线 —— ComfyUI 里那 614 条，挑一条交过去</h2>
+    <div class="小">这儿只是「挑」。挑完按一下，它进的是 <b>ComfyUI 自己的工作流列表</b> ——
+      你在 ComfyUI 里打开、改、另存、接着往下优化。不是我重写一遍。<br>
+      <b>●</b> 绿点 = 这台机器现在就能跑；<b>○</b> 灰点 = 要调云端接口，要 API key、要花钱。</div>
+    <div class="行" style="margin-top:8px">
+      <span class="小">哪一类</span>
+      <select id="cx类" onchange="cx筛()"><option>全部</option></select>
+      <input id="cx搜" placeholder="搜名字，如 vace / 动作 / 超分 / 对口型" style="width:280px" oninput="cx筛()">
+      <span class="小" id="cx数"></span>
+    </div>
+    <div id="cx列" style="max-height:300px;overflow:auto;margin-top:8px;
+      border:1px solid #1e2530;border-radius:8px;padding:6px"></div>
+    <div class="行" style="margin-top:8px">
+      <button class="钮 主" onclick="cx交()">把选的这条交进 ComfyUI</button>
+      <span class="小" id="cx说">还没挑</span>
+    </div>
+  </div>
+
   <div class="卡"><h2>这件事让 agent 接管</h2>
     <div class="小">软件不开 agent 的后门 —— 它只负责把话说到纸上（<code>_等Agent.md</code>），
       我下次开工就会看到，你不用再复述一遍。</div>
@@ -1598,7 +1619,7 @@ function np建(){
      $('np说').innerHTML = '<span class="'+色+'">'+(j.AI===false?'✗ ':'✓ ')+j.说+'</span>'
        + (j.剧本 ? '<br><span class="小">'+j.剧本+'</span>' : '')
        + (j.AI ? '<br><span class="小">按上面「剧组流水线」里的「全部」，让它自己往下走。</span>' : '');
-     jc满 = false; jc刷(); 拉看片(); 刷();
+     jc满 = false; jc刷(); 拉看片(); 刷(); cx刷();
    })
    .catch(e => { $('np说').innerHTML = '<span class="凶">✗ 连不上：'+e+'</span>'; });
 }
@@ -1618,7 +1639,7 @@ function im走(用粘贴){
    .then(r=>r.json()).then(j=>{
      if(!j.ok){ $('im说').innerHTML = '<span class="凶">✗ '+j.错+'</span>'; return; }
      $('im说').innerHTML = '<span class="吉">✓ '+j.说+'</span><br><span class="小">'+j.剧本+'</span>';
-     jc满 = false; jc刷(); 拉看片(); 刷();
+     jc满 = false; jc刷(); 拉看片(); 刷(); cx刷();
    })
    .catch(e => { $('im说').innerHTML = '<span class="凶">✗ 连不上：'+e+'</span>'; });
 }
@@ -1787,13 +1808,13 @@ function 排剧本(文){
   while(t.length && (t.charCodeAt(t.length-1)===32 || t.charCodeAt(t.length-1)===9 || t.charCodeAt(t.length-1)===13)) t = t.slice(0, -1);
     if(!t.trim()) return '<div style="height:8px"></div>';
     let m;
-    if(m = /^(#{1,4})\s+(.*)$/.exec(t)){
+    if(m = /^(#{1,4})\\s+(.*)$/.exec(t)){
       const 级 = m[1].length;
       return '<div class="剧本标题 级' + 级 + '">' + e(m[2]) + '</div>';
     }
-    if(m = /^>\s?(.*)$/.exec(t)) return '<div class="剧本引用">' + e(m[1]) + '</div>';
-    let 身 = e(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
-    if(m = /^[-*]\s+(.*)$/.exec(t)) return '<div class="剧本点">• ' + e(m[1]).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>') + '</div>';
+    if(m = /^>\\s?(.*)$/.exec(t)) return '<div class="剧本引用">' + e(m[1]) + '</div>';
+    let 身 = e(t).replace(/\\*\\*(.+?)\\*\\*/g, '<b>$1</b>');
+    if(m = /^[-*]\\s+(.*)$/.exec(t)) return '<div class="剧本点">• ' + e(m[1]).replace(/\\*\\*(.+?)\\*\\*/g,'<b>$1</b>') + '</div>';
     return '<div>' + 身 + '</div>';
   }).join('');
 }
@@ -1903,12 +1924,66 @@ function 放格(路, 名){
 
 拉看片();
 jc刷();          // ★ 不调这一句，「剧组流水线」那张卡要等用户按一次「重新扫」才有内容
+cx刷();          // ★ 产线那一卡同理：不调就永远是空的（我第一版把 cx刷() 加到了
+                 //   「建戏 / 导入」的回调里，那两处只在他按了按钮之后才跑 —— 页面刚开是空的）
 mt读();          // ★ 同一个坑：写了个取模板清单的函数却没人调，下拉永远停在「正在读…」
 
 // 支持 ?任=超分 直接选好某个任务（也方便我自己截图核对页面）
 const 想任 = new URLSearchParams(location.search).get('任');
 if(想任){ for(const o of $('任务').options){ if(o.value === 想任){ $('任务').value = 想任; break; } } }
 刷(); setInterval(刷, 4000); 看任务();
+// ══ 产线：列 ComfyUI 那 614 条，挑一条交过去 ══════════════════════════════
+// 用户 2026-10-15：「想要的是这种，而不是一步步慢慢迁移扩充，最后自己做出来个 comfyui」
+let cx全 = [], cx选 = "";
+function cx刷(){
+  fetch('/api/pipelines').then(r=>r.json()).then(j=>{
+    if(!j.ok){ $('cx说').textContent = '拿不到产线表：' + (j.错 || '未知'); return; }
+    cx全 = j.条 || [];
+    const 类 = $('cx类');
+    类.innerHTML = '<option>全部</option>';
+    (j.类 || []).forEach(c=>{ const o = document.createElement('option');
+      o.value = c.名; o.textContent = c.名 + '（' + c.数 + '）'; 类.appendChild(o); });
+    $('cx说').textContent = '共 ' + j.共 + ' 条，本机能跑 ' + j.能跑 + ' 条 —— 挑一条';
+    cx筛();
+  }).catch(e=>{ $('cx说').textContent = '✗ ' + e; });
+}
+function cx筛(){
+  const 类 = $('cx类').value, 搜 = ($('cx搜').value || '').toLowerCase();
+  const 列 = cx全.filter(x=> (类 === '全部' || x.类 === 类) &&
+    (!搜 || x.名.toLowerCase().indexOf(搜) >= 0 || x.键.toLowerCase().indexOf(搜) >= 0));
+  $('cx列').innerHTML = 列.slice(0, 400).map(x=>{
+    const 点 = x.本机能跑 ? '<span style="color:#7ee787">●</span>' : '<span style="color:#8b949e">○</span>';
+    const 素 = (x.要图 ? ' 图' + x.要图 : '') + (x.要视频 ? ' 视频' + x.要视频 : '') + (x.要字 ? ' 词' + x.要字 : '');
+    const 选 = (x.键 === cx选) ? 'background:#1f6feb22;' : '';
+    return '<div class="行" style="' + 选 + 'border-bottom:1px solid #161b22;padding:5px 4px;cursor:pointer" ' +
+      'onclick="cx挑(this)" data-键="' + x.键 + '">' + 点 +
+      ' <b style="min-width:280px">' + x.名 + '</b>' +
+      '<span class="小" style="flex:1">' + x.键 + '</span>' +
+      '<span class="小" style="color:#58a6ff">' + x.类 + '</span>' +
+      '<span class="小" style="color:#8b949e">' + 素 + '</span></div>';
+  }).join('') || '<div class="小">没匹配的</div>';
+  $('cx数').textContent = '筛出 ' + 列.length + ' 条';
+}
+function cx挑(el){ cx选 = el.getAttribute('data-键');
+  [].forEach.call($('cx列').children, c=>{ c.style.background = ''; });
+  el.style.background = '#1f6feb22';
+  const 条 = cx全.filter(x=> x.键 === cx选)[0] || {};
+  $('cx说').textContent = '选了：' + (条.名 || cx选) + '　要 ' +
+    (条.要图 ? 条.要图 + ' 张图 ' : '') + (条.要视频 ? 条.要视频 + ' 段视频 ' : '') +
+    (条.要字 ? 条.要字 + ' 个提示词框' : '') + '　（按右边那个按钮交过去）';
+}
+function cx交(){
+  if(!cx选){ $('cx说').textContent = '先点一条'; return; }
+  $('cx说').textContent = '正在交……（写进 ComfyUI 的工作流列表）';
+  fetch('/api/pipeline/hand', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({键: cx选})})
+    .then(r=>r.json()).then(j=>{
+      $('cx说').textContent = j.ok
+        ? ('✓ 交进去了，名字：' + j.名 + '　要 ' + j.要图 + ' 张图 / ' + j.要视频 + ' 段视频 / ' + j.要字 + ' 个提示词框　→ 去 ComfyUI 左边侧栏看')
+        : ('✗ ' + (j.错 || '没成'));
+    }).catch(e=>{ $('cx说').textContent = '✗ ' + e; });
+}
+
 </script></body></html>
 """
 
@@ -2015,6 +2090,27 @@ class 手(BaseHTTPRequestHandler):
         #   PowerShell 那边则是把中文转成别的字节，服务端收到已经不是同一个键。
         #   跟第 1226 行那条注释是同一个病：**路由和参数名一律 ASCII，中文只放进值里**。
         #   为兼容起见，中文键仍然认。
+        # ★ 产线：ComfyUI 官方那 614 条。用户 2026-10-15 说
+        #   「想要的是这种，而不是一步步慢慢迁移扩充，最后自己做出来个 comfyui」。
+        #   所以这儿只**列**，不重写实现 —— 挑完交过去，进的是 ComfyUI 自己的工作流列表。
+        if u.path == "/api/pipelines":
+            try:
+                import 产线 as _cx
+                全 = _cx.全部()
+                类 = []
+                for 名, 条 in sorted(_cx.按类(全).items(), key=lambda kv: -len(kv[1])):
+                    if 名 == "其它" and len(条) < 8:
+                        continue
+                    类.append({"名": 名, "数": len(条)})
+                return self._JSON({"ok": True, "条": [{
+                    "键": x["键"], "名": x["名"], "类": x["类"],
+                    "本机能跑": (not x["要云端"]), "要图": x["要图"],
+                    "要视频": x["要视频"], "要字": x.get("要字", 0),
+                } for x in 全], "类": 类,
+                    "共": len(全), "能跑": sum(1 for x in 全 if not x["要云端"])})
+            except Exception as e:
+                return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}", "条": [], "类": []})
+
         if u.path == "/api/comfy":
             return self._JSON(Comfy取((q.get("machine") or q.get("机") or ["本机"])[0],
                                       (q.get("face") or q.get("面") or ["queue"])[0]))
@@ -2109,6 +2205,29 @@ class 手(BaseHTTPRequestHandler):
                 return self._JSON({"ok": True, **新,
                                    "出图模板": _导.当前出图模板(),
                                    "视频模板": _导.当前视频模板()})
+            except Exception as e:
+                return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
+
+        # ★ 把挑好的那条交进 ComfyUI 的工作流列表。
+        #   为什么交「UI 格式」而不是我手抄的「API 格式」：官方模板顶层是
+        #   {nodes:[...], links:[...]}，拖进 ComfyUI 能打开；我手抄的顶层是
+        #   {节点号:{class_type}}，拖进去打不开 —— 这就是「能在 ComfyUI 里进一步优化」
+        #   从来没做到过的根因。判据：`json.load` 之后看顶层有没有 `nodes`/`links`。
+        if u.path in ("/api/pipeline/hand", "/api/产线交"):
+            键 = (体.get("键") or 体.get("key") or "").strip()
+            if not 键:
+                return self._JSON({"ok": False, "错": "没给键"})
+            try:
+                import 产线 as _cx
+                w = _cx.拿(键)
+                条 = [x for x in _cx.全部() if x["键"] == 键]
+                名 = 条[0]["名"] if 条 else 键
+                输 = _cx.找输入(w)
+                r = _cx.交给ComfyUI(w, "影匠·" + 名)
+                return self._JSON({"ok": bool(r.get("ok")), "名": r.get("名"),
+                                   "要图": len(输["图"]), "要视频": len(输["视频"]),
+                                   "要字": len(输["文字"]),
+                                   "错": None if r.get("ok") else str(r)})
             except Exception as e:
                 return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
 
