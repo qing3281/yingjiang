@@ -148,6 +148,31 @@ def 链接卡(标题, 网址, 说明):
 
 现在 = datetime.now().strftime("%Y-%m-%d %H:%M")
 
+# ── 待你点头这一块：直接读 `_待你点头.md`，不复制一份进这个脚本 ──
+#    为什么读文件而不是写死在脚本里：**写死就有两个真相**，改了表忘了改页就会打架。
+点头块 = '<table><tr><th>#</th><th>要做什么</th><th>要花多少</th><th>为什么得你点头</th><th>从什么时候开始等</th></tr>'
+_等 = 0
+try:
+    import re as _re
+    for _线 in io.open(os.path.join(根, "_待你点头.md"), encoding="utf-8").read().splitlines():
+        _m = _re.match(r"\|\s*(\d+)\s*\|(.+)\|\s*$", _线)
+        if not _m:
+            continue
+        _格 = [x.strip() for x in _m.group(2).split("|")]
+        if len(_格) >= 5 and _格[4].startswith("⬜"):
+            点头块 += (f'<tr><td><b>{_m.group(1)}</b></td><td><b>{美化(_格[0])}</b></td>'
+                     f'<td class="警">{美化(_格[1])}</td><td>{美化(_格[2])}</td>'
+                     f'<td>{美化(_格[3])}</td></tr>')
+            _等 += 1
+except Exception as e:
+    点头块 += f'<tr><td colspan="5" class="凶">读 `_待你点头.md` 失败：{e}</td></tr>'
+if _等 == 0:
+    点头块 += '<tr><td colspan="5" class="吉">✓ 没有欠着的点头</td></tr>'
+点头块 += "</table>"
+if _等:
+    点头块 += (f'<p class="副">★ 这 {_等} 件<b>我不动手</b>，等你开口。'
+              f'改动用 <code>python _候你点头.py</code>。</p>')
+
 剧本卡 = ""
 for 题, 路, 说 in 剧本:
     尺 = 尺寸(路)
@@ -189,35 +214,42 @@ code{{background:#1b2130;padding:2px 7px;border-radius:4px;font-size:13px;color:
 <h1>影匠工作台 · 验收</h1>
 <p class="副">生成于 {现在}　·　每一样都能点开：图点开看大图，片子点开就能放，界面点开是新标签页</p>
 
-<h2>一、你桌面上那三个图标</h2>
+<h2>一、等你点头的（这几件我不动手）</h2>
+<p class="副">用户说过四遍：「<b>正式生成前必须把内容给我审核</b>」（10-13 00:54）、「先审核再生成」（01:02）、
+「必要时先给他看」（18:47）。<b>说了四遍都没成为动作</b> —— 缺的不是记性，是位置。现在是这个位置。
+表在 <code>D:\\DSHworkspace\\_待你点头.md</code>，改动用 <code>python _候你点头.py</code>；
+每次开工自查也会打「欠你 N 个点头」。</p>
+{点头块}
+
+<h2>二、你桌面上那三个图标</h2>
 <div class="格">
 {''.join(链接卡(*x) for x in 界面)}
 </div>
 
-<h2>二、四部片子（点开就能放）</h2>
+<h2>三、四部片子（点开就能放）</h2>
 <div class="格">
 {''.join(卡(标题, 说明, 相对) for 标题, 相对, 说明 in 四部戏)}
 </div>
 
-<h2>三、剧本（谁都能读的那一版）</h2>
+<h2>四、剧本（谁都能读的那一版）</h2>
 <p class="副">原先的「剧本」是四份给机器看的 md，加起来 188 KB，没有人会读它。
 这一版把它抽成一条线：<b>一句话故事 → 人物（带定妆照）→ 五幕 → 逐格表</b>。一个字都没有新写。</p>
 <div class="格">
 {剧本卡}
 </div>
 
-<h2>四、这次做出来的东西（点开看图 / 看片）</h2>
+<h2>五、这次做出来的东西（点开看图 / 看片）</h2>
 <div class="格">
 {''.join(卡(标题, 说明, 相对, 是图=not 相对.lower().endswith(".mp4")) for 标题, 相对, 说明 in 证据)}
 </div>
 
-<h2>四、还欠你的（没做完就说没做完）</h2>
+<h2>六、还欠你的（没做完就说没做完）</h2>
 <table>
 <tr><th>哪一件</th><th>卡在哪</th><th>说明</th></tr>
 {''.join(f'<tr><td><b>{a}</b></td><td class="警">{美化(b)}</td><td>{美化(c)}</td></tr>' for a, b, c in 还欠)}
 </table>
 
-<h2>五、这一整轮踩的坑（原样留着，不美化）</h2>
+<h2>七、这一整轮踩的坑（原样留着，不美化）</h2>
 <table>
 <tr><th>#</th><th>坑</th><th>判据 / 现在的做法</th></tr>
 <tr><td>1</td><td>模型把提示词里的<strong>动作句</strong>当字幕画进了画面（全片 4 格中招，交给你的那版里就有）</td>
