@@ -1500,6 +1500,13 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
       <span class="小">出片用哪个引擎（「出片」那一步，改了立刻生效）：</span>
       <select id="mt视频" onchange="mt存()"><option value="">正在读…</option></select>
     </div>
+    <div class="行">
+      <span class="小">锁角色 LoRA（接在模板自带的加速 LoRA 后面，两个串着走）：</span>
+      <select id="mtLoRA" onchange="mt存()" style="min-width:330px"><option value="">正在读…</option></select>
+      <label class="小" style="display:flex;align-items:center;gap:5px">
+        <input type="checkbox" id="mt按景别" onchange="mt存()"> 按景别自动选引擎</label>
+    </div>
+    <div class="小" id="mtLoRA说" style="margin:2px 0 0"></div>
     <div id="jc门" class="行"></div>
     <div class="行" id="jc下"></div>
     <div class="行" id="jc钮"></div>
@@ -1739,16 +1746,38 @@ function mt读(){
       window.mt满 = true;
     }
     if(j.视频模板){ $('mt视频').value = j.视频模板; }
-    $('mt说').textContent = '用着的：' + $('mt出图').value + ' / ' + $('mt视频').value;
+    // ★ ③ 锁角色 LoRA：也是活下拉
+    if(j.角色LoRA们 && !window.mtLoRA满){
+      const 选2 = $('mtLoRA'); 选2.innerHTML = '';
+      j.角色LoRA们.forEach(t=>{ const o = document.createElement('option');
+        o.value = t.名; o.textContent = (t.名 || '（不挂）') + ' —— ' + t.说.replace(/[*][*]/g,''); 选2.appendChild(o); });
+      window.mtLoRA满 = true;
+    }
+    if(j.角色LoRA !== undefined){ $('mtLoRA').value = j.角色LoRA || ''; }
+    // ★ ⑤ 按景别自动
+    if(j.按景别自动 !== undefined){ $('mt按景别').checked = !!j.按景别自动; }
+    $('mt说').textContent = '用着的：' + $('mt出图').value + ' / ' + $('mt视频').value
+      + ($('mtLoRA').value ? ' / LoRA ' + $('mtLoRA').value : '')
+      + ($('mt按景别').checked ? ' / 按景别自动' : '');
+    const 词 = ($('mtLoRA').selectedOptions[0] || {}).textContent || '';
+    // 下拉文字长这样：「文件名 —— 说明」。说 只取破折号后面那截。
+    const 分 = 词.split('——');
+    const 说 = 分.length > 1 ? 分.slice(1).join('——').trim() : 词;
+    $('mtLoRA说').textContent = $('mtLoRA').value
+      ? '★ 挂法：接在模板自带的加速 LoRA 后面，两个串着走。' + 说
+      : '不挂角色 LoRA —— 只用模板自带的加速 LoRA。';
   }).catch(()=>{});
 }
 function mt存(){
-  const 体 = {出图模板: $('mt出图').value, 视频模板: $('mt视频').value};
+  const 体 = {出图模板: $('mt出图').value, 视频模板: $('mt视频').value,
+              角色LoRA: $('mtLoRA').value, 按景别自动: $('mt按景别').checked};
   fetch('/api/setting', {method:'POST', headers:{'Content-Type':'application/json'},
     body: JSON.stringify(体)})
     .then(r=>r.json()).then(j=>{
-      $('mt说').innerHTML = j.ok ? '<span class="吉">✓ 出图 '+j.出图模板+'，出片 '+j.视频模板+'</span>'
+      $('mt说').innerHTML = j.ok ? '<span class="吉">✓ 出图 '+j.出图模板+'，出片 '+j.视频模板
+        + '，LoRA '+((j.角色LoRA)||'不挂')+'，按景别自动 '+(j.按景别自动?'开':'关')+'</span>'
                                  : '<span class="凶">✗ '+(j.错||'')+'</span>';
+      mt读();
     }).catch(e=>{ $('mt说').innerHTML = '<span class="凶">✗ '+e+'</span>'; });
 }
 function jc刷(){
@@ -1982,7 +2011,7 @@ function 拉片单(){
 // 用户 2026-10-15 08:55：「这个控台我能自己看到里面的剧本，能看到里面的台词，
 // 看到里面的两个人物形象……我现在只能看到你所生成的进度，这叫这对吗？」
 // → 所以这一块**不显示任何我自己的进度数**，只放片子本身。
-let 看片数据 = null, 看片签 = '剧本';
+let 看片数据 = null, 看片签 = '剧本', 档号 = 0;
 function 换签(s){ 看片签 = s; 画看片(); }
 
 // 把 剧本.md 的原文排成能读的样子。
@@ -2031,6 +2060,7 @@ function 画看片(){
 
   const 签们 = [
     ['剧本', (j.剧本&&j.剧本.有) ? (j.剧本.字.toLocaleString()+' 字') : '还没有'],
+    ['提示词', ((j.文档||[]).length) + ' 份'],
     ['人物形象', (j.人物||[]).length + ' 个'],
     ['台词', (j.格||[]).filter(g=>g.词&&g.词.length).length + ' 格'],
     ['逐格', j.格数 + ' 格'],
@@ -2048,6 +2078,23 @@ function 画看片(){
       h += '<div class="小" style="margin-top:10px">'
         + '这就是这一部戏的剧本原文（作品 / ' + esc(j.戏) + ' / 剧本.md）—— 一个字没改。'
         + '</div><div class="剧本正文">' + 排剧本(b.文) + '</div>';
+    }
+  }
+
+  if(看片签 === '提示词'){
+    const 档 = j.文档 || [];
+    if(!档.length){
+      h += '<div class="小" style="margin-top:10px">这一部戏还没有生成过提示词。'
+         + '先跑「① 节拍拆解」，再一格一格往下走。</div>';
+    } else {
+      h += '<div class="小" style="margin-top:10px">'
+         + '这些就是 AI 一步一步生成出来的字 —— 剧本、每一格画什么、这一格怎么动，'
+         + '<b>原文一个字没改</b>。他要是说「画得不对」，回来改的就是这里。</div>'
+         + '<div class="看片签">' + 档.map((x,i) =>
+             '<span class="签' + (i===0?' 亮':'') + '" onclick="换档(\\'' + i + '\\')">'
+             + esc(x.名) + ' <span class="小">' + (x.字||0).toLocaleString() + ' 字</span></span>'
+           ).join('') + '</div>'
+         + '<div id="档身"></div>';
     }
   }
 
@@ -2102,6 +2149,23 @@ function 画看片(){
   }
 
   $('看片身').innerHTML = h;
+  if(看片签 === '提示词'){ 换档(档号); }
+}
+
+// 提示词签里，右边那一大块正文（一次只显示一份，点上面的小签切）
+function 换档(i){
+  档号 = i;
+  const 档 = (看片数据 && 看片数据.文档) || [];
+  const x = 档[i];
+  const el = $('档身');
+  if(!el) return;
+  if(!x){ el.innerHTML = ''; return; }
+  const esc = s => (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  el.innerHTML = '<div class="小" style="margin:10px 0 4px">'
+    + esc(x.文件) + '　·　' + esc(x.说)
+    + '　·　<a href="/f?p=' + encodeURIComponent('影匠/作品/' + 看片数据.戏 + '/' + x.文件)
+    + '" target="_blank">单独开一页</a></div>'
+    + '<div class="剧本正文">' + 排剧本(x.文) + '</div>';
 }
 
 function 放格(路, 名){
@@ -2434,6 +2498,13 @@ class 手(BaseHTTPRequestHandler):
                 return self._JSON({"ok": True, **(_导.读设置() or {}),
                                    "出图模板": _导.当前出图模板(),
                                    "视频模板": _导.当前视频模板(),
+                                   # ★ ③ 锁角色 LoRA / ⑤ 按景别自动
+                                   "角色LoRA": _导.当前角色LoRA(),
+                                   "角色LoRA们": [{"名": k, "说": v["说"]}
+                                                 for k, v in _导.角色LoRA规格.items()],
+                                   "按景别自动": _导.当前按景别自动(),
+                                   "景别选模板": [{"景别": " / ".join(词们), "模板": t}
+                                                 for 词们, t in _导.景别视频模板],
                                    # ★ 全套模板 + 一句说明，页面拿它填下拉 —— 以后加模板不用改 HTML
                                    "视频模板们": [{"名": k, "说": v["说"]} for k, v in _导.视频模板规格.items()],
                                    "出图模板们": sorted(_导.出图模板步数.keys())})
@@ -2562,10 +2633,22 @@ class 手(BaseHTTPRequestHandler):
                     改["出图模板"] = 体["出图模板"].strip()
                 if (体.get("视频模板") or "").strip():
                     改["视频模板"] = 体["视频模板"].strip()
+                # ★ ③ 锁角色 LoRA —— 空串是**合法值**（= 不挂），所以用 in 判，不用真假判
+                if "角色LoRA" in 体:
+                    q = (体.get("角色LoRA") or "").strip()
+                    if q and q not in _导.角色LoRA规格:
+                        return self._JSON({"ok": False, "错": f"不认识的 LoRA「{q}」——"
+                                           f"只能是：{' / '.join(k or '(空)' for k in _导.角色LoRA规格)}"})
+                    改["角色LoRA"] = q
+                # ★ ⑤ 按景别自动 —— 复选框，真假都要存
+                if "按景别自动" in 体:
+                    改["按景别自动"] = bool(体.get("按景别自动"))
                 新 = _导.写设置(改)
                 return self._JSON({"ok": True, **新,
                                    "出图模板": _导.当前出图模板(),
-                                   "视频模板": _导.当前视频模板()})
+                                   "视频模板": _导.当前视频模板(),
+                                   "角色LoRA": _导.当前角色LoRA(),
+                                   "按景别自动": _导.当前按景别自动()})
             except Exception as e:
                 return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
 

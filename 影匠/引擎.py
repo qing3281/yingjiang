@@ -524,6 +524,26 @@ def 图生视频(
         else:
             报(f"⚠ 这个模板里既没有 LoRA 节点、也没有 UNETLoader，角色 LoRA {角色LoRA} 没挂上")
 
+    def _往下找词(号, 方向, 深=0):
+        """顺着 positive/negative 再倒推一层，找真正的文本编码节点。
+
+        ★ 为什么需要：Wan 2.2 14B 这类模板里，采样器的 positive **不是**接在
+          CLIPTextEncode 上，而是接在 `WanImageToVideo` 上 —— 那个节点把
+          「正向词 + 负向词 + 首帧图」揉成条件再吐出来（输出 [0]=条件 [1]=负条件
+          [2]=隐变量）。只看采样器那一层，正号会认成 WanImageToVideo，
+          于是循环里 `号 == 正号` 永远不成立，**提示词一个字符都填不进去**，
+          模型就拿着模板里那句英文示例词去出片 —— 不报错，只是出的不是你要的。
+        """
+        if 深 > 4 or 号 is None:
+            return None
+        节 = wf.get(号)
+        if not isinstance(节, dict):
+            return None
+        if 节.get("class_type") in ("CLIPTextEncode", "T5TextEncode"):
+            return 号
+        再 = (节.get("inputs") or {}).get(方向)
+        return _往下找词(再[0], 方向, 深 + 1) if isinstance(再, list) else None
+
     def _认():
         """顺着采样器的连线倒推：哪个是正向词节点、哪个是负向词节点。"""
         正号 = 负号 = 潜号 = 采号 = None
@@ -537,6 +557,9 @@ def 图生视频(
                     负号 = ins["negative"][0]
                 if isinstance(ins.get("latent_image"), list):
                     潜号 = ins["latent_image"][0]
+        # 再往下钻一层（条件生成节点 → 真正的 CLIPTextEncode）。钻不到就用原来那个。
+        正号 = _往下找词(正号, "positive") or 正号
+        负号 = _往下找词(负号, "negative") or 负号
         return 正号, 负号, 潜号, 采号
 
     正号, 负号, 潜号, 采号 = _认()
