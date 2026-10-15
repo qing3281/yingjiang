@@ -1604,8 +1604,11 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
       border:1px solid #1e2530;border-radius:8px;padding:6px"></div>
     <div class="行" style="margin-top:8px">
       <button class="钮 主" onclick="cx交()">把选的这条交进 ComfyUI</button>
+      <button class="钮" onclick="cx开表()">填了就跑（在这儿直接跑）</button>
       <span class="小" id="cx说">还没挑</span>
     </div>
+    <div id="cx表" style="display:none;margin-top:8px;border:1px solid #1e2530;
+      border-radius:8px;padding:8px"></div>
   </div>
 
   <div class="卡"><h2>这件事让 agent 接管</h2>
@@ -2273,6 +2276,62 @@ function cx交(){
         : ('✗ ' + (j.错 || '没成'));
     }).catch(e=>{ $('cx说').textContent = '✗ ' + e; });
 }
+function cx开表(){
+  if(!cx选){ $('cx说').textContent = '先点一条'; return; }
+  const 盒 = $('cx表'); 盒.style.display = 'block';
+  盒.innerHTML = '<div class="小">正在读这条产线要填什么……</div>';
+  fetch('/api/pipeline/form', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({键: cx选})})
+    .then(r=>r.json()).then(j=>{
+      if(!j.ok){ 盒.innerHTML = '<div class="小">✗ ' + (j.错||'读不出来') + '</div>'; return; }
+      if(!j.能跑){
+        盒.innerHTML = '<div class="小">这条转换器还没吃透（丢了 ' + (j.丢||[]).length +
+          ' 个节点）—— 先按「交进 ComfyUI」，在 ComfyUI 里跑。</div>';
+        return;
+      }
+      if(!j.条){ 盒.innerHTML = '<div class="小">这条不用填什么，直接跑就行。</div>'
+        + '<div class="行" style="margin-top:6px"><button class="钮 主" onclick="cx跑()">跑</button>'
+        + '<span class="小" id="cx跑说"></span></div>'; return; }
+      let h = '<div class="小">这条要填 ' + j.条 + ' 个。改完按最下面那个「跑」。' +
+              '（图 / 视频要先放进 ComfyUI 的 input 目录，填文件名）</div>';
+      j.条.forEach((x, i)=>{
+        const id = 'cxf' + i;
+        const 现 = (x.现值 === null || x.现值 === undefined) ? '' : String(x.现值);
+        let 框;
+        if(x.候选 && x.候选.length){
+          框 = '<select id="' + id + '" data-路="' + x.节点 + '.' + x.名 + '" data-型="' + x.类型 + '">' +
+            x.候选.map(c=>'<option' + (String(c) === 现 ? ' selected' : '') + '>' + c + '</option>').join('') +
+            '</select>';
+        } else if(x.类型 === 'STRING' && (现.length > 60 || x.说什么 === '要写的话')){
+          框 = '<textarea id="' + id + '" data-路="' + x.节点 + '.' + x.名 + '" data-型="' + x.类型 +
+            '" style="width:98%;height:56px">' + 现.replace(/[<]/g, '&lt;') + '</textarea>';
+        } else {
+          框 = '<input id="' + id + '" data-路="' + x.节点 + '.' + x.名 + '" data-型="' + x.类型 +
+            '" value="' + 现.replace(/["]/g, '&quot;') + '" style="width:340px">';
+        }
+        h += '<div style="margin-top:6px"><span class="小" style="display:inline-block;min-width:330px">' +
+          x.类 + ' · <b>' + x.名 + '</b>　<span style="opacity:.65">' + (x.说什么 || x.类型) + '</span></span>' + 框 + '</div>';
+      });
+      h += '<div class="行" style="margin-top:10px"><button class="钮 主" onclick="cx跑()">跑</button>' +
+           '<span class="小" id="cx跑说"></span></div>';
+      盒.innerHTML = h;
+    }).catch(e=>{ 盒.innerHTML = '<div class="小">✗ ' + e + '</div>'; });
+}
+function cx跑(){
+  const 改 = {};
+  [].forEach.call($('cx表').querySelectorAll('[data-路]'), el=>{ 改[el.getAttribute('data-路')] = el.value; });
+  $('cx跑说').textContent = '正在交……（这条要在 ComfyUI 里真跑，几十秒到几分钟）';
+  fetch('/api/pipeline/run', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({键: cx选, 改: 改})})
+    .then(r=>r.json()).then(j=>{
+      if(j.ok){
+        $('cx跑说').innerHTML = '✓ 交上去了，任务号 <code>' + j.任务 + '</code>　改了 ' + j.改了几处 +
+          ' 处　→ <a href="http://127.0.0.1:8188/" target="_blank">去 ComfyUI 看进度</a>';
+      } else {
+        $('cx跑说').textContent = '✗ ' + (j.错 || '没成') + (j.小错 && j.小错.length ? ('　' + j.小错.join('；')) : '');
+      }
+    }).catch(e=>{ $('cx跑说').textContent = '✗ ' + e; });
+}
 
 </script></body></html>
 """
@@ -2530,6 +2589,31 @@ class 手(BaseHTTPRequestHandler):
                                    "要图": len(输["图"]), "要视频": len(输["视频"]),
                                    "要字": len(输["文字"]),
                                    "错": None if r.get("ok") else str(r)})
+            except Exception as e:
+                return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
+
+        # ★ 这条产线交过去之前，**得你填的有哪些**。
+        #   以前只能「交进 ComfyUI」，还得跳到 ComfyUI 里去点、去找那个框 ——
+        #   这一条就是补上「在影匠控台里填完直接跑」。
+        if u.path in ("/api/pipeline/form", "/api/产线要填"):
+            键 = (体.get("键") or 体.get("key") or "").strip()
+            if not 键:
+                return self._JSON({"ok": False, "错": "没给键"})
+            try:
+                import 产线 as _cx
+                return self._JSON(_cx.要填什么(键, 体.get("机") or "本机"))
+            except Exception as e:
+                return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
+
+        # ★ 填完就真跑：改一遍 API 格式的值，POST /prompt 交给 ComfyUI。
+        #   返回里带 `任务`（prompt_id），前端拿它去轮询历史。
+        if u.path in ("/api/pipeline/run", "/api/产线跑"):
+            键 = (体.get("键") or 体.get("key") or "").strip()
+            if not 键:
+                return self._JSON({"ok": False, "错": "没给键"})
+            try:
+                import 产线 as _cx
+                return self._JSON(_cx.填了就跑(键, 体.get("改") or {}, 体.get("机") or "本机"))
             except Exception as e:
                 return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
 
