@@ -609,12 +609,93 @@ def 剧组一览():
 """
 
 
-def 新建戏(戏名, 一句话):
-    """建 作品\\<戏名>\\ 并写 剧本.md。戏名要过 _戏目录 的同一套白名单。
+def 戏名行不行(戏名):
+    return bool(re.fullmatch(r"[\w\u4e00-\u9fff\-]{1,20}", 戏名 or ""))
+
+
+def _钥匙():
+    """从 DSH 的凭据文件里取 DeepSeek 的 key。
+
+    ★ 为什么去那儿取：控台跑在这台机器上，DSH 用的就是这把钥匙。
+      自己再存一份 = 以后轮换的时候两个地方不一样，而且多一份明文。
+    """
+    p = r"D:\DSH\home\.credentials.yaml"
+    try:
+        文 = io.open(p, encoding="utf-8").read()
+    except Exception:
+        return ""
+    m = re.search(r"DEEPSEEK_API_KEY\s*:\s*[\"']?(sk-[A-Za-z0-9\-_]{10,})", 文)
+    return m.group(1) if m else ""
+
+
+剧本提示 = """你是给一部 1–3 分钟的 AI 短片写剧本的人。这部短片会用 AI 逐格画出来，所以每一场都必须能画。
+
+铁规矩（违反了这份剧本就没用）：
+1. **直白、简单、明了**。没看过任何背景的人看一遍，就能说出「讲了什么事」。
+2. 不许文学腔、不许抒情、不许炫技、不许写心理活动 —— 只写看得见的东西。
+3. 人物 2–4 个。每个人必须有一个「一眼能认出来的东西」（发型 / 衣服 / 疤 / 道具）。
+4. 分 5–9 场，**一场只发生一个动作**，按「变化」分场，不按台词分。
+5. 每一场必须写清三样：在哪儿 / 谁在场 / 发生了什么变化。
+6. 全片台词不超过 12 句，**每句不超过 18 个字**，要像人真的会说出口的话。
+7. 结局要有一个明确的落点，不要开放式的玄乎结尾。
+
+严格照下面这个结构输出，不要加别的任何东西（不要前言、不要解释、不要代码块）：
+
+# 剧本 · {戏}
+
+## 一句话故事
+（一句话，不超过 40 字）
+
+## 主要人物
+- **名字**：多少岁，什么身份；头发…；脸…；穿什么…；身上那个一眼能认出来的东西…
+
+## 分场
+### 第1场 · 地点
+- 谁在场：
+- 发生了什么：
+- 台词：
+
+（后面的场照这个写）
+
+这一部戏的故事是：
+{一句话}
+"""
+
+
+def 叫模型(提示, 超时=180):
+    """调 DeepSeek 写东西。失败要把原因原样带回来，不许静默。"""
+    钥 = _钥匙()
+    if not 钥:
+        return {"ok": False, "错": "没在 DSH 的凭据文件里找到 DEEPSEEK_API_KEY"}
+    import urllib.request
+    体 = json.dumps({
+        "model": "deepseek-chat",
+        "messages": [{"role": "user", "content": 提示}],
+        "temperature": 1.0,
+        "max_tokens": 4000,
+    }).encode()
+    try:
+        req = urllib.request.Request(
+            "https://api.deepseek.com/v1/chat/completions", data=体,
+            headers={"Authorization": "Bearer " + 钥, "Content-Type": "application/json"})
+        r = json.loads(urllib.request.urlopen(req, timeout=超时).read().decode())
+        return {"ok": True, "文": r["choices"][0]["message"]["content"],
+                "用": r.get("usage", {})}
+    except Exception as e:
+        return {"ok": False, "错": f"{type(e).__name__}: {str(e)[:300]}"}
+
+
+def 新建戏(戏名, 一句话, 用AI=False, 重写=False):
+    """建 作品\\<戏名>\\ 并写 剧本.md。戏名要过同一套白名单。
 
     ★ 已存在就**不覆盖** —— 剧本是他/分镜师写的东西，建戏按钮不该把它抹掉。
+    ★ 用AI=True 时先落骨架、再让模型把正文写进去。**模型失败时骨架留着**，
+      并把原因原样回给他 —— 不许假装写好了（判据说 OK 其实什么都没量）。
+    ★ 重写=True：允许把一份**空的骨架**补完整（他 10:58 建的那部就是这种）。
+      判据是文件里还有那两行括号提示 —— 只要有一行就说明还没人写过，
+      可以补；两行都没有就说明是他或分镜师写的，一律不动。
     """
-    if not re.fullmatch(r"[\w\u4e00-\u9fff\-]{1,20}", 戏名 or ""):
+    if not 戏名行不行(戏名):
         return {"ok": False, "错": "戏名只能是中文/字母/数字/横线，1–20 个字"}
     if not (一句话 or "").strip():
         return {"ok": False, "错": "一句话故事不能空 —— 空的剧本下游拆不出节拍"}
@@ -623,13 +704,94 @@ def 新建戏(戏名, 一句话):
     os.makedirs(目录, exist_ok=True)
     本 = os.path.join(目录, "剧本.md")
     if os.path.exists(本):
-        return {"ok": False, "已存在": True,
-                "错": f"《{戏名}》已经有 剧本.md 了，我没动它（要改请直接改文件）",
-                "目录": 目录}
+        if not (用AI and 重写):
+            return {"ok": False, "已存在": True,
+                    "错": f"《{戏名}》已经有 剧本.md 了，我没动它（要改请直接改文件）",
+                    "目录": 目录}
+        try:
+            旧 = io.open(本, encoding="utf-8").read()
+        except Exception as e:
+            return {"ok": False, "错": f"读不动已有的 剧本.md：{e}"}
+        if ("（谁、多大年纪、什么身份" not in 旧) and ("（这场戏在哪儿、谁在场" not in 旧):
+            return {"ok": False, "已存在": True,
+                    "错": f"《{戏名}》的 剧本.md 已经有真内容了（{len(旧)} 字），"
+                          f"我不覆盖别人写过的东西。要重写请先把那份挪走。",
+                    "目录": 目录}
+        r = 叫模型(剧本提示.format(戏=戏名, 一句话=一句话.strip()))
+        if not r["ok"]:
+            return {"ok": False, "错": f"模型没写成：{r['错']}"}
+        文 = r["文"].strip()
+        if len(文) < 120:
+            return {"ok": False, "错": f"模型只回了 {len(文)} 个字，我没敢覆盖骨架。"}
+        with io.open(本, "w", encoding="utf-8", newline="\n") as f:
+            f.write(文 if 文.endswith("\n") else 文 + "\n")
+        return {"ok": True, "目录": 目录, "剧本": 本, "新目录": False, "AI": True,
+                "字": len(文), "用": r.get("用", {}),
+                "说": f"《{戏名}》原来只有骨架，现在补成了 {len(文):,} 字的完整剧本。"}
+    骨 = 剧本骨架.format(戏=戏名, 一句话=一句话.strip())
     with io.open(本, "w", encoding="utf-8", newline="\n") as f:
-        f.write(剧本骨架.format(戏=戏名, 一句话=一句话.strip()))
-    return {"ok": True, "目录": 目录, "剧本": 本, "新目录": not 已有,
-            "说": f"建好《{戏名}》，剧本.md 写好了。下一步：派【分镜师】做①节拍拆解"}
+        f.write(骨)
+    if not 用AI:
+        return {"ok": True, "目录": 目录, "剧本": 本, "新目录": not 已有,
+                "说": f"建好《{戏名}》，剧本.md 写好了骨架。下一步：派【分镜师】做①节拍拆解"}
+    # ── 让模型把正文写进去 ──
+    r = 叫模型(剧本提示.format(戏=戏名, 一句话=一句话.strip()))
+    if not r["ok"]:
+        return {"ok": True, "目录": 目录, "剧本": 本, "新目录": not 已有, "AI": False,
+                "错": r["错"],
+                "说": f"《{戏名}》建好了，但**让模型写剧本这一步失败了**：{r['错']}。"
+                      f"骨架还留着，你可以直接改，或者再按一次。"}
+    文 = r["文"].strip()
+    if len(文) < 120:
+        return {"ok": True, "目录": 目录, "剧本": 本, "新目录": not 已有, "AI": False,
+                "错": "模型回的太短",
+                "说": f"《{戏名}》建好了，但模型只回了 {len(文)} 个字，我没敢覆盖骨架。"}
+    with io.open(本, "w", encoding="utf-8", newline="\n") as f:
+        f.write(文 if 文.endswith("\n") else 文 + "\n")
+    return {"ok": True, "目录": 目录, "剧本": 本, "新目录": not 已有, "AI": True,
+            "字": len(文), "用": r.get("用", {}),
+            "说": f"建好《{戏名}》，模型写了 {len(文):,} 字的完整剧本。"
+                  f"下一步：派【分镜师】做①节拍拆解（或直接按「全部」让它自己往下走）"}
+
+
+def 导入剧本(戏名, 来源="", 本机路径=""):
+    """把他自己的剧本弄进 作品\\<戏名>\\剧本.md。
+
+    两种来源：`来源` = 直接粘进来的正文；`本机路径` = 电脑上的一个 .md/.txt 文件。
+    哪个都不是就报错。戏目录已存在且没 剧本.md 时只补文件，不碰别的东西。
+    """
+    if not 戏名行不行(戏名):
+        return {"ok": False, "错": "戏名只能是中文/字母/数字/横线，1–20 个字"}
+    目录 = os.path.join(作品, 戏名)
+    本 = os.path.join(目录, "剧本.md")
+    if os.path.exists(本):
+        return {"ok": False, "已存在": True,
+                "错": f"《{戏名}》已经有 剧本.md 了。要换掉它，先自己把那份挪走或删掉（我不动它）"}
+    文 = (来源 or "").strip()
+    if not 文 and (本机路径 or "").strip():
+        p = os.path.abspath(os.path.expanduser(本机路径.strip().strip('"')))
+        if not os.path.isfile(p):
+            return {"ok": False, "错": f"本机没有这个文件：{p}"}
+        if os.path.splitext(p)[1].lower() not in (".md", ".txt", ".markdown"):
+            return {"ok": False, "错": f"只认 .md / .txt（这个后缀是 {os.path.splitext(p)[1]}）"}
+        try:
+            文 = io.open(p, encoding="utf-8").read().strip()
+        except UnicodeDecodeError:
+            文 = io.open(p, encoding="gbk", errors="replace").read().strip()
+        except Exception as e:
+            return {"ok": False, "错": f"读不动 {p}：{e}"}
+    if not 文:
+        return {"ok": False, "错": "没内容 —— 要么把剧本正文粘进框里，要么给一个本机文件的完整路径"}
+    if len(文) < 30:
+        return {"ok": False, "错": f"只有 {len(文)} 个字，太短了，不像一份剧本"}
+    os.makedirs(目录, exist_ok=True)
+    if not 文.lstrip().startswith("#"):
+        文 = f"# 剧本 · {戏名}\n\n" + 文
+    with io.open(本, "w", encoding="utf-8", newline="\n") as f:
+        f.write(文 if 文.endswith("\n") else 文 + "\n")
+    return {"ok": True, "目录": 目录, "剧本": 本, "字": len(文),
+            "说": f"《{戏名}》的剧本进来了，{len(文):,} 字。"
+                  f"下一步：派【分镜师】做①节拍拆解（或按「全部」让它自己往下走）"}
 
 
 任务表 = {
@@ -1109,6 +1271,15 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
 .格块.有片{border-color:#2c5c3f}
 .格块.有片 .n::after{content:" ●";color:#3fbf72}
 .看片签{display:flex;gap:6px;margin:10px 0 0;flex-wrap:wrap}
+.剧本正文{background:#0d1117;border:1px solid #1e2530;
+  border-radius:8px;padding:14px 18px;margin:10px 0 0;font-size:13.5px;line-height:1.8;
+  color:#d7dee9;max-height:640px;overflow:auto}
+.剧本标题{font-weight:700;color:#eaf0f8;margin:10px 0 2px}
+.剧本标题.级1{font-size:16px;color:#7fd1a8;margin-top:0}
+.剧本标题.级2{font-size:14.5px;border-bottom:1px solid #1e2530;padding-bottom:4px}
+.剧本标题.级3,.剧本标题.级4{font-size:13.5px;color:#c8d4e4}
+.剧本引用{border-left:3px solid #2d3a4d;padding:2px 0 2px 10px;color:#9fb0c8;margin:4px 0}
+.剧本点{padding-left:6px;color:#cbd6e4}
 .签{background:#1c2431;border:1px solid #2b3546;border-radius:16px;padding:4px 12px;font-size:12px;cursor:pointer;color:#9fb0cc}
 .签.亮{background:#22304a;border-color:#33507d;color:#cfe2ff}
 .片框{width:100%;max-width:720px;border-radius:8px;background:#000}
@@ -1156,15 +1327,32 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
     <div class="行" id="jc钮"></div>
   </div>
 
-  <div class="卡"><h2>新建一部戏</h2>
-    <div class="小">写一句话就行 —— 建目录、写 <code>剧本.md</code> 都由这儿开个头。
-      已经有的戏**不会被动**（要改直接改文件）。</div>
+  <div class="卡"><h2>新建一部戏 · 或者把我写好的剧本导进来</h2>
+    <div class="小">★ 2026-10-15 10:58 他说的：「我试着生成了，但**剧本根本就没什么内容**」——
+      以前这里只写一个空骨架（「主要人物」「分场」两栏是空的），那不是剧本。</div>
+
+    <div style="margin:10px 0 4px;color:#c8d4e4;font-size:13px"><b>甲、让 AI 写</b>（填一句话，模型写完整剧本）</div>
     <div class="行">
       <input id="np名" placeholder="戏名，如 雪线前传" style="width:200px">
       <input id="np话" placeholder="一句话故事，如 守了十年雪线的刀客，发现要杀的人是自己" style="width:560px">
+      <label class="小" style="display:flex;align-items:center;gap:5px">
+        <input type="checkbox" id="npAI" checked> 让模型把剧本写完整（要花 token）</label>
       <button class="钮 主" onclick="np建()">建戏 + 写剧本</button>
-      <span class="小" id="np说"></span>
     </div>
+    <div class="小" id="np说" style="margin-top:6px"></div>
+
+    <div style="margin:16px 0 4px;color:#c8d4e4;font-size:13px"><b>乙、我有现成的剧本，导进来</b>
+      （本机文件的完整路径，或者直接把正文粘进下面的框）</div>
+    <div class="行">
+      <input id="im名" placeholder="戏名" style="width:200px">
+      <input id="im路" placeholder="本机文件路径，如 D:\我的剧本\三打白骨精.md（.md / .txt）" style="width:560px">
+      <button class="钮" onclick="im导()">从这个文件导</button>
+      <button class="钮" onclick="im粘()">粘正文导</button>
+    </div>
+    <textarea id="im文" placeholder="……或者把剧本正文直接粘在这里（会写成 作品\&lt;戏名&gt;\剧本.md）"
+      style="width:100%;height:120px;margin-top:8px;background:#0d1117;color:#d7dee9;
+      border:1px solid #1e2530;border-radius:8px;padding:10px;font-size:13px;font-family:inherit"></textarea>
+    <div class="小" id="im说" style="margin-top:6px"></div>
   </div>
 
   <!-- ★ 用户 2026-10-15 任务单 ⑤：「能调 ComfyUI 官方 API 也能让 agent 接管」。
@@ -1348,15 +1536,41 @@ function jc推(名){
 }
 function np建(){
   const 名 = $('np名').value.trim(), 话 = $('np话').value.trim();
-  $('np说').textContent = '';
+  const 用AI = $('npAI').checked;
+  $('np说').innerHTML = 用AI
+    ? '<span class="小">正在建《'+名+'》并让模型写剧本……（通常 20–60 秒，别关页面）</span>' : '';
   if(!名 || !话){ $('np说').innerHTML = '<span class="凶">✗ 戏名和一句话故事都要填</span>'; return; }
   fetch('/api/newplay', {method:'POST', headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({戏:名, 一句话:话})})
+    body: JSON.stringify({戏:名, 一句话:话, ai:用AI, 重写:用AI})})
    .then(r=>r.json()).then(j=>{
      if(!j.ok){ $('np说').innerHTML = '<span class="凶">✗ '+j.错+'</span>'; return; }
-     $('np说').innerHTML = '<span class="吉">✓ '+j.说+'</span><br><span class="小">'+j.剧本+'</span>';
-     jc满 = false; jc刷(); 刷();
-   });
+     const 色 = j.AI === false ? '凶' : '吉';
+     $('np说').innerHTML = '<span class="'+色+'">'+(j.AI===false?'✗ ':'✓ ')+j.说+'</span>'
+       + (j.剧本 ? '<br><span class="小">'+j.剧本+'</span>' : '')
+       + (j.AI ? '<br><span class="小">按上面「剧组流水线」里的「全部」，让它自己往下走。</span>' : '');
+     jc满 = false; jc刷(); 拉看片(); 刷();
+   })
+   .catch(e => { $('np说').innerHTML = '<span class="凶">✗ 连不上：'+e+'</span>'; });
+}
+function im导(){ im走(false); }
+function im粘(){ im走(true); }
+function im走(用粘贴){
+  const 名 = $('im名').value.trim();
+  const 路 = $('im路').value.trim();
+  const 文 = $('im文').value;
+  $('im说').textContent = '';
+  if(!名){ $('im说').innerHTML = '<span class="凶">✗ 先填个戏名</span>'; return; }
+  if(用粘贴 && !文.trim()){ $('im说').innerHTML = '<span class="凶">✗ 下面那个框是空的</span>'; return; }
+  if(!用粘贴 && !路){ $('im说').innerHTML = '<span class="凶">✗ 填本机文件的完整路径，或者按「粘正文导」</span>'; return; }
+  $('im说').innerHTML = '<span class="小">正在导……</span>';
+  fetch('/api/import', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({戏:名, 来源: 用粘贴?文:'', 本机路径: 用粘贴?'':路})})
+   .then(r=>r.json()).then(j=>{
+     if(!j.ok){ $('im说').innerHTML = '<span class="凶">✗ '+j.错+'</span>'; return; }
+     $('im说').innerHTML = '<span class="吉">✓ '+j.说+'</span><br><span class="小">'+j.剧本+'</span>';
+     jc满 = false; jc刷(); 拉看片(); 刷();
+   })
+   .catch(e => { $('im说').innerHTML = '<span class="凶">✗ 连不上：'+e+'</span>'; });
 }
 
 // ── ComfyUI 官方接口 ──────────────────────────────────────────────
@@ -1508,8 +1722,29 @@ function 拉片单(){
 // 用户 2026-10-15 08:55：「这个控台我能自己看到里面的剧本，能看到里面的台词，
 // 看到里面的两个人物形象……我现在只能看到你所生成的进度，这叫这对吗？」
 // → 所以这一块**不显示任何我自己的进度数**，只放片子本身。
-let 看片数据 = null, 看片签 = '人物形象';
+let 看片数据 = null, 看片签 = '剧本';
 function 换签(s){ 看片签 = s; 画看片(); }
+
+// 把 剧本.md 的原文排成能读的样子。
+// ★ 用户硬规矩 5：「我要的是能够直观的简单明了的，不管是谁都能看懂的」——
+//   直接把 `##` `**` 原样摆出来，他得自己在脑子里渲染一遍，那就是没做完。
+//   这里只做四件事：标题加粗、**去掉、> 变成引用条、- 变成圆点。一个字都不改。
+function 排剧本(文){
+  const e = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return String(文||'').split(/\r?\n/).map(行 => {
+    const t = 行.replace(/\s+$/,'');
+    if(!t.trim()) return '<div style="height:8px"></div>';
+    let m;
+    if(m = /^(#{1,4})\s+(.*)$/.exec(t)){
+      const 级 = m[1].length;
+      return '<div class="剧本标题 级' + 级 + '">' + e(m[2]) + '</div>';
+    }
+    if(m = /^>\s?(.*)$/.exec(t)) return '<div class="剧本引用">' + e(m[1]) + '</div>';
+    let 身 = e(t).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+    if(m = /^[-*]\s+(.*)$/.exec(t)) return '<div class="剧本点">• ' + e(m[1]).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>') + '</div>';
+    return '<div>' + 身 + '</div>';
+  }).join('');
+}
 
 function 拉看片(){
   fetch('/api/kanban?戏=' + encodeURIComponent(戏)).then(r=>r.json()).then(j=>{
@@ -1533,6 +1768,7 @@ function 画看片(){
   $('看片头').innerHTML = 头;
 
   const 签们 = [
+    ['剧本', (j.剧本&&j.剧本.有) ? (j.剧本.字.toLocaleString()+' 字') : '还没有'],
     ['人物形象', (j.人物||[]).length + ' 个'],
     ['台词', (j.格||[]).filter(g=>g.词&&g.词.length).length + ' 格'],
     ['逐格', j.格数 + ' 格'],
@@ -1541,6 +1777,17 @@ function 画看片(){
   let h = '<div class="看片签">' + 签们.map(([n,c]) =>
     '<span class="签' + (看片签===n?' 亮':'') + '" onclick="换签(\\'' + n + '\\')">'
     + n + ' <span class="小">' + c + '</span></span>').join('') + '</div>';
+
+  if(看片签 === '剧本'){
+    const b = j.剧本 || {};
+    if(!b.有){
+      h += '<div class="小" style="margin-top:10px">' + esc(b.说||'没有剧本。') + '</div>';
+    } else {
+      h += '<div class="小" style="margin-top:10px">'
+        + '这就是这一部戏的剧本原文（作品 / ' + esc(j.戏) + ' / 剧本.md）—— 一个字没改。'
+        + '</div><div class="剧本正文">' + 排剧本(b.文) + '</div>';
+    }
+  }
 
   if(看片签 === '人物形象'){
     h += (j.人物&&j.人物.length)
@@ -1781,10 +2028,20 @@ class 手(BaseHTTPRequestHandler):
                                     (体.get("why") or 体.get("为什么") or "").strip(),
                                     (体.get("want") or 体.get("要") or "").strip()))
 
-        # ★ 新建一部戏：建目录 + 写 剧本.md 骨架。已存在就不动它。
+        # ★ 新建一部戏：建目录 + 写 剧本.md。已存在就不动它。
+        #   `ai` 为真时让模型把正文写完整 —— 用户 2026-10-15 10:58 说的
+        #   「我试着生成了，但剧本根本就没什么内容」，指的就是以前只写空骨架。
         if u.path in ("/api/newplay", "/api/新建戏"):
             return self._JSON(新建戏((体.get("戏") or "").strip(),
-                                    (体.get("一句话") or 体.get("story") or "").strip()))
+                                    (体.get("一句话") or 体.get("story") or "").strip(),
+                                    bool(体.get("ai") or 体.get("用AI")),
+                                    bool(体.get("重写"))))
+
+        # ★ 导入他自己写好的剧本（本机文件路径，或者直接粘正文）
+        if u.path in ("/api/import", "/api/导入剧本"):
+            return self._JSON(导入剧本((体.get("戏") or "").strip(),
+                                      (体.get("来源") or 体.get("text") or ""),
+                                      (体.get("本机路径") or 体.get("path") or "")))
 
         if u.path == "/api/run":
             名 = 体.get("任务") or ""
