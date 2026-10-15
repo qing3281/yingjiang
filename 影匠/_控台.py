@@ -628,6 +628,145 @@ def _钥匙():
     return m.group(1) if m else ""
 
 
+# ============================================================
+# ★ 四步写剧本（2026-10-15 立）
+# ============================================================
+#
+# 为什么加：他 10-15 说「我试着生成了，但**剧本根本就没什么内容**」。
+# 原来这个页面上只有「甲、让 AI 写」——一次调模型要它吐出四样东西，
+# 结果每样都写了、每样都不够。四步法把判断权切成四小块交给他。
+#
+# 这一步一步是**他自己按**的，不是我替他按 —— 每步跑完停在页面上，
+# 他看着说「行」或「重写」。前一步没过，后一步**不许开**。
+#
+# 实现在 `影匠\编剧.py`，这里只做搬运 + 报错原样带回来。
+
+编剧步 = {}          # {会话里的戏名: {"梗概":…, "人物":…, "分场":…, "台词":…, "套路":…}}
+
+
+def 编剧做(动作, 体):
+    """
+    动作：
+      step1  跑第 1 步（梗概）—— 需要 素材
+      step2  跑第 2 步（人物）—— 需要 上一步的 梗概
+      step3  跑第 3 步（分场）
+      step4  跑第 4 步（台词）
+      check  拿四步拼起来自检 —— 不改东西，只挑毛病
+      save   写进 作品\\<戏名>\\剧本.md
+    """
+    try:
+        import 编剧
+    except Exception as e:
+        return {"ok": False, "错": "编剧.py 载不进来：%s: %s" % (type(e).__name__, e)}
+
+    动 = (动作 or "").strip()
+    名 = (体.get("戏名") or 体.get("戏") or "未命名").strip()
+    存 = 编剧步.setdefault(名, {})
+
+    try:
+        if 动 in ("step1", "1", "梗概"):
+            素 = (体.get("素材") or body素材(体) or "").strip()
+            if not 素:
+                return {"ok": False, "错": "先写一句话素材（比如「一个修鞋匠，和一个不肯走的小女孩」）"}
+            r = 编剧.第一步_梗概(素, (体.get("套路") or "").strip(),
+                                 分钟=float(体.get("分钟") or 1.5),
+                                 人数=int(体.get("人数") or 2))
+            if not r.get("ok"):
+                return r
+            存["素材"], 存["梗概"], 存["套路"] = 素, r["文"], r.get("套路", "")
+            存["为什么"] = r.get("为什么", "")
+            return {"ok": True, "步": 1, "文": r["文"], "套路": r.get("套路", ""),
+                    "为什么": r.get("为什么", ""), "用": r.get("用", {}),
+                    "说": "第 1 步好了。你看这四行 —— 方向对就按第 2 步，不对就重写。"}
+
+        if 动 in ("step2", "2", "人物"):
+            if not 存.get("梗概"):
+                return {"ok": False, "错": "第 1 步还没过 —— 故事方向没定就别往下写人物"}
+            r = 编剧.第二步_人物(存["梗概"], int(体.get("人数") or 2))
+            if not r.get("ok"):
+                return r
+            存["人物"] = r["文"]
+            return {"ok": True, "步": 2, "文": r["文"], "用": r.get("用", {}),
+                    "说": "第 2 步好了。重点看每人的「一眼能认出来的东西」—— 那一条是锁脸的关键。"}
+
+        if 动 in ("step3", "3", "分场"):
+            if not 存.get("人物"):
+                return {"ok": False, "错": "第 2 步还没过 —— 人没定就别分场"}
+            r = 编剧.第三步_分场(存["梗概"], 存["人物"], 存.get("套路", ""),
+                                 int(体.get("秒") or 90))
+            if not r.get("ok"):
+                return r
+            存["分场"] = r["文"]
+            return {"ok": True, "步": 3, "文": r["文"], "用": r.get("用", {}),
+                    "说": "第 3 步好了。只盯一件事：每一场的「变化」栏，跟前一场重不重。"}
+
+        if 动 in ("step4", "4", "台词"):
+            if not 存.get("分场"):
+                return {"ok": False, "错": "第 3 步还没过 —— 场没分就别写台词"}
+            r = 编剧.第四步_台词(存["分场"])
+            if not r.get("ok"):
+                return r
+            存["台词"] = r["文"]
+            return {"ok": True, "步": 4, "文": r["文"], "用": r.get("用", {}),
+                    "说": "第 4 步好了。按「存成剧本.md」就写进作品目录。"}
+
+        if 动 in ("check", "自检"):
+            # ★ 先看服务里有没有这四步；没有就去读磁盘上那份 剧本.md。
+            #   为什么要这条兜底：他（或我）可能是在**上一次服务进程**里跑的四步，
+            #   服务一重启，`编剧步` 就空了 —— 那时候按「自检」只回一句「缺梗概」，
+            #   而他明明有一份写好的剧本躺在作品目录里。
+            本 = ""
+            if (体.get("文") or "").strip():
+                # ★ 直接送一整本来查 —— 用来核「这条判据真的会挑出毛病吗」
+                #   （只喂过得去的剧本，永远不知道闸门是不是坏的）
+                本 = 体["文"]
+                来源 = "你送上来的这一本"
+            elif all(存.get(k) for k in ("梗概", "人物", "分场", "台词")):
+                本 = 编剧.拼成一本(名, 存["梗概"], 存["人物"], 存["分场"], 存["台词"])
+                来源 = "服务里那四步"
+            else:
+                p = os.path.join(os.path.dirname(os.path.abspath(__file__)), "作品", 名, "剧本.md")
+                if os.path.isfile(p):
+                    本 = io.open(p, encoding="utf-8").read()
+                    来源 = "磁盘上的 %s（%d 字节）" % (p, os.path.getsize(p))
+                else:
+                    return {"ok": False, "错": "服务里没有「%s」那四步，作品\\%s\\剧本.md 也不在。"
+                                              "先跑第 1 步。" % (名, 名)}
+            查 = 编剧.自检(本)
+            return {"ok": True, "过": 查["过"], "问题": 查["问题"], "数字": 查["数字"],
+                    "本": 本, "来源": 来源,
+                    "说": ("自检过了：%d 场 / %d 人 / %d 句台词 / 最长 %d 字（看的是%s）"
+                          % (查["数字"]["场数"], 查["数字"]["人物数"],
+                            查["数字"]["台词句数"], 查["数字"]["最长台词"], 来源))
+                          if 查["过"] else "自检挑出 %d 条 —— 改不改你定。（看的是%s）"
+                          % (len(查["问题"]), 来源)}
+
+        if 动 in ("save", "存"):
+            缺 = [k for k in ("梗概", "人物", "分场", "台词") if not 存.get(k)]
+            if 缺:
+                return {"ok": False, "错": "这四步还没跑完（缺 %s）" % "、".join(缺)}
+            查 = 编剧.自检(编剧.拼成一本(名, 存["梗概"], 存["人物"], 存["分场"], 存["台词"]))
+            本 = 编剧.拼成一本(名, 存["梗概"], 存["人物"], 存["分场"], 存["台词"])
+            if not 戏名行不行(名):
+                return {"ok": False, "错": "戏名只能是中文/字母/数字/横线，1–20 个字"}
+            d = os.path.join(os.path.dirname(os.path.abspath(__file__)), "作品", 名)
+            os.makedirs(d, exist_ok=True)
+            p = os.path.join(d, "剧本.md")
+            旧 = os.path.getsize(p) if os.path.exists(p) else 0
+            io.open(p, "w", encoding="utf-8", newline="\n").write(本)
+            return {"ok": True, "路": p, "字节": os.path.getsize(p), "原来字节": 旧,
+                    "过": 查["过"], "问题": 查["问题"],
+                    "说": "已写进 %s（%d 字节）" % (p, os.path.getsize(p))}
+
+        return {"ok": False, "错": "不认识的动作用：%s" % 动}
+    except Exception as e:
+        return {"ok": False, "错": "%s: %s" % (type(e).__name__, str(e)[:300])}
+
+
+def body素材(体):
+    return 体.get("一句话") or 体.get("素材") or ""
+
+
 剧本提示 = """你是给一部 1–3 分钟的 AI 短片写剧本的人。这部短片会用 AI 逐格画出来，所以每一场都必须能画。
 
 铁规矩（违反了这份剧本就没用）：
@@ -821,6 +960,18 @@ def 导入剧本(戏名, 来源="", 本机路径=""):
         "脚本": "剧组.py", "剧组": True,
         "说": "把九宫格拼成一张 `_看片表.png`",
         "参": lambda o: ["拼图", o["戏"]],
+    },
+    "剧组·成片": {
+        # ★ 这一步以前**根本不存在** —— 流水线跑到「拼图」（一张 PNG 看片表）就完了，
+        #   出来的不是一条能发出去的片。用户说的是「发出去别人直接能看」。
+        #   这里把 04_*.mp4 归一化 → 拼接 → 烧硬字幕，产出 <戏名>_成片.mp4。
+        #   实测《修鞋》10 段（5 段 24fps 有声 + 5 段 16fps 没声）→ 41.4 秒成片，5.9 秒跑完。
+        "脚本": "剧组.py", "剧组": True,
+        "说": "把 `04_*.mp4` 拼成一条 `<戏名>_成片.mp4`（规格不齐会自动统一，默认烧硬字幕）。"
+               "字幕要放在 作品\\<戏名>\\_台词.srt",
+        "参": lambda o: ["成片", o["戏"]]
+                       + (["--放大"] if o.get("放大") else [])
+                       + (["--不烧字幕"] if o.get("不烧字幕") else []),
     },
     "剧组·进度": {
         "脚本": "剧组.py", "剧组": True,
@@ -1382,6 +1533,41 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
     <div class="小" id="im说" style="margin-top:6px"></div>
   </div>
 
+  <!-- ★ 四步写剧本（2026-10-15 立）
+       他 10-15 说的：「我试着生成了，但**剧本根本就没什么内容**」。
+       上面那个「甲、让 AI 写」是一次调模型要它吐四样（故事+人物+分场+台词）——
+       结果是每样都写了、每样都不够。这里改成**一步一步按**：
+       每跑完一步停在页面上，他看着说「行」或「重写」，前一步没过就不许开下一步。 -->
+  <div class="卡"><h2>四步写剧本 —— 一步一步按，每步停下来等你看</h2>
+    <div class="小">为什么不一次写完：一次要模型吐四样，它每样都会写一点、每样都不够 ——
+      这就是「剧本没什么内容」的来源。四步法把判断权切成四块：<b>故事方向 → 人 → 场 → 台词</b>，
+      每一块你点头了才往下走。</div>
+    <div class="行" style="margin-top:10px">
+      <input id="sc名" placeholder="戏名，如 楚子航·耶梦加得" style="width:210px">
+      <input id="sc素" placeholder="一句话素材，如 一个师兄，为了救人，去杀一条龙" style="width:430px">
+      <select id="sc路" title="这几条路决定故事往哪个方向走">
+        <option value="">不指定路数（模型自己挑）</option>
+      </select>
+      <button class="钮 主" onclick="sc跑(1)">① 写故事</button>
+    </div>
+    <div class="行" style="margin-top:6px">
+      <span class="小">这一步停了，你说行不行：</span>
+      <button class="钮" onclick="sc跑(2)" id="sc2" disabled>② 写人</button>
+      <button class="钮" onclick="sc跑(3)" id="sc3" disabled>③ 分场</button>
+      <button class="钮" onclick="sc跑(4)" id="sc4" disabled>④ 写台词</button>
+      <span style="flex:1"></span>
+      <button class="钮" onclick="sc做('check')" id="sc5" disabled>自检（挑毛病）</button>
+      <button class="钮 主" onclick="sc做('save')" id="sc6" disabled>存成 剧本.md</button>
+    </div>
+    <div class="行" style="margin-top:6px">
+      <span class="小">手上的剧本（上面四步没跑、或者想查别部戏）直接查：</span>
+      <button class="钮" onclick="sc查盘()">查磁盘上的 剧本.md</button>
+      <span class="小">填戏名就行（如 楚子航）。查的是「作品」目录下这部戏的 剧本.md，只读，一个字都不改。</span>
+    </div>
+    <div class="小" id="sc说" style="margin-top:8px">还没开始。填上戏名和一句话，按 ①。</div>
+    <div id="sc果" style="margin-top:10px"></div>
+  </div>
+
   <!-- ★ 用户 2026-10-15 任务单 ⑤：「能调 ComfyUI 官方 API 也能让 agent 接管」。
        他说过四次「要能自己操作，只读页面不算」—— 所以下面这些是**真的能按**的，
        走的是 ComfyUI 自己的 HTTP 接口，不碰它的内部状态文件。 -->
@@ -1926,6 +2112,110 @@ function 放格(路, 名){
 jc刷();          // ★ 不调这一句，「剧组流水线」那张卡要等用户按一次「重新扫」才有内容
 cx刷();          // ★ 产线那一卡同理：不调就永远是空的（我第一版把 cx刷() 加到了
                  //   「建戏 / 导入」的回调里，那两处只在他按了按钮之后才跑 —— 页面刚开是空的）
+  // ============ 四步写剧本（2026-10-15） ============
+
+  // ★ 切行一律用 String.fromCharCode(10) 拼行号，不许写带反斜杠-n 的正则 ——
+  //   Python 源码里写正则，反斜杠-n 会先被解释成真换行，落到浏览器就是坏正则，
+  //   整个 <script> 一个字符都不执行（这个坑踩过三次，HTTP 200 完全量不出来）。
+  var sc已到 = 0;
+  function sc说(t, 色){ var e = $('sc说'); e.textContent = t; e.style.color = 色 || '#8fa3bd'; }
+  // ★ 查磁盘上已经写好的 剧本.md —— 不依赖上面四步跑没跑。
+  //   为什么要它：四步是**这一次服务进程**里的东西，服务一重启就没了；
+  //   而他手上明明有一份写好的剧本躺在 作品 目录里。
+  //   注意：这一段里一个反斜杠都不许写（踩过三次：注释里的反斜杠会把整个 script 搞死）。
+  function sc查盘(){
+    var 名 = $('sc名').value.trim();
+    if (!名){ sc说('先在上面那个「戏名」框里填个戏名', '#ff7b72'); return; }
+    sc说('在读 作品 目录下的剧本，马上回来…', '#ffb454');
+    $('sc果').innerHTML = '';
+    fetch('/api/script', {method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({do:'check', '戏名': 名})})
+      .then(function(r){ return r.json(); })
+      .then(function(j){
+        if (!j.ok){ sc说('✗ ' + (j.错 || '不知道哪儿错了'), '#ff7b72'); return; }
+        sc说(j.说 || '查完了', j.过 ? '#7ee0a0' : '#ffb454');
+        sc画(j);
+      })
+      .catch(function(e){ sc说('✗ ' + e, '#ff7b72'); });
+  }
+  function sc能到(n){
+    for (var i = 2; i <= 6; i++){ var b = $('sc' + i); if (b) b.disabled = (i > n + 1); }
+  }
+  function sc化(t){
+     var 出 = [], 们 = String(t == null ? '' : t).split(String.fromCharCode(10));
+     for (var i = 0; i < 们.length; i++){
+        var x = 们[i];
+        var 粗 = x.replace(/[*][*]([^*]+)[*][*]/g, '<b>$1</b>');
+        if (x.indexOf('### ') === 0) 出.push('<div style="color:#7ee0a0;font-weight:600;margin:9px 0 3px">' + 粗.slice(4) + '</div>');
+        else if (x.indexOf('## ') === 0) 出.push('<div style="color:#c8d4e4;font-weight:600;margin:12px 0 3px">' + 粗.slice(3) + '</div>');
+        else if (x.charAt(0) === '-') 出.push('<div style="padding-left:14px;color:#b9c6d6">·' + 粗.slice(1) + '</div>');
+        else if (x.trim()) 出.push('<div style="color:#b9c6d6">' + 粗 + '</div>');
+     }
+     return 出.join('');
+  }
+  function sc画(j){
+     var h = '';
+     if (j.套路) h += '<div style="color:#8fa3bd;font-size:12px;margin-bottom:6px">套路：<b style="color:#7ee0a0">'
+        + j.套路 + '</b>' + (j['为什么'] ? '　为什么挑它：' + j['为什么'] : '') + '</div>';
+     if (j.文) h += '<div style="background:#0d1117;border:1px solid #1e2530;border-radius:8px;padding:12px;max-height:420px;overflow:auto">' + sc化(j.文) + '</div>';
+     if (j.问题 && j.问题.length){
+        h += '<div style="margin-top:10px;color:#ffb454">自检挑出 ' + j.问题.length + ' 条：</div>';
+        for (var i = 0; i < j.问题.length; i++) h += '<div style="color:#ffb454;padding-left:14px">⚠ ' + j.问题[i] + '</div>';
+     }
+     if (j.数字){
+        var d = j.数字;
+        h += '<div style="margin-top:8px;color:#8fa3bd;font-size:12px">场数 ' + d['场数'] + '　写了变化的 ' + d['写了变化的场数']
+           + '　人物 ' + d['人物数'] + '　台词 ' + d['台词句数'] + ' 句　无台词场 ' + d['无台词场数'] + '　最长台词 ' + d['最长台词'] + ' 字</div>';
+     }
+     if (j.用) h += '<div style="margin-top:8px;color:#5d6b7d;font-size:12px">这一步用了 ' + (j.用['模型'] || '?')
+        + '　新输入 ' + (j.用['新输入'] || 0) + '　输出 ' + (j.用['输出'] || 0) + ' tok　' + (j.用['秒'] || 0) + ' 秒</div>';
+     $('sc果').innerHTML = h;
+  }
+  function sc跑(n){
+     var 名 = $('sc名').value.trim();
+     if (!名){ sc说('先填个戏名', '#ff7b72'); return; }
+     var 体 = {do: 'step' + n, '戏名': 名, '素材': $('sc素').value.trim(),
+               '套路': $('sc路').value, '分钟': 3, '人数': 2, '秒': 180};
+     sc说('第 ' + n + ' 步在跑，模型在写，一般 20–60 秒…', '#ffb454');
+     $('sc果').innerHTML = '';
+     fetch('/api/script', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(体)})
+       .then(function(r){ return r.json(); })
+       .then(function(j){
+          if (!j.ok){ sc说('✗ ' + (j['错'] || '失败'), '#ff7b72'); return; }
+          sc已到 = n; sc能到(n); sc画(j);
+          sc说('✓ ' + (j['说'] || ('第 ' + n + ' 步好了')) + '　不满意就再按一次这一步（会重写）', '#7ee0a0');
+       })
+       .catch(function(e){ sc说('✗ ' + e, '#ff7b72'); });
+  }
+  function sc做(什么){
+     var 名 = $('sc名').value.trim();
+     sc说(什么 === 'save' ? '正在写盘…' : '正在自检…', '#ffb454');
+     fetch('/api/script', {method:'POST', headers:{'Content-Type':'application/json'},
+                           body: JSON.stringify({do: 什么, '戏名': 名})})
+       .then(function(r){ return r.json(); })
+       .then(function(j){
+          if (!j.ok){ sc说('✗ ' + (j['错'] || '失败'), '#ff7b72'); return; }
+          sc画(j);
+          sc说((j['过'] ? '✓ ' : '⚠ ') + (j['说'] || ''), j['过'] ? '#7ee0a0' : '#ffb454');
+          if (j['路']) sc说('✓ 已写进 ' + j['路'] + '（' + j['字节'] + ' 字节，原来 ' + j['原来字节'] + '）', '#7ee0a0');
+       })
+       .catch(function(e){ sc说('✗ ' + e, '#ff7b72'); });
+  }
+  function sc填路(){
+     fetch('/api/story').then(function(r){ return r.json(); }).then(function(j){
+        if (!j.ok || !j['路数']) return;
+        var 选 = $('sc路');
+        for (var i = 0; i < j['路数'].length; i++){
+           var o = document.createElement('option');
+           o.value = j['路数'][i]['名'];
+           o.textContent = j['路数'][i]['名'] + ' —— ' + (j['路数'][i]['说'] || '');
+           选.appendChild(o);
+        }
+     }).catch(function(){});
+  }
+  sc填路();
+
+
 mt读();          // ★ 同一个坑：写了个取模板清单的函数却没人调，下拉永远停在「正在读…」
 
 // 支持 ?任=超分 直接选好某个任务（也方便我自己截图核对页面）
@@ -2071,6 +2361,14 @@ class 手(BaseHTTPRequestHandler):
         # ★ 出图用哪个模型 —— 存在 影匠\设置.json 里，导演.py 每次开镜都读一遍。
         #   为什么不塞进环境变量：控台起 剧组.py 是另起一个进程，
         #   环境变量得在起的时候传；而用户改完这个下拉框，下一次「出图」就该用新的。
+        if u.path in ("/api/story", "/api/故事"):
+            # ★ 四步写剧本第 1 步要选「套路」（几种故事形状），页面拿这个填下拉
+            try:
+                import 故事库
+                return self._JSON({"ok": True, "路数": 故事库.路数表()})
+            except Exception as e:
+                return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
+
         if u.path == "/api/setting":
             try:
                 import 导演 as _导
@@ -2169,6 +2467,10 @@ class 手(BaseHTTPRequestHandler):
             体 = json.loads(self.rfile.read(n) or b"{}")
         except Exception:
             体 = {}
+
+        # ★ 四步写剧本（2026-10-15）—— 一步一步按，每步停在页面上等他说行/不行
+        if u.path in ("/api/script", "/api/编剧"):
+            return self._JSON(编剧做(体.get("do") or 体.get("动作") or "", 体))
 
         if u.path == "/api/stop":
             with 现在锁:

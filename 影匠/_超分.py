@@ -373,10 +373,15 @@ def 主():
         return 1
 
     # 等
+    # ★★ 这里必须是**算出来的 `主机`**，不能是 `a.主机`。
+    #    `--主机` 的默认值是远端，而 GAN 那条路会把 `主机` 改成本机（模型在本机）。
+    #    写成 `a.主机` 就会：**提交到本机、却去轮询远端的 history** ——
+    #    远端永远不会有这个 prompt_id，于是干等到一小时超时才退出，
+    #    而产物其实早就落在本机 output/ 里了（实测 13:31:24 就出片了，脚本还在等）。
     t0 = time.time()
     while True:
         time.sleep(5)
-        e = 历史(a.主机).get(pid)
+        e = 历史(主机).get(pid)
         if e:
             st = (e.get("status") or {})
             print(f"  [{time.time()-t0:6.0f}s] {st.get('status_str')} "
