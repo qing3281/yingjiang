@@ -65,7 +65,7 @@ import sys
     "_核台账.py": os.path.join(工作区, "_核台账.py"),
     "_用户原话.py": os.path.join(工作区, "_用户原话.py"),
     "_验控台2.py": os.path.join(工作区, "_验控台2.py"),
-    "影匠_console-launch.ps1": os.path.join(工作区, "影匠", "_console-launch.ps1"),
+    "影匠_console-launch.ps1": os.path.join(工作区, "_console-launch.ps1"),
     # ★ 回答用户 02:06「记住你前面出现过的所有问题，我不想再看见了」的那道闸
     "_找复发.py": os.path.join(工作区, "_找复发.py"),
     # 它数出来的结果（犯过两次以上的病）—— 是数据不是代码，但值得一起带走
