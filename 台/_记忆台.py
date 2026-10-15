@@ -216,6 +216,10 @@ def 扫记忆层():
            "`_找复发.py` 数出来的「犯过两次以上」的毛病。"
            "★ 这一份就是回答你那句「记住你前面出现过的所有问题，我不想再看见了」——"
            "单次是事故，重复才是病"),
+        层("★ 压缩台账", [os.path.join(W, "记忆", "压缩台账.jsonl")], False,
+           "每一次上下文压缩记一行（压前 / 压后 / 砍掉多少）。"
+           "★ `_开工.py` 的【零点六】每次开工增量化一次，这里就能搜到历史。"
+           "数据是 DSH 自己写进会话存档的 usage，不是我上报的"),
         层("长期记忆", [os.path.join(W, ".memsearch", "memory")], False,
            "MemSearch 插件写的，按天"),
         层("对话档案", [os.path.join(W, "记忆", "对话")], False,
@@ -607,7 +611,7 @@ def 渲染(会, 层s, 坑s, 账, 像=None, 经s=None):
 # ══════════════════════════════════════════════════════════════
 #  四、HTTP
 # ══════════════════════════════════════════════════════════════
-白名单 = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".mp4", ".md", ".txt", ".json", ".srt"}
+白名单 = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".mp4", ".md", ".txt", ".json", ".jsonl", ".srt"}
 
 
 class 服务(BaseHTTPRequestHandler):
@@ -666,6 +670,7 @@ class 服务(BaseHTTPRequestHandler):
             体 = open(真, "rb").read()
             型 = {".md": "text/plain; charset=utf-8", ".txt": "text/plain; charset=utf-8",
                   ".json": "application/json", ".srt": "text/plain; charset=utf-8",
+                  ".jsonl": "text/plain; charset=utf-8",
                   ".mp4": "video/mp4", ".png": "image/png", ".jpg": "image/jpeg",
                   ".jpeg": "image/jpeg", ".webp": "image/webp",
                   ".gif": "image/gif"}.get(os.path.splitext(真)[1].lower(), "application/octet-stream")

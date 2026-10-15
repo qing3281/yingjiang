@@ -44,6 +44,7 @@ r"""影匠控制台 —— 把「只能看」变成「能动手」。
 import argparse
 import ctypes
 import glob
+import io
 import json
 import os
 import re
@@ -54,6 +55,9 @@ import threading
 import time
 import urllib.parse
 import urllib.request
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import _看片 as 看片
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
 try:
@@ -526,7 +530,146 @@ def _直调出段(戏, 格s, 端点, 吐):
         sys.argv = 旧argv
 
 
+# ═════════════════ 三、剧组：一部戏卡在哪、往下推、新建一部 ═════════════════
+#
+# ★ 为什么要这一段 —— 用户 2026-10-15 08:44 的原话：
+#     「我看不出来你这个控制台和我说的有什么很大的关联，好像差别挺大的呀。」
+#   他问的是对的。病根是：`影匠\剧组.py`（67 KB：判阶段 / 派活 / 卡门 / 收尾）和
+#   `导演.py`（立戏 / 定角 / 开镜 / 让镜动）**早就写好了**，四份模板
+#   （`模板\节拍拆解.md` 等）也在，可这个控制台**一个都不接** ——
+#   它只会跑旧片子的后期三步。于是一台「控制台」只能看旧垃圾，**不能新建一部戏**。
+#
+# 做法是**整段搬**：`importlib` 把 `剧组.py` 当模块导进来，直接调它的
+# `扫状态()` / `判断下一步()` / `_门顺序` —— **不写第二份实现**。
+# 页面上的「现在该干什么」和命令行跑出来的是同一句话，不可能对不上。
+
+_剧组 = {"模": None, "错": ""}
+
+
+def 取剧组():
+    """把 剧组.py 当模块导进来（只导一次）。导不动就把原因记下来，别抛。"""
+    if _剧组["模"] is not None or _剧组["错"]:
+        return _剧组["模"]
+    try:
+        import importlib
+        if 根 not in sys.path:
+            sys.path.insert(0, 根)
+        _剧组["模"] = importlib.import_module("剧组")
+    except Exception as e:
+        _剧组["错"] = f"{type(e).__name__}: {e}"
+    return _剧组["模"]
+
+
+def 剧组一览():
+    """每一部戏：七个阶段门的灯 + 现在该干什么 + 产物齐不齐。只读，不碰 ComfyUI。"""
+    模 = 取剧组()
+    if 模 is None:
+        return {"ok": False, "错": f"剧组.py 导不进来：{_剧组['错']}"}
+    出 = []
+    for 戏 in 列戏():
+        try:
+            状 = 模.扫状态(戏)
+            门 = []
+            for 键 in 模._门顺序:
+                结 = 状["审"].get(键) or "无"
+                门.append({"键": 键, "名": 模._规格[键]["名"],
+                           "结果": 结, "过": 结 == "PASS"})
+            出.append({
+                "戏": 戏,
+                "门": 门,
+                "下一步": 模.判断下一步(状),
+                "格数": 状["格数"], "图数": len(状["图们"]),
+                "四格数": 状["四格数"], "四图数": len(状["四图们"]),
+                "动格数": 状["动格数"], "片数": len(状["片们"]),
+                "文件": {k: bool(v) for k, v in 状["有"].items()},
+            })
+        except Exception as e:
+            出.append({"戏": 戏, "错": f"{type(e).__name__}: {e}"})
+    return {"ok": True, "戏们": 出, "门槛": list(模._门顺序)}
+
+
+# 剧本.md 的骨架。★ 「一句话故事」是他给的那一句，一个字都不改地放进去 ——
+#   分镜师下游就靠它拆节拍，我在这儿润色等于替他改戏。
+剧本骨架 = """\
+# 剧本 · {戏}
+
+> 这一份是**给人看的**，不是给机器看的。一句话讲清发生了什么事就行。
+
+## 一句话故事
+
+{一句话}
+
+## 主要人物
+
+（谁、多大年纪、什么身份、身上有什么一眼能认出来的东西）
+
+## 分场
+
+（这场戏在哪儿、谁在场、发生了什么变化。按「变化」分场，不是按台词分。）
+"""
+
+
+def 新建戏(戏名, 一句话):
+    """建 作品\\<戏名>\\ 并写 剧本.md。戏名要过 _戏目录 的同一套白名单。
+
+    ★ 已存在就**不覆盖** —— 剧本是他/分镜师写的东西，建戏按钮不该把它抹掉。
+    """
+    if not re.fullmatch(r"[\w\u4e00-\u9fff\-]{1,20}", 戏名 or ""):
+        return {"ok": False, "错": "戏名只能是中文/字母/数字/横线，1–20 个字"}
+    if not (一句话 or "").strip():
+        return {"ok": False, "错": "一句话故事不能空 —— 空的剧本下游拆不出节拍"}
+    目录 = os.path.join(作品, 戏名)
+    已有 = os.path.isdir(目录)
+    os.makedirs(目录, exist_ok=True)
+    本 = os.path.join(目录, "剧本.md")
+    if os.path.exists(本):
+        return {"ok": False, "已存在": True,
+                "错": f"《{戏名}》已经有 剧本.md 了，我没动它（要改请直接改文件）",
+                "目录": 目录}
+    with io.open(本, "w", encoding="utf-8", newline="\n") as f:
+        f.write(剧本骨架.format(戏=戏名, 一句话=一句话.strip()))
+    return {"ok": True, "目录": 目录, "剧本": 本, "新目录": not 已有,
+            "说": f"建好《{戏名}》，剧本.md 写好了。下一步：派【分镜师】做①节拍拆解"}
+
+
 任务表 = {
+    # ── ★ 剧组流水线：这七条就是 `python 剧组.py …` 本身 ──
+    #   不另写实现，页面上按的按钮和命令行敲的是同一条命令。
+    "剧组·检查": {
+        "脚本": "剧组.py", "剧组": True,
+        "说": "看这部戏七个阶段门的灯、产物齐不齐、现在该干什么",
+        "参": lambda o: ["检查", o["戏"]],
+    },
+    "剧组·出图": {
+        "脚本": "剧组.py", "剧组": True,
+        "说": "出九宫格首帧 `01_格N.png`（本机 3.7 秒一张）",
+        "参": lambda o: ["出图", o["戏"]] + (["--重做"] if o.get("重做") else []) + o["闸"],
+    },
+    "剧组·出图四宫格": {
+        "脚本": "剧组.py", "剧组": True,
+        "说": "每个锚点展开 4 格，出 `03_锚N格M.png`",
+        "参": lambda o: ["出图四宫格", o["戏"]] + (["--重做"] if o.get("重做") else []) + o["闸"],
+    },
+    "剧组·出片": {
+        "脚本": "剧组.py", "剧组": True,
+        "说": "出四宫格的动态段 `04_锚N格M.mp4`",
+        "参": lambda o: ["出片", o["戏"]] + (["--重做"] if o.get("重做") else []) + o["闸"],
+    },
+    "剧组·拼图": {
+        "脚本": "剧组.py", "剧组": True,
+        "说": "把九宫格拼成一张 `_看片表.png`",
+        "参": lambda o: ["拼图", o["戏"]],
+    },
+    "剧组·进度": {
+        "脚本": "剧组.py", "剧组": True,
+        "说": "写档案 `剧集进度.md`（审片几轮、返工几次、渲染多久）",
+        "参": lambda o: ["进度", o["戏"]],
+    },
+    "剧组·全部": {
+        "脚本": "剧组.py", "剧组": True,
+        "说": "★ 一步到底 —— 它自己判阶段、自己卡门，缺哪份 md 就停在哪一步",
+        "参": lambda o: ["全部", o["戏"]] + (["--强跑"] if o.get("强跑") else []) + o["闸"],
+    },
     "出首帧": {
         "脚本": "_出片.py",
         "说": "按九宫格出首帧图（`01_格N.png`）",
@@ -945,6 +1088,30 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
     overflow:auto;max-height:420px;margin:0;font-size:12px;line-height:1.5}
 .行{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:8px 0}
 .小{color:#7c8798;font-size:12px}
+/* ── 看片：给他的那一半。原来整个页面只有我的进度数，他要看的是片子本身 ── */
+.人脸{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:14px}
+.人脸 figure{margin:0;background:#12161f;border:1px solid #232a38;border-radius:9px;overflow:hidden}
+.人脸 img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;background:#0d1017}
+.人脸 figcaption{padding:7px 10px;font-size:13px;color:#dfe7f5}
+.脸签{padding:0 10px 9px;font-size:11px;color:#7c8798}
+.台词表{width:100%;border-collapse:collapse;font-size:13px}
+.台词表 td{padding:6px 8px;border-bottom:1px solid #1e2530;vertical-align:top}
+.台词表 tr:hover td{background:#1a2029}
+.台词表 .t{color:#8fa3c0;font-variant-numeric:tabular-nums;white-space:nowrap;width:64px}
+.台词表 .w{color:#e8c07d;white-space:nowrap;width:74px}
+.格墙{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:8px;margin-top:12px}
+.格块{background:#12161f;border:1px solid #232a38;border-radius:8px;padding:8px;cursor:pointer}
+.格块:hover{border-color:#3d5478;background:#182031}
+.格块 .n{font-size:11px;color:#8fa3c0;font-variant-numeric:tabular-nums}
+.格块 .ti{font-size:13px;color:#e7edf8;margin:3px 0 4px;line-height:1.3}
+.格块 .ju{font-size:11px;color:#6d7a8c}
+.格块 .ci{font-size:11px;color:#e8c07d;margin-top:4px;line-height:1.35}
+.格块.有片{border-color:#2c5c3f}
+.格块.有片 .n::after{content:" ●";color:#3fbf72}
+.看片签{display:flex;gap:6px;margin:10px 0 0;flex-wrap:wrap}
+.签{background:#1c2431;border:1px solid #2b3546;border-radius:16px;padding:4px 12px;font-size:12px;cursor:pointer;color:#9fb0cc}
+.签.亮{background:#22304a;border-color:#33507d;color:#cfe2ff}
+.片框{width:100%;max-width:720px;border-radius:8px;background:#000}
 .tag{display:inline-block;background:#22304a;border-radius:5px;padding:1px 7px;
      font-size:11px;color:#a9c4ea;margin-left:6px}
 .片{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:10px}
@@ -968,6 +1135,37 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
   </div>
 
   <div class="卡"><h2>正在跑</h2><div id="在跑"></div></div>
+
+  <!-- ★ 用户 2026-10-15 08:44：「我看不出来你这个控制台和我说的有什么很大的关联，
+       好像差别挺大的呀。」—— 对。以前这里只有旧片子的后期三步，**不能新建一部戏**。
+       现在把 剧组.py 的阶段门整段搬上来：一部戏卡在哪、下一步该干什么、按哪个钮往下推。 -->
+  <div class="卡"><h2>剧组流水线 —— 这部戏卡在哪、下一步干什么</h2>
+    <div class="小">下面每一个钮，按的就是 <code>python 剧组.py …</code> 本身（不另写实现）。
+      灯的意思是：<span class="吉">✓ 过审了</span> ·
+      <span style="color:#e5534b">✗ 审过没过</span> ·
+      <span class="小">— 还没审</span></div>
+    <div class="行">
+      <select id="jc戏" onchange="jc画()"></select>
+      <span class="钮" onclick="jc刷()">重新扫</span>
+      <label class="小"><input type="checkbox" id="jc空跑"> 空跑（只解析、不渲染）</label>
+      <label class="小"><input type="checkbox" id="jc强跑"> 强跑（无视卡门硬闯）</label>
+      <span class="小" id="jc错"></span>
+    </div>
+    <div id="jc门" class="行"></div>
+    <div class="行" id="jc下"></div>
+    <div class="行" id="jc钮"></div>
+  </div>
+
+  <div class="卡"><h2>新建一部戏</h2>
+    <div class="小">写一句话就行 —— 建目录、写 <code>剧本.md</code> 都由这儿开个头。
+      已经有的戏**不会被动**（要改直接改文件）。</div>
+    <div class="行">
+      <input id="np名" placeholder="戏名，如 雪线前传" style="width:200px">
+      <input id="np话" placeholder="一句话故事，如 守了十年雪线的刀客，发现要杀的人是自己" style="width:560px">
+      <button class="钮 主" onclick="np建()">建戏 + 写剧本</button>
+      <span class="小" id="np说"></span>
+    </div>
+  </div>
 
   <!-- ★ 用户 2026-10-15 任务单 ⑤：「能调 ComfyUI 官方 API 也能让 agent 接管」。
        他说过四次「要能自己操作，只读页面不算」—— 所以下面这些是**真的能按**的，
@@ -1017,6 +1215,11 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
       <span class="小" id="片说"></span>
     </div>
     <div class="小" id="任说"></div>
+  </div>
+
+  <div class="卡" id="看片卡"><h2>这一部戏 —— 人物 · 台词 · 逐格（点开就能看）</h2>
+    <div class="行" id="看片头"></div>
+    <div id="看片身"></div>
   </div>
 
   <div class="卡"><h2>进度</h2><div id="进度"></div></div>
@@ -1082,6 +1285,67 @@ function 起(){
    .then(r=>r.json()).then(j=>{ if(!j.ok) $('起错').textContent = '✗ ' + j.错; 刷(); });
 }
 function 停(){ fetch('/api/stop',{method:'POST'}).then(()=>setTimeout(刷,600)); }
+
+// ── 剧组流水线 ────────────────────────────────────────────────────
+// ★ 数据全部来自 /api/juchu —— 后端把 剧组.py 的 扫状态()/判断下一步() 整段搬过来，
+//   页面上**不自己算「下一步是什么」**。两处各算一份，早晚会分叉，
+//   到时候页面上说的和命令行做的不是一回事，比没有还坏。
+let jc数据 = [], jc满 = false;
+function jc刷(){
+  fetch('/api/juchu').then(r=>r.json()).then(j=>{
+    if(!j.ok){ $('jc错').innerHTML = '<span class="凶">✗ '+(j.错||'').replace(/</g,'&lt;')+'</span>'; return; }
+    $('jc错').textContent = '';
+    jc数据 = j.戏们 || [];
+    const 选 = $('jc戏'), 旧 = 选.value;
+    if(!jc满){
+      选.innerHTML = jc数据.map(x=>'<option>'+x.戏+'</option>').join('');
+      jc满 = true;
+      if(旧) 选.value = 旧;
+    }
+    jc画();
+  }).catch(e=>{ $('jc错').innerHTML = '<span class="凶">✗ '+e+'</span>'; });
+}
+function jc画(){
+  const x = jc数据.find(y=>y.戏 === $('jc戏').value);
+  if(!x){ $('jc门').innerHTML=''; $('jc下').textContent=''; $('jc钮').innerHTML=''; return; }
+  if(x.错){ $('jc门').innerHTML = '<span class="凶">✗ '+x.错+'</span>'; return; }
+  $('jc门').innerHTML = x.门.map(g=>{
+    const 色 = g.过 ? '吉' : (g.结果==='FAIL' ? '凶' : '小');
+    const 记 = g.过 ? '✓' : (g.结果==='FAIL' ? '✗' : '—');
+    return '<span class="'+色+'" style="margin-right:14px">'+记+' '+g.名+'</span>';
+  }).join('');
+  let 数 = '';
+  if(x.格数) 数 += '　九宫格图 '+x.图数+'/'+x.格数;
+  if(x.四格数) 数 += '　四宫格图 '+x.四图数+'/'+x.四格数;
+  if(x.动格数) 数 += '　片 '+x.片数+'/'+x.动格数;
+  $('jc下').innerHTML = '<span class="小">现在该干：</span> '+(x.下一步||'')+'<span class="小">'+数+'</span>';
+  const 钮 = ['检查','出图','出图四宫格','出片','拼图','进度','全部'];
+  $('jc钮').innerHTML = 钮.map(名=>
+    '<button class="钮'+(名==='全部'?' 主':'')+'" onclick="jc推(\''+名+'\')">'+名+'</button>'
+  ).join('');
+}
+function jc推(名){
+  $('jc错').textContent = '正在起：剧组·' + 名 + ' …';
+  fetch('/api/run', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({任务:'剧组·'+名, 戏:$('jc戏').value,
+      空跑:$('jc空跑').checked, 强跑:$('jc强跑').checked})})
+   .then(r=>r.json()).then(j=>{
+     if(!j.ok){ $('jc错').innerHTML = '<span class="凶">✗ '+j.错+'</span>'; return; }
+     $('jc错').textContent = '✓ 起来了：剧组·' + 名; 刷();
+   });
+}
+function np建(){
+  const 名 = $('np名').value.trim(), 话 = $('np话').value.trim();
+  $('np说').textContent = '';
+  if(!名 || !话){ $('np说').innerHTML = '<span class="凶">✗ 戏名和一句话故事都要填</span>'; return; }
+  fetch('/api/newplay', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({戏:名, 一句话:话})})
+   .then(r=>r.json()).then(j=>{
+     if(!j.ok){ $('np说').innerHTML = '<span class="凶">✗ '+j.错+'</span>'; return; }
+     $('np说').innerHTML = '<span class="吉">✓ '+j.说+'</span><br><span class="小">'+j.剧本+'</span>';
+     jc满 = false; jc刷(); 刷();
+   });
+}
 
 // ── ComfyUI 官方接口 ──────────────────────────────────────────────
 // ★ 只读面走 GET /api/comfy，写面走 POST。**全部转发给 ComfyUI 自己**，
@@ -1228,6 +1492,106 @@ function 拉片单(){
     $('片说').textContent = j.片.length + ' 条可选';
   }).catch(e => { $('片说').textContent = '拉片单失败：' + e; });
 }
+// ── 看片：他的那一半 ─────────────────────────────────────────────
+// 用户 2026-10-15 08:55：「这个控台我能自己看到里面的剧本，能看到里面的台词，
+// 看到里面的两个人物形象……我现在只能看到你所生成的进度，这叫这对吗？」
+// → 所以这一块**不显示任何我自己的进度数**，只放片子本身。
+let 看片数据 = null, 看片签 = '人物形象';
+function 换签(s){ 看片签 = s; 画看片(); }
+
+function 拉看片(){
+  fetch('/api/kanban?戏=' + encodeURIComponent(戏)).then(r=>r.json()).then(j=>{
+    看片数据 = j;
+    if(j.错){ $('看片身').innerHTML = '<div class="小 凶">读不出这一部戏：' + j.错 + '</div>'; return; }
+    画看片();
+  }).catch(e => { $('看片身').innerHTML = '<div class="小 凶">拉不到：' + e + '</div>'; });
+}
+
+function 画看片(){
+  const j = 看片数据;
+  if(!j) return;
+  const esc = s => (s==null?'':String(s)).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  const f = p => '/f?p=' + encodeURIComponent(p);
+
+  // 头一行：这一部戏的概览 + 整部剧本的入口
+  let 头 = '<span class="小">《' + esc(j.戏) + '》　' + j.格数 + ' 格 · '
+    + (j.秒/60).toFixed(1) + ' 分钟 · ' + j.有词的格 + ' 格有台词 · 人物 '
+    + (j.人物||[]).length + ' 个</span><span style="flex:1"></span>';
+  if(j.剧本页) 头 += '<a class="钮 主" href="' + f(j.剧本页) + '" target="_blank">读整部剧本 →</a>';
+  $('看片头').innerHTML = 头;
+
+  const 签们 = [
+    ['人物形象', (j.人物||[]).length + ' 个'],
+    ['台词', (j.格||[]).filter(g=>g.词&&g.词.length).length + ' 格'],
+    ['逐格', j.格数 + ' 格'],
+    ['成片', (j.成片||[]).length + ' 个']
+  ];
+  let h = '<div class="看片签">' + 签们.map(([n,c]) =>
+    '<span class="签' + (看片签===n?' 亮':'') + '" onclick="换签(\\'' + n + '\\')">'
+    + n + ' <span class="小">' + c + '</span></span>').join('') + '</div>';
+
+  if(看片签 === '人物形象'){
+    h += (j.人物&&j.人物.length)
+      ? '<div class="人脸" style="margin-top:12px">' + j.人物.map(p =>
+          '<figure><img src="' + f(p.图) + '" loading="lazy" alt="' + esc(p.名) + '">'
+          + '<figcaption>' + esc(p.名) + '</figcaption>'
+          + '<div class="脸签">定妆照 · 正面半身 + 正面全身</div></figure>').join('') + '</div>'
+      : '<div class="小" style="margin-top:10px">这一部戏还没有定妆照。</div>';
+  }
+
+  if(看片签 === '台词'){
+    const 有词 = (j.格||[]).filter(g => g.词 && g.词.length);
+    h += 有词.length
+      ? '<div class="小" style="margin:10px 0 6px">来源：' + esc(j.台词来源) + '　顶上那一行是它在片子里的时刻</div>'
+        + '<table class="台词表">' + 有词.map(g =>
+            g.词.map((w,i) => '<tr>'
+              + '<td class="t">' + (i===0 ? g.时刻 : '') + '</td>'
+              + '<td class="w">' + (i===0 ? '格' + g.号 : '') + '</td>'
+              + '<td class="w">' + esc(w[0]||'旁白') + '</td>'
+              + '<td>' + esc(w[1]) + '</td></tr>').join('')).join('') + '</table>'
+      : '<div class="小" style="margin-top:10px">这一部戏没有台词。</div>';
+  }
+
+  if(看片签 === '逐格'){
+    h += '<div class="小" style="margin-top:10px">每一格就是镜头里的一个画面。'
+       + '<b>带绿点的是已经出好片子了的</b> —— 点一下就在下面放。</div>'
+       + '<div class="格墙">' + (j.格||[]).map(g => {
+          const 有片 = g.片 && g.片.length;
+          const 词 = (g.词&&g.词.length)
+            ? '<div class="ci">' + g.词.map(w => esc((w[0]?w[0]+'：':'') + w[1])).join('<br>') + '</div>' : '';
+          return '<div class="格块' + (有片?' 有片':'') + '" onclick="'
+            + (有片 ? '放格(\\'' + encodeURIComponent(g.片[0].路) + '\\',\\'格' + g.号 + ' ' + esc(g.题).replace(/'/g,'') + '\\')' : '')
+            + '"><div class="n">格' + g.号 + '　' + g.时刻 + '</div>'
+            + '<div class="ti">' + esc(g.题) + '</div>'
+            + '<div class="ju">' + esc(g.景别) + '</div>' + 词 + '</div>';
+        }).join('') + '</div>'
+       + '<div id="格播" style="margin-top:14px"></div>';
+  }
+
+  if(看片签 === '成片'){
+    h += (j.成片&&j.成片.length)
+      ? '<div style="margin-top:12px"><video class="片框" controls preload="metadata" src="'
+        + f(j.成片[0].路) + '"></video>'
+        + '<div class="小" style="margin-top:6px">' + esc(j.成片[0].名) + '　'
+        + (j.成片[0].大小/1048576).toFixed(1) + ' MB　（这是最新的一条）</div>'
+        + '<div class="看片签">' + j.成片.map((x,i) =>
+            '<a class="签' + (i===0?' 亮':'') + '" href="' + f(x.路) + '" target="_blank">'
+            + esc(x.名) + '</a>').join('') + '</div></div>'
+      : '<div class="小" style="margin-top:10px">还没有成片。</div>';
+  }
+
+  $('看片身').innerHTML = h;
+}
+
+function 放格(路, 名){
+  $('格播').innerHTML = '<div class="小" style="margin-bottom:6px">' + 名 + '　'
+    + '<a href="/f?p=' + 路 + '" target="_blank">单独开一页</a></div>'
+    + '<video class="片框" controls autoplay preload="metadata" src="/f?p=' + 路 + '"></video>';
+  $('格播').scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+拉看片();
+
 // 支持 ?任=超分 直接选好某个任务（也方便我自己截图核对页面）
 const 想任 = new URLSearchParams(location.search).get('任');
 if(想任){ for(const o of $('任务').options){ if(o.value === 想任){ $('任务').value = 想任; break; } } }
@@ -1309,6 +1673,13 @@ class 手(BaseHTTPRequestHandler):
             戏 = (q.get("戏") or [""])[0]
             return self._JSON({"片": 片单(戏)})
 
+        # ★ 剧组：每一部戏卡在哪、现在该干什么。整段搬 剧组.py，不写第二份实现。
+        if u.path == "/api/juchu":
+            try:
+                return self._JSON(剧组一览())
+            except Exception as e:
+                return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
+
         # ComfyUI 官方接口的只读面：`/api/comfy?machine=本机&face=queue`
         # ★ 查询串的**键名**必须是 ASCII（值可以带中文）—— 2026-10-15 08:20 实测：
         #   键名写成 `机=` / `面=` 时，Python 客户端拼 URL 直接
@@ -1322,6 +1693,16 @@ class 手(BaseHTTPRequestHandler):
 
         if u.path in ("/api/handoff", "/api/接管"):
             return self._JSON({"行": 接管读()})
+
+        # ★ 给他的那一半：人物形象 / 台词 / 逐格。
+        #   路由名 ASCII，戏名走参数值（中文可以）—— 理由见上面 1226 行那段。
+        if u.path == "/api/kanban":
+            戏 = (q.get("戏") or q.get("x") or ["觉醒"])[0]
+            try:
+                return self._JSON(看片.一部(戏))
+            except Exception as e:
+                return self._JSON({"错": f"{type(e).__name__}: {e}", "戏": 戏,
+                                   "人物": [], "格": [], "成片": [], "剧本页": ""})
 
         if u.path == "/f":
             相 = (q.get("p") or [""])[0]
@@ -1380,6 +1761,11 @@ class 手(BaseHTTPRequestHandler):
                                     (体.get("why") or 体.get("为什么") or "").strip(),
                                     (体.get("want") or 体.get("要") or "").strip()))
 
+        # ★ 新建一部戏：建目录 + 写 剧本.md 骨架。已存在就不动它。
+        if u.path in ("/api/newplay", "/api/新建戏"):
+            return self._JSON(新建戏((体.get("戏") or "").strip(),
+                                    (体.get("一句话") or 体.get("story") or "").strip()))
+
         if u.path == "/api/run":
             名 = 体.get("任务") or ""
             戏 = 体.get("戏") or ""
@@ -1400,7 +1786,16 @@ class 手(BaseHTTPRequestHandler):
                     return self._JSON({"ok": False,
                                        "错": f"已经在跑「{现在['活'].名}」，先停它"})
                 t = 任务表[名]
-                o = {"戏": 戏, "格": 格s, "片": 片, "倍数": 体.get("倍数")}
+                # ★ 剧组那几条多两个开关：--空跑（只解析不渲染）/ --强跑（无视卡门硬闯）
+                #   它们拼进命令行，所以只接受 True/False，不接受任意字符串。
+                闸 = []
+                if t.get("剧组"):
+                    if 体.get("空跑"):
+                        闸.append("--空跑")
+                    if 体.get("强跑"):
+                        闸.append("--强跑")
+                o = {"戏": 戏, "格": 格s, "片": 片, "倍数": 体.get("倍数"),
+                     "重做": bool(体.get("重做")), "强跑": bool(体.get("强跑")), "闸": 闸}
                 try:
                     if t.get("类") == "直调":
                         # ★ 不建子进程、不拼命令行 —— 就在控制台这个进程里把活干完
