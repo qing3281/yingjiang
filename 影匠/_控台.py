@@ -1333,10 +1333,7 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
     </div>
     <div class="行">
       <span class="小">出片用哪个引擎（「出片」那一步，改了立刻生效）：</span>
-      <select id="mt视频" onchange="mt存()">
-        <option value="wan22_i2v">Wan 2.2 5B —— 快（约 30 秒），3 秒，没有声音</option>
-        <option value="minimax_h3_i2v">MiniMax-H3 —— 慢（约 65 秒），5 秒，自带声音</option>
-      </select>
+      <select id="mt视频" onchange="mt存()"><option value="">正在读…</option></select>
     </div>
     <div id="jc门" class="行"></div>
     <div class="行" id="jc下"></div>
@@ -1510,6 +1507,13 @@ let jc数据 = [], jc满 = false;
 function mt读(){
   fetch('/api/setting').then(r=>r.json()).then(j=>{
     if(j.出图模板){ $('mt出图').value = j.出图模板; }
+    // ★ 下拉是活的：从 /api/setting 拉模板清单填进去（mt满 标记只填一次，免得换的时候被重置）
+    if(j.视频模板们 && !window.mt满){
+      const 选 = $('mt视频'); 选.innerHTML = '';
+      j.视频模板们.forEach(t=>{ const o = document.createElement('option');
+        o.value = t.名; o.textContent = t.说.replace(/[*][*]/g,''); 选.appendChild(o); });
+      window.mt满 = true;
+    }
     if(j.视频模板){ $('mt视频').value = j.视频模板; }
     $('mt说').textContent = '用着的：' + $('mt出图').value + ' / ' + $('mt视频').value;
   }).catch(()=>{});
@@ -1763,8 +1767,10 @@ function 换签(s){ 看片签 = s; 画看片(); }
 //   这里只做四件事：标题加粗、**去掉、> 变成引用条、- 变成圆点。一个字都不改。
 function 排剧本(文){
   const e = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-  return String(文||'').split(/\r?\n/).map(行 => {
-    const t = 行.replace(/\s+$/,'');
+  return String(文||'').split(String.fromCharCode(10)).map(行 => {
+    // 不用正则、不用反斜杠 —— 正则在源码里带制表符，两层转义下来就把整段脚本搞成语法错
+  let t = 行;
+  while(t.length && (t.charCodeAt(t.length-1)===32 || t.charCodeAt(t.length-1)===9 || t.charCodeAt(t.length-1)===13)) t = t.slice(0, -1);
     if(!t.trim()) return '<div style="height:8px"></div>';
     let m;
     if(m = /^(#{1,4})\s+(.*)$/.exec(t)){
@@ -1883,6 +1889,7 @@ function 放格(路, 名){
 
 拉看片();
 jc刷();          // ★ 不调这一句，「剧组流水线」那张卡要等用户按一次「重新扫」才有内容
+mt读();          // ★ 同一个坑：写了个取模板清单的函数却没人调，下拉永远停在「正在读…」
 
 // 支持 ?任=超分 直接选好某个任务（也方便我自己截图核对页面）
 const 想任 = new URLSearchParams(location.search).get('任');
@@ -1980,7 +1987,10 @@ class 手(BaseHTTPRequestHandler):
                 import 导演 as _导
                 return self._JSON({"ok": True, **(_导.读设置() or {}),
                                    "出图模板": _导.当前出图模板(),
-                                   "视频模板": _导.当前视频模板()})
+                                   "视频模板": _导.当前视频模板(),
+                                   # ★ 全套模板 + 一句说明，页面拿它填下拉 —— 以后加模板不用改 HTML
+                                   "视频模板们": [{"名": k, "说": v["说"]} for k, v in _导.视频模板规格.items()],
+                                   "出图模板们": sorted(_导.出图模板步数.keys())})
             except Exception as e:
                 return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
 
