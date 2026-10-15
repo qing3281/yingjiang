@@ -1322,6 +1322,14 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
       <label class="小"><input type="checkbox" id="jc强跑"> 强跑（无视卡门硬闯）</label>
       <span class="小" id="jc错"></span>
     </div>
+    <div class="行">
+      <span class="小">出图用哪个模型（改了立刻生效，不用重启动）：</span>
+      <select id="mt出图" onchange="mt存()">
+        <option value="zimage_turbo">Z-Image Turbo —— 快（5 秒），画面亮、主体大</option>
+        <option value="qwen_t2i">Qwen-Image 2.1 —— 慢（28 秒），天空/背景更电影感</option>
+      </select>
+      <span class="小" id="mt说"></span>
+    </div>
     <div id="jc门" class="行"></div>
     <div class="行" id="jc下"></div>
     <div class="行" id="jc钮"></div>
@@ -1349,7 +1357,7 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
       <button class="钮" onclick="im导()">从这个文件导</button>
       <button class="钮" onclick="im粘()">粘正文导</button>
     </div>
-    <textarea id="im文" placeholder="……或者把剧本正文直接粘在这里（会写成 作品\&lt;戏名&gt;\剧本.md）"
+    <textarea id="im文" placeholder="……或者把剧本正文直接粘在这里（会写成 作品/&lt;戏名&gt;/剧本.md）"
       style="width:100%;height:120px;margin-top:8px;background:#0d1117;color:#d7dee9;
       border:1px solid #1e2530;border-radius:8px;padding:10px;font-size:13px;font-family:inherit"></textarea>
     <div class="小" id="im说" style="margin-top:6px"></div>
@@ -1491,6 +1499,21 @@ function 停(){ fetch('/api/stop',{method:'POST'}).then(()=>setTimeout(刷,600))
 //   页面上**不自己算「下一步是什么」**。两处各算一份，早晚会分叉，
 //   到时候页面上说的和命令行做的不是一回事，比没有还坏。
 let jc数据 = [], jc满 = false;
+function mt读(){
+  fetch('/api/setting').then(r=>r.json()).then(j=>{
+    if(j.出图模板){ $('mt出图').value = j.出图模板; }
+    $('mt说').textContent = '现在用：' + ($('mt出图').selectedOptions[0] || {}).text || '';
+  }).catch(()=>{});
+}
+function mt存(){
+  const v = $('mt出图').value;
+  fetch('/api/setting', {method:'POST', headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({出图模板: v})})
+    .then(r=>r.json()).then(j=>{
+      $('mt说').innerHTML = j.ok ? '<span class="吉">✓ 换成 '+j.出图模板+' 了</span>'
+                                 : '<span class="凶">✗ '+(j.错||'')+'</span>';
+    }).catch(e=>{ $('mt说').innerHTML = '<span class="凶">✗ '+e+'</span>'; });
+}
 function jc刷(){
   fetch('/api/juchu').then(r=>r.json()).then(j=>{
     if(!j.ok){ $('jc错').innerHTML = '<span class="凶">✗ '+(j.错||'').replace(/</g,'&lt;')+'</span>'; return; }
@@ -1940,6 +1963,17 @@ class 手(BaseHTTPRequestHandler):
             except Exception as e:
                 return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
 
+        # ★ 出图用哪个模型 —— 存在 影匠\设置.json 里，导演.py 每次开镜都读一遍。
+        #   为什么不塞进环境变量：控台起 剧组.py 是另起一个进程，
+        #   环境变量得在起的时候传；而用户改完这个下拉框，下一次「出图」就该用新的。
+        if u.path == "/api/setting":
+            try:
+                import 导演 as _导
+                return self._JSON({"ok": True, **(_导.读设置() or {}),
+                                   "出图模板": _导.当前出图模板()})
+            except Exception as e:
+                return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
+
         # ComfyUI 官方接口的只读面：`/api/comfy?machine=本机&face=queue`
         # ★ 查询串的**键名**必须是 ASCII（值可以带中文）—— 2026-10-15 08:20 实测：
         #   键名写成 `机=` / `面=` 时，Python 客户端拼 URL 直接
@@ -2027,6 +2061,15 @@ class 手(BaseHTTPRequestHandler):
             return self._JSON(接管加((体.get("what") or 体.get("事") or "").strip(),
                                     (体.get("why") or 体.get("为什么") or "").strip(),
                                     (体.get("want") or 体.get("要") or "").strip()))
+
+        # ★ 出图用哪个模型（写入 影匠\设置.json）
+        if u.path == "/api/setting":
+            try:
+                import 导演 as _导
+                新 = _导.写设置({"出图模板": (体.get("出图模板") or "").strip()})
+                return self._JSON({"ok": True, **新, "出图模板": _导.当前出图模板()})
+            except Exception as e:
+                return self._JSON({"ok": False, "错": f"{type(e).__name__}: {e}"})
 
         # ★ 新建一部戏：建目录 + 写 剧本.md。已存在就不动它。
         #   `ai` 为真时让模型把正文写完整 —— 用户 2026-10-15 10:58 说的

@@ -26,6 +26,9 @@ import urllib.error
 import urllib.request
 
 这里 = os.path.dirname(os.path.abspath(__file__))
+默认负面 = ("blurry, low quality, watermark, text, subtitles, extra fingers, deformed hands, "
+            "cartoon, 3d render, oversaturated")
+
 模板目录 = os.path.join(这里, "模板")
 作品目录 = os.path.join(这里, "作品")
 os.makedirs(模板目录, exist_ok=True)
@@ -375,8 +378,19 @@ def 文生图(
     for 号, 节 in wf.items():
         类 = 节.get("class_type", "")
         ins = 节.setdefault("inputs", {})
-        if 类 in ("CLIPTextEncode", "T5TextEncode", "TextEncodeQwenImageEdit",
-                  "TextEncodeQwenImageEditPlus", "TextEncodeZImageOmni"):
+        if 类 == "TextEncodeQwenImage21":
+            # ★ Qwen-Image 2.1 专用节点：**一个节点同时吐正向(0)和负面(1)**，
+            #   所以它不走下面那套「第一个是正向、第二个是负面」的轮转。
+            #   实测教训：拿普通 CLIPTextEncode 接 2.1 的 int8_convrot 权重，
+            #   出的是满屏彩色噪点废图（作品/_超分试验/对比_出图模型.png 右半）。
+            ins["prompt"] = 提示词
+            if 负面 and "negative_prompt" in ins:
+                ins["negative_prompt"] = 负面
+            elif "negative_prompt" in ins and not ins.get("negative_prompt"):
+                ins["negative_prompt"] = 默认负面
+            改 = 1
+        elif 类 in ("CLIPTextEncode", "T5TextEncode", "TextEncodeQwenImageEdit",
+                    "TextEncodeQwenImageEditPlus", "TextEncodeZImageOmni"):
             # 正向=第一个遇到的；其余（负面）走负面词或零化
             if 类.startswith("TextEncodeQwen") or 类 == "TextEncodeZImageOmni":
                 # 这类节点的 prompt 就是提示词本体，参考图已经挂在 imageN 上
