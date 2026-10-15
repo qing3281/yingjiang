@@ -130,6 +130,159 @@ def 取队列(址, 超时=4):
         return {"跑": 0, "等": 0, "活": False, "错": f"{type(e).__name__}"}
 
 
+# ═════════════════════════ ComfyUI 官方接口（用户 ⑤：能调官方 API）═════════════════════
+#
+# 用户 2026-10-15 的任务单 P1 第 ⑤ 条：
+#   「双机监控可安装小程序 v1 —— 本机 + 远端 RTX5080 的显存/内存/进度，
+#     **能调 ComfyUI 官方 API** 也能让 **agent 接管**」
+# 还说过四次「**要能自己操作**，只读页面不算」。
+#
+# 所以这一块**不是只读**：能打断、能清队列、能送任务、能删队列里的一项。
+# 走的是 ComfyUI 自己的 HTTP 接口（`/queue` `/interrupt` `/history` `/system_stats`
+# `/prompt` `/object_info`），**不碰它的内部状态文件** —— 这样它升级了也不会坏。
+
+机 = {"本机": "127.0.0.1:8188", "远端": 远端}
+
+
+def _机址(名):
+    return 机.get(名 or "本机")
+
+
+def Comfy取(名, 面, 超时=6):
+    """读 ComfyUI 的一个官方接口。面 ∈ queue / history / system_stats / object_info。
+
+    ★ 两个面天生巨大，**不能原样丢给浏览器**（2026-10-15 实测）：
+      `object_info` 3.8 MB（四千多种节点）、`history` 639 KB（每跑完一次就长一截）。
+      这不是「优化」，是**不裁就点不动**：4 MB 的 JSON 塞进 <pre> 浏览器会卡死。
+      所以这两个面只回**摘要**：object_info 回节点名表，history 回最近 20 条的名字。
+      要明细自己做 ComfyUI 那边的活 —— 这个页面不负责当 JSON 浏览器。
+    """
+    址 = _机址(名)
+    if not 址:
+        return {"活": False, "错": f"没有这台机器：{名}"}
+    try:
+        r = urllib.request.urlopen(f"http://{址}/{面}", timeout=超时)
+        数 = json.load(r)
+    except Exception as e:
+        return {"活": False, "面": 面, "错": f"{type(e).__name__}: {e}"}
+
+    if 面 == "object_info":
+        名们 = sorted(数.keys()) if isinstance(数, dict) else []
+        return {"活": True, "面": 面, "裁过": True,
+                "说": f"{len(名们)} 种节点（完整表 3.8 MB，这里只列名字）",
+                "节点名": 名们}
+    if 面 == "history":
+        条 = list((数 or {}).items())[-20:]
+        出 = []
+        for 号, v in 条:
+            状 = (v.get("status") or {}).get("status_str") or ""
+            出.append({"任务号": 号[:8], "状态": 状,
+                       "完成": bool((v.get("status") or {}).get("completed"))})
+        return {"活": True, "面": 面, "裁过": True,
+                "说": f"一共 {len(数 or {})} 条记录，这里是最近 {len(出)} 条",
+                "最近": 出}
+    return {"活": True, "面": 面, "数据": 数}
+
+
+def Comfy做(名, 动作, 体):
+    """写操作。**只做 ComfyUI 官方那几个**，不做任何自创的。"""
+    址 = _机址(名)
+    if not 址:
+        return {"ok": False, "错": f"没有这台机器：{名}"}
+    try:
+        if 动作 == "打断":                       # POST /interrupt
+            urllib.request.urlopen(urllib.request.Request(
+                f"http://{址}/interrupt", data=b"", method="POST"), timeout=8).read()
+            return {"ok": True, "说": f"{名} ComfyUI 已打断当前任务"}
+
+        if 动作 == "清待办":                     # POST /queue {"clear": true} —— 只清等着的
+            urllib.request.urlopen(urllib.request.Request(
+                f"http://{址}/queue",
+                data=json.dumps({"clear": True}).encode(), method="POST",
+                headers={"Content-Type": "application/json"}), timeout=8).read()
+            return {"ok": True, "说": f"{名} 的等待队列已清空（正在跑的那个不动）"}
+
+        if 动作 == "删项":                       # POST /queue {"delete": [id]}
+            项 = 体.get("项")
+            if 项 is None:
+                return {"ok": False, "错": "删项要给出队列号"}
+            urllib.request.urlopen(urllib.request.Request(
+                f"http://{址}/queue",
+                data=json.dumps({"delete": [str(项)]}).encode(), method="POST",
+                headers={"Content-Type": "application/json"}), timeout=8).read()
+            return {"ok": True, "说": f"{名} 队列里的 {项} 已删"}
+
+        if 动作 == "送任务":                     # POST /prompt
+            图 = 体.get("图")
+            if not isinstance(图, dict):
+                return {"ok": False, "错": "送任务要给出一个 workflow 对象（图）"}
+            r = urllib.request.urlopen(urllib.request.Request(
+                f"http://{址}/prompt",
+                data=json.dumps({"prompt": 图}).encode(), method="POST",
+                headers={"Content-Type": "application/json"}), timeout=20)
+            回 = json.load(r)
+            return {"ok": bool(回.get("prompt_id")), "说": f"{名} 已收下",
+                    "任务号": 回.get("prompt_id"), "回": 回}
+
+        return {"ok": False, "错": f"不认这个动作：{动作}（只有 打断 / 清待办 / 删项 / 送任务）"}
+    except urllib.error.HTTPError as e:
+        return {"ok": False, "错": f"ComfyUI 回了 {e.code}：{(e.read() or b'')[:200].decode('utf-8', 'replace')}"}
+    except Exception as e:
+        return {"ok": False, "错": f"{type(e).__name__}: {e}"}
+
+
+# ── 让 agent 接管（用户 ⑤ 的后半句）─────────────────────────────────────
+#
+# 他在软件上按一下「这件事我不管了，让 agent 来」，就落一行到 `_等Agent.md`；
+# `_开工.py` 每次开工打出来。**不给软件直接开 agent 的后门** —— 软件只负责
+# 「把话说到纸上」，怎么干、干不干，仍然由我这一侧决定，他能看见。
+
+# ★ 这份「等 agent 接管」的单子放**工作区根**，不放 `影匠\`。
+#   2026-10-15 08:45 踩到：`根` 在 .py 下是 `影匠\`（按 __file__），
+#   在 exe 下是 `影匠\`（按 sys.executable）—— 两边一样，但都不是
+#   `_开工.py` 待的那个地方。结果我在 `D:\DSHworkspace\` 下怎么找都找不到，
+#   还以为没写进去（其实写进 `影匠\_等Agent.md` 了）。
+#   **判据：一个文件如果是要给别人看的，它待的地方得由「谁来看」决定，
+#   不是由「谁写的」决定。** 看它的是 `_开工.py`，`_开工.py` 在根上。
+def _等Agent在哪():
+    父 = os.path.dirname(根)
+    for d in (父, 根):
+        if os.path.isfile(os.path.join(d, "_开工.py")):
+            return os.path.join(d, "_等Agent.md")
+    return os.path.join(父, "_等Agent.md")
+
+
+等Agent路 = _等Agent在哪()
+
+
+def 接管加(事, 为什么, 要什么):
+    import io as _io
+    from datetime import datetime as _dt
+    有 = os.path.isfile(等Agent路)
+    with _io.open(等Agent路, "a", encoding="utf-8", newline="\n") as f:
+        if not 有:
+            f.write("# 等 agent 接管的\n\n"
+                    "> 用户 2026-10-15 任务单 ⑤：「…**也能让 agent 接管**」。\n"
+                    "> 他在影匠控制台上按一下，就落一行到这里；`_开工.py` 每次开工打出来。\n"
+                    "> **不给软件直接开 agent 的后门** —— 软件只负责把话说到纸上。\n\n"
+                    "| 什么时候 | 什么事 | 为什么难 | 要 agent 做什么 | 状态 |\n|---|---|---|---|---|\n")
+        f.write(f"| {_dt.now().strftime('%m-%d %H:%M')} | {事} | {为什么} | {要什么} | ⬜ 没接 |\n")
+    return {"ok": True, "说": "已经写进 `_等Agent.md`，我下次开工就会看到"}
+
+
+def 接管读():
+    import io as _io
+    import re as _re
+    if not os.path.isfile(等Agent路):
+        return []
+    出 = []
+    for 线 in _io.open(等Agent路, encoding="utf-8").read().splitlines():
+        if 线.startswith("| ") and not 线.startswith("| 什么时候"):
+            出.append([x.strip() for x in 线.strip("|").split("|")])
+    return 出
+
+
+
 def 取本机显卡():
     """nvidia-smi 查得到就查，查不到就认了（本机可能没独显或驱动没装）。"""
     try:
@@ -780,6 +933,36 @@ pre{background:#0b0e14;border:1px solid #202634;border-radius:8px;padding:11px 1
 
   <div class="卡"><h2>正在跑</h2><div id="在跑"></div></div>
 
+  <!-- ★ 用户 2026-10-15 任务单 ⑤：「能调 ComfyUI 官方 API 也能让 agent 接管」。
+       他说过四次「要能自己操作，只读页面不算」—— 所以下面这些是**真的能按**的，
+       走的是 ComfyUI 自己的 HTTP 接口，不碰它的内部状态文件。 -->
+  <div class="卡"><h2>ComfyUI 官方接口（本机 / 远端都能调）</h2>
+    <div class="行">
+      <span class="小">调哪台</span>
+      <select id="cf机"><option>本机</option><option>远端</option></select>
+      <button class="钮" onclick="cf读('queue')">队列明细</button>
+      <button class="钮" onclick="cf读('history')">最近跑完的</button>
+      <button class="钮" onclick="cf读('system_stats')">系统信息</button>
+      <button class="钮" onclick="cf读('object_info')">节点表</button>
+      <span style="flex:1"></span>
+      <button class="钮 危" onclick="cf做('打断')">打断</button>
+      <button class="钮 危" onclick="cf做('清待办')">清等待队列</button>
+    </div>
+    <div class="小" id="cf说"></div>
+    <div id="cf果" style="max-height:340px;overflow:auto"></div>
+  </div>
+
+  <div class="卡"><h2>这件事让 agent 接管</h2>
+    <div class="小">软件不开 agent 的后门 —— 它只负责把话说到纸上（<code>_等Agent.md</code>），
+      我下次开工就会看到，你不用再复述一遍。</div>
+    <div class="行"><input id="ag事" placeholder="什么事（如：这条片子越看越不对）" style="width:300px">
+      <input id="ag为" placeholder="为什么难 / 卡在哪" style="width:300px"></div>
+    <div class="行"><input id="ag要" placeholder="要 agent 做什么" style="width:520px">
+      <button class="钮 主" onclick="ag交()">交给 agent</button>
+      <span class="小" id="ag说"></span></div>
+    <div id="ag单" class="小"></div>
+  </div>
+
   <div class="卡"><h2>起一个活</h2>
     <div class="行">
       <select id="任务">__任务选项__</select>
@@ -832,7 +1015,12 @@ function 机(d, 是远){
   if(d.用!=null) h += '<div><span>显卡占用</span><b>'+d.用+'<small>%</small></b></div>';
   if(d.瓦!=null) h += '<div><span>功耗</span><b>'+d.瓦+'<small>W</small></b></div>';
   if(d.显存总) h += '<div><span>显存</span><b>'+(d.显存用/1024).toFixed(1)+'<small>/'+(d.显存总/1024).toFixed(1)+'G</small></b></div>';
-  if(d.内存总) h += '<div><span>内存</span><b>'+(1-d.内存闲/d.内存总).toFixed(0)+'<small>%</small></b></div>';
+  // ★ 这里两个面板的数字来源不一样，必须分开算 —— 2026-10-15 08:45 实测：
+  //   远端那台给我的是 `内存用率`（已经是百分数 56），本机给的是 `内存总/内存闲`。
+  //   写成 `(1-闲/总).toFixed(0)` 少了 ×100，**本机永远显示 0%**（实际 34%）。
+  //   屏幕上写着一个错的数，比不写更坏 —— 他会照这个数判断「机器还空不空」。
+  if(d.内存用率!=null) h += '<div><span>内存</span><b>'+d.内存用率+'<small>%</small></b></div>';
+  else if(d.内存总) h += '<div><span>内存</span><b>'+Math.round((1-d.内存闲/d.内存总)*100)+'<small>% 用 · 剩 '+Math.round(d.内存闲/2**30)+'G</small></b></div>';
   if(d.队列跑!=null) h += '<div><span>ComfyUI 队列</span><b>'+d.队列跑+'<small>跑 '+d.队列等+' 等</small></b></div>';
   if(d.E总) h += '<div><span>E 盘剩</span><b>'+Math.round(d.E剩/2**30)+'<small>G</small></b></div>';
   h += '</div>';
@@ -858,6 +1046,69 @@ function 起(){
    .then(r=>r.json()).then(j=>{ if(!j.ok) $('起错').textContent = '✗ ' + j.错; 刷(); });
 }
 function 停(){ fetch('/api/stop',{method:'POST'}).then(()=>setTimeout(刷,600)); }
+
+// ── ComfyUI 官方接口 ──────────────────────────────────────────────
+// ★ 只读面走 GET /api/comfy，写面走 POST。**全部转发给 ComfyUI 自己**，
+//   这里不做任何「猜」或「代替」—— 它回什么就显示什么，包括错误。
+function cf读(面){
+  const 机 = $('cf机').value;
+  $('cf说').textContent = '正在问 ' + 机 + ' 的 /' + 面 + ' …';
+  fetch('/api/comfy?机='+encodeURIComponent(机)+'&面='+encodeURIComponent(面))
+   .then(r=>r.json()).then(j=>{
+     if(!j.活){ $('cf说').innerHTML = '<span class="凶">✗ '+((j.错||'连不上')).replace(/</g,'&lt;')+'</span>';
+                $('cf果').innerHTML = ''; return; }
+     let 概 = '';
+     if(面==='queue'){
+       const 跑 = (j.数据.queue_running||[]).length, 等 = (j.数据.queue_pending||[]).length;
+       概 = '正在跑 '+跑+' 个，等着 '+等+' 个';
+     } else if(面==='history'){
+       概 = j.说 || (Object.keys(j.数据||{}).length + ' 条记录');
+     } else if(面==='system_stats'){
+       const d = (j.数据.system||{}), 显 = (j.数据.devices||[])[0]||{};
+       概 = (d.comfyui_version?('ComfyUI '+d.comfyui_version+'　'):'')
+          + (显.name?('显卡 '+显.name+'　'):'')
+          + (显.vram_total?('显存 '+Math.round(显.vram_total/2**30)+'G'):'');
+     } else if(面==='object_info'){
+       概 = j.说 || (Object.keys(j.数据||{}).length + ' 种节点');
+     }
+     $('cf说').textContent = 机 + ' /' + 面 + '　' + 概;
+     const 给 = j.裁过 ? (j.节点名 || j.最近 || j) : j.数据;
+     $('cf果').innerHTML = '<pre style="max-height:320px">'
+       + JSON.stringify(给, null, 1).replace(/</g,'&lt;').slice(0, 20000) + '</pre>';
+   }).catch(e=>{ $('cf说').innerHTML = '<span class="凶">✗ '+e+'</span>'; });
+}
+function cf做(动作){
+  const 机 = $('cf机').value;
+  if(!confirm(机 + '：' + 动作 + '？')) return;
+  fetch('/api/comfy',{method:'POST',headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({机:机, 动作:动作})})
+   .then(r=>r.json()).then(j=>{
+     $('cf说').innerHTML = j.ok ? ('<span class="吉">✓ '+j.说+'</span>')
+                                : ('<span class="凶">✗ '+((j.错||'')).replace(/</g,'&lt;')+'</span>');
+     setTimeout(()=>cf读('queue'), 800); 刷();
+   });
+}
+function ag交(){
+  const 事 = $('ag事').value.trim(), 为 = $('ag为').value.trim(), 要 = $('ag要').value.trim();
+  if(!事){ $('ag说').textContent = '✗ 先说是什么事'; return; }
+  fetch('/api/接管',{method:'POST',headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({事:事, 为什么:为, 要:要})})
+   .then(r=>r.json()).then(j=>{
+     $('ag说').innerHTML = j.ok ? '<span class="吉">✓ '+j.说+'</span>'
+                                : '<span class="凶">✗ '+j.错+'</span>';
+     if(j.ok){ $('ag事').value=''; $('ag为').value=''; $('ag要').value=''; }
+     ag刷();
+   });
+}
+function ag刷(){
+  fetch('/api/接管').then(r=>r.json()).then(j=>{
+    const 行 = j.行||[];
+    $('ag单').innerHTML = 行.length
+      ? ('已经交给 agent 的 '+行.length+' 件：<br>' + 行.map(x =>
+          '· <b>'+x[1]+'</b>　<span class="小">'+x[0]+'　'+x[4]+'</span>').join('<br>'))
+      : '还没有交给 agent 的事。';
+  }).catch(()=>{});
+}
 
 async function 刷(){
   let d;
@@ -918,6 +1169,7 @@ async function 刷(){
   $('任说').textContent = d.任说 || '';
   $('刷新时').textContent = '刷新于 ' + new Date().toLocaleTimeString('zh-CN');
 }
+ag刷();
 $('任务').onchange = () => {
   $('任说').textContent = ''; $('起错').textContent = '';
   看任务(); 刷();
@@ -1021,6 +1273,20 @@ class 手(BaseHTTPRequestHandler):
             戏 = (q.get("戏") or [""])[0]
             return self._JSON({"片": 片单(戏)})
 
+        # ComfyUI 官方接口的只读面：`/api/comfy?machine=本机&face=queue`
+        # ★ 查询串的**键名**必须是 ASCII（值可以带中文）—— 2026-10-15 08:20 实测：
+        #   键名写成 `机=` / `面=` 时，Python 客户端拼 URL 直接
+        #   `UnicodeEncodeError: 'ascii' codec can't encode character '\u673a'`；
+        #   PowerShell 那边则是把中文转成别的字节，服务端收到已经不是同一个键。
+        #   跟第 1226 行那条注释是同一个病：**路由和参数名一律 ASCII，中文只放进值里**。
+        #   为兼容起见，中文键仍然认。
+        if u.path == "/api/comfy":
+            return self._JSON(Comfy取((q.get("machine") or q.get("机") or ["本机"])[0],
+                                      (q.get("face") or q.get("面") or ["queue"])[0]))
+
+        if u.path in ("/api/handoff", "/api/接管"):
+            return self._JSON({"行": 接管读()})
+
         if u.path == "/f":
             相 = (q.get("p") or [""])[0]
             if not 相:
@@ -1065,6 +1331,18 @@ class 手(BaseHTTPRequestHandler):
 
         if u.path == "/api/comfyup":
             return self._JSON(起本机Comfy())
+
+        # ComfyUI 官方接口的写面：打断 / 清待办 / 删项 / 送任务
+        # ★ 键名同样收 ASCII 和中文两套（理由见 do_GET 里那段注释）
+        if u.path == "/api/comfy":
+            return self._JSON(Comfy做(体.get("machine") or 体.get("机") or "本机",
+                                      体.get("action") or 体.get("动作") or "", 体))
+
+        # 让 agent 接管：软件只负责把话说到纸上
+        if u.path in ("/api/handoff", "/api/接管"):
+            return self._JSON(接管加((体.get("what") or 体.get("事") or "").strip(),
+                                    (体.get("why") or 体.get("为什么") or "").strip(),
+                                    (体.get("want") or 体.get("要") or "").strip()))
 
         if u.path == "/api/run":
             名 = 体.get("任务") or ""
