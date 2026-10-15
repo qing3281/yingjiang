@@ -33,6 +33,7 @@ _超分.py —— 用远端 RTX 5080 跑 SeedVR2 超分。
 import argparse
 import json
 import os
+import shutil
 import subprocess
 import sys
 import time
@@ -128,6 +129,49 @@ def 建工作流(文件, 倍数=2, 模型=模型_3B, vae名=VAE,
                "inputs": {"video": ["14", 0], "filename_prefix": 前缀,
                           "format": "auto", "codec": "auto"}},
     }
+
+
+def 建工作流GAN(文件, 放大模型="4x_foolhardy_Remacri.pth", 缩放回=0,
+                前缀="Upscaled_GAN"):
+    """GAN 放大（快路）—— 照官方 `utility-gan_upscaler.json` 搭。
+
+    ★ 和 SeedVR2 那条路的区别，是「还原」和「拉伸」的区别：
+      · SeedVR2 是**扩散还原** —— 会按提示重新长出细节，慢，但糊的地方能救回来
+      · GAN（Remacri / RealESRGAN / NMKD）是**卷积放大** —— 不生成新细节，只把现有的边缘做锐，
+        **快得多**（一条 5 秒的片几秒就完），而且不需要远端
+      → 所以两条路都要留着：**片子本来就清楚就用 GAN，糊得厉害再上 SeedVR2。**
+
+    ★ 官方模板上的原话：「Model determines output size — 2x models upscale 2x,
+      4x models upscale 4x」+「Tip: Upscale 4x first, then use a resize node to bring
+      it down to your target resolution」。所以本机那三个都是 **4x**，
+      想要 2x 就先 4x 再缩回来（`缩放回` 就是干这个的）。
+    """
+    流 = {
+        "1": {"class_type": "LoadVideo", "inputs": {"file": 文件}},
+        "2": {"class_type": "GetVideoComponents", "inputs": {"video": ["1", 0]}},
+        "3": {"class_type": "UpscaleModelLoader",
+              "inputs": {"model_name": 放大模型}},
+        "4": {"class_type": "ImageUpscaleWithModel",
+              "inputs": {"upscale_model": ["3", 0], "image": ["2", 0]}},
+    }
+    if 缩放回:
+        # 缩回指定倍数的办法：按目标宽算。宽度取不到就退回按倍数缩。
+        # 用 ComfyUI 自带的 ImageScaleBy（按倍数，比 ImageScale 少一次算宽）
+        流["5"] = {"class_type": "ImageScaleBy",
+                   "inputs": {"image": ["4", 0], "upscale_method": "lanczos",
+                              "scale_by": float(缩放回)}}
+        末 = ["5", 0]
+    else:
+        末 = ["4", 0]
+    # ★ `CreateVideo` 的 `audio` 是**可选**口，不接就把音轨丢了 ——
+    #   实测第一版放完 832×480 → 1664×960 很漂亮，但**声音没了**（原片是有立体声的）。
+    #   `GetVideoComponents` 的 [1] 就是拆出来的那条音轨，直接接上。
+    流["14"] = {"class_type": "CreateVideo",
+                "inputs": {"images": 末, "fps": ["2", 2], "audio": ["2", 1]}}
+    流["15"] = {"class_type": "SaveVideo",
+                "inputs": {"video": ["14", 0], "filename_prefix": 前缀,
+                           "format": "auto", "codec": "auto"}}
+    return 流
 
 
 def 请求(路, 数据=None, 主机=远端, 超时=120):
@@ -229,6 +273,36 @@ def 送过去(本地路):
     raise SystemExit("传完了但远端大小对不上：%s" % 名)
 
 
+本输入 = r"D:\Comfy-Desktop\ComfyUI-Installs\ComfyUI\ComfyUI\input"   # 实测这条路才对（ComfyUI-master\input 不存在）
+
+
+def _塞进本机(名, 本地路):
+    """把本机文件放进本机 ComfyUI 的 input/ —— `/prompt` 里的 `file` 只认 input/ 下的文件名。
+
+    ★ 同名同大小就不重放；放完**回读大小**，别只看 copy 没报错。
+    """
+    本地路 = os.path.abspath(本地路)
+    if not os.path.isfile(本地路):
+        raise SystemExit("本地没这个文件：%s" % 本地路)
+    # ★ `/prompt` 的 LoadVideo.file 只认**input/ 下的文件名**，不认完整路径。
+    #   第一版我把传进来的整条路径当文件名用了，ComfyUI 报
+    #   `Invalid video file: D:\DSHworkspace\...\04_锚1格1.mp4` —— 它去 input/ 下找这个名字。
+    名 = os.path.basename(本地路)
+    if not os.path.isdir(本输入):
+        raise SystemExit("本机 ComfyUI 的 input 目录不在：%s" % 本输入)
+    去 = os.path.join(本输入, 名)
+    if os.path.isfile(去) and os.path.getsize(去) == os.path.getsize(本地路):
+        print("  本机 input 里已有 %s（%d 字节），不重放" % (名, os.path.getsize(去)))
+        return 名
+    shutil.copy2(本地路, 去)
+    好 = os.path.getsize(去) if os.path.isfile(去) else -1
+    if 好 != os.path.getsize(本地路):
+        raise SystemExit("放进 input 之后大小对不上：%d vs %d"
+                         % (好, os.path.getsize(本地路)))
+    print("  ✓ 放进本机 input/：%s（%d 字节）" % (名, 好))
+    return 名
+
+
 def 主():
     参 = argparse.ArgumentParser()
     参.add_argument("--试", action="store_true", help="只提交，把报错原样打出来")
@@ -243,6 +317,11 @@ def 主():
     参.add_argument("--帧每块", type=int, default=21, help="像素帧，必须 4n+1")
     参.add_argument("--前缀", default="Upscaled_seedVR2")
     参.add_argument("--主机", default=远端)
+    参.add_argument("--放大模型", default="",
+                    help="★ 给了就走 GAN 快路（Remacri / RealESRGAN_x4plus.pth / "
+                         "4x_NMKD-Siax_200k.pth），默认跑本机，几秒就完")
+    参.add_argument("--缩放回", type=float, default=0,
+                    help="GAN 那三个模型都是 4x；想要 2x 就先 4x 再按这个倍数缩回来")
     a = 参.parse_args()
 
     if a.看:
@@ -263,16 +342,24 @@ def 主():
         return 0
 
     文件名 = a.文件
+    GAN = bool(a.放大模型)
+    # ★ GAN 那三个放大模型本机就有，不用走 2 MB/s 那条线 —— 不指定主机时按模式选
+    主机 = a.主机 if a.主机 != 远端 or not GAN else 本机
     if os.path.isfile(a.文件) or os.path.sep in a.文件:
-        文件名 = 送过去(a.文件)
+        文件名 = 送过去(a.文件) if 主机 == 远端 else _塞进本机(文件名, a.文件)
 
-    流 = 建工作流(文件名, a.倍数, a.模型, VAE, a.前缀, a.色彩,
-                a.块模式, a.帧每块)
-    print(f"提交到 {a.主机}")
-    print(f"  文件 {文件名}   倍数 {a.倍数}   模型 {a.模型}   色彩 {a.色彩}")
+    if GAN:
+        流 = 建工作流GAN(文件名, a.放大模型, a.缩放回, a.前缀 or "Upscaled_GAN")
+        print(f"提交到 {主机}　【GAN 快路】")
+        print(f"  文件 {文件名}   放大模型 {a.放大模型}   缩放回 {a.缩放回 or '不缩'}")
+    else:
+        流 = 建工作流(文件名, a.倍数, a.模型, VAE, a.前缀, a.色彩,
+                    a.块模式, a.帧每块)
+        print(f"提交到 {主机}　【SeedVR2 还原路】")
+        print(f"  文件 {文件名}   倍数 {a.倍数}   模型 {a.模型}   色彩 {a.色彩}")
     if a.试:
         print(f"  工作流 {len(流)} 个节点：" + " ".join(流))
-    r = 提交(流, a.主机)
+    r = 提交(流, 主机)
     if "prompt_id" in r:
         pid = r["prompt_id"]
         print(f"  ✓ 收下了，prompt_id = {pid}")
