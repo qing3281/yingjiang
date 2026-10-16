@@ -1,0 +1,32 @@
+{
+  "标题": "短剧引擎测试",
+  "画布": "1280x720",
+  "转场秒": 0.5,
+  "每张秒": 3.0,
+  "风格前缀": "cinematic film still, night, moody low-key lighting, cold cyan and sodium-orange palette, heavy atmosphere, shallow depth of field, 35mm film grain, ",
+  "角色": "a lone tired man in his thirties, short black hair, grey hoodie under a dark jacket, gaunt face, ",
+  "BGM": "D:\\DSHworkspace\\B站\\素材\\BGM\\flatwound_-_The_Long_Goodbye.mp3",
+  "BGM音量": 0.16,
+  "出图线": "zimage",
+  "输出目录": "D:\\DSHworkspace\\B站\\成片\\_短剧引擎测试",
+  "镜头": [
+    {
+      "提示词": "standing at the bottom of a dim stairwell looking up, one hand on the railing",
+      "说": "今天也别开门。",
+      "字幕": "今天也别开门。",
+      "运镜": "推近"
+    },
+    {
+      "提示词": "close up of a folded paper note taped to a weathered apartment door",
+      "说": "第七天了，字还是那几个字。",
+      "字幕": "第七天了，字还是那几个字。",
+      "运镜": "右到左"
+    },
+    {
+      "提示词": "a dark empty hallway seen from the far end, a sliver of light under one door",
+      "字幕": "",
+      "运镜": "静止",
+      "无角色": true
+    }
+  ]
+}

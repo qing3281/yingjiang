@@ -1,0 +1,370 @@
+[
+ {
+  "分享": "打斗专篇",
+  "文件": "Comfyui-WF-2026.8.8.7z",
+  "GB": 12.63,
+  "code": 23018,
+  "msg": "download file size limit[00c8108be3c74b02952a1901093927bb]",
+  "有链": false
+ },
+ {
+  "分享": "打斗专篇",
+  "文件": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+  "GB": 19.53,
+  "code": 23018,
+  "msg": "download file size limit[e3d32005bf2b4320b4cfa97e29a430ec]",
+  "有链": false
+ },
+ {
+  "分享": "打斗专篇",
+  "文件": "minimax_h3_fl2va_int8_convrot.safetensors",
+  "GB": 31.7,
+  "code": 23018,
+  "msg": "download file size limit[e00cd5ccf6ce470d87f45616fcde168d]",
+  "有链": false
+ },
+ {
+  "分享": "打斗专篇",
+  "文件": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+  "GB": 25.28,
+  "code": 23018,
+  "msg": "download file size limit[cdd109a3779c45eda951d2deadda628b]",
+  "有链": false
+ },
+ {
+  "分享": "打斗专篇",
+  "文件": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+  "GB": 14.61,
+  "code": 23018,
+  "msg": "download file size limit[caf3ad8807ac419b8d2149aaa87b902d]",
+  "有链": false
+ },
+ {
+  "分享": "打斗专篇",
+  "文件": "minimax_h3_audio_vae_fp32.safetensors",
+  "GB": 0.56,
+  "code": 23018,
+  "msg": "download file size limit[3586791de0d74731b46663676e8bd9fc]",
+  "有链": false
+ },
+ {
+  "分享": "打斗专篇",
+  "文件": "minimax_h3_video_vae_fp16.safetensors",
+  "GB": 4.85,
+  "code": 23018,
+  "msg": "download file size limit[067ee3dae8e34d179d0182f497f5c9b9]",
+  "有链": false
+ },
+ {
+  "分享": "纯净整合包",
+  "文件": "Comfyui-WF-2026.8.8.7z",
+  "GB": 12.63,
+  "code": 23018,
+  "msg": "download file size limit[a5c0b6d6d9ff4751a2a328e380ccf32c]",
+  "有链": false
+ },
+ {
+  "分享": "纯净整合包",
+  "文件": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+  "GB": 19.53,
+  "code": 23018,
+  "msg": "download file size limit[e9ca5385832f499888700f114509421c]",
+  "有链": false
+ },
+ {
+  "分享": "纯净整合包",
+  "文件": "minimax_h3_fl2va_int8_convrot.safetensors",
+  "GB": 31.7,
+  "code": 23018,
+  "msg": "download file size limit[c7552397cb8d49508cefd3b445b2024e]",
+  "有链": false
+ },
+ {
+  "分享": "纯净整合包",
+  "文件": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+  "GB": 25.28,
+  "code": 23018,
+  "msg": "download file size limit[d9a7a1e9a877430990bee74745a99000]",
+  "有链": false
+ },
+ {
+  "分享": "纯净整合包",
+  "文件": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+  "GB": 14.61,
+  "code": 23018,
+  "msg": "download file size limit[298dca6bf1d249c9bd6707bc5bf3258a]",
+  "有链": false
+ },
+ {
+  "分享": "纯净整合包",
+  "文件": "minimax_h3_audio_vae_fp32.safetensors",
+  "GB": 0.56,
+  "code": 23018,
+  "msg": "download file size limit[a897ad500c19456ba912d1723a26dd8f]",
+  "有链": false
+ },
+ {
+  "分享": "纯净整合包",
+  "文件": "minimax_h3_video_vae_fp16.safetensors",
+  "GB": 4.85,
+  "code": 23018,
+  "msg": "download file size limit[072ac7a4d67d4f69a2a9c754ca2685d4]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "Comfyui-WF-整合包-不含模型-2026.9.28.7z",
+  "GB": 9.83,
+  "code": 23018,
+  "msg": "download file size limit[414eb7bb515547b59b8882cb50f3b7ac]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "qwen3vl_8b_bf16.safetensors",
+  "GB": 16.33,
+  "code": 23018,
+  "msg": "download file size limit[dc758c7eda41471c97f9124180f789ba]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+  "GB": 14.61,
+  "code": 23018,
+  "msg": "download file size limit[f05a8db527e64dc5b6302a5198f6e159]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "qwen3vl_8b_heretic-Q4_K_M.gguf",
+  "GB": 4.68,
+  "code": 23018,
+  "msg": "download file size limit[c11dc4a7a8ff42c9847d3f05754936b4]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "qwen3.5_qwen_image_2.1_pe_t2i.int8_convrot.safetensors",
+  "GB": 8.82,
+  "code": 23018,
+  "msg": "download file size limit[8ae78390a81146a1b03c44095f716fa0]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "qwen3.5_qwen_image_2.1_pe_i2i.int8_convrot.safetensors",
+  "GB": 8.82,
+  "code": 23018,
+  "msg": "download file size limit[3f8b61977fbd4265ba056e0dd6395adc]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "mmproj-qwen3vl_8b_heretic-f16.gguf",
+  "GB": 1.08,
+  "code": 23018,
+  "msg": "download file size limit[d157191409594b92b0271bc1d4580842]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "qwen_image_2.1_vae_bf16.safetensors",
+  "GB": 0.63,
+  "code": 23018,
+  "msg": "download file size limit[d6b0439e716049acbcf3551cb7285d51]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "minimax_h3_video_vae_fp16.safetensors",
+  "GB": 4.85,
+  "code": 23018,
+  "msg": "download file size limit[ed910640b19a46b1892ead9ba6232793]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "minimax_h3_audio_vae_fp32.safetensors",
+  "GB": 0.56,
+  "code": 23018,
+  "msg": "download file size limit[9114ab4f4bc247209d3933b4174dd87c]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "FeiHou_MiniMax-H3_Remix_v0.6_int8_convrot_v2.safetensors",
+  "GB": 31.67,
+  "code": 23018,
+  "msg": "download file size limit[67c099e57da74713beaa7cb64165eab1]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "minimax_h3_hybrid_fl2va_ref2va_b25-49-int8.safetensors",
+  "GB": 19.53,
+  "code": 23018,
+  "msg": "download file size limit[1e3b16d409ce4868afa82b9e57742aa2]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "qwen_image_2.1_int8_convrot.safetensors",
+  "GB": 6.76,
+  "code": 23018,
+  "msg": "download file size limit[4f2b9716bd3c4ed9a17102685a8bb4af]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "wushu_spatial_physics_v2_1000_pruned.safetensors",
+  "GB": 0.14,
+  "code": 23018,
+  "msg": "download file size limit[c1d27c03ae5a4bc08666327879a1e927]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "MysticXXX_MMH3-V1.safetensors",
+  "GB": 0.56,
+  "code": 23018,
+  "msg": "download file size limit[ad34a941be414e1aa67965eabf71b93f]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "VNCCS_QI2_PoseStudioV1.1.safetensors",
+  "GB": 0.15,
+  "code": 23018,
+  "msg": "download file size limit[7eec404d14f74fe9a269addbdc81f65b]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "Motion_Repair.safetensors",
+  "GB": 0.14,
+  "code": 23018,
+  "msg": "download file size limit[577ca7db584840ac89c3e2c131937ff6]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "minimax_h3_turbo_v4_step600_ema_pruned_comfyui.safetensors",
+  "GB": 0.58,
+  "code": 23018,
+  "msg": "download file size limit[2aa41ce1e5644916a8f60c237fab8049]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "minimax_h3_turbo_v4_step600_ema_DasiwaREF2VAHybridV1_0_curveproj1025_compat_v001.safetensors",
+  "GB": 0.74,
+  "code": 23018,
+  "msg": "download file size limit[1b9be392645948c0bfc150916f8f2307]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+  "GB": 1.82,
+  "code": 23018,
+  "msg": "download file size limit[e0ccd9bc553147aba5527217423169e9]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "minimax_h3_fl2v_turbo_4step_v1.2_768p_comfyui_bf16.safetensors",
+  "GB": 1.82,
+  "code": 23018,
+  "msg": "download file size limit[5d37c868f2354860a03f7ba35ce836b7]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "Kook_qwen_2.1_rmsh_c1-st6000.safetensors",
+  "GB": 0.16,
+  "code": 23018,
+  "msg": "download file size limit[b9eec7d8cf1544e49fe4d21c116ac849]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "H3_speed_slider_1.1.safetensors",
+  "GB": 0.01,
+  "code": 0,
+  "msg": "",
+  "有链": true
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "H3_Combat_V2.safetensors",
+  "GB": 0.14,
+  "code": 23018,
+  "msg": "download file size limit[1b7df220b468429ba2adf5b043e0f634]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "GunFu.safetensors",
+  "GB": 0.14,
+  "code": 23018,
+  "msg": "download file size limit[440a731f4f7946509442977014974913]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "minimax_h3_latent_upscaler_3d_fp16.safetensors",
+  "GB": 0.64,
+  "code": 23018,
+  "msg": "download file size limit[1960c4fafd14445b95f97c8cf5766082]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "h3_upscaler_sharpness_2000steps_v0.1_fp32.safetensors",
+  "GB": 1.29,
+  "code": 23018,
+  "msg": "download file size limit[14db929c44ff441a9429c3b660f8782c]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "dinov2_vitl14_pretrain.pth",
+  "GB": 1.13,
+  "code": 23018,
+  "msg": "download file size limit[bec1849c89f54571a063947ad302e1b2]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "dinov2_vitl14.safetensors",
+  "GB": 1.13,
+  "code": 23018,
+  "msg": "download file size limit[388232be51b642f69c3f2c9753c0e223]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "BUNNY_H3_ActionLogic_Bridge_V1_T8_Compat.safetensors",
+  "GB": 0.02,
+  "code": 0,
+  "msg": "",
+  "有链": true
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "ema_model.safetensors",
+  "GB": 5.19,
+  "code": 23018,
+  "msg": "download file size limit[4307b976b85a47a79483249fcb8f8201]",
+  "有链": false
+ },
+ {
+  "分享": "九月整合包",
+  "文件": "diffusion_pytorch_model.safetensors",
+  "GB": 0.17,
+  "code": 23018,
+  "msg": "download file size limit[e870eafbcba642ff99eb29f08591eed0]",
+  "有链": false
+ }
+]

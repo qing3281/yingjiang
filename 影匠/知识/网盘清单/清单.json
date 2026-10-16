@@ -1,0 +1,7502 @@
+[
+ {
+  "name": "text_join.py",
+  "size": 2946,
+  "url": null
+ },
+ {
+  "name": "rmbg_ultra.py",
+  "size": 1965,
+  "url": null
+ },
+ {
+  "name": "rounded_rectangle.py",
+  "size": 4669,
+  "url": null
+ },
+ {
+  "name": "stroke_v2.py",
+  "size": 4166,
+  "url": null
+ },
+ {
+  "name": "random_generator.py",
+  "size": 5227,
+  "url": null
+ },
+ {
+  "name": "purge_vram.py",
+  "size": 2118,
+  "url": null
+ },
+ {
+  "name": "text_image_v2.py",
+  "size": 6825,
+  "url": null
+ },
+ {
+  "name": "shadow_highlight_mask.py",
+  "size": 8362,
+  "url": null
+ },
+ {
+  "name": "skin_beauty.py",
+  "size": 2428,
+  "url": null
+ },
+ {
+  "name": "restore_crop_box.py",
+  "size": 2918,
+  "url": null
+ },
+ {
+  "name": "text_image.py",
+  "size": 6600,
+  "url": null
+ },
+ {
+  "name": "sharp_soft.py",
+  "size": 2131,
+  "url": null
+ },
+ {
+  "name": "soft_light.py",
+  "size": 2467,
+  "url": null
+ },
+ {
+  "name": "simple_text_image.py",
+  "size": 5097,
+  "url": null
+ },
+ {
+  "name": "outer_glow_v2.py",
+  "size": 4747,
+  "url": null
+ },
+ {
+  "name": "mask_preview.py",
+  "size": 1047,
+  "url": null
+ },
+ {
+  "name": "mask_motion_blur.py",
+  "size": 1645,
+  "url": null
+ },
+ {
+  "name": "pixel_spread.py",
+  "size": 2554,
+  "url": null
+ },
+ {
+  "name": "print_info.py",
+  "size": 1665,
+  "url": null
+ },
+ {
+  "name": "pad_batch.py",
+  "size": 3359,
+  "url": null
+ },
+ {
+  "name": "mask_edge_ultra_detail_v3.py",
+  "size": 7336,
+  "url": null
+ },
+ {
+  "name": "mask_edge_ultra_detail.py",
+  "size": 3445,
+  "url": null
+ },
+ {
+  "name": "mask_edge_shrink.py",
+  "size": 3059,
+  "url": null
+ },
+ {
+  "name": "motion_blur.py",
+  "size": 1293,
+  "url": null
+ },
+ {
+  "name": "mask_gradient.py",
+  "size": 7572,
+  "url": null
+ },
+ {
+  "name": "outer_glow.py",
+  "size": 4713,
+  "url": null
+ },
+ {
+  "name": "mask_invert.py",
+  "size": 1130,
+  "url": null
+ },
+ {
+  "name": "nano_banana_image_scale.py",
+  "size": 2182,
+  "url": null
+ },
+ {
+  "name": "mask_grow.py",
+  "size": 1558,
+  "url": null
+ },
+ {
+  "name": "mask_grain.py",
+  "size": 2063,
+  "url": null
+ },
+ {
+  "name": "mask_edge_ultra_detail_v2.py",
+  "size": 4529,
+  "url": null
+ },
+ {
+  "name": "mask_stroke.py",
+  "size": 2087,
+  "url": null
+ },
+ {
+  "name": "mask_by_color.py",
+  "size": 2841,
+  "url": null
+ },
+ {
+  "name": "light_leak.py",
+  "size": 3356,
+  "url": null
+ },
+ {
+  "name": "layer_mask_transform.py",
+  "size": 3309,
+  "url": null
+ },
+ {
+  "name": "inner_glow.py",
+  "size": 4793,
+  "url": null
+ },
+ {
+  "name": "inner_shadow.py",
+  "size": 4317,
+  "url": null
+ },
+ {
+  "name": "inner_shadow_v2.py",
+  "size": 4352,
+  "url": null
+ },
+ {
+  "name": "mask_box_detect.py",
+  "size": 5893,
+  "url": null
+ },
+ {
+  "name": "inner_glow_v2.py",
+  "size": 4832,
+  "url": null
+ },
+ {
+  "name": "image_scale_restore_v2.py",
+  "size": 5378,
+  "url": null
+ },
+ {
+  "name": "load_images_from_path.py",
+  "size": 4145,
+  "url": null
+ },
+ {
+  "name": "layer_image_transform.py",
+  "size": 4069,
+  "url": null
+ },
+ {
+  "name": "image_scale_by_aspect_ratio.py",
+  "size": 7054,
+  "url": null
+ },
+ {
+  "name": "image_shift.py",
+  "size": 3450,
+  "url": null
+ },
+ {
+  "name": "image_scale_by_aspect_ratio_v2.py",
+  "size": 8919,
+  "url": null
+ },
+ {
+  "name": "image_remove_alpha.py",
+  "size": 2132,
+  "url": null
+ },
+ {
+  "name": "image_to_mask.py",
+  "size": 4481,
+  "url": null
+ },
+ {
+  "name": "image_scale_restore.py",
+  "size": 4242,
+  "url": null
+ },
+ {
+  "name": "image_tagger_save.py",
+  "size": 12452,
+  "url": null
+ },
+ {
+  "name": "image_mask_scale_as.py",
+  "size": 8108,
+  "url": null
+ },
+ {
+  "name": "halftone.py",
+  "size": 7116,
+  "url": null
+ },
+ {
+  "name": "hdr_effects.py",
+  "size": 7548,
+  "url": null
+ },
+ {
+  "name": "image_reel.py",
+  "size": 11091,
+  "url": null
+ },
+ {
+  "name": "image_blend_advance.py",
+  "size": 5775,
+  "url": null
+ },
+ {
+  "name": "image_channel_merge.py",
+  "size": 2529,
+  "url": null
+ },
+ {
+  "name": "image_hub.py",
+  "size": 5841,
+  "url": null
+ },
+ {
+  "name": "image_composit_handle_mask.py",
+  "size": 14456,
+  "url": null
+ },
+ {
+  "name": "image_opacity.py",
+  "size": 2881,
+  "url": null
+ },
+ {
+  "name": "image_combine_alpha.py",
+  "size": 1889,
+  "url": null
+ },
+ {
+  "name": "imagefunc.py",
+  "size": 108024,
+  "url": null
+ },
+ {
+  "name": "image_channel_split.py",
+  "size": 1715,
+  "url": null
+ },
+ {
+  "name": "image_blend.py",
+  "size": 3067,
+  "url": null
+ },
+ {
+  "name": "ic_mask.py",
+  "size": 8808,
+  "url": null
+ },
+ {
+  "name": "image_blend_advance_v3.py",
+  "size": 6083,
+  "url": null
+ },
+ {
+  "name": "hl_frequency_detail_restore.py",
+  "size": 3416,
+  "url": null
+ },
+ {
+  "name": "image_blend_v2.py",
+  "size": 3128,
+  "url": null
+ },
+ {
+  "name": "image_blend_advance_v2.py",
+  "size": 5808,
+  "url": null
+ },
+ {
+  "name": "gradient_overlay_v2.py",
+  "size": 4343,
+  "url": null
+ },
+ {
+  "name": "get_image_size.py",
+  "size": 939,
+  "url": null
+ },
+ {
+  "name": "gradient_overlay.py",
+  "size": 4310,
+  "url": null
+ },
+ {
+  "name": "gaussian_blur.py",
+  "size": 2318,
+  "url": null
+ },
+ {
+  "name": "gradient_map.py",
+  "size": 3543,
+  "url": null
+ },
+ {
+  "name": "gradient_image.py",
+  "size": 1242,
+  "url": null
+ },
+ {
+  "name": "get_main_colors.py",
+  "size": 9318,
+  "url": null
+ },
+ {
+  "name": "gradient_image_v2.py",
+  "size": 2324,
+  "url": null
+ },
+ {
+  "name": "flux_kontext_image_scale.py",
+  "size": 2489,
+  "url": null
+ },
+ {
+  "name": "film_post_v2.py",
+  "size": 4385,
+  "url": null
+ },
+ {
+  "name": "draw_mask.py",
+  "size": 1989,
+  "url": null
+ },
+ {
+  "name": "extend_canvas_v2.py",
+  "size": 3241,
+  "url": null
+ },
+ {
+  "name": "film_post.py",
+  "size": 3982,
+  "url": null
+ },
+ {
+  "name": "drop_shadow.py",
+  "size": 4312,
+  "url": null
+ },
+ {
+  "name": "extend_canvas.py",
+  "size": 3086,
+  "url": null
+ },
+ {
+  "name": "drop_shadow_v2.py",
+  "size": 4362,
+  "url": null
+ },
+ {
+  "name": "distort_displace.py",
+  "size": 4446,
+  "url": null
+ },
+ {
+  "name": "drop_shadow_v3.py",
+  "size": 4699,
+  "url": null
+ },
+ {
+  "name": "crop_by_mask_v3.py",
+  "size": 5086,
+  "url": null
+ },
+ {
+  "name": "crop_by_mask_v2.py",
+  "size": 5083,
+  "url": null
+ },
+ {
+  "name": "data_nodes.py",
+  "size": 18799,
+  "url": null
+ },
+ {
+  "name": "color_overlay.py",
+  "size": 3371,
+  "url": null
+ },
+ {
+  "name": "crop_box_resolve.py",
+  "size": 906,
+  "url": null
+ },
+ {
+  "name": "create_gradient_mask.py",
+  "size": 6161,
+  "url": null
+ },
+ {
+  "name": "publish_action.yml",
+  "size": 574,
+  "url": null
+ },
+ {
+  "name": "nodeDefs.json",
+  "size": 106448,
+  "url": null
+ },
+ {
+  "name": "nodeDefs.json",
+  "size": 95990,
+  "url": null
+ },
+ {
+  "name": "nodeDefs.json",
+  "size": 98431,
+  "url": null
+ },
+ {
+  "name": "nodeDefs.json",
+  "size": 97788,
+  "url": null
+ },
+ {
+  "name": "nodeDefs.json",
+  "size": 97175,
+  "url": null
+ },
+ {
+  "name": "text_image_example.json",
+  "size": 3912,
+  "url": null
+ },
+ {
+  "name": "title_example_workflow.json",
+  "size": 16583,
+  "url": null
+ },
+ {
+  "name": "ultra_v2_nodes_example.json",
+  "size": 8153,
+  "url": null
+ },
+ {
+  "name": "xy2percent_example.json",
+  "size": 6516,
+  "url": null
+ },
+ {
+  "name": "vqa_example.json",
+  "size": 3953,
+  "url": null
+ },
+ {
+  "name": "rembg_ultra_example.json",
+  "size": 11985,
+  "url": null
+ },
+ {
+  "name": "plaid.jpg",
+  "size": 293378,
+  "url": null
+ },
+ {
+  "name": "rounded_rectangle_example.json",
+  "size": 10426,
+  "url": null
+ },
+ {
+  "name": "mask_edge_ultra_detail_example.json",
+  "size": 4531,
+  "url": null
+ },
+ {
+  "name": "mask_edge_ultra_detail_v3_example.json",
+  "size": 8968,
+  "url": null
+ },
+ {
+  "name": "stroke_example.json",
+  "size": 3480,
+  "url": null
+ },
+ {
+  "name": "simple_text_example.json",
+  "size": 6374,
+  "url": null
+ },
+ {
+  "name": "red_dress.jpg",
+  "size": 3088468,
+  "url": null
+ },
+ {
+  "name": "segformet_fashion_example.json",
+  "size": 4913,
+  "url": null
+ },
+ {
+  "name": "switch_case_example.json",
+  "size": 5190,
+  "url": null
+ },
+ {
+  "name": "red_dress-trimap.jpg",
+  "size": 132004,
+  "url": null
+ },
+ {
+  "name": "segformet_clothes_example.json",
+  "size": 4451,
+  "url": null
+ },
+ {
+  "name": "queue_stop_example.json",
+  "size": 5901,
+  "url": null
+ },
+ {
+  "name": "outer_glow_example.json",
+  "size": 3544,
+  "url": null
+ },
+ {
+  "name": "mask_edge_ultra_detail_v2_example.json",
+  "size": 10102,
+  "url": null
+ },
+ {
+  "name": "mask_by_color_example.json",
+  "size": 3741,
+  "url": null
+ },
+ {
+  "name": "pixel_spread_example.json",
+  "size": 3998,
+  "url": null
+ },
+ {
+  "name": "mask_gradient_example.json",
+  "size": 7527,
+  "url": null
+ },
+ {
+  "name": "layerstyle_all_nodes.json",
+  "size": 95451,
+  "url": null
+ },
+ {
+  "name": "icmask_example.json",
+  "size": 25703,
+  "url": null
+ },
+ {
+  "name": "inner_glow_example.json",
+  "size": 3509,
+  "url": null
+ },
+ {
+  "name": "layer_image_transform_example.json",
+  "size": 7580,
+  "url": null
+ },
+ {
+  "name": "image_tagger_save_example.json",
+  "size": 9877,
+  "url": null
+ },
+ {
+  "name": "layer_color_title.json",
+  "size": 15092,
+  "url": null
+ },
+ {
+  "name": "image_reel_example.json",
+  "size": 8360,
+  "url": null
+ },
+ {
+  "name": "mask_box_detect_example.json",
+  "size": 7113,
+  "url": null
+ },
+ {
+  "name": "image_scale_restore_example.json",
+  "size": 7685,
+  "url": null
+ },
+ {
+  "name": "inner_shadow_example.json",
+  "size": 3503,
+  "url": null
+ },
+ {
+  "name": "image_to_mask_example.json",
+  "size": 3703,
+  "url": null
+ },
+ {
+  "name": "image_remove_alpha & image_combine_alpha_example.json",
+  "size": 6172,
+  "url": null
+ },
+ {
+  "name": "image_blend_advance_example.json",
+  "size": 4375,
+  "url": null
+ },
+ {
+  "name": "image_mask_scale_as_example.json",
+  "size": 5331,
+  "url": null
+ },
+ {
+  "name": "image_composite_handle_mask_example.json",
+  "size": 11787,
+  "url": null
+ },
+ {
+  "name": "image_blend_example.json",
+  "size": 7086,
+  "url": null
+ },
+ {
+  "name": "if_example.json",
+  "size": 6666,
+  "url": null
+ },
+ {
+  "name": "image_hub_example.json",
+  "size": 6874,
+  "url": null
+ },
+ {
+  "name": "extend_canvas_example.json",
+  "size": 3311,
+  "url": null
+ },
+ {
+  "name": "hl_frequency_detail_restore_example.json",
+  "size": 6099,
+  "url": null
+ },
+ {
+  "name": "create_gradient_mask_example.json",
+  "size": 4861,
+  "url": null
+ },
+ {
+  "name": "get_main_color_example.json",
+  "size": 8386,
+  "url": null
+ },
+ {
+  "name": "fox_512x512.png",
+  "size": 362483,
+  "url": null
+ },
+ {
+  "name": "data_nodes_example.json",
+  "size": 6073,
+  "url": null
+ },
+ {
+  "name": "drop_shadow_example.json",
+  "size": 3538,
+  "url": null
+ },
+ {
+  "name": "distort_displace_example.json",
+  "size": 5667,
+  "url": null
+ },
+ {
+  "name": "get_main_color_and_color_name_example.json",
+  "size": 8805,
+  "url": null
+ },
+ {
+  "name": "girl_dino_1024.png",
+  "size": 1036673,
+  "url": null
+ },
+ {
+  "name": "gradident_overlay_example.json",
+  "size": 3557,
+  "url": null
+ },
+ {
+  "name": "flux_kontext_image_scale_example.json",
+  "size": 20412,
+  "url": null
+ },
+ {
+  "name": "crop_by_mask_&_restore_crop_box_example.json",
+  "size": 10607,
+  "url": null
+ },
+ {
+  "name": "color_overlay_example.json",
+  "size": 3492,
+  "url": null
+ },
+ {
+  "name": "blend_mode_v2_example.json",
+  "size": 57053,
+  "url": null
+ },
+ {
+  "name": "color_of_shadow_and_highlight_example.json",
+  "size": 2546,
+  "url": null
+ },
+ {
+  "name": "blendif_mask_example.json",
+  "size": 4404,
+  "url": null
+ },
+ {
+  "name": "choice_text_preset_example.json",
+  "size": 6323,
+  "url": null
+ },
+ {
+  "name": "1280x720car.jpg",
+  "size": 391161,
+  "url": null
+ },
+ {
+  "name": "768x1344_beach.png",
+  "size": 1120132,
+  "url": null
+ },
+ {
+  "name": "512x512.png",
+  "size": 129720,
+  "url": null
+ },
+ {
+  "name": "1920x1080table.png",
+  "size": 624815,
+  "url": null
+ },
+ {
+  "name": "512x512bkgd.jpg",
+  "size": 58684,
+  "url": null
+ },
+ {
+  "name": "1344x768_beach.png",
+  "size": 1155964,
+  "url": null
+ },
+ {
+  "name": "3840x2160car.jpg",
+  "size": 396098,
+  "url": null
+ },
+ {
+  "name": "auto_adjust_v2_example.json",
+  "size": 4291,
+  "url": null
+ },
+ {
+  "name": "auto_brightness_example.json",
+  "size": 3578,
+  "url": null
+ },
+ {
+  "name": "1280x768_city.png",
+  "size": 1608184,
+  "url": null
+ },
+ {
+  "name": "1344x768_redcar.png",
+  "size": 975009,
+  "url": null
+ },
+ {
+  "name": "1344x768_girl2.png",
+  "size": 911172,
+  "url": null
+ },
+ {
+  "name": "1344x768_hair.png",
+  "size": 1109656,
+  "url": null
+ },
+ {
+  "name": "768x1344_dress.png",
+  "size": 1129534,
+  "url": null
+ },
+ {
+  "name": "1280x720_seven_person.jpg",
+  "size": 253009,
+  "url": null
+ },
+ {
+  "name": "BlueArchitecture.cube",
+  "size": 1006352,
+  "url": null
+ },
+ {
+  "name": "dz_parse-css.js",
+  "size": 10252,
+  "url": null
+ },
+ {
+  "name": "dz_node_palette.js",
+  "size": 1219,
+  "url": null
+ },
+ {
+  "name": "dz_comfy_shared.js",
+  "size": 9649,
+  "url": null
+ },
+ {
+  "name": "dz_mtb_widgets.js",
+  "size": 32386,
+  "url": null
+ },
+ {
+  "name": "YUV_node.jpg",
+  "size": 56478,
+  "url": null
+ },
+ {
+  "name": "ultra_nodes.jpg",
+  "size": 194763,
+  "url": null
+ },
+ {
+  "name": "xy2percent_example.jpg",
+  "size": 288864,
+  "url": null
+ },
+ {
+  "name": "xy2percent_node.jpg",
+  "size": 66026,
+  "url": null
+ },
+ {
+  "name": "water_color_node.jpg",
+  "size": 77141,
+  "url": null
+ },
+ {
+  "name": "ultra_v2_nodes_example.jpg",
+  "size": 330442,
+  "url": null
+ },
+ {
+  "name": "vqa_prompt_node.jpg",
+  "size": 116402,
+  "url": null
+ },
+ {
+  "name": "vqa_prompt_example.jpg",
+  "size": 232045,
+  "url": null
+ },
+ {
+  "name": "water_color_example.jpg",
+  "size": 149740,
+  "url": null
+ },
+ {
+  "name": "title.jpg",
+  "size": 392262,
+  "url": null
+ },
+ {
+  "name": "text_join_example.jpg",
+  "size": 106731,
+  "url": null
+ },
+ {
+  "name": "soft_light_example.jpg",
+  "size": 158617,
+  "url": null
+ },
+ {
+  "name": "text_join_v2_node.jpg",
+  "size": 47383,
+  "url": null
+ },
+ {
+  "name": "stroke_example.jpg",
+  "size": 138205,
+  "url": null
+ },
+ {
+  "name": "text_box_node.jpg",
+  "size": 47699,
+  "url": null
+ },
+ {
+  "name": "text_preseter_node.jpg",
+  "size": 105252,
+  "url": null
+ },
+ {
+  "name": "text_image_node.jpg",
+  "size": 230645,
+  "url": null
+ },
+ {
+  "name": "switch_case_node.jpg",
+  "size": 46657,
+  "url": null
+ },
+ {
+  "name": "text_image_v2_node.jpg",
+  "size": 131487,
+  "url": null
+ },
+ {
+  "name": "soft_light_node.jpg",
+  "size": 55976,
+  "url": null
+ },
+ {
+  "name": "switch_case_example.jpg",
+  "size": 185706,
+  "url": null
+ },
+ {
+  "name": "skin_beauty_node.jpg",
+  "size": 73324,
+  "url": null
+ },
+ {
+  "name": "stroke_node.jpg",
+  "size": 92201,
+  "url": null
+ },
+ {
+  "name": "string_condition_node.jpg",
+  "size": 34197,
+  "url": null
+ },
+ {
+  "name": "text_image_example.jpg",
+  "size": 277353,
+  "url": null
+ },
+ {
+  "name": "string_node.jpg",
+  "size": 39212,
+  "url": null
+ },
+ {
+  "name": "string_condition_example.jpg",
+  "size": 123855,
+  "url": null
+ },
+ {
+  "name": "simple_text_image_node.jpg",
+  "size": 136323,
+  "url": null
+ },
+ {
+  "name": "sharp_and_soft_example.jpg",
+  "size": 293791,
+  "url": null
+ },
+ {
+  "name": "segformer_fashion_setting_node.jpg",
+  "size": 290052,
+  "url": null
+ },
+ {
+  "name": "segment_anything_ultra_compare.jpg",
+  "size": 264019,
+  "url": null
+ },
+ {
+  "name": "show_blind_watermark_node.jpg",
+  "size": 32269,
+  "url": null
+ },
+ {
+  "name": "sharp_and_soft_node.jpg",
+  "size": 77351,
+  "url": null
+ },
+ {
+  "name": "shadow_and_highlight_mask_node.jpg",
+  "size": 75219,
+  "url": null
+ },
+ {
+  "name": "segformer_ultra_example.jpg",
+  "size": 175909,
+  "url": null
+ },
+ {
+  "name": "segformer_fashion_pipeline_node.jpg",
+  "size": 182387,
+  "url": null
+ },
+ {
+  "name": "skin_beauty_example.jpg",
+  "size": 181458,
+  "url": null
+ },
+ {
+  "name": "simple_text_image_example.jpg",
+  "size": 362969,
+  "url": null
+ },
+ {
+  "name": "segment_anything_ultra_example.jpg",
+  "size": 262563,
+  "url": null
+ },
+ {
+  "name": "segfromer_ultra_v3_node.jpg",
+  "size": 116196,
+  "url": null
+ },
+ {
+  "name": "segment_anything_ultra_v2_node.jpg",
+  "size": 166556,
+  "url": null
+ },
+ {
+  "name": "segment_anything_ultra_node.jpg",
+  "size": 126428,
+  "url": null
+ },
+ {
+  "name": "shadow_and_highlight_mask_example.jpg",
+  "size": 251532,
+  "url": null
+ },
+ {
+  "name": "segformer_ultra_v2_node.jpg",
+  "size": 66481,
+  "url": null
+ },
+ {
+  "name": "segformer_ultra_node.jpg",
+  "size": 102140,
+  "url": null
+ },
+ {
+  "name": "random_generator_node.jpg",
+  "size": 130888,
+  "url": null
+ },
+ {
+  "name": "RGB_value_example.jpg",
+  "size": 81237,
+  "url": null
+ },
+ {
+  "name": "segformer_fashion_example.jpg",
+  "size": 216951,
+  "url": null
+ },
+ {
+  "name": "rounded_rectangle_node.jpg",
+  "size": 118558,
+  "url": null
+ },
+ {
+  "name": "rounded_rectangle_example.jpg",
+  "size": 559367,
+  "url": null
+ },
+ {
+  "name": "segformer_clothes_example.jpg",
+  "size": 188037,
+  "url": null
+ },
+ {
+  "name": "rmbg_ultra_v2_node.jpg",
+  "size": 55133,
+  "url": null
+ },
+ {
+  "name": "segformer_clothes_pipeline_node.jpg",
+  "size": 102560,
+  "url": null
+ },
+ {
+  "name": "segformer_clothes_setting_node.jpg",
+  "size": 161356,
+  "url": null
+ },
+ {
+  "name": "restore_pad_image_batch_node.jpg",
+  "size": 39651,
+  "url": null
+ },
+ {
+  "name": "RGB_node.jpg",
+  "size": 53451,
+  "url": null
+ },
+ {
+  "name": "restore_crop_box_node.jpg",
+  "size": 89709,
+  "url": null
+ },
+ {
+  "name": "random_generator_v2_node.jpg",
+  "size": 105368,
+  "url": null
+ },
+ {
+  "name": "rembg_ultra_example.jpg",
+  "size": 444259,
+  "url": null
+ },
+ {
+  "name": "queue_stop_example.jpg",
+  "size": 102397,
+  "url": null
+ },
+ {
+  "name": "queue_stop_node.jpg",
+  "size": 41132,
+  "url": null
+ },
+ {
+  "name": "rembg_ultra_node.jpg",
+  "size": 94085,
+  "url": null
+ },
+ {
+  "name": "random_generator_example.jpg",
+  "size": 370992,
+  "url": null
+ },
+ {
+  "name": "node-menu.jpg",
+  "size": 70767,
+  "url": null
+ },
+ {
+  "name": "number_calculator_node.jpg",
+  "size": 40476,
+  "url": null
+ },
+ {
+  "name": "pad_image_batch_node.jpg",
+  "size": 43165,
+  "url": null
+ },
+ {
+  "name": "outer_glow_node.jpg",
+  "size": 92824,
+  "url": null
+ },
+ {
+  "name": "name_to_color_example.jpg",
+  "size": 109324,
+  "url": null
+ },
+ {
+  "name": "name_to_color_node.jpg",
+  "size": 145074,
+  "url": null
+ },
+ {
+  "name": "node-search.jpg",
+  "size": 98091,
+  "url": null
+ },
+ {
+  "name": "purge_vram_example.jpg",
+  "size": 122548,
+  "url": null
+ },
+ {
+  "name": "purge_vram_v2_example.jpg",
+  "size": 68807,
+  "url": null
+ },
+ {
+  "name": "print_info_node.jpg",
+  "size": 33148,
+  "url": null
+ },
+ {
+  "name": "motion_blur_example.jpg",
+  "size": 94053,
+  "url": null
+ },
+ {
+  "name": "outer_glow_example.jpg",
+  "size": 149618,
+  "url": null
+ },
+ {
+  "name": "pixel_spread_example.jpg",
+  "size": 229790,
+  "url": null
+ },
+ {
+  "name": "menu_layer_utility.jpg",
+  "size": 140079,
+  "url": null
+ },
+ {
+  "name": "pixel_spread_node.jpg",
+  "size": 66488,
+  "url": null
+ },
+ {
+  "name": "menu_layer_mask.jpg",
+  "size": 87215,
+  "url": null
+ },
+ {
+  "name": "number_calculator_v2_node.jpg",
+  "size": 50037,
+  "url": null
+ },
+ {
+  "name": "menu_layer_style.jpg",
+  "size": 68277,
+  "url": null
+ },
+ {
+  "name": "mask_invert.jpg",
+  "size": 118640,
+  "url": null
+ },
+ {
+  "name": "mask_gradient_example.jpg",
+  "size": 318668,
+  "url": null
+ },
+ {
+  "name": "mask_grain_node.jpg",
+  "size": 35256,
+  "url": null
+ },
+ {
+  "name": "mask_motion_blur_example.jpg",
+  "size": 150480,
+  "url": null
+ },
+ {
+  "name": "mask_grow_node.jpg",
+  "size": 99806,
+  "url": null
+ },
+ {
+  "name": "mask_stroke_example.jpg",
+  "size": 138265,
+  "url": null
+ },
+ {
+  "name": "menu_layer_color.jpg",
+  "size": 75224,
+  "url": null
+ },
+ {
+  "name": "mask_edge_ultra_detail_v3_example.jpg",
+  "size": 928245,
+  "url": null
+ },
+ {
+  "name": "mask_preview_example.jpg",
+  "size": 83535,
+  "url": null
+ },
+ {
+  "name": "mask_invert_node.jpg",
+  "size": 34590,
+  "url": null
+ },
+ {
+  "name": "menu_layer_filter.jpg",
+  "size": 74662,
+  "url": null
+ },
+ {
+  "name": "mask_stroke_node.jpg",
+  "size": 94318,
+  "url": null
+ },
+ {
+  "name": "mask_edge_ultra_detail_v2_node.jpg",
+  "size": 61626,
+  "url": null
+ },
+ {
+  "name": "mask_motion_blur_node.jpg",
+  "size": 79980,
+  "url": null
+ },
+ {
+  "name": "mask_grain_example.jpg",
+  "size": 72218,
+  "url": null
+ },
+ {
+  "name": "mask_edge_ultra_detail_v3_node.jpg",
+  "size": 214199,
+  "url": null
+ },
+ {
+  "name": "mask_gradient_node.jpg",
+  "size": 94669,
+  "url": null
+ },
+ {
+  "name": "mask_grow_example.jpg",
+  "size": 125273,
+  "url": null
+ },
+ {
+  "name": "mask_edge_shrink_example.jpg",
+  "size": 140488,
+  "url": null
+ },
+ {
+  "name": "Alibaba-PuHuiTi-Heavy.ttf",
+  "size": 2167400,
+  "url": null
+ },
+ {
+  "name": "resource_dir.ini.example",
+  "size": 59,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 1572,
+  "url": null
+ },
+ {
+  "name": "repair_dependency_list.txt",
+  "size": 31,
+  "url": null
+ },
+ {
+  "name": "repair_dependency.bat",
+  "size": 534,
+  "url": null
+ },
+ {
+  "name": "repair_dependency_aki.bat",
+  "size": 523,
+  "url": null
+ },
+ {
+  "name": "requirements.txt",
+  "size": 193,
+  "url": null
+ },
+ {
+  "name": "README_CN.MD",
+  "size": 140549,
+  "url": null
+ },
+ {
+  "name": ".gitignore",
+  "size": 52,
+  "url": null
+ },
+ {
+  "name": "README.MD",
+  "size": 158419,
+  "url": null
+ },
+ {
+  "name": "pyproject.toml",
+  "size": 771,
+  "url": null
+ },
+ {
+  "name": "LICENSE",
+  "size": 1088,
+  "url": null
+ },
+ {
+  "name": "custom_size.ini.example",
+  "size": 133,
+  "url": null
+ },
+ {
+  "name": "install_requirements.bat",
+  "size": 682,
+  "url": null
+ },
+ {
+  "name": "install_requirements_aki.bat",
+  "size": 669,
+  "url": null
+ },
+ {
+  "name": "CR_Text_Operation_demo1.json",
+  "size": 17393,
+  "url": null
+ },
+ {
+  "name": "CR_Text_Input_Switch_demo1.json",
+  "size": 8456,
+  "url": null
+ },
+ {
+  "name": "CR_Set_Switch_From_String_demo1.json",
+  "size": 6407,
+  "url": null
+ },
+ {
+  "name": "CR_Set_Value_On_Binary_demo1.json",
+  "size": 8390,
+  "url": null
+ },
+ {
+  "name": "CR_Get_Parameter_From_Folder_demo1.json",
+  "size": 13996,
+  "url": null
+ },
+ {
+  "name": "CR_Random_RGB_Gradient_demo1.json",
+  "size": 3216,
+  "url": null
+ },
+ {
+  "name": "CR_Random_Multiline_Values_demo1.json",
+  "size": 12365,
+  "url": null
+ },
+ {
+  "name": "CR_Random_Multiline_Colors_demo1.json",
+  "size": 4252,
+  "url": null
+ },
+ {
+  "name": "CR_Random_Panel_Codes_demo1.json",
+  "size": 5830,
+  "url": null
+ },
+ {
+  "name": "CR_String_To_Number_demo1.json",
+  "size": 10990,
+  "url": null
+ },
+ {
+  "name": "CR_Simple_Text_Watermark_demo1.json",
+  "size": 5303,
+  "url": null
+ },
+ {
+  "name": "CR_Select_Font_demo1.json",
+  "size": 3182,
+  "url": null
+ },
+ {
+  "name": "CR_Simple_Meme_Template_demo2.json",
+  "size": 11317,
+  "url": null
+ },
+ {
+  "name": "CR_Seamless_Checker_demo1.json",
+  "size": 1869,
+  "url": null
+ },
+ {
+  "name": "CR_Thumbnail_Preview_demo1.json",
+  "size": 10598,
+  "url": null
+ },
+ {
+  "name": "CR_Simple_Banner_demo1.json",
+  "size": 6479,
+  "url": null
+ },
+ {
+  "name": "CR_Simple_Meme_Template_demo1.json",
+  "size": 2579,
+  "url": null
+ },
+ {
+  "name": "CR_Simple_Meme_Template_demo3.json",
+  "size": 5287,
+  "url": null
+ },
+ {
+  "name": "CR_Simple_Image_Compare_demo1.json",
+  "size": 4342,
+  "url": null
+ },
+ {
+  "name": "CR_Simple_Banner_demo2.json",
+  "size": 4943,
+  "url": null
+ },
+ {
+  "name": "CR_Image_Grid_Panel_demo1.json",
+  "size": 6212,
+  "url": null
+ },
+ {
+  "name": "CR_Feathered_Border_demo1.json",
+  "size": 5126,
+  "url": null
+ },
+ {
+  "name": "CR_Image_Grid_Panel_demo2.json",
+  "size": 3307,
+  "url": null
+ },
+ {
+  "name": "CR_Overlay_Transparent_Image_demo1.json",
+  "size": 7470,
+  "url": null
+ },
+ {
+  "name": "CR_Starburst_Lines_demo1.json",
+  "size": 3297,
+  "url": null
+ },
+ {
+  "name": "CR_gradient_nodes_demo1.json",
+  "size": 30174,
+  "url": null
+ },
+ {
+  "name": "CR_Style_Bars_demo1.json",
+  "size": 16084,
+  "url": null
+ },
+ {
+  "name": "CR_Vignette_Filter_demo1.json",
+  "size": 17500,
+  "url": null
+ },
+ {
+  "name": "CR_Vignette_Filter_demo2.json",
+  "size": 17504,
+  "url": null
+ },
+ {
+  "name": "CR_graphics_nodes_demo1.json",
+  "size": 13589,
+  "url": null
+ },
+ {
+  "name": "CR_Bit_Schedule_demo1.json",
+  "size": 6114,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_A3_SimplePromptScheduling_BatchDemo_v01.json",
+  "size": 25105,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_E1_GradientNodes_IterativeDemo_v01a.json",
+  "size": 17806,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_A2_PromptKeyframeNodes_IterativeDemo_v02b.json",
+  "size": 32450,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_C6_LoadScheduledModelsLoRAs_IterativeDemo_v0.1a.json",
+  "size": 15627,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_C4_TextScheduler_IterativeDemo_v01c.json",
+  "size": 161486,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_C5_SimpleLoadScheduledModels_IterativeDemo_v01b.json",
+  "size": 11760,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_C2_ValueScheduler_IterativeDemo_v01a.json",
+  "size": 24827,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_A1_PromptKeyframeScheduling_IterativeDemo_v01.json",
+  "size": 32206,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_D2_TextCycler_IterativeDemo_v01.json",
+  "size": 27440,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_D1_CyclerNodes_IterativeDemo_v01b.json",
+  "size": 23577,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_D3_ImageCycler_IterativeDemo_v01.json",
+  "size": 10313,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_C1_SimpleValueScheduler_IterativeDemo_v01b.json",
+  "size": 22984,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_C3_SimpleTextScheduler_IterativeDemo_v01a.json",
+  "size": 14994,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_B4_CombineSchedules_IterativeDemo_v01a.json",
+  "size": 21198,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_B2_LoadScheduleFromFile_IterativeDemo_v01a.json",
+  "size": 13254,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_F1_IONodes_IterativeDemo_v01.json",
+  "size": 8412,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_B3_OutputScheduleToFile_IterativeDemo_v01a.json",
+  "size": 3567,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_E2_IncrementNodes_IterativeDemo_v01b.json",
+  "size": 20817,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_B1_CentralSchedule_IterativeDemo_v01b.json",
+  "size": 16365,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_A5_CentralPromptScheduling_IterativeDemo_v01a.json",
+  "size": 29904,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_A3_SimplePromptScheduling_IterativeDemo_v01b.json",
+  "size": 28159,
+  "url": null
+ },
+ {
+  "name": "CR_Animation_A4_PromptScheduling_IterativeDemo_v01a.json",
+  "size": 28470,
+  "url": null
+ },
+ {
+  "name": "CR_XY_Revised_FreeU_demo1.json",
+  "size": 20717,
+  "url": null
+ },
+ {
+  "name": "CR_Multi_Upscale_Stack_demo1.json",
+  "size": 3516,
+  "url": null
+ },
+ {
+  "name": "CR_Upscale_Image_demo1.json",
+  "size": 3382,
+  "url": null
+ },
+ {
+  "name": "CR_Data_Bus_demo1.json",
+  "size": 9368,
+  "url": null
+ },
+ {
+  "name": "CR_Save_Text_To_file_demo1.json",
+  "size": 3448,
+  "url": null
+ },
+ {
+  "name": "CR_Load_Image_Plus_demo1.json",
+  "size": 7809,
+  "url": null
+ },
+ {
+  "name": "CR_Multiline_Text_demo1.json",
+  "size": 21228,
+  "url": null
+ },
+ {
+  "name": "CR_Split_String_demo1.json",
+  "size": 5856,
+  "url": null
+ },
+ {
+  "name": "CR_UltraSimpleMultiModelMerge_demo1.json",
+  "size": 4340,
+  "url": null
+ },
+ {
+  "name": "CR_SDXL_MultiModelMerge_demo1.json",
+  "size": 39675,
+  "url": null
+ },
+ {
+  "name": "CR_SDXL_MultiModelGradientMerge_demo1.json",
+  "size": 55530,
+  "url": null
+ },
+ {
+  "name": "CR_SimpleMultiModelMerge_demo1.json",
+  "size": 10217,
+  "url": null
+ },
+ {
+  "name": "CR_Text_List_demo1.json",
+  "size": 6215,
+  "url": null
+ },
+ {
+  "name": "CR_XY_Product_demo1.json",
+  "size": 8934,
+  "url": null
+ },
+ {
+  "name": "CR_Text_List_demo2.json",
+  "size": 5309,
+  "url": null
+ },
+ {
+  "name": "CR_Font_File_List_demo1.json",
+  "size": 4235,
+  "url": null
+ },
+ {
+  "name": "CR_Load_Text_List_demo1.json",
+  "size": 3307,
+  "url": null
+ },
+ {
+  "name": "CR_Intertwine_Lists_demo1.json",
+  "size": 4699,
+  "url": null
+ },
+ {
+  "name": "CR_Aspect_Ratio_demo1.json",
+  "size": 6641,
+  "url": null
+ },
+ {
+  "name": "nodes_utils_index.py",
+  "size": 5377,
+  "url": null
+ },
+ {
+  "name": "nodes_upscale.py",
+  "size": 8973,
+  "url": null
+ },
+ {
+  "name": "nodes_xygrid.py",
+  "size": 16789,
+  "url": null
+ },
+ {
+  "name": "shapes.py",
+  "size": 5338,
+  "url": null
+ },
+ {
+  "name": "nodes_utils_text.py",
+  "size": 15295,
+  "url": null
+ },
+ {
+  "name": "nodes_utils_logic.py",
+  "size": 17045,
+  "url": null
+ },
+ {
+  "name": "nodes_utils_other.py",
+  "size": 15486,
+  "url": null
+ },
+ {
+  "name": "nodes_utils_random.py",
+  "size": 10855,
+  "url": null
+ },
+ {
+  "name": "nodes_utils_conversion.py",
+  "size": 7358,
+  "url": null
+ },
+ {
+  "name": "nodes_list.py",
+  "size": 35668,
+  "url": null
+ },
+ {
+  "name": "nodes_model_merge.py",
+  "size": 9289,
+  "url": null
+ },
+ {
+  "name": "nodes_legacy.py",
+  "size": 8317,
+  "url": null
+ },
+ {
+  "name": "nodes_graphics_text.py",
+  "size": 23780,
+  "url": null
+ },
+ {
+  "name": "nodes_graphics_template.py",
+  "size": 30211,
+  "url": null
+ },
+ {
+  "name": "nodes_sdxl.py",
+  "size": 10288,
+  "url": null
+ },
+ {
+  "name": "nodes_lora.py",
+  "size": 20304,
+  "url": null
+ },
+ {
+  "name": "nodes_pipe.py",
+  "size": 16005,
+  "url": null
+ },
+ {
+  "name": "nodes_graphics_matplot.py",
+  "size": 36648,
+  "url": null
+ },
+ {
+  "name": "nodes_graphics_pattern.py",
+  "size": 21662,
+  "url": null
+ },
+ {
+  "name": "nodes_graphics_layout.py",
+  "size": 35122,
+  "url": null
+ },
+ {
+  "name": "nodes_animation_utils.py",
+  "size": 2308,
+  "url": null
+ },
+ {
+  "name": "functions_json.py",
+  "size": 2744,
+  "url": null
+ },
+ {
+  "name": "nodes_graphics_filter.py",
+  "size": 19982,
+  "url": null
+ },
+ {
+  "name": "nodes_animation_prompt.py",
+  "size": 18704,
+  "url": null
+ },
+ {
+  "name": "nodes_controlnet.py",
+  "size": 9233,
+  "url": null
+ },
+ {
+  "name": "nodes_animation_cyclers.py",
+  "size": 17083,
+  "url": null
+ },
+ {
+  "name": "nodes_animation_io.py",
+  "size": 12431,
+  "url": null
+ },
+ {
+  "name": "nodes_animation_interpolation.py",
+  "size": 10320,
+  "url": null
+ },
+ {
+  "name": "nodes_animation_schedulers.py",
+  "size": 25564,
+  "url": null
+ },
+ {
+  "name": "nodes_animation_schedules.py",
+  "size": 14796,
+  "url": null
+ },
+ {
+  "name": "nodes_animation_lists.py",
+  "size": 17657,
+  "url": null
+ },
+ {
+  "name": "nodes_aspect_ratio.py",
+  "size": 23468,
+  "url": null
+ },
+ {
+  "name": "nodes_core.py",
+  "size": 17644,
+  "url": null
+ },
+ {
+  "name": "functions_xygrid.py",
+  "size": 6361,
+  "url": null
+ },
+ {
+  "name": "functions_upscale.py",
+  "size": 3977,
+  "url": null
+ },
+ {
+  "name": "functions_graphics.py",
+  "size": 18636,
+  "url": null
+ },
+ {
+  "name": "functions_animation.py",
+  "size": 4277,
+  "url": null
+ },
+ {
+  "name": "functions.py",
+  "size": 680,
+  "url": null
+ },
+ {
+  "name": "Roboto-Regular.ttf",
+  "size": 129584,
+  "url": null
+ },
+ {
+  "name": "Quicksand-Bold.ttf",
+  "size": 78596,
+  "url": null
+ },
+ {
+  "name": "Oswald-Bold.ttf",
+  "size": 87604,
+  "url": null
+ },
+ {
+  "name": "YoungSerif-Regular.ttf",
+  "size": 105136,
+  "url": null
+ },
+ {
+  "name": "impact.ttf",
+  "size": 206784,
+  "url": null
+ },
+ {
+  "name": "PixelifySans-Bold.ttf",
+  "size": 50876,
+  "url": null
+ },
+ {
+  "name": "AlumniSansCollegiateOne-Regular.ttf",
+  "size": 156292,
+  "url": null
+ },
+ {
+  "name": "NotoSansArabic-Regular.ttf",
+  "size": 177004,
+  "url": null
+ },
+ {
+  "name": "Caveat-VariableFont_wght.ttf",
+  "size": 393092,
+  "url": null
+ },
+ {
+  "name": "comic.ttf",
+  "size": 245600,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 1811,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 9072,
+  "url": null
+ },
+ {
+  "name": "config.py",
+  "size": 2576,
+  "url": null
+ },
+ {
+  "name": "node_mappings.py",
+  "size": 25011,
+  "url": null
+ },
+ {
+  "name": "categories.py",
+  "size": 3484,
+  "url": null
+ },
+ {
+  "name": "Patch_Notes.md",
+  "size": 6413,
+  "url": null
+ },
+ {
+  "name": "testRunner.js",
+  "size": 3228,
+  "url": null
+ },
+ {
+  "name": "server.py",
+  "size": 2896,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 190,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 471,
+  "url": null
+ },
+ {
+  "name": "publish.yml",
+  "size": 664,
+  "url": null
+ },
+ {
+  "name": "videoinfo.js",
+  "size": 4414,
+  "url": null
+ },
+ {
+  "name": "VHS.core.js",
+  "size": 107032,
+  "url": null
+ },
+ {
+  "name": "nvenc_av1-mp4.json",
+  "size": 621,
+  "url": null
+ },
+ {
+  "name": "nvenc_hevc-mp4.json",
+  "size": 648,
+  "url": null
+ },
+ {
+  "name": "nvenc_h264-mp4.json",
+  "size": 622,
+  "url": null
+ },
+ {
+  "name": "gifski.json",
+  "size": 299,
+  "url": null
+ },
+ {
+  "name": "h264-mp4.json",
+  "size": 634,
+  "url": null
+ },
+ {
+  "name": "ProRes.json",
+  "size": 965,
+  "url": null
+ },
+ {
+  "name": "webm.json",
+  "size": 605,
+  "url": null
+ },
+ {
+  "name": "h265-mp4.json",
+  "size": 662,
+  "url": null
+ },
+ {
+  "name": "8bit-png.json",
+  "size": 82,
+  "url": null
+ },
+ {
+  "name": "av1-webm.json",
+  "size": 641,
+  "url": null
+ },
+ {
+  "name": "ffmpeg-gif.json",
+  "size": 374,
+  "url": null
+ },
+ {
+  "name": "ffv1-mkv.json",
+  "size": 1129,
+  "url": null
+ },
+ {
+  "name": "16bit-png.json",
+  "size": 148,
+  "url": null
+ },
+ {
+  "name": "utils.py",
+  "size": 17487,
+  "url": null
+ },
+ {
+  "name": "load_video_nodes.py",
+  "size": 29776,
+  "url": null
+ },
+ {
+  "name": "latent_preview.py",
+  "size": 5614,
+  "url": null
+ },
+ {
+  "name": "batched_nodes.py",
+  "size": 1846,
+  "url": null
+ },
+ {
+  "name": "server.py",
+  "size": 12472,
+  "url": null
+ },
+ {
+  "name": "nodes.py",
+  "size": 49539,
+  "url": null
+ },
+ {
+  "name": "documentation.py",
+  "size": 44421,
+  "url": null
+ },
+ {
+  "name": "logger.py",
+  "size": 1093,
+  "url": null
+ },
+ {
+  "name": "load_images_nodes.py",
+  "size": 8326,
+  "url": null
+ },
+ {
+  "name": "image_latent_nodes.py",
+  "size": 19593,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 141,
+  "url": null
+ },
+ {
+  "name": "simple.json",
+  "size": 2954,
+  "url": null
+ },
+ {
+  "name": "old-vae-conversion.json",
+  "size": 4659,
+  "url": null
+ },
+ {
+  "name": "batch4x4.json",
+  "size": 10771,
+  "url": null
+ },
+ {
+  "name": "loop.json",
+  "size": 3821,
+  "url": null
+ },
+ {
+  "name": "audio.json",
+  "size": 6404,
+  "url": null
+ },
+ {
+  "name": "old-prores.json",
+  "size": 9116,
+  "url": null
+ },
+ {
+  "name": "converted-input.json",
+  "size": 6224,
+  "url": null
+ },
+ {
+  "name": "converted-format-input.json",
+  "size": 4767,
+  "url": null
+ },
+ {
+  "name": "requirements.txt",
+  "size": 31,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 8987,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 407,
+  "url": null
+ },
+ {
+  "name": "pyproject.toml",
+  "size": 440,
+  "url": null
+ },
+ {
+  "name": ".gitignore",
+  "size": 3263,
+  "url": null
+ },
+ {
+  "name": "LICENSE",
+  "size": 35823,
+  "url": null
+ },
+ {
+  "name": "publish.yml",
+  "size": 650,
+  "url": null
+ },
+ {
+  "name": "previewText.js",
+  "size": 2677,
+  "url": null
+ },
+ {
+  "name": "demography.py",
+  "size": 9110,
+  "url": null
+ },
+ {
+  "name": "320n.onnx",
+  "size": 12150158,
+  "url": null
+ },
+ {
+  "name": "nudenet.py",
+  "size": 9092,
+  "url": null
+ },
+ {
+  "name": "detectorForNSFW.png",
+  "size": 340443,
+  "url": null
+ },
+ {
+  "name": "deepfaceAnalyzeFaceAttributes.png",
+  "size": 312349,
+  "url": null
+ },
+ {
+  "name": "maskFromFacemodel.png",
+  "size": 234564,
+  "url": null
+ },
+ {
+  "name": "node_replicate.py",
+  "size": 15441,
+  "url": null
+ },
+ {
+  "name": "node_segmind.py",
+  "size": 7865,
+  "url": null
+ },
+ {
+  "name": "node_others.py",
+  "size": 482,
+  "url": null
+ },
+ {
+  "name": "node_volcano.py",
+  "size": 15682,
+  "url": null
+ },
+ {
+  "name": "node_nsfw.py",
+  "size": 4609,
+  "url": null
+ },
+ {
+  "name": "utils.py",
+  "size": 3283,
+  "url": null
+ },
+ {
+  "name": "nodes_novita_video.py",
+  "size": 7141,
+  "url": null
+ },
+ {
+  "name": "color_correct.py",
+  "size": 6734,
+  "url": null
+ },
+ {
+  "name": "node_mask.py",
+  "size": 1249,
+  "url": null
+ },
+ {
+  "name": "nodes_switch.py",
+  "size": 3654,
+  "url": null
+ },
+ {
+  "name": "node_models_downloader.py",
+  "size": 5953,
+  "url": null
+ },
+ {
+  "name": "node_image_composite.py",
+  "size": 3225,
+  "url": null
+ },
+ {
+  "name": "node_gemini_enhance_prompt.py",
+  "size": 10415,
+  "url": null
+ },
+ {
+  "name": "node_fal.py",
+  "size": 38182,
+  "url": null
+ },
+ {
+  "name": "nodes_video.py",
+  "size": 16857,
+  "url": null
+ },
+ {
+  "name": "node_crop_by_mask.py",
+  "size": 7276,
+  "url": null
+ },
+ {
+  "name": "node_face_attributes.py",
+  "size": 5115,
+  "url": null
+ },
+ {
+  "name": "node_image.py",
+  "size": 8977,
+  "url": null
+ },
+ {
+  "name": "nodes_torch_compile.py",
+  "size": 999,
+  "url": null
+ },
+ {
+  "name": "nodes.py",
+  "size": 65208,
+  "url": null
+ },
+ {
+  "name": ".gitignore",
+  "size": 13,
+  "url": null
+ },
+ {
+  "name": "requirements.txt",
+  "size": 471,
+  "url": null
+ },
+ {
+  "name": "pyproject.toml",
+  "size": 693,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 15439,
+  "url": null
+ },
+ {
+  "name": ".tracking",
+  "size": 733,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 1546,
+  "url": null
+ },
+ {
+  "name": "LICENSE",
+  "size": 35149,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 90,
+  "url": null
+ },
+ {
+  "name": "upfirdn2d.py",
+  "size": 5617,
+  "url": null
+ },
+ {
+  "name": "fused_act.py",
+  "size": 2986,
+  "url": null
+ },
+ {
+  "name": "flow_comp.py",
+  "size": 19167,
+  "url": null
+ },
+ {
+  "name": "spectral_norm.py",
+  "size": 12358,
+  "url": null
+ },
+ {
+  "name": "network_vrt_pair_qkv_video_fuse.py",
+  "size": 50248,
+  "url": null
+ },
+ {
+  "name": "VRetouchEr.py",
+  "size": 13228,
+  "url": null
+ },
+ {
+  "name": "gpen_model_video.py",
+  "size": 29765,
+  "url": null
+ },
+ {
+  "name": "LICENSE",
+  "size": 1065,
+  "url": null
+ },
+ {
+  "name": "README_T8.md",
+  "size": 1511,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 22,
+  "url": null
+ },
+ {
+  "name": "layers.py",
+  "size": 4741,
+  "url": null
+ },
+ {
+  "name": "flow_match.py",
+  "size": 3327,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 43,
+  "url": null
+ },
+ {
+  "name": "flashvsr_tiny_long.py",
+  "size": 27084,
+  "url": null
+ },
+ {
+  "name": "base.py",
+  "size": 5870,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 241,
+  "url": null
+ },
+ {
+  "name": "flashvsr_tiny.py",
+  "size": 26982,
+  "url": null
+ },
+ {
+  "name": "flashvsr_full.py",
+  "size": 28584,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 29,
+  "url": null
+ },
+ {
+  "name": "wan_video_vae.py",
+  "size": 31203,
+  "url": null
+ },
+ {
+  "name": "wan_video_dit.py",
+  "size": 32918,
+  "url": null
+ },
+ {
+  "name": "TCDecoder.py",
+  "size": 12560,
+  "url": null
+ },
+ {
+  "name": "utils.py",
+  "size": 17151,
+  "url": null
+ },
+ {
+  "name": "model_manager.py",
+  "size": 18752,
+  "url": null
+ },
+ {
+  "name": "model_config.py",
+  "size": 1782,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "LICENSE.txt",
+  "size": 11357,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 72,
+  "url": null
+ },
+ {
+  "name": "attention.py",
+  "size": 5179,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 173,
+  "url": null
+ },
+ {
+  "name": "kernel.py",
+  "size": 6427,
+  "url": null
+ },
+ {
+  "name": "patch.py",
+  "size": 38657,
+  "url": null
+ },
+ {
+  "name": "block_map.py",
+  "size": 13053,
+  "url": null
+ },
+ {
+  "name": "taomate_local_transport.py",
+  "size": 2715,
+  "url": null
+ },
+ {
+  "name": "taomate_stream_timing.py",
+  "size": 1121,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 80,
+  "url": null
+ },
+ {
+  "name": "taomate_video_worker.py",
+  "size": 8641,
+  "url": null
+ },
+ {
+  "name": "taomate_request_state.py",
+  "size": 4040,
+  "url": null
+ },
+ {
+  "name": "taomate_stream_decode_worker.py",
+  "size": 10752,
+  "url": null
+ },
+ {
+  "name": "taomate_video_decode_worker.py",
+  "size": 4596,
+  "url": null
+ },
+ {
+  "name": "taomate_stream_assembly.py",
+  "size": 5061,
+  "url": null
+ },
+ {
+  "name": "taomate_weight_offload.py",
+  "size": 6577,
+  "url": null
+ },
+ {
+  "name": "taomate_prepared_pipeline.py",
+  "size": 1132,
+  "url": null
+ },
+ {
+  "name": "taomate_stream_worker.py",
+  "size": 7660,
+  "url": null
+ },
+ {
+  "name": "taomate_stream_inputs.py",
+  "size": 4174,
+  "url": null
+ },
+ {
+  "name": "taomate_media_delivery.py",
+  "size": 3903,
+  "url": null
+ },
+ {
+  "name": "taomate_stream_execution.py",
+  "size": 5182,
+  "url": null
+ },
+ {
+  "name": "ltx_refined_decode_worker.py",
+  "size": 5546,
+  "url": null
+ },
+ {
+  "name": "ltx_refined_media.py",
+  "size": 4067,
+  "url": null
+ },
+ {
+  "name": "ltx_prepared_refinement_worker.py",
+  "size": 8747,
+  "url": null
+ },
+ {
+  "name": "taomate_local_session.py",
+  "size": 809,
+  "url": null
+ },
+ {
+  "name": "taomate_local_runtime.py",
+  "size": 4912,
+  "url": null
+ },
+ {
+  "name": "taomate_host_cache.py",
+  "size": 4369,
+  "url": null
+ },
+ {
+  "name": "ltx_lora_contract.py",
+  "size": 1627,
+  "url": null
+ },
+ {
+  "name": "taomate_input_preflight.py",
+  "size": 1719,
+  "url": null
+ },
+ {
+  "name": "ltx_prepared_request.py",
+  "size": 3862,
+  "url": null
+ },
+ {
+  "name": "ltx_gpu_fusion_gate.py",
+  "size": 2662,
+  "url": null
+ },
+ {
+  "name": "backend_files.py",
+  "size": 554,
+  "url": null
+ },
+ {
+  "name": "taomate_leased_hook.py",
+  "size": 1694,
+  "url": null
+ },
+ {
+  "name": "ltx_text_weight_offload.py",
+  "size": 1551,
+  "url": null
+ },
+ {
+  "name": "taomate_bounded_retention.py",
+  "size": 2910,
+  "url": null
+ },
+ {
+  "name": "resource_guard.py",
+  "size": 11145,
+  "url": null
+ },
+ {
+  "name": "ltx_dequantized_lora.py",
+  "size": 9827,
+  "url": null
+ },
+ {
+  "name": "single8_node.py",
+  "size": 8289,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 83,
+  "url": null
+ },
+ {
+  "name": "single8.py",
+  "size": 6729,
+  "url": null
+ },
+ {
+  "name": "nodes.py",
+  "size": 12094,
+  "url": null
+ },
+ {
+  "name": "runner.py",
+  "size": 12531,
+  "url": null
+ },
+ {
+  "name": "resources.py",
+  "size": 8550,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 81,
+  "url": null
+ },
+ {
+  "name": "process.py",
+  "size": 9838,
+  "url": null
+ },
+ {
+  "name": "transport.py",
+  "size": 11292,
+  "url": null
+ },
+ {
+  "name": "device_binding.py",
+  "size": 3560,
+  "url": null
+ },
+ {
+  "name": "media.py",
+  "size": 9724,
+  "url": null
+ },
+ {
+  "name": "entry.py",
+  "size": 4779,
+  "url": null
+ },
+ {
+  "name": "frame_stream.py",
+  "size": 3851,
+  "url": null
+ },
+ {
+  "name": "file_task.py",
+  "size": 6857,
+  "url": null
+ },
+ {
+  "name": "guides.py",
+  "size": 2182,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_source_runtime.py",
+  "size": 11335,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_window_store.py",
+  "size": 10793,
+  "url": null
+ },
+ {
+  "name": "vram_policy.py",
+  "size": 24252,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_source_store.py",
+  "size": 7017,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_regional.py",
+  "size": 17863,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_sampling_runtime.py",
+  "size": 4812,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_pixel_receipt.py",
+  "size": 2401,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_prepared_reload.py",
+  "size": 6499,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_prepare.py",
+  "size": 9901,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_media.py",
+  "size": 15310,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_sampling.py",
+  "size": 11727,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_noise.py",
+  "size": 5176,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_rgb_capture.py",
+  "size": 3640,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_regional_conditioning.py",
+  "size": 12537,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_plan.py",
+  "size": 11887,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_preview.py",
+  "size": 7938,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_model_patches.py",
+  "size": 10171,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_kj_contract.py",
+  "size": 973,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_packet_mux.py",
+  "size": 2988,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_inspection_worker.py",
+  "size": 2806,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_inspection.py",
+  "size": 5203,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_identity.py",
+  "size": 7413,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_audio_decode.py",
+  "size": 2460,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_conditioning.py",
+  "size": 8798,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_compose.py",
+  "size": 18947,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_compatibility_report.py",
+  "size": 1976,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_audio_store.py",
+  "size": 9968,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_decode.py",
+  "size": 4271,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_finish.py",
+  "size": 5159,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_candidate_preview.py",
+  "size": 5907,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_execution.py",
+  "size": 2766,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_candidate_execution.py",
+  "size": 3325,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_audio_runtime.py",
+  "size": 7621,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_candidates.py",
+  "size": 5319,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_delivery.py",
+  "size": 3600,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_audio_file.py",
+  "size": 6518,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_composite.py",
+  "size": 2526,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_candidate_archive.py",
+  "size": 10385,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_color.py",
+  "size": 6518,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_guidance.py",
+  "size": 10515,
+  "url": null
+ },
+ {
+  "name": "trt_vae_loader.py",
+  "size": 6590,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_alignment.py",
+  "size": 9091,
+  "url": null
+ },
+ {
+  "name": "trt_vae_prepare_t1_worker.py",
+  "size": 10049,
+  "url": null
+ },
+ {
+  "name": "vdn_sdpa_backend.py",
+  "size": 1127,
+  "url": null
+ },
+ {
+  "name": "video_outpaint_audio.py",
+  "size": 13588,
+  "url": null
+ },
+ {
+  "name": "vdn_h3_advanced.py",
+  "size": 61948,
+  "url": null
+ },
+ {
+  "name": "trt_vae_decode.py",
+  "size": 6586,
+  "url": null
+ },
+ {
+  "name": "trt_vae_interface.py",
+  "size": 8168,
+  "url": null
+ },
+ {
+  "name": "vdn_attention_compat.py",
+  "size": 3328,
+  "url": null
+ },
+ {
+  "name": "tst_runtime.py",
+  "size": 9064,
+  "url": null
+ },
+ {
+  "name": "trt_vae_prepare_t1.py",
+  "size": 7104,
+  "url": null
+ },
+ {
+  "name": "tst_math.py",
+  "size": 7121,
+  "url": null
+ },
+ {
+  "name": "vdn_two_pass.py",
+  "size": 2864,
+  "url": null
+ },
+ {
+  "name": "trt_vae_encode.py",
+  "size": 5843,
+  "url": null
+ },
+ {
+  "name": "tst_model.py",
+  "size": 14157,
+  "url": null
+ },
+ {
+  "name": "trt_vae_contract.py",
+  "size": 3977,
+  "url": null
+ },
+ {
+  "name": "trt_vae_prepare_flex.py",
+  "size": 4194,
+  "url": null
+ },
+ {
+  "name": "trt_vae_engine.py",
+  "size": 7029,
+  "url": null
+ },
+ {
+  "name": "trt_vae_compile_worker.py",
+  "size": 8510,
+  "url": null
+ },
+ {
+  "name": "subject_safe_rgb_composite_advanced.py",
+  "size": 10348,
+  "url": null
+ },
+ {
+  "name": "topaz_worker.py",
+  "size": 8905,
+  "url": null
+ },
+ {
+  "name": "topaz_media.py",
+  "size": 18250,
+  "url": null
+ },
+ {
+  "name": "topaz_runtime.py",
+  "size": 31553,
+  "url": null
+ },
+ {
+  "name": "trt_vae_build.py",
+  "size": 15505,
+  "url": null
+ },
+ {
+  "name": "trt_vae_backend.py",
+  "size": 16630,
+  "url": null
+ },
+ {
+  "name": "topaz_fi_worker.py",
+  "size": 7022,
+  "url": null
+ },
+ {
+  "name": "trajectory_control_advanced.py",
+  "size": 17116,
+  "url": null
+ },
+ {
+  "name": "trt_vae_compile.py",
+  "size": 10711,
+  "url": null
+ },
+ {
+  "name": "taeh3_2d_preview.py",
+  "size": 3204,
+  "url": null
+ },
+ {
+  "name": "tiled_vae_coordinates_advanced.py",
+  "size": 12874,
+  "url": null
+ },
+ {
+  "name": "trajectory_probe_advanced.py",
+  "size": 15903,
+  "url": null
+ },
+ {
+  "name": "timed_audio_latent.py",
+  "size": 8675,
+  "url": null
+ },
+ {
+  "name": "timed_references_advanced.py",
+  "size": 9895,
+  "url": null
+ },
+ {
+  "name": "timing.py",
+  "size": 3803,
+  "url": null
+ },
+ {
+  "name": "topaz_contract.py",
+  "size": 16391,
+  "url": null
+ },
+ {
+  "name": "taeh3_sampling_preview.py",
+  "size": 14115,
+  "url": null
+ },
+ {
+  "name": "skin_finish_timeline.py",
+  "size": 36348,
+  "url": null
+ },
+ {
+  "name": "sol_engine_h3_super_advanced.py",
+  "size": 31079,
+  "url": null
+ },
+ {
+  "name": "still_image.py",
+  "size": 14116,
+  "url": null
+ },
+ {
+  "name": "studio_advanced.py",
+  "size": 31924,
+  "url": null
+ },
+ {
+  "name": "source_av.py",
+  "size": 22486,
+  "url": null
+ },
+ {
+  "name": "speech.py",
+  "size": 39569,
+  "url": null
+ },
+ {
+  "name": "sol_engine_taehv.py",
+  "size": 9059,
+  "url": null
+ },
+ {
+  "name": "speech_verification.py",
+  "size": 30602,
+  "url": null
+ },
+ {
+  "name": "speech_reliability.py",
+  "size": 9075,
+  "url": null
+ },
+ {
+  "name": "sla_precision_v2_advanced.py",
+  "size": 14704,
+  "url": null
+ },
+ {
+  "name": "sla_profile_router_advanced.py",
+  "size": 15697,
+  "url": null
+ },
+ {
+  "name": "skin_finish_vretoucher_runtime.py",
+  "size": 25349,
+  "url": null
+ },
+ {
+  "name": "speech_extended.py",
+  "size": 29869,
+  "url": null
+ },
+ {
+  "name": "speed_advanced.py",
+  "size": 90457,
+  "url": null
+ },
+ {
+  "name": "skin_finish_vretoucher_pipeline.py",
+  "size": 4865,
+  "url": null
+ },
+ {
+  "name": "skin_finish_vretoucher_adapter.py",
+  "size": 16889,
+  "url": null
+ },
+ {
+  "name": "speed_spectrum_storage.py",
+  "size": 6274,
+  "url": null
+ },
+ {
+  "name": "sla_attention_advanced.py",
+  "size": 83904,
+  "url": null
+ },
+ {
+  "name": "2026-08-25-minimax-h3-audio-refine.md",
+  "size": 20415,
+  "url": null
+ },
+ {
+  "name": "2026-08-26-minimax-h3-audio-refine-phase2.md",
+  "size": 4506,
+  "url": null
+ },
+ {
+  "name": "2026-08-26-minimax-h3-audio-refine-phase2-model-routing-design.md",
+  "size": 7403,
+  "url": null
+ },
+ {
+  "name": "2026-08-25-minimax-h3-audio-refine-design.md",
+  "size": 26455,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_voice_clone_identity_en_v1.json",
+  "size": 2933,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_speech_multilingual_en_zh_v1.json",
+  "size": 2875,
+  "url": null
+ },
+ {
+  "name": "VRAM_VALIDATION.md",
+  "size": 10003,
+  "url": null
+ },
+ {
+  "name": "TST_SOURCE_CONTRACT_EXP.md",
+  "size": 11875,
+  "url": null
+ },
+ {
+  "name": "VRAM_POLICY_ADVANCED_VALIDATION.md",
+  "size": 4053,
+  "url": null
+ },
+ {
+  "name": "TOPAZ_EXP.md",
+  "size": 17887,
+  "url": null
+ },
+ {
+  "name": "TRT_VAE_EXP.md",
+  "size": 10810,
+  "url": null
+ },
+ {
+  "name": "VERIFICATION_REPORT.md",
+  "size": 577178,
+  "url": null
+ },
+ {
+  "name": "TAEH3_SAMPLING_PREVIEW_EXP.md",
+  "size": 9717,
+  "url": null
+ },
+ {
+  "name": "SELFLIFT_INTERFACE_REPAIR_20260917.md",
+  "size": 5586,
+  "url": null
+ },
+ {
+  "name": "SPEECH_VALIDATION_REPORT.md",
+  "size": 18217,
+  "url": null
+ },
+ {
+  "name": "SEMANTIC_BRIDGE_EXP.md",
+  "size": 13198,
+  "url": null
+ },
+ {
+  "name": "SEMANTIC_BRIDGE_QUALIFICATION.md",
+  "size": 15137,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.85.0.md",
+  "size": 3642,
+  "url": null
+ },
+ {
+  "name": "REPOSITORY_LAYOUT.md",
+  "size": 2215,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.86.0.md",
+  "size": 1800,
+  "url": null
+ },
+ {
+  "name": "TAOMATE_NATIVE_THREE_STEP_EXP.md",
+  "size": 5783,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.80.0.md",
+  "size": 2793,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.79.6.md",
+  "size": 1998,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.84.0.md",
+  "size": 3025,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.82.0.md",
+  "size": 9735,
+  "url": null
+ },
+ {
+  "name": "README_DETAILS_ZH.md",
+  "size": 23993,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.81.0.md",
+  "size": 3184,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.83.0.md",
+  "size": 3548,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.77.0.md",
+  "size": 3696,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.79.0.md",
+  "size": 2254,
+  "url": null
+ },
+ {
+  "name": "README_POLICY.md",
+  "size": 1767,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.79.3.md",
+  "size": 1770,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.79.4.md",
+  "size": 2401,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.79.5.md",
+  "size": 2478,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.78.0.md",
+  "size": 2720,
+  "url": null
+ },
+ {
+  "name": "REGISTRY_PUBLICATION.md",
+  "size": 1959,
+  "url": null
+ },
+ {
+  "name": "README_DETAILS_EN.md",
+  "size": 24938,
+  "url": null
+ },
+ {
+  "name": "RELEASE_1.79.1.md",
+  "size": 2635,
+  "url": null
+ },
+ {
+  "name": "README_ComfyUI.md",
+  "size": 171013,
+  "url": null
+ },
+ {
+  "name": "PROGRESSIVE_SAMPLING_EXP.md",
+  "size": 7385,
+  "url": null
+ },
+ {
+  "name": "R1_FUN_QUANTIZATION_REPRODUCTION_20260911.md",
+  "size": 2870,
+  "url": null
+ },
+ {
+  "name": "NATIVE_VOICE_EMOTION_EXP.md",
+  "size": 28668,
+  "url": null
+ },
+ {
+  "name": "READABLE_AUDIO_P1_EXP.md",
+  "size": 3141,
+  "url": null
+ },
+ {
+  "name": "PROGRESSIVE_TRAINED_VALIDATION_EXP.md",
+  "size": 8700,
+  "url": null
+ },
+ {
+  "name": "R1_RELIABILITY_20260911.md",
+  "size": 4363,
+  "url": null
+ },
+ {
+  "name": "PROGRESSIVE_COMPOSITION_EXP.md",
+  "size": 33806,
+  "url": null
+ },
+ {
+  "name": "PROGRESSIVE_PUBLIC_WORKFLOW_EXP.md",
+  "size": 7612,
+  "url": null
+ },
+ {
+  "name": "PATCH_STACK_POLICY.md",
+  "size": 6886,
+  "url": null
+ },
+ {
+  "name": "MERIDIAN_CONVERSION_EXP.md",
+  "size": 14182,
+  "url": null
+ },
+ {
+  "name": "MERIDIAN_LOCAL_EXP.md",
+  "size": 17635,
+  "url": null
+ },
+ {
+  "name": "OUTPAINT_SOURCE_MODES.md",
+  "size": 3306,
+  "url": null
+ },
+ {
+  "name": "PREPARED_SOURCES_AND_ENVIRONMENT.md",
+  "size": 4221,
+  "url": null
+ },
+ {
+  "name": "MULTIKEYFRAME_ADVANCED_VALIDATION.md",
+  "size": 7830,
+  "url": null
+ },
+ {
+  "name": "PROGRESSIVE_LONG_VIDEO_EXP.md",
+  "size": 4759,
+  "url": null
+ },
+ {
+  "name": "MODEL_DOWNLOADS_1.85.md",
+  "size": 3085,
+  "url": null
+ },
+ {
+  "name": "PREPARED_GENERATION_INTEGRATION_EXP.md",
+  "size": 18104,
+  "url": null
+ },
+ {
+  "name": "MOTION_COLOR_EXP.md",
+  "size": 4279,
+  "url": null
+ },
+ {
+  "name": "HYBRID_MODEL_ADVANCED_VALIDATION.md",
+  "size": 10701,
+  "url": null
+ },
+ {
+  "name": "H16_OFFICIAL_INT8_VAE_QUALIFICATION.md",
+  "size": 4022,
+  "url": null
+ },
+ {
+  "name": "HYPERFLOW_RUNTIME_EXP.md",
+  "size": 14419,
+  "url": null
+ },
+ {
+  "name": "HYPERFLOW_DIRECTOR_COMBINATION_AUDIT.md",
+  "size": 4206,
+  "url": null
+ },
+ {
+  "name": "LOCAL_RELIABILITY_SCOPE_20260913.md",
+  "size": 5444,
+  "url": null
+ },
+ {
+  "name": "HYPERVAE_2X_EXP.md",
+  "size": 2708,
+  "url": null
+ },
+ {
+  "name": "HYBRID_COMPATIBILITY_AUDIT.md",
+  "size": 14417,
+  "url": null
+ },
+ {
+  "name": "HYPERFLOW_LONG_VIDEO_EXP.md",
+  "size": 10006,
+  "url": null
+ },
+ {
+  "name": "H16_3_CHUNKED_PASS2_EXP.md",
+  "size": 2582,
+  "url": null
+ },
+ {
+  "name": "HYBRID_ARTIFACT_MAINTENANCE.md",
+  "size": 4296,
+  "url": null
+ },
+ {
+  "name": "H3_PERFORMANCE_BASELINE.md",
+  "size": 6882,
+  "url": null
+ },
+ {
+  "name": "H16_TAOMATE_STREAM_LIFECYCLE_EXP.md",
+  "size": 15287,
+  "url": null
+ },
+ {
+  "name": "H18_PROMPT_CHAIN_AUDIT.md",
+  "size": 5060,
+  "url": null
+ },
+ {
+  "name": "H3_VIDEO_OUTPAINT_PLAN.md",
+  "size": 81266,
+  "url": null
+ },
+ {
+  "name": "H16_STANDARD_LATENT_ADAPTER_EXP.md",
+  "size": 8489,
+  "url": null
+ },
+ {
+  "name": "H3_MEMORY_NODES_EXP.md",
+  "size": 13438,
+  "url": null
+ },
+ {
+  "name": "H3_COMPATIBILITY_DIAGNOSTICS.md",
+  "size": 2117,
+  "url": null
+ },
+ {
+  "name": "H16_SOURCE_UPDATE_20260917.md",
+  "size": 6208,
+  "url": null
+ },
+ {
+  "name": "FIVE_VIEW_CHARACTER_SHEET_EXP.md",
+  "size": 6882,
+  "url": null
+ },
+ {
+  "name": "GITHUB_SOURCE_SYNC_20260917.md",
+  "size": 6415,
+  "url": null
+ },
+ {
+  "name": "FRAME_LIMITS.md",
+  "size": 1393,
+  "url": null
+ },
+ {
+  "name": "FAST_H3_V2_EXP.md",
+  "size": 16146,
+  "url": null
+ },
+ {
+  "name": "DANCE_ACCEPTED_PICTURE_20260913.md",
+  "size": 5895,
+  "url": null
+ },
+ {
+  "name": "DUAL_MODEL_SEAM_FIX_20260913.md",
+  "size": 7934,
+  "url": null
+ },
+ {
+  "name": "DUAL_DISTINCT_BASE_RAM_20260911.md",
+  "size": 2578,
+  "url": null
+ },
+ {
+  "name": "DUAL_MODEL_LONG_VIDEO_EXP.md",
+  "size": 17213,
+  "url": null
+ },
+ {
+  "name": "CHANGELOG_ARCHIVE_ZH.md",
+  "size": 14459,
+  "url": null
+ },
+ {
+  "name": "DIRECTOR_D1.md",
+  "size": 10694,
+  "url": null
+ },
+ {
+  "name": "DEPTH_REFERENCE_EXP.md",
+  "size": 5828,
+  "url": null
+ },
+ {
+  "name": "DIRECTOR_WORKBENCH.md",
+  "size": 3583,
+  "url": null
+ },
+ {
+  "name": "DIRECTOR_D2A.md",
+  "size": 3512,
+  "url": null
+ },
+ {
+  "name": "DLSS_NR_AUDIT.md",
+  "size": 22951,
+  "url": null
+ },
+ {
+  "name": "CORE_VDN_COMPATIBILITY.md",
+  "size": 27852,
+  "url": null
+ },
+ {
+  "name": "CHUNKED_STANDARD_4PLUS4_EXP.md",
+  "size": 14589,
+  "url": null
+ },
+ {
+  "name": "FACE_REFINE_ADVANCED_VALIDATION.md",
+  "size": 19443,
+  "url": null
+ },
+ {
+  "name": "CHANGELOG_ARCHIVE_EN.md",
+  "size": 15013,
+  "url": null
+ },
+ {
+  "name": "AVATAR_PROGRESSIVE_EXP.md",
+  "size": 5555,
+  "url": null
+ },
+ {
+  "name": "session.mjs",
+  "size": 54369,
+  "url": null
+ },
+ {
+  "name": "sampling_ui.mjs",
+  "size": 20567,
+  "url": null
+ },
+ {
+  "name": "index.html",
+  "size": 94283,
+  "url": null
+ },
+ {
+  "name": "workbench.css",
+  "size": 19295,
+  "url": null
+ },
+ {
+  "name": "workbench.mjs",
+  "size": 13446,
+  "url": null
+ },
+ {
+  "name": "topaz_parameter_guide.js",
+  "size": 7749,
+  "url": null
+ },
+ {
+  "name": "task_type_labels.js",
+  "size": 2560,
+  "url": null
+ },
+ {
+  "name": "taeh3_preview.js",
+  "size": 8361,
+  "url": null
+ },
+ {
+  "name": "director.js",
+  "size": 5198,
+  "url": null
+ },
+ {
+  "name": "meridian_editor.js",
+  "size": 20874,
+  "url": null
+ },
+ {
+  "name": "readable_audio.js",
+  "size": 2472,
+  "url": null
+ },
+ {
+  "name": "skin_finish_preview.js",
+  "size": 9201,
+  "url": null
+ },
+ {
+  "name": "studio_timeline_v2.js",
+  "size": 5532,
+  "url": null
+ },
+ {
+  "name": "dlss_runtime_migration.js",
+  "size": 1210,
+  "url": null
+ },
+ {
+  "name": "long_video_background.js",
+  "size": 3165,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 5407,
+  "url": null
+ },
+ {
+  "name": "media.py",
+  "size": 3385,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 1599,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 27109,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 2692,
+  "url": null
+ },
+ {
+  "name": "observer.py",
+  "size": 2454,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 4353,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 1060,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 1652,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 1078,
+  "url": null
+ },
+ {
+  "name": "vdn_probe_environment.py",
+  "size": 4617,
+  "url": null
+ },
+ {
+  "name": "validate_skin_finish_vretoucher_single_window.py",
+  "size": 36502,
+  "url": null
+ },
+ {
+  "name": "verify_semantic_bridge_assets.py",
+  "size": 3012,
+  "url": null
+ },
+ {
+  "name": "validate_speech_multilingual.py",
+  "size": 23145,
+  "url": null
+ },
+ {
+  "name": "verify_registry_publish.py",
+  "size": 8016,
+  "url": null
+ },
+ {
+  "name": "verify_progressive_allocator_gpu.py",
+  "size": 7219,
+  "url": null
+ },
+ {
+  "name": "verify_progressive_package.py",
+  "size": 9671,
+  "url": null
+ },
+ {
+  "name": "validate_speech_longform_state.py",
+  "size": 6351,
+  "url": null
+ },
+ {
+  "name": "verify_pdd_advanced.py",
+  "size": 5938,
+  "url": null
+ },
+ {
+  "name": "validate_skin_finish_representative.py",
+  "size": 13940,
+  "url": null
+ },
+ {
+  "name": "validate_skin_finish_semantic_parser_representative.py",
+  "size": 8198,
+  "url": null
+ },
+ {
+  "name": "validate_skin_finish_texture_guard_representative.py",
+  "size": 13610,
+  "url": null
+ },
+ {
+  "name": "validate_skin_finish_multiface_semantic_representative.py",
+  "size": 13968,
+  "url": null
+ },
+ {
+  "name": "validate_skin_finish_profile_crop_fallback.py",
+  "size": 8932,
+  "url": null
+ },
+ {
+  "name": "validate_h3_speed_turbo8_output.py",
+  "size": 4829,
+  "url": null
+ },
+ {
+  "name": "validate_flashvsr_small.py",
+  "size": 6023,
+  "url": null
+ },
+ {
+  "name": "validate_skin_finish_surface_stream.py",
+  "size": 22087,
+  "url": null
+ },
+ {
+  "name": "validate_native_exports_cpu.py",
+  "size": 2465,
+  "url": null
+ },
+ {
+  "name": "validate_skin_finish_speaking_representative.py",
+  "size": 24059,
+  "url": null
+ },
+ {
+  "name": "validate_skin_finish_stream_representative.py",
+  "size": 12378,
+  "url": null
+ },
+ {
+  "name": "validate_h3_vram.py",
+  "size": 63628,
+  "url": null
+ },
+ {
+  "name": "validate_skin_finish_oil_control_stream.py",
+  "size": 9709,
+  "url": null
+ },
+ {
+  "name": "validate_skin_finish_quality_stream_representative.py",
+  "size": 11667,
+  "url": null
+ },
+ {
+  "name": "validate_h3_speed_multimodal_outputs.py",
+  "size": 13279,
+  "url": null
+ },
+ {
+  "name": "validate_h3_speed_reference_outputs.py",
+  "size": 7930,
+  "url": null
+ },
+ {
+  "name": "validate_skin_finish_quality_stream_long_representative.py",
+  "size": 10652,
+  "url": null
+ },
+ {
+  "name": "validate_classic_paper_effects.py",
+  "size": 27207,
+  "url": null
+ },
+ {
+  "name": "trt_vae_encoder_probe_worker.py",
+  "size": 10705,
+  "url": null
+ },
+ {
+  "name": "trt_vae_build_worker.py",
+  "size": 8557,
+  "url": null
+ },
+ {
+  "name": "trt_vdn_probe.py",
+  "size": 8684,
+  "url": null
+ },
+ {
+  "name": "trt_vae_video_probe_worker.py",
+  "size": 12816,
+  "url": null
+ },
+ {
+  "name": "trt_vae_public_face_worker.py",
+  "size": 9517,
+  "url": null
+ },
+ {
+  "name": "trt_vae_special_worker.py",
+  "size": 6710,
+  "url": null
+ },
+ {
+  "name": "trt_vae_saved_reference_worker.py",
+  "size": 4671,
+  "url": null
+ },
+ {
+  "name": "trt_latent_capture.py",
+  "size": 3314,
+  "url": null
+ },
+ {
+  "name": "trt_vae_t1_probe_worker.py",
+  "size": 6448,
+  "url": null
+ },
+ {
+  "name": "trt_vae_full_encoder_worker.py",
+  "size": 5875,
+  "url": null
+ },
+ {
+  "name": "trt_vae_public_timing_worker.py",
+  "size": 7163,
+  "url": null
+ },
+ {
+  "name": "trt_vae_saved_reference.py",
+  "size": 2774,
+  "url": null
+ },
+ {
+  "name": "trt_encoder_condition_probe.py",
+  "size": 7651,
+  "url": null
+ },
+ {
+  "name": "trt_vae_tile_probe_worker.py",
+  "size": 7696,
+  "url": null
+ },
+ {
+  "name": "trt_vae_t1_export_worker.py",
+  "size": 9113,
+  "url": null
+ },
+ {
+  "name": "trt_vae_interface_probe_worker.py",
+  "size": 6681,
+  "url": null
+ },
+ {
+  "name": "trt_vae_public_text_worker.py",
+  "size": 6726,
+  "url": null
+ },
+ {
+  "name": "trt_vae_boundary_probe_worker.py",
+  "size": 6426,
+  "url": null
+ },
+ {
+  "name": "test_no_roadmap_guard.py",
+  "size": 2326,
+  "url": null
+ },
+ {
+  "name": "run_video_outpaint_selected_probe.py",
+  "size": 20424,
+  "url": null
+ },
+ {
+  "name": "serve_progressive_review.py",
+  "size": 1281,
+  "url": null
+ },
+ {
+  "name": "run_video_outpaint_audio_cpu_probe.py",
+  "size": 6779,
+  "url": null
+ },
+ {
+  "name": "run_video_outpaint_vae_gpu_diagnostic.py",
+  "size": 6465,
+  "url": null
+ },
+ {
+  "name": "summarize_face_refine_candidates.py",
+  "size": 13877,
+  "url": null
+ },
+ {
+  "name": "summarize_h3_measurements.py",
+  "size": 1284,
+  "url": null
+ },
+ {
+  "name": "summarize_dual_backend_benchmark.py",
+  "size": 13363,
+  "url": null
+ },
+ {
+  "name": "run_video_outpaint_t8_probe.py",
+  "size": 21460,
+  "url": null
+ },
+ {
+  "name": "run_video_outpaint_recompose_probe.py",
+  "size": 14167,
+  "url": null
+ },
+ {
+  "name": "run_video_outpaint_candidate_probe.py",
+  "size": 11369,
+  "url": null
+ },
+ {
+  "name": "serve_workflow_ui_probe.py",
+  "size": 2747,
+  "url": null
+ },
+ {
+  "name": "serve_progressive_review_hub.py",
+  "size": 2038,
+  "url": null
+ },
+ {
+  "name": "run_video_outpaint_model_identity_cpu_probe.py",
+  "size": 3986,
+  "url": null
+ },
+ {
+  "name": "run_video_outpaint_upstream_probe.py",
+  "size": 11923,
+  "url": null
+ },
+ {
+  "name": "run_video_outpaint_regional_candidate_probe.py",
+  "size": 27194,
+  "url": null
+ },
+ {
+  "name": "run_video_outpaint_dlss_probe.py",
+  "size": 8421,
+  "url": null
+ },
+ {
+  "name": "serve_candidate_combined_review.py",
+  "size": 2778,
+  "url": null
+ },
+ {
+  "name": "run_vdn_core_compat_probe.py",
+  "size": 17327,
+  "url": null
+ },
+ {
+  "name": "run_video_outpaint_audio_cache_cpu_probe.py",
+  "size": 6550,
+  "url": null
+ },
+ {
+  "name": "run_speech_vram_matrix.py",
+  "size": 5382,
+  "url": null
+ },
+ {
+  "name": "run_trt_vae_t1_export.py",
+  "size": 4825,
+  "url": null
+ },
+ {
+  "name": "run_trt_vae_build.py",
+  "size": 10752,
+  "url": null
+ },
+ {
+  "name": "run_trt_vae_video_probe.py",
+  "size": 11038,
+  "url": null
+ },
+ {
+  "name": "run_trt_vae_t1_probe.py",
+  "size": 6811,
+  "url": null
+ },
+ {
+  "name": "run_trt_vae_tile_probe.py",
+  "size": 4418,
+  "url": null
+ },
+ {
+  "name": "run_trt_vae_encoder_probe.py",
+  "size": 5382,
+  "url": null
+ },
+ {
+  "name": "run_topaz_regular_probe.py",
+  "size": 2370,
+  "url": null
+ },
+ {
+  "name": "run_trt_vae_public_face_probe.py",
+  "size": 7260,
+  "url": null
+ },
+ {
+  "name": "run_speech_multilingual_formal_batch.py",
+  "size": 32577,
+  "url": null
+ },
+ {
+  "name": "run_speaker_clone_matrix.py",
+  "size": 6295,
+  "url": null
+ },
+ {
+  "name": "run_trt_vae_core_matrix.py",
+  "size": 4751,
+  "url": null
+ },
+ {
+  "name": "run_topaz_interpolation_probe.py",
+  "size": 1569,
+  "url": null
+ },
+ {
+  "name": "run_speech_performance_matrix.py",
+  "size": 11132,
+  "url": null
+ },
+ {
+  "name": "run_topaz_public_node_probe.py",
+  "size": 3164,
+  "url": null
+ },
+ {
+  "name": "run_sla_profile_router_probe.py",
+  "size": 25268,
+  "url": null
+ },
+ {
+  "name": "run_progressive_qualifications.py",
+  "size": 6791,
+  "url": null
+ },
+ {
+  "name": "run_pdd_real_validation.py",
+  "size": 29891,
+  "url": null
+ },
+ {
+  "name": "run_skin_finish_live_sam31_validation.py",
+  "size": 25948,
+  "url": null
+ },
+ {
+  "name": "run_semantic_bridge_workflow_probe.py",
+  "size": 10142,
+  "url": null
+ },
+ {
+  "name": "run_sla_precision_v2_kernel_probe.py",
+  "size": 7118,
+  "url": null
+ },
+ {
+  "name": "run_progressive_pilot.py",
+  "size": 32458,
+  "url": null
+ },
+ {
+  "name": "run_progressive_exploration.py",
+  "size": 5878,
+  "url": null
+ },
+ {
+  "name": "run_skin_finish_sam31_cut_probe.py",
+  "size": 10274,
+  "url": null
+ },
+ {
+  "name": "run_sla_precision_v2_validation.py",
+  "size": 16241,
+  "url": null
+ },
+ {
+  "name": "run_skin_finish_per_person_live_validation.py",
+  "size": 27609,
+  "url": null
+ },
+ {
+  "name": "run_sla_int8_bypass_loader_probe.py",
+  "size": 8439,
+  "url": null
+ },
+ {
+  "name": "motion_quality_matrix_spec.json",
+  "size": 6077,
+  "url": null
+ },
+ {
+  "name": "motion_quality_repeat_selection.example.json",
+  "size": 268,
+  "url": null
+ },
+ {
+  "name": "H3_OpenVDN_T2VA_native_h3_TwoPass_EXP.prompt.json",
+  "size": 8993,
+  "url": null
+ },
+ {
+  "name": "manifest.json",
+  "size": 1622,
+  "url": null
+ },
+ {
+  "name": "H3_OpenVDN_T2VA_vdn_TwoPass_EXP.prompt.json",
+  "size": 8162,
+  "url": null
+ },
+ {
+  "name": "H3_OpenVDN_I2VA_native_h3_TwoPass_EXP.prompt.json",
+  "size": 9785,
+  "url": null
+ },
+ {
+  "name": "H3_OpenVDN_I2VA_vdn_TwoPass_EXP.prompt.json",
+  "size": 8954,
+  "url": null
+ },
+ {
+  "name": "still_image_edit_api.json",
+  "size": 3263,
+  "url": null
+ },
+ {
+  "name": "speech_vram_preflight_api.json",
+  "size": 447,
+  "url": null
+ },
+ {
+  "name": "trajectory_probe_advanced_api.json",
+  "size": 3028,
+  "url": null
+ },
+ {
+  "name": "speech_voice_library_save_api.json",
+  "size": 772,
+  "url": null
+ },
+ {
+  "name": "speech_voice_library_load_api.json",
+  "size": 118,
+  "url": null
+ },
+ {
+  "name": "studio_timeline_advanced_api.json",
+  "size": 3500,
+  "url": null
+ },
+ {
+  "name": "speech_voice_library_delete_api.json",
+  "size": 273,
+  "url": null
+ },
+ {
+  "name": "mv_vocal_lock_v2_clear_speech_api.json",
+  "size": 3925,
+  "url": null
+ },
+ {
+  "name": "speech_longform_control_api.json",
+  "size": 308,
+  "url": null
+ },
+ {
+  "name": "qwen_prefix_cache_advanced_api.json",
+  "size": 759,
+  "url": null
+ },
+ {
+  "name": "speech_longform_compose_api.json",
+  "size": 1498,
+  "url": null
+ },
+ {
+  "name": "scheduled_audio_injection_advanced_api.json",
+  "size": 3458,
+  "url": null
+ },
+ {
+  "name": "speech_longform_resume_api.json",
+  "size": 3130,
+  "url": null
+ },
+ {
+  "name": "speech_dialogue_two_speaker_api.json",
+  "size": 5112,
+  "url": null
+ },
+ {
+  "name": "ref2va_visual_reference_strength_exp_api.json",
+  "size": 3752,
+  "url": null
+ },
+ {
+  "name": "speech_performance_adr_api.json",
+  "size": 3150,
+  "url": null
+ },
+ {
+  "name": "speech_reference_clone_api.json",
+  "size": 3227,
+  "url": null
+ },
+ {
+  "name": "speech_joint_dialogue_exp_api.json",
+  "size": 3900,
+  "url": null
+ },
+ {
+  "name": "speech_described_api.json",
+  "size": 3164,
+  "url": null
+ },
+ {
+  "name": "source_video_repaint_api.json",
+  "size": 4559,
+  "url": null
+ },
+ {
+  "name": "reel_delivery_advanced_api.json",
+  "size": 1126,
+  "url": null
+ },
+ {
+  "name": "selective_repair_execution_advanced_api.json",
+  "size": 1002,
+  "url": null
+ },
+ {
+  "name": "multikeyframe_advanced_api.json",
+  "size": 4823,
+  "url": null
+ },
+ {
+  "name": "motion_quality_advanced_8step_api.json",
+  "size": 5044,
+  "url": null
+ },
+ {
+  "name": "multirate_exp_api.json",
+  "size": 3290,
+  "url": null
+ },
+ {
+  "name": "multiface_sam31_3person_advanced_api.json",
+  "size": 25281,
+  "url": null
+ },
+ {
+  "name": "motion_quality_same_nfe_repair_8step_api.json",
+  "size": 6063,
+  "url": null
+ },
+ {
+  "name": "motion_recovery_windowed_stock20_api.json",
+  "size": 7849,
+  "url": null
+ },
+ {
+  "name": "multiface_sam31_2person_advanced_api.json",
+  "size": 18244,
+  "url": null
+ },
+ {
+  "name": "long_video_segment_api.json",
+  "size": 4914,
+  "url": null
+ },
+ {
+  "name": "learned_latent_two_pass_i2va_advanced_api.json",
+  "size": 5846,
+  "url": null
+ },
+ {
+  "name": "motion_quality_extra_tail_nfe_8step_api.json",
+  "size": 5056,
+  "url": null
+ },
+ {
+  "name": "motion_quality_dynamic_guidance_8step_api.json",
+  "size": 4429,
+  "url": null
+ },
+ {
+  "name": "long_video_compose_api.json",
+  "size": 418,
+  "url": null
+ },
+ {
+  "name": "long_video_auto_resume_api.json",
+  "size": 6606,
+  "url": null
+ },
+ {
+  "name": "hybrid_model_mixed_reference_api.json",
+  "size": 4746,
+  "url": null
+ },
+ {
+  "name": "long_video_candidate_accept_api.json",
+  "size": 5239,
+  "url": null
+ },
+ {
+  "name": "hybrid_model_vbar_headroom_api.json",
+  "size": 5580,
+  "url": null
+ },
+ {
+  "name": "long_video_background_api.json",
+  "size": 7261,
+  "url": null
+ },
+ {
+  "name": "hybrid_model_audio_reference_api.json",
+  "size": 4673,
+  "url": null
+ },
+ {
+  "name": "activation_chunk_advanced_api.json",
+  "size": 1344,
+  "url": null
+ },
+ {
+  "name": "face_refine_anime_advanced_api.json",
+  "size": 5514,
+  "url": null
+ },
+ {
+  "name": "hybrid_compatibility_audit_api.json",
+  "size": 6094,
+  "url": null
+ },
+ {
+  "name": "face_refine_parity_advanced_api.json",
+  "size": 9457,
+  "url": null
+ },
+ {
+  "name": "dialogue_timed_bed_lock_api.json",
+  "size": 4609,
+  "url": null
+ },
+ {
+  "name": "five_view_sheet_api.json",
+  "size": 2861,
+  "url": null
+ },
+ {
+  "name": "hybrid_model_advanced_api.json",
+  "size": 4488,
+  "url": null
+ },
+ {
+  "name": "h3_world_i2va_832x480_124f_api.json",
+  "size": 2614,
+  "url": null
+ },
+ {
+  "name": "environment_audit_advanced_api.json",
+  "size": 639,
+  "url": null
+ },
+ {
+  "name": "hybrid_artifact_maintenance_api.json",
+  "size": 620,
+  "url": null
+ },
+ {
+  "name": "dialogue_safe_master_api.json",
+  "size": 2346,
+  "url": null
+ },
+ {
+  "name": "face_refine_window_studio_advanced_api.json",
+  "size": 12181,
+  "url": null
+ },
+ {
+  "name": "face_refine_window_studio_compose_advanced_api.json",
+  "size": 1996,
+  "url": null
+ },
+ {
+  "name": "dual_clock_4step_api.json",
+  "size": 3194,
+  "url": null
+ },
+ {
+  "name": "face_refine_window_advanced_api.json",
+  "size": 10888,
+  "url": null
+ },
+ {
+  "name": "face_refine_advanced_api.json",
+  "size": 5508,
+  "url": null
+ },
+ {
+  "name": "detail_mixer_advanced_api.json",
+  "size": 5843,
+  "url": null
+ },
+ {
+  "name": "context_ir_provider_advanced_api.json",
+  "size": 1466,
+  "url": null
+ },
+ {
+  "name": "audio_lock_api.json",
+  "size": 3988,
+  "url": null
+ },
+ {
+  "name": "av_decode_safety_advanced_api.json",
+  "size": 1174,
+  "url": null
+ },
+ {
+  "name": "dlss_fi_isolation_task.py",
+  "size": 719,
+  "url": null
+ },
+ {
+  "name": "dual_picture_accepted_api.json",
+  "size": 5242,
+  "url": null
+ },
+ {
+  "name": "tao_video_worker_before_finalization.py",
+  "size": 7678,
+  "url": null
+ },
+ {
+  "name": "dlss_fi_fake_worker.py",
+  "size": 1342,
+  "url": null
+ },
+ {
+  "name": "prepared_process_task.py",
+  "size": 1286,
+  "url": null
+ },
+ {
+  "name": "trt_build_worker.py",
+  "size": 1538,
+  "url": null
+ },
+ {
+  "name": "dual_memory_accepted_portrait_api.json",
+  "size": 7160,
+  "url": null
+ },
+ {
+  "name": "outpaint_frontend_contract.json",
+  "size": 16138,
+  "url": null
+ },
+ {
+  "name": "dual_memory_portrait_object_info.json",
+  "size": 41861,
+  "url": null
+ },
+ {
+  "name": "outpaint_published_workflow_updates.json",
+  "size": 1391,
+  "url": null
+ },
+ {
+  "name": "outpaint_v174_workflow_baseline.json",
+  "size": 21194,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_source_runtime.py",
+  "size": 5172,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_sampling.py",
+  "size": 10800,
+  "url": null
+ },
+ {
+  "name": "test_voice_clone_abx_standardization_tool.py",
+  "size": 10912,
+  "url": null
+ },
+ {
+  "name": "test_voice_clone_abx_review_analysis_tool.py",
+  "size": 6638,
+  "url": null
+ },
+ {
+  "name": "test_workflow_seed_control_metadata.py",
+  "size": 1264,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_selected_probe.py",
+  "size": 4990,
+  "url": null
+ },
+ {
+  "name": "test_voice_clone_identity_formal_matrix_tool.py",
+  "size": 14112,
+  "url": null
+ },
+ {
+  "name": "test_vram_policy.py",
+  "size": 12157,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_upstream_sampling_parity.py",
+  "size": 5697,
+  "url": null
+ },
+ {
+  "name": "test_visual_reference_exp.py",
+  "size": 8326,
+  "url": null
+ },
+ {
+  "name": "test_voice_clone_abx_review_tool.py",
+  "size": 5169,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_sampling_runtime.py",
+  "size": 8239,
+  "url": null
+ },
+ {
+  "name": "test_vram_validation.py",
+  "size": 15379,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_source_store.py",
+  "size": 3088,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_workflows.py",
+  "size": 6231,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_workflow_promotion.py",
+  "size": 3787,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_rgb_capture.py",
+  "size": 2884,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_preview.py",
+  "size": 9883,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_noise.py",
+  "size": 4018,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_model_patches.py",
+  "size": 15101,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_recompose_probe.py",
+  "size": 1660,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_packet_diagnostic.py",
+  "size": 899,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_plan.py",
+  "size": 5023,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_regional.py",
+  "size": 5720,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_prepared_reload.py",
+  "size": 5722,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_probe_cases.py",
+  "size": 6543,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_mux.py",
+  "size": 3302,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_regional_conditioning.py",
+  "size": 2989,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_regional_candidate_probe.py",
+  "size": 15852,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_release_workflows.py",
+  "size": 3955,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_probe.py",
+  "size": 6187,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_prepare.py",
+  "size": 6653,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_pixel_receipt.py",
+  "size": 2936,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_nodes.py",
+  "size": 3736,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_media.py",
+  "size": 7995,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_execution.py",
+  "size": 7025,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_finish.py",
+  "size": 4350,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_candidate_workflows.py",
+  "size": 9971,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_guidance.py",
+  "size": 3151,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_hardcut_review.py",
+  "size": 3243,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_decode.py",
+  "size": 3253,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_color.py",
+  "size": 4526,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_delivery.py",
+  "size": 4731,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_inspection.py",
+  "size": 4274,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_composite.py",
+  "size": 2366,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_candidate_ui_evidence.py",
+  "size": 3914,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_material_review.py",
+  "size": 5161,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_candidate_nodes.py",
+  "size": 8144,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_compose.py",
+  "size": 8316,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_compatibility_report.py",
+  "size": 1089,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_candidate_preview.py",
+  "size": 5538,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_compatibility.py",
+  "size": 2667,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_candidate_probe.py",
+  "size": 3389,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_audio_file.py",
+  "size": 7469,
+  "url": null
+ },
+ {
+  "name": "test_vdn_two_pass.py",
+  "size": 1793,
+  "url": null
+ },
+ {
+  "name": "test_tst_runtime.py",
+  "size": 8905,
+  "url": null
+ },
+ {
+  "name": "test_vdn_sdpa_backend.py",
+  "size": 2017,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_audio_runtime.py",
+  "size": 11150,
+  "url": null
+ },
+ {
+  "name": "test_vdn_native_branch_probe.py",
+  "size": 2340,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_candidates.py",
+  "size": 12191,
+  "url": null
+ },
+ {
+  "name": "test_vdn_core_probe.py",
+  "size": 5481,
+  "url": null
+ },
+ {
+  "name": "test_vdn_workflow_shared_controls.py",
+  "size": 3328,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_audio.py",
+  "size": 6128,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_alignment.py",
+  "size": 3736,
+  "url": null
+ },
+ {
+  "name": "test_video_outpaint_candidate_archive.py",
+  "size": 6821,
+  "url": null
+ },
+ {
+  "name": "test_vdn_probe_media.py",
+  "size": 2274,
+  "url": null
+ },
+ {
+  "name": "test_vdn_two_pass_workflow_export.py",
+  "size": 1895,
+  "url": null
+ },
+ {
+  "name": "test_vdn_h3_advanced.py",
+  "size": 16788,
+  "url": null
+ },
+ {
+  "name": "test_vdn_override_coexistence.py",
+  "size": 2409,
+  "url": null
+ },
+ {
+  "name": "test_vdn_probe_environment.py",
+  "size": 4979,
+  "url": null
+ },
+ {
+  "name": "test_vdn_attention_compat.py",
+  "size": 4589,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_job_exit_race.py",
+  "size": 1515,
+  "url": null
+ },
+ {
+  "name": "test_tst_math.py",
+  "size": 8145,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_workflows.py",
+  "size": 4140,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_prepare_t1.py",
+  "size": 2533,
+  "url": null
+ },
+ {
+  "name": "test_tst_model.py",
+  "size": 10900,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_interface.py",
+  "size": 8660,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_public_timing_audit.py",
+  "size": 1724,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_video_probe.py",
+  "size": 4672,
+  "url": null
+ },
+ {
+  "name": "test_trt_video_reference_probe.py",
+  "size": 3521,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_flex.py",
+  "size": 4998,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_w4.py",
+  "size": 3870,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_t1_probe.py",
+  "size": 1579,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_review.py",
+  "size": 1765,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_engine.py",
+  "size": 5529,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_loader.py",
+  "size": 4529,
+  "url": null
+ },
+ {
+  "name": "test_trt_vdn_probe.py",
+  "size": 5819,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_t1_export.py",
+  "size": 1946,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_encoder_weights.py",
+  "size": 2374,
+  "url": null
+ },
+ {
+  "name": "test_trt_latent_capture.py",
+  "size": 2768,
+  "url": null
+ },
+ {
+  "name": "test_trajectory_control_advanced.py",
+  "size": 4245,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_contract.py",
+  "size": 7862,
+  "url": null
+ },
+ {
+  "name": "test_trt_encoder_condition_probe.py",
+  "size": 4670,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_encoder_probe.py",
+  "size": 3575,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_build.py",
+  "size": 10664,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_encode.py",
+  "size": 3636,
+  "url": null
+ },
+ {
+  "name": "test_trt_encoder_condition_audit.py",
+  "size": 1555,
+  "url": null
+ },
+ {
+  "name": "test_trt_vae_benchmark.py",
+  "size": 2902,
+  "url": null
+ },
+ {
+  "name": "test_trt_text_fixture.py",
+  "size": 1011,
+  "url": null
+ },
+ {
+  "name": "publish_action.yml",
+  "size": 1504,
+  "url": null
+ },
+ {
+  "name": "no-local-roadmaps.yml",
+  "size": 594,
+  "url": null
+ },
+ {
+  "name": "h3_world_official_first_frame.png",
+  "size": 459872,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 2750,
+  "url": null
+ },
+ {
+  "name": "2026-09-04_H3_World_I2VA_832x480_124f_50step_Advanced.json",
+  "size": 14638,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_Diagnostics_Optional_Audio_EXP.json",
+  "size": 6794,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 1509,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 979,
+  "url": null
+ },
+ {
+  "name": "2026-09-20_H3_Obsidian_Director_Starter.json",
+  "size": 2061,
+  "url": null
+ },
+ {
+  "name": "2026-09-27_H3_HyperVAE_2x_Same_Latent_5s_Compare_EXP.json",
+  "size": 24439,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 1149,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_Meridian_video_freeze_orbit_EXP.json",
+  "size": 7065,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 3980,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_Meridian_video_source_camera_EXP.json",
+  "size": 7073,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_Meridian_image_parallel_slide_EXP.json",
+  "size": 7098,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_avatar_preview_EXP.json",
+  "size": 20388,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_voice_eav_on_EXP.json",
+  "size": 17834,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_voice_long_joint_EXP.json",
+  "size": 17337,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 8277,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_voice_standard4plus4_EXP.json",
+  "size": 21826,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_voice_neutral_EXP.json",
+  "size": 18495,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_voice_eav_off_EXP.json",
+  "size": 17837,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_voice_long_EXP.json",
+  "size": 17313,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_avatar_EXP.json",
+  "size": 19395,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_voice_emotion_EXP.json",
+  "size": 19062,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_voice_dual_EXP.json",
+  "size": 17825,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_voice_calm_comparison_EXP.json",
+  "size": 18840,
+  "url": null
+ },
+ {
+  "name": "2026-09-18_T8_voice_dual_joint_EXP.json",
+  "size": 17849,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 1373,
+  "url": null
+ },
+ {
+  "name": "H3_to_LTX_Standard_LATENT_EXP.json",
+  "size": 7030,
+  "url": null
+ },
+ {
+  "name": "2026-09-17_H3_SemanticBridge_DualIndependent_8s_Advanced.json",
+  "size": 15547,
+  "url": null
+ },
+ {
+  "name": "2026-09-17_H3_SemanticBridge_Internal_EXP.json",
+  "size": 17174,
+  "url": null
+ },
+ {
+  "name": "2026-09-17_H3_SemanticBridge_Relay_EXP.json",
+  "size": 18668,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 2713,
+  "url": null
+ },
+ {
+  "name": "2026-09-17_H3_SemanticBridge_SingleLoop_8s_EXP.json",
+  "size": 12479,
+  "url": null
+ },
+ {
+  "name": "2026-09-17_H3_BUNNY_External_EXP.json",
+  "size": 18187,
+  "url": null
+ },
+ {
+  "name": "2026-09-14_H3_SelfLift_I2VA_Sol_4plus4_EXP.json",
+  "size": 32932,
+  "url": null
+ },
+ {
+  "name": "2026-09-14_H3_TaoMate_T2VA_4step_EXP.json",
+  "size": 18078,
+  "url": null
+ },
+ {
+  "name": "2026-09-14_H3_SelfLift_I2VA_Guide_Mean_4plus4_EXP.json",
+  "size": 29398,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 2529,
+  "url": null
+ },
+ {
+  "name": "2026-09-14_H3_TaoMate_T2VA_3step_EXP.json",
+  "size": 18070,
+  "url": null
+ },
+ {
+  "name": "2026-09-14_H3_SelfLift_I2VA_TST_4plus4_EXP.json",
+  "size": 34310,
+  "url": null
+ },
+ {
+  "name": "2026-09-14_H3_SelfLift_I2VA_EAV_4plus4_EXP.json",
+  "size": 31167,
+  "url": null
+ },
+ {
+  "name": "2026-09-14_H3_SelfLift_I2VA_KJ_Relay_Two_Segment_8s_EXP.json",
+  "size": 36851,
+  "url": null
+ },
+ {
+  "name": "2026-09-14_H3_SelfLift_I2VA_KJ_FFN_TST_EAV_Relay_4plus4_EXP.json",
+  "size": 48930,
+  "url": null
+ },
+ {
+  "name": "2026-09-14_H3_SelfLift_I2VA_Core_Sage_4plus4_EXP.json",
+  "size": 29345,
+  "url": null
+ },
+ {
+  "name": "2026-09-13_H3_Prepared_ltx_refine_EXP.json",
+  "size": 4622,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 5847,
+  "url": null
+ },
+ {
+  "name": "2026-09-13_H3_Prepared_tao5s_EXP.json",
+  "size": 4513,
+  "url": null
+ },
+ {
+  "name": "2026-09-14_H3_Topaz_Frame_Interpolation_EXP.json",
+  "size": 3260,
+  "url": null
+ },
+ {
+  "name": "2026-09-11_H3_Topaz_Video_EXP.json",
+  "size": 4790,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 1958,
+  "url": null
+ },
+ {
+  "name": "2026-09-11_H3_Topaz_Environment_EXP.json",
+  "size": 2136,
+  "url": null
+ },
+ {
+  "name": "2026-09-14_H3_Topaz_Upscale_Then_Interpolation_EXP.json",
+  "size": 4084,
+  "url": null
+ },
+ {
+  "name": "2026-09-10_H3_DLSS_FI_File_2x_EXP.json",
+  "size": 2120,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 3870,
+  "url": null
+ },
+ {
+  "name": "2026-09-10_H3_TRT_VAE_Same_Latent_Compare_EXP.json",
+  "size": 25609,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 3304,
+  "url": null
+ },
+ {
+  "name": "2026-09-10_H3_TRT_VAE_Compile_EXP.json",
+  "size": 2733,
+  "url": null
+ },
+ {
+  "name": "2026-09-10_H3_TRT_VAE_T2VA_Decoder_EXP.json",
+  "size": 20260,
+  "url": null
+ },
+ {
+  "name": "2026-09-10_H3_TRT_VAE_Runtime_Check_EXP.json",
+  "size": 2796,
+  "url": null
+ },
+ {
+  "name": "2026-09-10_H3_TRT_VAE_I2VA_Full_EXP.json",
+  "size": 21323,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 1486,
+  "url": null
+ },
+ {
+  "name": "2026-09-09_H3_Progressive_I2VA_6plus2_EXP.json",
+  "size": 21508,
+  "url": null
+ },
+ {
+  "name": "2026-09-09_H3_Progressive_T2VA_6plus2_EXP.json",
+  "size": 20538,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 4785,
+  "url": null
+ },
+ {
+  "name": "2026-09-07_H3_Video_Outpaint_06_Generate_Guided_Candidate_EXP.json",
+  "size": 19237,
+  "url": null
+ },
+ {
+  "name": "2026-09-07_H3_Video_Outpaint_Four_Stages_EXP.json",
+  "size": 16040,
+  "url": null
+ },
+ {
+  "name": "2026-09-07_H3_Video_Outpaint_Geometry_Preview_EXP.json",
+  "size": 5883,
+  "url": null
+ },
+ {
+  "name": "2026-09-07_H3_Video_Outpaint_Compact_EXP.json",
+  "size": 38576,
+  "url": null
+ },
+ {
+  "name": "2026-09-07_H3_Video_Outpaint_01_Generate_Candidate_EXP.json",
+  "size": 15800,
+  "url": null
+ },
+ {
+  "name": "2026-09-07_H3_Video_Outpaint_07_Continue_Guided_Selection_EXP.json",
+  "size": 15815,
+  "url": null
+ },
+ {
+  "name": "2026-09-07_H3_Video_Outpaint_05_Save_Completed_Selection_EXP.json",
+  "size": 10694,
+  "url": null
+ },
+ {
+  "name": "2026-09-07_H3_Video_Outpaint_08_Save_Completed_Selection_DLSS_2x_EXP.json",
+  "size": 14709,
+  "url": null
+ },
+ {
+  "name": "2026-09-07_H3_Video_Outpaint_09_Model_Compatibility_Audit_EXP.json",
+  "size": 7359,
+  "url": null
+ },
+ {
+  "name": "2026-09-07_H3_Video_Outpaint_03_Confirm_Candidate_EXP.json",
+  "size": 10525,
+  "url": null
+ },
+ {
+  "name": "2026-09-07_H3_Video_Outpaint_02_Review_Candidate_EXP.json",
+  "size": 8208,
+  "url": null
+ },
+ {
+  "name": "2026-09-07_H3_Video_Outpaint_04_Continue_Selection_EXP.json",
+  "size": 14456,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 1623,
+  "url": null
+ },
+ {
+  "name": "2026-08-30_H3_FlashVSR_Quality_Locked_Advanced_EXP.json",
+  "size": 10153,
+  "url": null
+ },
+ {
+  "name": "2026-08-30_H3_FlashVSR_Balanced_Dynamic_EXP_Advanced_EXP.json",
+  "size": 10199,
+  "url": null
+ },
+ {
+  "name": "2026-08-30_H3_FlashVSR_Memory_Safe_Advanced_EXP.json",
+  "size": 10170,
+  "url": null
+ },
+ {
+  "name": "2026-09-04_H3_DLSS_NR_Video_File_2x_Standard_Advanced.json",
+  "size": 4977,
+  "url": null
+ },
+ {
+  "name": "2026-09-04_H3_DLSS_NR_Video_Frames_2x_Standard_Advanced.json",
+  "size": 10271,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 3170,
+  "url": null
+ },
+ {
+  "name": "PARAMETERS.md",
+  "size": 5031,
+  "url": null
+ },
+ {
+  "name": "2026-09-04_H3_DLSS_NR_Image_2x_Standard_Advanced.json",
+  "size": 6330,
+  "url": null
+ },
+ {
+  "name": "2026-09-04_H3_DLSS_NR_Runtime_Audit_Advanced.json",
+  "size": 2759,
+  "url": null
+ },
+ {
+  "name": "2026-08-28_H3_Fun_Control_Advanced_EXP.json",
+  "size": 3227,
+  "url": null
+ },
+ {
+  "name": "2026-08-28_H3_System_Cache_and_Diagnostics_Advanced_EXP.json",
+  "size": 5464,
+  "url": null
+ },
+ {
+  "name": "2026-08-28_H3_Long_Video_Voice_and_Seam_Advanced_EXP.json",
+  "size": 4534,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 1565,
+  "url": null
+ },
+ {
+  "name": "2026-09-01_H3_Local_MV_LipSync_Ref2VA_Turbo4_Advanced_EXP.json",
+  "size": 14016,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 4408,
+  "url": null
+ },
+ {
+  "name": "2026-09-01_H3_Local_MV_VocalLock_V2_Ref2VA_8Step_Advanced_EXP.json",
+  "size": 15524,
+  "url": null
+ },
+ {
+  "name": "2026-09-01_H3_Local_MV_VocalLock_V3_Official_Ref2V_Turbo4_Advanced_EXP.json",
+  "size": 16428,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 2527,
+  "url": null
+ },
+ {
+  "name": "2026-08-29_H3_Sol_Engine_Super_Acceleration_LTX25_Advanced_EXP.json",
+  "size": 30004,
+  "url": null
+ },
+ {
+  "name": "2026-08-30_H3_Sol_Engine_LTX25_Identity_Preserve_3Step_Advanced_EXP.json",
+  "size": 30236,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 905,
+  "url": null
+ },
+ {
+  "name": "2026-08-28_H3_Official_Core_Compatibility_Advanced.json",
+  "size": 5088,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 4936,
+  "url": null
+ },
+ {
+  "name": "2026-08-27_H3_PDD_FL2VA_8Step_Advanced_EXP.json",
+  "size": 17606,
+  "url": null
+ },
+ {
+  "name": "2026-08-27_H3_PDD_Ref2VA_8Step_Advanced_EXP.json",
+  "size": 16989,
+  "url": null
+ },
+ {
+  "name": "2026-08-27_H3_PDD_Ref2VA_Learned_Latent_TwoPass_4Plus4_Stable.json",
+  "size": 29676,
+  "url": null
+ },
+ {
+  "name": "2026-08-27_H3_PDD_FL2VA_Learned_Latent_TwoPass_4Plus4_Advanced_EXP.json",
+  "size": 32075,
+  "url": null
+ },
+ {
+  "name": "2026-08-26_H3_Audio_Refine_Turbo4_Plus_Refine4_Advanced_EXP.json",
+  "size": 39939,
+  "url": null
+ },
+ {
+  "name": "2026-08-29_H3_Audio_Refine_Turbo8_Plus_Refine4_Advanced_EXP.json",
+  "size": 39750,
+  "url": null
+ },
+ {
+  "name": "2026-08-26_H3_Audio_Refine_Phase2_Same_Turbo4_Advanced_EXP.json",
+  "size": 39794,
+  "url": null
+ },
+ {
+  "name": "2026-08-29_H3_Audio_Refine_EAV_Turbo8_Advanced_EXP.json",
+  "size": 39509,
+  "url": null
+ },
+ {
+  "name": "2026-08-29_H3_Audio_Refine_PDD_Ref2VA8_Advanced_EXP.json",
+  "size": 37467,
+  "url": null
+ },
+ {
+  "name": "2026-08-26_H3_Audio_Refine_Phase2_Base_Refine4_Advanced_EXP.json",
+  "size": 39772,
+  "url": null
+ },
+ {
+  "name": "2026-08-29_H3_Audio_Refine_Prompt_Relay_Turbo8_Advanced_EXP.json",
+  "size": 41209,
+  "url": null
+ },
+ {
+  "name": "2026-08-29_H3_Audio_Refine_Learned_TwoPass_Final8_Advanced_EXP.json",
+  "size": 51136,
+  "url": null
+ },
+ {
+  "name": "2026-08-29_H3_Audio_Refine_Long_Video_Prompt_Relay_Turbo8_Advanced_EXP.json",
+  "size": 51824,
+  "url": null
+ },
+ {
+  "name": "2026-08-26_H3_Audio_Refine_Phase2_Base_Ordinary8_Control_Advanced_EXP.json",
+  "size": 20382,
+  "url": null
+ },
+ {
+  "name": "2026-08-29_H3_Audio_Refine_PDD_Ref2VA_4Plus4_Advanced_EXP.json",
+  "size": 50185,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 6543,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_H3_RAVEN_Streaming_T2VA_Guarded_Advanced_EXP.json",
+  "size": 12943,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 2240,
+  "url": null
+ },
+ {
+  "name": "2026-08-24_H3_Skin_Finish_Two_Pass_Video_Stream_Advanced_EXP.json",
+  "size": 6888,
+  "url": null
+ },
+ {
+  "name": "2026-08-25_H3_Skin_Finish_Per_Person_Advanced_EXP.json",
+  "size": 41501,
+  "url": null
+ },
+ {
+  "name": "2026-08-24_H3_Skin_Finish_Semantic_Mask_Advanced_EXP.json",
+  "size": 18769,
+  "url": null
+ },
+ {
+  "name": "2026-08-24_H3_Skin_Finish_Texture_Guard_Advanced_EXP.json",
+  "size": 14642,
+  "url": null
+ },
+ {
+  "name": "2026-08-24_H3_Skin_Finish_External_Mask_Advanced_EXP.json",
+  "size": 19937,
+  "url": null
+ },
+ {
+  "name": "2026-08-24_H3_Skin_Finish_MultiPerson_Semantic_Mask_Advanced_EXP.json",
+  "size": 23782,
+  "url": null
+ },
+ {
+  "name": "2026-08-25_H3_Skin_Finish_Oil_Control_Stream_Advanced_EXP.json",
+  "size": 8510,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 23265,
+  "url": null
+ },
+ {
+  "name": "2026-08-25_H3_Skin_Finish_Frequency_Split_Advanced_EXP.json",
+  "size": 18606,
+  "url": null
+ },
+ {
+  "name": "2026-08-25_H3_Skin_Finish_Quality_Stream_Advanced_EXP.json",
+  "size": 8054,
+  "url": null
+ },
+ {
+  "name": "2026-08-24_H3_Skin_Finish_MultiPerson_Video_Finalize_Advanced_EXP.json",
+  "size": 17358,
+  "url": null
+ },
+ {
+  "name": "2026-08-25_H3_Skin_Finish_Studio_Timeline_Advanced_EXP.json",
+  "size": 46020,
+  "url": null
+ },
+ {
+  "name": "2026-08-26_H3_Turbo_SLA_Profile_Router_FL2VA_Advanced_EXP.json",
+  "size": 20631,
+  "url": null
+ },
+ {
+  "name": "2026-09-02_H3_SLA_Precision_V2_FL2VA_FP8_8Step_Advanced_EXP.json",
+  "size": 21269,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 8573,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_LightX2V_SLA_KJ_Sage_Composer_FL2VA_4Step_Advanced_EXP.json",
+  "size": 21203,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_LightX2V_SLA_FL2VA_4Step_Advanced_EXP.json",
+  "size": 20437,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Prompt_Relay_I2VA_Stock20_Advanced_EXP.json",
+  "size": 20338,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Prompt_Relay_T2VA_Stock20_Advanced_EXP.json",
+  "size": 23792,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Prompt_Relay_RefAudio_Stock20_Advanced_EXP.json",
+  "size": 19868,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Prompt_Relay_T2VA_Turbo8_Advanced_EXP.json",
+  "size": 20671,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Prompt_Relay_Hybrid_Stock20_Advanced_EXP.json",
+  "size": 21844,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Prompt_Relay_Plan_Preview_Advanced_EXP.json",
+  "size": 11245,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Prompt_Relay_Ref2VA_Stock20_Advanced_EXP.json",
+  "size": 20564,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Prompt_Relay_Joint_AV_Turbo8_Advanced_EXP.json",
+  "size": 21762,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Prompt_Rewriter_8B_Advanced_EXP.json",
+  "size": 8020,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Prompt_Relay_L2VA_Turbo8_Advanced_EXP.json",
+  "size": 21328,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Studio_Prompt_Packet_Relay_Stock20_Advanced_EXP.json",
+  "size": 29138,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Prompt_Relay_RefVideoAudio_Stock20_Advanced_EXP.json",
+  "size": 22032,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Prompt_Budget_Role_Compiler_Advanced.json",
+  "size": 3922,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_H3_Prompt_Provider_Router_Advanced_EXP.json",
+  "size": 3875,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 12788,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_H3_Prompt_Semantic_Contract_Audit_Advanced_EXP.json",
+  "size": 8034,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Prompt_Relay_FL2VA_Lock_Turbo8_Advanced_EXP.json",
+  "size": 22994,
+  "url": null
+ },
+ {
+  "name": "2026-08-30_H3_Chunked_TwoPass_Global_Noise_v2_Advanced_EXP.json",
+  "size": 25326,
+  "url": null
+ },
+ {
+  "name": "2026-09-17_H3_Chunked_4plus4_接线修正版（低显存双分块双采样）.json",
+  "size": 48677,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 13037,
+  "url": null
+ },
+ {
+  "name": "2026-08-16_H3_Latent_Upscale_By32.json",
+  "size": 3149,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Learned_Latent_TwoPass_I2VA_Native_Speech_Advanced_EXP.json",
+  "size": 30550,
+  "url": null
+ },
+ {
+  "name": "2026-09-17_H3_NonPDD_Standard_4plus4_Chunked_EXP.json",
+  "size": 30188,
+  "url": null
+ },
+ {
+  "name": "2026-09-20_H3_H16_3_Chunked_PASS2_I2VA_Advanced_EXP.json",
+  "size": 31323,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Learned_Latent_TwoPass_Hybrid_Remix_Source_020_Advanced_EXP.json",
+  "size": 31449,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Learned_Latent_TwoPass_Hybrid_Reference_Only_Advanced_EXP.json",
+  "size": 31480,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Learned_Latent_TwoPass_I2VA_Standard_Advanced_EXP.json",
+  "size": 31228,
+  "url": null
+ },
+ {
+  "name": "2026-09-01_H3_Subject_Safe_RGB_Composite_v8_Advanced_EXP.json",
+  "size": 15955,
+  "url": null
+ },
+ {
+  "name": "2026-08-30_H3_Mask_Preserving_Low_Sigma_TwoPass_v4_Advanced_EXP.json",
+  "size": 35718,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Learned_Latent_TwoPass_Hybrid_Lock_Source_Advanced_EXP.json",
+  "size": 31371,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Sol_Attn_T2VA_Conservative_Advanced_EXP.json",
+  "size": 18400,
+  "url": null
+ },
+ {
+  "name": "2026-08-28_H3_Qwen_Prefix_and_Block_Cache_Ref2VA_Stock20_Advanced_EXP.json",
+  "size": 19548,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_H3_ClipProj_4B_T2VA_Bridge_Advanced_EXP.json",
+  "size": 19093,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 7041,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Sol_Attn_Compatibility_Audit_Advanced_EXP.json",
+  "size": 5793,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_External_BlockSwap_Stock20_Advanced_EXP.json",
+  "size": 15741,
+  "url": null
+ },
+ {
+  "name": "2026-08-13_H3_Environment_Audit_Advanced.json",
+  "size": 1439,
+  "url": null
+ },
+ {
+  "name": "2026-08-13_H3_Activation_Chunk_Advanced.json",
+  "size": 3284,
+  "url": null
+ },
+ {
+  "name": "2026-08-13_H3_Qwen_Prefix_Cache_Advanced.json",
+  "size": 2983,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_ClipProj_8B_Ref2VA_Bridge_Advanced_EXP.json",
+  "size": 18881,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_ClipProj_8B_I2VA_Bridge_Advanced_EXP.json",
+  "size": 19334,
+  "url": null
+ },
+ {
+  "name": "2026-08-13_H3_Trajectory_Probe_Advanced_EXP.json",
+  "size": 22927,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_ClipProj_8B_T2VA_Bridge_Advanced_EXP.json",
+  "size": 17281,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_ClipProj_Compatibility_Audit_Advanced_EXP.json",
+  "size": 4942,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_ClipProj_8B_FL2VA_Bridge_Advanced_EXP.json",
+  "size": 20179,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_H3_Creator_Long_Video_Background_Bridge_Advanced_EXP.json",
+  "size": 10816,
+  "url": null
+ },
+ {
+  "name": "2026-08-13_H3_Studio_Timeline_Advanced.json",
+  "size": 10196,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 8068,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_H3_Creator_Run_Receipt_Resume_Advanced.json",
+  "size": 15089,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Creator_Synchronized_AB_Advanced.json",
+  "size": 4866,
+  "url": null
+ },
+ {
+  "name": "2026-08-13_H3_Selective_Repair_Execution_Advanced.json",
+  "size": 5665,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Creator_Synchronized_AV_AB_Advanced.json",
+  "size": 14719,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Creator_Workspace_Run_Window_Advanced.json",
+  "size": 8303,
+  "url": null
+ },
+ {
+  "name": "2026-08-13_H3_Context_IR_Provider_Advanced.json",
+  "size": 3601,
+  "url": null
+ },
+ {
+  "name": "2026-08-13_H3_AV_Decode_Safety_Advanced.json",
+  "size": 1826,
+  "url": null
+ },
+ {
+  "name": "2026-08-13_H3_Reel_Delivery_Advanced.json",
+  "size": 2776,
+  "url": null
+ },
+ {
+  "name": "FAST_H3_V2_README.md",
+  "size": 2929,
+  "url": null
+ },
+ {
+  "name": "2026-09-03_H3_OpenVDN_DMD8_T2VA_0p5MP_Advanced_EXP.json",
+  "size": 16424,
+  "url": null
+ },
+ {
+  "name": "2026-09-03_H3_OpenVDN_DMD8_T2VA_0p5MP_Advanced.json",
+  "size": 16302,
+  "url": null
+ },
+ {
+  "name": "VDN_TWO_PASS.md",
+  "size": 3416,
+  "url": null
+ },
+ {
+  "name": "FastH3_V2_Trained_VSA_Dual_4plus4_Resume_8s_EXP.json",
+  "size": 15723,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 5743,
+  "url": null
+ },
+ {
+  "name": "FastH3_V2_Official_Comfy_Template_124f_EXP.json",
+  "size": 17952,
+  "url": null
+ },
+ {
+  "name": "FastH3_V2_Dense_Sol_Audio_Protected_73f_EXP.json",
+  "size": 22099,
+  "url": null
+ },
+ {
+  "name": "FastH3_V2_Dense_Relay_Dual_4plus4_8s_EXP.json",
+  "size": 18219,
+  "url": null
+ },
+ {
+  "name": "2026-09-08_H3_OpenVDN_T2VA_native_h3_TwoPass_EXP.json",
+  "size": 58526,
+  "url": null
+ },
+ {
+  "name": "2026-09-08_H3_OpenVDN_I2VA_vdn_TwoPass_EXP.json",
+  "size": 56703,
+  "url": null
+ },
+ {
+  "name": "FastH3_V2_Trained_VSA_73f_h4c2_EXP.json",
+  "size": 21230,
+  "url": null
+ },
+ {
+  "name": "FastH3_V2_Trained_VSA_73f_h1c1_EXP.json",
+  "size": 17949,
+  "url": null
+ },
+ {
+  "name": "2026-09-08_H3_OpenVDN_I2VA_native_h3_TwoPass_EXP.json",
+  "size": 60867,
+  "url": null
+ },
+ {
+  "name": "2026-09-08_H3_OpenVDN_T2VA_vdn_TwoPass_EXP.json",
+  "size": 54362,
+  "url": null
+ },
+ {
+  "name": "2026-09-03_H3_OpenVDN_DMD8_Ref2VA_MultiImage_Advanced.json",
+  "size": 18237,
+  "url": null
+ },
+ {
+  "name": "2026-09-03_H3_OpenVDN_DMD8_Ref2VA_VideoAudio_Advanced.json",
+  "size": 19151,
+  "url": null
+ },
+ {
+  "name": "2026-09-03_H3_OpenVDN_DMD8_Hybrid_FirstAudio_Advanced.json",
+  "size": 19698,
+  "url": null
+ },
+ {
+  "name": "2026-08-19_H3_SPEED_I2VA_Lock_Stock20_Advanced_EXP.json",
+  "size": 20157,
+  "url": null
+ },
+ {
+  "name": "2026-09-03_H3_OpenVDN_DMD8_Ref2VA_Image_0p5MP_Advanced.json",
+  "size": 17191,
+  "url": null
+ },
+ {
+  "name": "2026-09-03_H3_OpenVDN_DMD8_I2VA_Advanced.json",
+  "size": 17099,
+  "url": null
+ },
+ {
+  "name": "2026-08-19_H3_SPEED_L2VA_Native_Stock20_Advanced_EXP.json",
+  "size": 19906,
+  "url": null
+ },
+ {
+  "name": "2026-09-03_H3_OpenVDN_DMD8_FL2VA_0p5MP_Advanced.json",
+  "size": 17871,
+  "url": null
+ },
+ {
+  "name": "2026-08-19_H3_SPEED_FL2VA_Remix_Stock20_Advanced_EXP.json",
+  "size": 20246,
+  "url": null
+ },
+ {
+  "name": "2026-09-03_H3_OpenVDN_DMD8_Ref2VA_Audio_Advanced.json",
+  "size": 18917,
+  "url": null
+ },
+ {
+  "name": "2026-08-19_H3_SPEED_Hybrid_FirstImageAudio_Stock20_Advanced_EXP.json",
+  "size": 20438,
+  "url": null
+ },
+ {
+  "name": "2026-08-30_H3_FastH3_VSA_T2VA_4Step_0p4MP_Advanced_EXP.json",
+  "size": 14868,
+  "url": null
+ },
+ {
+  "name": "2026-08-19_H3_SPEED_T2VA_Turbo8_Advanced_EXP.json",
+  "size": 15981,
+  "url": null
+ },
+ {
+  "name": "2026-09-03_H3_OpenVDN_DMD8_L2VA_0p5MP_Advanced.json",
+  "size": 17032,
+  "url": null
+ },
+ {
+  "name": "2026-08-19_H3_SPEED_Spectrum_Dataset_Calibration_Advanced_EXP.json",
+  "size": 15942,
+  "url": null
+ },
+ {
+  "name": "2026-08-19_H3_SPEED_RefVideoAudio_Stock20_Advanced_EXP.json",
+  "size": 20301,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_SPEED_Ref2VA_Stock20_Advanced_EXP.json",
+  "size": 12415,
+  "url": null
+ },
+ {
+  "name": "2026-08-18_H3_SPEED_T2VA_Stock20_Advanced_EXP.json",
+  "size": 19274,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_SPEED_FL2VA_Stock20_Advanced_EXP.json",
+  "size": 12995,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Hybrid_Model_Audio_Reference_Stock20_EXP.json",
+  "size": 16396,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Hybrid_Model_VBAR_Headroom_Stock20_EXP.json",
+  "size": 17337,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Hybrid_Compatibility_Audit_Stock20_EXP.json",
+  "size": 18678,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 1089,
+  "url": null
+ },
+ {
+  "name": "2026-08-12_H3_Hybrid_Artifact_Maintenance_Advanced.json",
+  "size": 3844,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Hybrid_Model_Mixed_Reference_Stock20_EXP.json",
+  "size": 17451,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Hybrid_Model_Advanced_Stock20_EXP.json",
+  "size": 16100,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_MultiKeyframe_Advanced_EXP.json",
+  "size": 19193,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 973,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Motion_Recovery_Windowed_Stock20_Advanced_EXP.json",
+  "size": 38179,
+  "url": null
+ },
+ {
+  "name": "2026-08-28_H3_RAFT_Motion_Audit_and_Mask_Propagation_Advanced_EXP.json",
+  "size": 6643,
+  "url": null
+ },
+ {
+  "name": "2026-08-28_H3_Trajectory_Fun_Control_Advanced_EXP.json",
+  "size": 4880,
+  "url": null
+ },
+ {
+  "name": "2026-08-28_H3_RealBasicVSR_Temporal_Restore_Advanced_EXP.json",
+  "size": 5697,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Enhance_A_Video_FETA_STG_T2VA_Stock20_Advanced_EXP.json",
+  "size": 18719,
+  "url": null
+ },
+ {
+  "name": "2026-08-28_H3_Dual_Clock_AYS_Schedule_Contract_Advanced_EXP.json",
+  "size": 14634,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Motion_Recovery_Fullclip_Stock20_Advanced_EXP.json",
+  "size": 33850,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 15173,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Enhance_A_Video_FETA_Ref2VA_Stock20_Advanced_EXP.json",
+  "size": 19311,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Enhance_A_Video_FETA_Hybrid_Stock20_Advanced_EXP.json",
+  "size": 20129,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Enhance_A_Video_FETA_T2VA_Turbo8_Advanced_EXP.json",
+  "size": 19001,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Enhance_A_Video_FETA_BlockCache_T2VA_Stock20_Advanced_EXP.json",
+  "size": 19963,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Enhance_A_Video_FETA_Strict_Sage_T2VA_Stock20_Advanced_EXP.json",
+  "size": 18137,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Enhance_A_Video_FETA_I2VA_Stock20_Advanced_EXP.json",
+  "size": 18924,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Enhance_A_Video_FETA_Prompt_Relay_T2VA_Stock20_Advanced_EXP.json",
+  "size": 26035,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Enhance_A_Video_FETA_L2VA_Stock20_Advanced_EXP.json",
+  "size": 18922,
+  "url": null
+ },
+ {
+  "name": "2026-08-18_H3_Hanfu_STG_Advanced_EXP.json",
+  "size": 17334,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Motion_Quality_SameNFE_Repair_8Step_EXP.json",
+  "size": 19486,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Enhance_A_Video_FETA_Stock20_Advanced_EXP.json",
+  "size": 18186,
+  "url": null
+ },
+ {
+  "name": "2026-08-18_H3_Hanfu_Detail_Mixer_Advanced_EXP.json",
+  "size": 20794,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Motion_Quality_Extra_Tail_NFE_8Step_EXP.json",
+  "size": 16545,
+  "url": null
+ },
+ {
+  "name": "2026-08-18_H3_Hanfu_Tail_Detail_3Step_Advanced_EXP.json",
+  "size": 17530,
+  "url": null
+ },
+ {
+  "name": "2026-08-18_H3_Hanfu_Model_Time_Bias_Advanced_EXP.json",
+  "size": 16473,
+  "url": null
+ },
+ {
+  "name": "2026-08-18_H3_Hanfu_RF_Restart_Advanced_EXP.json",
+  "size": 16519,
+  "url": null
+ },
+ {
+  "name": "2026-08-21_H3_Enhance_A_Video_FETA_FL2VA_Stock20_Advanced_EXP.json",
+  "size": 19746,
+  "url": null
+ },
+ {
+  "name": "2026-08-18_H3_Hanfu_Temporal_Detail_Advanced_EXP.json",
+  "size": 17504,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Motion_Quality_Dynamic_Guidance_8Step_EXP.json",
+  "size": 17302,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Motion_Quality_Advanced_8Step_EXP.json",
+  "size": 15832,
+  "url": null
+ },
+ {
+  "name": "2026-08-17_H3_SAM31_3Person_Face_Refine_Advanced_EXP.json",
+  "size": 87763,
+  "url": null
+ },
+ {
+  "name": "2026-09-05_H3_Face_Refine_Window_Studio_Compose_Advanced_EXP.json",
+  "size": 7498,
+  "url": null
+ },
+ {
+  "name": "2026-08-16_H3_Face_Refine_Advanced_EXP.json",
+  "size": 21844,
+  "url": null
+ },
+ {
+  "name": "2026-09-05_H3_Face_Refine_Window_Manual_Review_Advanced_EXP.json",
+  "size": 37345,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 1733,
+  "url": null
+ },
+ {
+  "name": "2026-08-16_H3_Face_Refine_Anime_Advanced_EXP.json",
+  "size": 21852,
+  "url": null
+ },
+ {
+  "name": "2026-08-17_H3_SAM31_2Person_Face_Refine_Advanced_EXP.json",
+  "size": 64649,
+  "url": null
+ },
+ {
+  "name": "2026-09-05_H3_Face_Refine_Window_Studio_Serial_Advanced_EXP.json",
+  "size": 42569,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Face_Refine_Parity_Advanced_EXP.json",
+  "size": 32231,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Audio_Perceptual_Drift_Audit_Advanced.json",
+  "size": 4523,
+  "url": null
+ },
+ {
+  "name": "2026-08-10_H3_Speech_Voice_Library_Delete_EXP.json",
+  "size": 1060,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Audio_Integrity_Audit_Advanced.json",
+  "size": 3326,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Speaker_Routing_Audit_Advanced.json",
+  "size": 7413,
+  "url": null
+ },
+ {
+  "name": "2026-08-10_H3_Speech_Voice_Library_Save_EXP.json",
+  "size": 3203,
+  "url": null
+ },
+ {
+  "name": "2026-08-10_H3_Speech_VRAM_Preflight_EXP.json",
+  "size": 2047,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 10872,
+  "url": null
+ },
+ {
+  "name": "2026-08-10_H3_Speech_Voice_Library_Load_EXP.json",
+  "size": 1119,
+  "url": null
+ },
+ {
+  "name": "2026-08-10_H3_Speech_Described_Stock20_EXP.json",
+  "size": 9330,
+  "url": null
+ },
+ {
+  "name": "2026-08-10_H3_Speech_Performance_ADR_Stock20_EXP.json",
+  "size": 10932,
+  "url": null
+ },
+ {
+  "name": "2026-08-10_H3_Speech_Reference_Clone_Stock20_EXP.json",
+  "size": 10109,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Speech_Joint_Dialogue_Stock20_EXP.json",
+  "size": 18224,
+  "url": null
+ },
+ {
+  "name": "2026-08-10_H3_Speech_LongForm_Control_EXP.json",
+  "size": 1092,
+  "url": null
+ },
+ {
+  "name": "2026-08-10_H3_Speech_LongForm_Compose_EXP.json",
+  "size": 4809,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Speech_Dialogue_Two_Speaker_Stock20_EXP.json",
+  "size": 19116,
+  "url": null
+ },
+ {
+  "name": "2026-08-10_H3_Dialogue_Safe_Master_EXP.json",
+  "size": 8200,
+  "url": null
+ },
+ {
+  "name": "2026-08-10_H3_Speech_LongForm_Resume_Stock20_EXP.json",
+  "size": 12467,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Dialogue_Timed_Background_Bed_Lock_EXP.json",
+  "size": 17923,
+  "url": null
+ },
+ {
+  "name": "2026-09-13_H3_Dual_4plus4_Accepted_Picture_KJ.json",
+  "size": 18388,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 28104,
+  "url": null
+ },
+ {
+  "name": "2026-09-22_H3_HyperFlow_Native_Single8_0p6MP_8s_EXP.json",
+  "size": 7318,
+  "url": null
+ },
+ {
+  "name": "2026-09-12_H3_Dual_Model_Long_Video_4plus4_Joint_AV_Dialogue_Aligned_24s_EXP.json",
+  "size": 17695,
+  "url": null
+ },
+ {
+  "name": "DUAL_MODEL_ACCELERATOR_CONNECTIONS.md",
+  "size": 5066,
+  "url": null
+ },
+ {
+  "name": "2026-09-15_H3_Dual_4plus4_Accepted_Picture_T8_LowVRAM_EXP.json",
+  "size": 23658,
+  "url": null
+ },
+ {
+  "name": "2026-09-22_H3_HyperFlow_P7_Dual_0p6MP_8s_EXP.json",
+  "size": 8483,
+  "url": null
+ },
+ {
+  "name": "2026-09-13_H3_Dance_4plus4_Accepted_Picture_KJ.json",
+  "size": 21747,
+  "url": null
+ },
+ {
+  "name": "2026-09-12_H3_Dual_Model_4plus4_Dialogue_External_LoRA_PyTorch_EXP.json",
+  "size": 22283,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_H3_Native_Latent_Resume_Manifest_Advanced_EXP.json",
+  "size": 4523,
+  "url": null
+ },
+ {
+  "name": "2026-09-12_H3_Dual_Model_4plus4_Dialogue_External_LoRA_KJ_Sage_EXP.json",
+  "size": 22344,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Enhance_A_Video_Long_Video_Accepted_22F_Stock20_Advanced_EXP.json",
+  "size": 28219,
+  "url": null
+ },
+ {
+  "name": "2026-09-12_H3_Dual_Model_4plus4_Dialogue_External_LoRA_Sol_EXP.json",
+  "size": 22597,
+  "url": null
+ },
+ {
+  "name": "2026-09-11_H3_Dual_Model_Long_Video_4plus4_Relay_EXP.json",
+  "size": 12561,
+  "url": null
+ },
+ {
+  "name": "2026-09-11_H3_Dual_Model_Long_Video_4plus4_Plain_EXP.json",
+  "size": 10752,
+  "url": null
+ },
+ {
+  "name": "2026-09-02_H3_Native_Masked_Video_Context_Plan_B_Advanced_EXP.json",
+  "size": 27901,
+  "url": null
+ },
+ {
+  "name": "2026-08-30_H3_In_Node_Long_Video_Prompt_Relay_EAV_Manual_Second_Pass_Advanced_EXP.json",
+  "size": 14297,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_H3_Native_Latent_Checkpoint_Save_Load_Advanced_EXP.json",
+  "size": 8889,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_H3_Dual_Clock_NFE_Checkpoint_Resume_Advanced_EXP.json",
+  "size": 20382,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_H3_Native_Latent_Continuation_Concat_Advanced_EXP.json",
+  "size": 10348,
+  "url": null
+ },
+ {
+  "name": "2026-08-27_H3_In_Node_Long_Video_Loop_Turbo4_Advanced_EXP.json",
+  "size": 7834,
+  "url": null
+ },
+ {
+  "name": "2026-09-02_H3_Native_Masked_Video_Context_Plan_B_Segment0_Starter_Advanced_EXP.json",
+  "size": 24655,
+  "url": null
+ },
+ {
+  "name": "2026-08-27_H3_In_Node_Long_Video_Prompt_Relay_EAV_Stock20_Advanced_EXP.json",
+  "size": 9734,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Native_Latent_Timeline_Concat_Advanced_EXP.json",
+  "size": 4036,
+  "url": null
+ },
+ {
+  "name": "2026-08-28_H3_FreeNoise_Prompt_Relay_EAV_Long_Video_Advanced_EXP.json",
+  "size": 14232,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Long_Video_Background_22F_ScenePlusIdentity_EXP.json",
+  "size": 30517,
+  "url": null
+ },
+ {
+  "name": "2026-08-20_H3_Prompt_Relay_Long_Video_Turbo8_Advanced_EXP.json",
+  "size": 28329,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Long_Video_Auto_Resume_22F_EXP.json",
+  "size": 26186,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Long_Video_Background_22F_EXP.json",
+  "size": 28184,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Long_Video_Accepted_22F_EXP.json",
+  "size": 23372,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Long_Video_22F_EXP.json",
+  "size": 21309,
+  "url": null
+ },
+ {
+  "name": "2026-08-10_H3_Ref2VA_Visual_Reference_Strength_EXP.json",
+  "size": 15145,
+  "url": null
+ },
+ {
+  "name": "2026-09-21_H3_Five_View_Character_Sheet_EXP.json",
+  "size": 12511,
+  "url": null
+ },
+ {
+  "name": "2026-08-28_H3_CADS_Visual_Reference_Annealing_Advanced_EXP.json",
+  "size": 16143,
+  "url": null
+ },
+ {
+  "name": "2026-08-07_H3_Still_Edit_22Frames_EXP.json",
+  "size": 14204,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 2540,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_LanPaint_AV_Local_Repair_Advanced_EXP.json",
+  "size": 24997,
+  "url": null
+ },
+ {
+  "name": "2026-08-09_H3_Source_Video_Repaint_Stock20_EXP.json",
+  "size": 19631,
+  "url": null
+ },
+ {
+  "name": "2026-08-13_H3_Scheduled_Audio_Injection_Advanced_EXP.json",
+  "size": 2258,
+  "url": null
+ },
+ {
+  "name": "2026-08-06_H3_Audio_Lock_Source_Stable_4V4A.json",
+  "size": 19434,
+  "url": null
+ },
+ {
+  "name": "2026-08-06_H3_Audio_Remix_Source_Stable_4V4A.json",
+  "size": 17832,
+  "url": null
+ },
+ {
+  "name": "2026-08-06_H3_Audio_Reference_Only_Stable_4V4A.json",
+  "size": 17848,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 1498,
+  "url": null
+ },
+ {
+  "name": "2026-08-06_H3_Turbo_EXP_4V8A.json",
+  "size": 13238,
+  "url": null
+ },
+ {
+  "name": "2026-08-06_H3_Turbo_EXP_4V10A.json",
+  "size": 13244,
+  "url": null
+ },
+ {
+  "name": "2026-08-06_H3_Turbo_Stable_4V4A.json",
+  "size": 13192,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 924,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 6316,
+  "url": null
+ },
+ {
+  "name": "dlss-nr-p4.template.json",
+  "size": 3790,
+  "url": null
+ },
+ {
+  "name": "dlss-nr-v1.3.json",
+  "size": 866,
+  "url": null
+ },
+ {
+  "name": "dlss-nr-v1.2.json",
+  "size": 918,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 2659,
+  "url": null
+ },
+ {
+  "name": "OpenVDN-LICENSE.txt",
+  "size": 11358,
+  "url": null
+ },
+ {
+  "name": "RealBasicVSR.md",
+  "size": 553,
+  "url": null
+ },
+ {
+  "name": "OpenVDN-NOTICE.txt",
+  "size": 1382,
+  "url": null
+ },
+ {
+  "name": "FlashVSR.md",
+  "size": 1131,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Quick_Face_Repair.json",
+  "size": 74099,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 1516,
+  "url": null
+ },
+ {
+  "name": "2026-08-23_H3_Quick_Creator_AV_Review.json",
+  "size": 40282,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Quick_I2VA_FL2VA.json",
+  "size": 38113,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Quick_Ref2VA.json",
+  "size": 37632,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Quick_T2VA.json",
+  "size": 36833,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Quick_Long_Video.json",
+  "size": 61726,
+  "url": null
+ },
+ {
+  "name": "2026-08-22_H3_Quick_Audio_Drive.json",
+  "size": 48083,
+  "url": null
+ },
+ {
+  "name": "trt_vae_prepare_flex.py",
+  "size": 605,
+  "url": null
+ },
+ {
+  "name": "THIRD_PARTY_NOTICES.md",
+  "size": 30196,
+  "url": null
+ },
+ {
+  "name": "requirements-prompt-rewriter.txt",
+  "size": 231,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 2271,
+  "url": null
+ },
+ {
+  "name": "trt_vae_compile.py",
+  "size": 595,
+  "url": null
+ },
+ {
+  "name": "sol_attn_minimax_v2.py",
+  "size": 39620,
+  "url": null
+ },
+ {
+  "name": "README_EN.md",
+  "size": 5528,
+  "url": null
+ },
+ {
+  "name": "trt_vae_prepare_t1.py",
+  "size": 601,
+  "url": null
+ },
+ {
+  "name": "requirements.txt",
+  "size": 296,
+  "url": null
+ },
+ {
+  "name": "meta.json",
+  "size": 42269,
+  "url": null
+ },
+ {
+  "name": ".gitattributes",
+  "size": 230,
+  "url": null
+ },
+ {
+  "name": ".gitignore",
+  "size": 337,
+  "url": null
+ },
+ {
+  "name": "AGENTS.md",
+  "size": 1542,
+  "url": null
+ },
+ {
+  "name": "features.json",
+  "size": 589823,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 5390,
+  "url": null
+ },
+ {
+  "name": "LICENSE",
+  "size": 659,
+  "url": null
+ },
+ {
+  "name": "CHANGELOG.md",
+  "size": 7223,
+  "url": null
+ },
+ {
+  "name": ".comfyignore",
+  "size": 1208,
+  "url": null
+ },
+ {
+  "name": "pyproject.toml",
+  "size": 3472,
+  "url": null
+ },
+ {
+  "name": "preview_override.css",
+  "size": 4099,
+  "url": null
+ },
+ {
+  "name": "preview_override.js",
+  "size": 43934,
+  "url": null
+ },
+ {
+  "name": "interpolation.js",
+  "size": 9533,
+  "url": null
+ },
+ {
+  "name": "point_editor_canvas.js",
+  "size": 15306,
+  "url": null
+ },
+ {
+  "name": "spline_editor_canvas.js",
+  "size": 32502,
+  "url": null
+ },
+ {
+  "name": "editor_base.js",
+  "size": 29422,
+  "url": null
+ },
+ {
+  "name": "jsnodes.js",
+  "size": 15463,
+  "url": null
+ },
+ {
+  "name": "node_insert.js",
+  "size": 14758,
+  "url": null
+ },
+ {
+  "name": "screencap_stream.js",
+  "size": 17200,
+  "url": null
+ },
+ {
+  "name": "image_transform.js",
+  "size": 98816,
+  "url": null
+ },
+ {
+  "name": "performance.js",
+  "size": 9106,
+  "url": null
+ },
+ {
+  "name": "play_sound.js",
+  "size": 4028,
+  "url": null
+ },
+ {
+  "name": "nodeswap.js",
+  "size": 12938,
+  "url": null
+ },
+ {
+  "name": "shake_to_disconnect.js",
+  "size": 7277,
+  "url": null
+ },
+ {
+  "name": "help_popup.js",
+  "size": 14981,
+  "url": null
+ },
+ {
+  "name": "ideogram4_prompt_builder.js",
+  "size": 160069,
+  "url": null
+ },
+ {
+  "name": "setgetnodes.js",
+  "size": 61005,
+  "url": null
+ },
+ {
+  "name": "utility.js",
+  "size": 10827,
+  "url": null
+ },
+ {
+  "name": "fast_preview.js",
+  "size": 1443,
+  "url": null
+ },
+ {
+  "name": "hdr_preview.js",
+  "size": 24812,
+  "url": null
+ },
+ {
+  "name": "contextmenu.js",
+  "size": 6044,
+  "url": null
+ },
+ {
+  "name": "fast_preview_batch.js",
+  "size": 24296,
+  "url": null
+ },
+ {
+  "name": "context_windows_visualizer.js",
+  "size": 38146,
+  "url": null
+ },
+ {
+  "name": "fix_node.js",
+  "size": 3583,
+  "url": null
+ },
+ {
+  "name": "canvas_background.js",
+  "size": 16527,
+  "url": null
+ },
+ {
+  "name": "fillconnect.js",
+  "size": 6387,
+  "url": null
+ },
+ {
+  "name": "appearance.js",
+  "size": 888,
+  "url": null
+ },
+ {
+  "name": "publish.yml",
+  "size": 669,
+  "url": null
+ },
+ {
+  "name": "2024-04-03_20_49_29-ComfyUI.png",
+  "size": 176158,
+  "url": null
+ },
+ {
+  "name": "319121566-05f66385-7568-4b1f-8bbc-11053660b02f.png",
+  "size": 94315,
+  "url": null
+ },
+ {
+  "name": "319121636-706b5081-9120-4a29-bd76-901691ada688.png",
+  "size": 24783,
+  "url": null
+ },
+ {
+  "name": "magictex.py",
+  "size": 3211,
+  "url": null
+ },
+ {
+  "name": "fluid.py",
+  "size": 2983,
+  "url": null
+ },
+ {
+  "name": "numerical.py",
+  "size": 930,
+  "url": null
+ },
+ {
+  "name": "utility.py",
+  "size": 5702,
+  "url": null
+ },
+ {
+  "name": "nodes.py",
+  "size": 141614,
+  "url": null
+ },
+ {
+  "name": "tiny_vae.py",
+  "size": 9190,
+  "url": null
+ },
+ {
+  "name": "minimax_nodes.py",
+  "size": 15067,
+  "url": null
+ },
+ {
+  "name": "mask_nodes.py",
+  "size": 70591,
+  "url": null
+ },
+ {
+  "name": "image_transform_node.py",
+  "size": 31532,
+  "url": null
+ },
+ {
+  "name": "ltxv_nodes.py",
+  "size": 125145,
+  "url": null
+ },
+ {
+  "name": "lora_nodes.py",
+  "size": 32399,
+  "url": null
+ },
+ {
+  "name": "model_optimization_nodes.py",
+  "size": 119275,
+  "url": null
+ },
+ {
+  "name": "triton_vae.py",
+  "size": 39757,
+  "url": null
+ },
+ {
+  "name": "sharpen_nodes.py",
+  "size": 11464,
+  "url": null
+ },
+ {
+  "name": "preview_override_node.py",
+  "size": 38055,
+  "url": null
+ },
+ {
+  "name": "nodes_looping.py",
+  "size": 36574,
+  "url": null
+ },
+ {
+  "name": "image_nodes.py",
+  "size": 226952,
+  "url": null
+ },
+ {
+  "name": "audioscheduler_nodes.py",
+  "size": 10958,
+  "url": null
+ },
+ {
+  "name": "hdr_preview_node.py",
+  "size": 6945,
+  "url": null
+ },
+ {
+  "name": "curve_nodes.py",
+  "size": 72112,
+  "url": null
+ },
+ {
+  "name": "ideogram4_nodes.py",
+  "size": 22453,
+  "url": null
+ },
+ {
+  "name": "batchcrop_nodes.py",
+  "size": 33194,
+  "url": null
+ },
+ {
+  "name": "context_windows_visualizer.py",
+  "size": 9101,
+  "url": null
+ },
+ {
+  "name": "purify.min.js",
+  "size": 21349,
+  "url": null
+ },
+ {
+  "name": "marked.min.js",
+  "size": 35424,
+  "url": null
+ },
+ {
+  "name": "FreeMono.ttf",
+  "size": 343980,
+  "url": null
+ },
+ {
+  "name": "FreeMonoBoldOblique.otf",
+  "size": 237600,
+  "url": null
+ },
+ {
+  "name": "TTNorms-Black.otf",
+  "size": 152736,
+  "url": null
+ },
+ {
+  "name": "leapfusion_hunyuuanvideo_i2v_native_testing.json",
+  "size": 21583,
+  "url": null
+ },
+ {
+  "name": "pyproject.toml",
+  "size": 519,
+  "url": null
+ },
+ {
+  "name": "custom_dimensions_example.json",
+  "size": 351,
+  "url": null
+ },
+ {
+  "name": "README.md",
+  "size": 4388,
+  "url": null
+ },
+ {
+  "name": "__init__.py",
+  "size": 31581,
+  "url": null
+ },
+ {
+  "name": ".gitignore",
+  "size": 143,
+  "url": null
+ },
+ {
+  "name": "requirements.txt",
+  "size": 72,
+  "url": null
+ },
+ {
+  "name": "LICENSE",
+  "size": 35823,
+  "url": null
+ }
+]

@@ -1,0 +1,42 @@
+{
+    "resolution": 512,
+    "patch_size": 2,
+    "mlp_ratio": 4,
+    "use_qknorm": true,
+    "use_swiglu": true,
+    "use_rope": true,
+    "use_rmsnorm": true,
+    "wo_shift": false,
+    "dim": 1536,
+    "depth": 36,
+    "num_heads": 24,
+    "ae_type": "qwen",
+    "ae_path": "preset/ckpts/Qwen-Image-vae-2d",
+    "time_dist": [
+        "lognorm",
+        0,
+        1.0
+    ],
+    "cfg_ratio": 0.1,
+    "cfg_scale": 1.5,
+    "dinov2_size": 448,
+    "enc_type": "dinov2l",
+    "enc_dim": 1024,
+    "layer_dinov2b_list": [
+        17
+    ],
+    "interp_type": "lin",
+    "encdim_ratio": 3,
+    "weak_cond_strength_aelq_list": [
+        0,
+        0
+    ],
+    "cond_strength_aelq_list": [
+        5,
+        1
+    ],
+    "t_start": 0,
+    "t_end": 1,
+    "auxiliary_time_cond": false,
+    "distill_type": "onestep"
+}

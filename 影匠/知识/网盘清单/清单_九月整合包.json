@@ -1,0 +1,362 @@
+[
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/Comfyui-WF-整合包-不含模型-2026.9.28.7z",
+  "size": 10555162850,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/使用说明.txt",
+  "size": 490,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/模型SHA256.txt",
+  "size": 11513,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/text_encoders/qwen3vl_8b_bf16.safetensors",
+  "size": 17534334616,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+  "size": 15687142551,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/text_encoders/qwen3vl_8b_heretic-Q4_K_M.gguf",
+  "size": 5027785376,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/text_encoders/qwen3.5_qwen_image_2.1_pe_t2i.int8_convrot.safetensors",
+  "size": 9471072252,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/text_encoders/qwen3.5_qwen_image_2.1_pe_i2i.int8_convrot.safetensors",
+  "size": 9471072252,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/text_encoders/mmproj-qwen3vl_8b_heretic-f16.gguf",
+  "size": 1159030464,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/text_encoders/put_text_encoder_files_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/vae/qwen_image_2.1_vae_bf16.safetensors",
+  "size": 675509688,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/vae/minimax_h3_video_vae_fp16.safetensors",
+  "size": 5207808496,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/vae/minimax_h3_audio_vae_fp32.safetensors",
+  "size": 605254808,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/vae/put_vae_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/diffusion_models/FeiHou_MiniMax-H3_Remix_v0.6_int8_convrot_v2.safetensors",
+  "size": 34004449966,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/diffusion_models/minimax_h3_hybrid_fl2va_ref2va_b25-49-int8.safetensors",
+  "size": 20970379632,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/diffusion_models/qwen_image_2.1_int8_convrot.safetensors",
+  "size": 7256783064,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/diffusion_models/put_diffusion_model_files_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/wushu_spatial_physics_v2_1000_pruned.safetensors",
+  "size": 155109488,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/MysticXXX_MMH3-V1.safetensors",
+  "size": 596451528,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/VNCCS_QI2_PoseStudioV1.1.safetensors",
+  "size": 159436408,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/Motion_Repair.safetensors",
+  "size": 155110272,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/minimax_h3_turbo_v4_step600_ema_pruned_comfyui.safetensors",
+  "size": 620285592,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/minimax_h3_turbo_v4_step600_ema_DasiwaREF2VAHybridV1_0_curveproj1025_compat_v001.safetensors",
+  "size": 794888704,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+  "size": 1956193000,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/minimax_h3_fl2v_turbo_4step_v1.2_768p_comfyui_bf16.safetensors",
+  "size": 1956193000,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/Kook_qwen_2.1_rmsh_c1-st6000.safetensors",
+  "size": 167830416,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/H3_speed_slider_1.1.safetensors",
+  "size": 10093356,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/H3_Combat_V2.safetensors",
+  "size": 155110280,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/GunFu.safetensors",
+  "size": 155110272,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/loras/put_loras_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/vae_approx/put_taesd_encoder_pth_and_taesd_decoder_pth_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/upscale_models/put_esrgan_and_other_upscale_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/unet/put_unet_files_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/latent_upscale_models/minimax_h3_latent_upscaler_3d_fp16.safetensors",
+  "size": 690592672,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/latent_upscale_models/h3_upscaler_sharpness_2000steps_v0.1_fp32.safetensors",
+  "size": 1381153616,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/latent_upscale_models/put_latent_upscale_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/photomaker/put_photomaker_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/style_models/put_t2i_style_model_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/optical_flow/put_optical_flow_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/model_patches/put_model_patches_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/detection/put_detection_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/controlnet/put_controlnets_and_t2i_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/hypernetworks/put_hypernetworks_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/diffusers/put_diffusers_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/frame_interpolation/put_frame_interpolation_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/gligen/put_gligen_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/geometry_estimation/put_geometry_estimation_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/embeddings/put_embeddings_or_textual_inversion_concepts_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/checkpoints/put_checkpoints_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/clip_vision/put_clip_vision_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/clip/put_clip_or_text_encoder_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/background_removal/put_background_removal_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/audio_encoders/put_audio_encoder_models_here",
+  "size": 0,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/configs/v2-inpainting-inference.yaml",
+  "size": 4608,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/configs/v1-inference_clip_skip_2_fp16.yaml",
+  "size": 2030,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/configs/v1-inpainting-inference.yaml",
+  "size": 2063,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/configs/v1-inference_fp16.yaml",
+  "size": 1967,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/configs/anything_v3.yaml",
+  "size": 2006,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/configs/v1-inference_clip_skip_2.yaml",
+  "size": 2006,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/configs/v2-inference-v_fp32.yaml",
+  "size": 1884,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/configs/v2-inference-v.yaml",
+  "size": 1883,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/configs/v2-inference_fp32.yaml",
+  "size": 1857,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/configs/v2-inference.yaml",
+  "size": 1856,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/configs/v1-inference.yaml",
+  "size": 1943,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/vosr2/VOSR2/dinov2_vitl14_pretrain.pth",
+  "size": 1217586395,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/vosr2/VOSR2/dinov2_vitl14.safetensors",
+  "size": 1217506936,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/vosr2/VOSR2/args.json",
+  "size": 816,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/semantic_bridge/t8_compat/BUNNY_H3_ActionLogic_Bridge_V1_T8_Compat.safetensors",
+  "size": 22046928,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/vosr2/VOSR2/checkpoints/ema_model.safetensors",
+  "size": 5576385424,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/vosr2/VOSR2/Qwen-Image-vae-2d/diffusion_pytorch_model.safetensors",
+  "size": 178418892,
+  "url": null
+ },
+ {
+  "name": "3.九月整合包（minimax+qwen2.1+自由姿势)/models（放入comfyui modes文件夹即可，直接替换）/vosr2/VOSR2/Qwen-Image-vae-2d/config.json",
+  "size": 811,
+  "url": null
+ }
+]

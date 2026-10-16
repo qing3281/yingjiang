@@ -1,0 +1,104 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "_meta": { "title": "Qwen-Image 2.1 主模型" },
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "80": {
+    "class_type": "QwenImage21Cache",
+    "_meta": { "title": "前缀缓存（官方模板自带，提速用）" },
+    "inputs": { "model": ["1", 0], "device": "auto", "dtype": "default" }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "_meta": { "title": "文本编码器（官方：qwen3vl_8b，不是 pe_t2i 那个）" },
+    "inputs": {
+      "clip_name": "qwen3vl_8b_bf16.safetensors",
+      "type": "qwen_image"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "_meta": { "title": "Qwen-Image 2.1 VAE" },
+    "inputs": { "vae_name": "qwen_image_2.1_vae_bf16.safetensors" }
+  },
+  "20": {
+    "class_type": "TextEncodeQwenImage21",
+    "_meta": { "title": "正向(0) + 负面(1)，一个节点" },
+    "inputs": {
+      "clip": ["3", 0],
+      "vae": ["4", 0],
+      "prompt": "a cinematic film still, photorealistic",
+      "negative_prompt": "dark, underexposed, dim, murky, low key, blurry, low quality, watermark, text, extra fingers, deformed hands, cartoon, 3d render",
+      "resolution": 1024
+    }
+  },
+  "30": {
+    "class_type": "EmptyLatentImage",
+    "_meta": { "title": "画布尺寸（官方用 EmptyLatentImage）" },
+    "inputs": { "width": 1024, "height": 1024, "batch_size": 1 }
+  },
+  "40": {
+    "class_type": "KSampler",
+    "_meta": { "title": "★ 实测定下来的：40 步 / cfg 3.0（官方 cfg 1 出图太暗，平均亮度只有 40.8，cfg3 是 88.7；zimage 对照 68.9）" },
+    "inputs": {
+      "model": ["80", 0],
+      "seed": 0,
+      "steps": 40,
+      "cfg": 3.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "positive": ["20", 0],
+      "negative": ["20", 1],
+      "latent_image": ["30", 0],
+      "denoise": 1.0
+    }
+  },
+  "50": {
+    "class_type": "VAEDecode",
+    "_meta": { "title": "解码" },
+    "inputs": { "samples": ["40", 0], "vae": ["4", 0] }
+  },
+  "60": {
+    "class_type": "UpscaleModelLoader",
+    "_meta": { "title": "放大模型（Remacri 4×，人脸/织物最稳）" },
+    "inputs": { "model_name": "4x_foolhardy_Remacri.pth" }
+  },
+  "61": {
+    "class_type": "ImageUpscaleWithModel",
+    "_meta": { "title": "先放大 4 倍" },
+    "inputs": { "upscale_model": ["60", 0], "image": ["50", 0] }
+  },
+  "62": {
+    "class_type": "ImageScale",
+    "_meta": { "title": "再缩回目标尺寸（放大又缩 = 边缘变锐、噪点被磨掉）" },
+    "inputs": {
+      "image": ["61", 0],
+      "upscale_method": "lanczos",
+      "width": 1024,
+      "height": 1024,
+      "crop": "disabled"
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "_meta": { "title": "存图" },
+    "inputs": { "filename_prefix": "影匠", "images": ["62", 0] }
+  },
+  "_规格": {
+    "来源": "照抄 ComfyUI 自带的官方模板 image_qwen_image_2_1_t2i.json（site-packages/comfyui_workflow_templates_json/templates/），不是我自己猜的。",
+    "★ 猜错过的两处": "① 文本编码器：官方用 **qwen3vl_8b**（type=qwen_image）给图像模型；`qwen3.5_..._pe_t2i` 那个是**提示词增强器**（TextGenerate）用的，接图像模型出满屏彩色噪点废图。② cfg：官方 **1.0**（不是 4.0），25 步 / euler / simple。cfg>1 只在你要用负面词时才抬。",
+    "可缺": ["80"],
+    "要求": [
+      { "节点": "UNETLoader", "字段": "unet_name", "名字须含": ["qwen_image_2.1"],
+        "为什么": "2.1 是本机最新的 Qwen-Image 文生图权重" },
+      { "节点": "CLIPLoader", "字段": "clip_name", "名字须含": ["qwen3vl_8b"],
+        "为什么": "官方配给图像模型的就是它；pe_t2i 是提示词增强器专用，配错出废图" },
+      { "节点": "VAELoader", "字段": "vae_name", "名字须含": ["qwen_image"],
+        "为什么": "Qwen-Image 的隐空间和别家不通" }
+    ]
+  }
+}

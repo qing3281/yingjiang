@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "format": "webp",
+  "width": 640,
+  "height": 360,
+  "presetIds": [
+    "3d-xianxia",
+    "cyberpunk",
+    "anime-cel",
+    "dark-gothic",
+    "ghibli",
+    "marvel-dc",
+    "pixel-retro",
+    "ink-wash",
+    "steampunk",
+    "disney-3d",
+    "ukiyoe",
+    "oil-painting",
+    "cyberpunk-anime",
+    "wuxia-realistic",
+    "vintage-film",
+    "horror-thriller",
+    "sci-fi-epic",
+    "dreamy-pastel",
+    "korean-webtoon",
+    "nolan-epic",
+    "post-apocalypse",
+    "zombie-apocalypse",
+    "urban-realistic"
+  ]
+}

@@ -1,0 +1,198 @@
+{
+  "标题": "今天别开门",
+  "画布": "1920x1080",
+  "转场秒": 0.6,
+  "每张秒": 8.0,
+  "风格前缀": "cinematic film still, night interior, moody low-key lighting, cold cyan shadows against sodium-orange practicals, heavy atmosphere, shallow depth of field, 35mm film grain, ",
+  "角色": "a lone tired man in his thirties, short black hair, grey hoodie under a dark jacket, gaunt face, ",
+  "参考": "D:\\tts\\_ref\\ref_a.wav",
+  "BGM": "D:\\DSHworkspace\\B站\\素材\\BGM\\flatwound_-_The_Long_Goodbye.mp3",
+  "BGM音量": 0.14,
+  "旁白音量": 1.0,
+  "出图线": "zimage",
+  "输出目录": "D:\\DSHworkspace\\B站\\成片\\今天别开门",
+  "投稿": {
+    "活动": "AI MV 大赛",
+    "副标题": "他在门里等了七天，敲门的一直是他自己",
+    "简介": "第七天，门缝下的纸条上写着：你终于开门了。\n可他这七天，一次门都没开过。\n\n全片由本地 AI 生成：Z-Image-Turbo 出静帧，Wan 2.2 I2V 14B + LightX2V 4步 LoRA 出动态镜头，IndexTTS-2 出对白，PyAV 完成运镜、转场、字幕与混音。",
+    "标签": ["AI短片", "AI MV 大赛", "悬疑", "AIGC", "原创短片", "都市"],
+    "分区": 27,
+    "AI声明": true
+  },
+  "镜头": [
+    {
+      "提示词": "a narrow dim apartment corridor at night, peeling walls, one bare bulb, a single door at the far end, seen from down the hall",
+      "运镜": "推近",
+      "秒": 10.0,
+      "字幕": "老楼，六层，没有电梯。"
+    },
+    {
+      "提示词": "kneeling down to pick up a folded paper note from under a weathered apartment door, one hand reaching toward it",
+      "运镜": "下到上",
+      "秒": 8.0,
+      "动态": 8.0,
+      "说": "谁往我门缝里塞东西？",
+      "字幕": "谁往我门缝里塞东西？"
+    },
+    {
+      "提示词": "extreme close up of a small folded paper note lying on a worn wooden floor, dim light from above",
+      "运镜": "静止",
+      "秒": 6.0,
+      "无角色": true,
+      "字幕": "",
+      "说": "今天别开门。"
+    },
+    {
+      "提示词": "sitting alone at a small kitchen table eating instant noodles at night, steam rising, listening toward the hallway",
+      "运镜": "右到左",
+      "秒": 9.0,
+      "说": "楼上那家不是三年前就搬走了吗，怎么还有脚步声。",
+      "字幕": "楼上那家不是三年前就搬走了吗，怎么还有脚步声。"
+    },
+    {
+      "提示词": "pulling open a desk drawer, inside it a neat row of identical folded paper notes, face lit from below by the drawer",
+      "运镜": "推近",
+      "秒": 9.0,
+      "说": "等等，抽屉里怎么已经有五张了。这是第六张。",
+      "字幕": "等等，抽屉里怎么已经有五张了。这是第六张。"
+    },
+    {
+      "提示词": "standing at the front door in the early morning, looking down at a fresh note on the floor, cold blue daylight through the peephole",
+      "运镜": "上到下",
+      "秒": 8.0,
+      "说": "又是今天。又是这四个字。到底是谁。",
+      "字幕": "又是今天。又是这四个字。到底是谁。"
+    },
+    {
+      "提示词": "putting on a jacket in a dark hallway, jaw set, about to go out, one hand on the door frame",
+      "运镜": "推近",
+      "秒": 8.0,
+      "说": "我今天就去问清楚，这楼里到底还住着谁。",
+      "字幕": "我今天就去问清楚，这楼里到底还住着谁。"
+    },
+    {
+      "提示词": "knocking on a neighbouring apartment door, a paper official seal pasted across the door frame, dust thick on the handle",
+      "运镜": "推近",
+      "秒": 8.0,
+      "说": "封条？什么时候贴上去的，我怎么一直没注意。",
+      "字幕": "封条？什么时候贴上去的，我怎么一直没注意。"
+    },
+    {
+      "提示词": "macro close up of a yellowed official paper seal on a door frame, faded red stamp, handwritten date, dust",
+      "运镜": "右到左",
+      "秒": 6.0,
+      "无角色": true,
+      "字幕": ""
+    },
+    {
+      "提示词": "installing a small security camera above his own front door, standing on a stool, tools in hand",
+      "运镜": "下到上",
+      "秒": 9.0,
+      "说": "我装个摄像头，总能拍到点什么吧。",
+      "字幕": "我装个摄像头，总能拍到点什么吧。"
+    },
+    {
+      "提示词": "a small security camera mounted above an apartment door, red led glowing, pointing down an empty dim corridor",
+      "运镜": "拉远",
+      "秒": 6.0,
+      "无角色": true,
+      "字幕": ""
+    },
+    {
+      "提示词": "holding a detached security camera in both hands, staring at it, the corridor behind him completely dark",
+      "运镜": "推近",
+      "秒": 7.0,
+      "说": "它怎么自己下来了。",
+      "字幕": "它怎么自己下来了。"
+    },
+    {
+      "提示词": "sitting in front of a laptop screen full of grey static noise, face lit only by the glow, late at night",
+      "运镜": "推近",
+      "秒": 9.0,
+      "说": "八个小时，全是雪花。一整晚，全是雪花。",
+      "字幕": "八个小时，全是雪花。一整晚，全是雪花。"
+    },
+    {
+      "提示词": "six identical folded paper notes laid out in a row on a bare wooden table, hands resting at the edge of frame",
+      "运镜": "右到左",
+      "秒": 10.0,
+      "说": "六张。笔迹一模一样，连墨迹都像是刚写上去的。",
+      "字幕": "六张。笔迹一模一样，连墨迹都像是刚写上去的。"
+    },
+    {
+      "提示词": "standing frozen in a dark hallway holding a note, eyes wide, the paper trembling slightly in his hand",
+      "运镜": "推近",
+      "秒": 8.0,
+      "说": "今天，字变了。",
+      "字幕": "今天，字变了。"
+    },
+    {
+      "提示词": "extreme close up of a paper note on a dark floor, handwritten chinese characters, single hard light from the side",
+      "运镜": "推近",
+      "秒": 7.0,
+      "无角色": true,
+      "字幕": "你终于开门了"
+    },
+    {
+      "提示词": "a trembling hand closing around a cold metal door handle, knuckles pale, the corridor behind completely black",
+      "运镜": "推近",
+      "秒": 9.0,
+      "说": "我没开过门。这七天，我一次门都没开过。",
+      "字幕": "我没开过门。这七天，我一次门都没开过。"
+    },
+    {
+      "提示词": "an abandoned empty apartment room, furniture under white dust sheets, thick dust on the floor, moonlight through a bare window",
+      "运镜": "推近",
+      "秒": 9.0,
+      "无角色": true,
+      "动态": 9.0,
+      "字幕": ""
+    },
+    {
+      "提示词": "a single smartphone lying on a dust covered dining table in an empty dark room, its screen glowing, untouched dust all around",
+      "运镜": "上到下",
+      "秒": 9.0,
+      "无角色": true,
+      "说": "这屋子空了三年了，灰都没动过。",
+      "字幕": "这屋子空了三年了，灰都没动过。"
+    },
+    {
+      "提示词": "extreme close up of a glowing smartphone screen in a pitch dark room, an incoming call, the caller name in chinese characters",
+      "运镜": "推近",
+      "秒": 9.0,
+      "无角色": true,
+      "说": "来电显示，是我自己的号码。",
+      "字幕": "来电显示，是我自己的号码。"
+    },
+    {
+      "提示词": "pressing a phone to his ear in a pitch dark empty room, only his face lit by the screen, mouth half open",
+      "运镜": "推近",
+      "秒": 6.0,
+      "说": "喂？",
+      "字幕": "喂？"
+    },
+    {
+      "提示词": "close up of a man listening to a phone, expression collapsing from confusion into fear, single hard light on his face",
+      "运镜": "推近",
+      "秒": 10.0,
+      "说": "今天别开门。",
+      "字幕": "今天别开门。"
+    },
+    {
+      "提示词": "looking back over his shoulder down a dark corridor, the apartment door behind him swinging slowly shut on its own",
+      "运镜": "右到左",
+      "秒": 8.0,
+      "动态": 8.0,
+      "字幕": ""
+    },
+    {
+      "提示词": "a fresh folded paper note lying alone on a worn wooden floor in a dark corridor, a thin line of light under the closed door",
+      "运镜": "推近",
+      "秒": 10.0,
+      "无角色": true,
+      "字幕": "第八天。",
+      "说": "第八天。门口那张纸上，写着我的名字。",
+      "情绪": "whisper"
+    }
+  ]
+}

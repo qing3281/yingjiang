@@ -1,0 +1,19 @@
+{
+  "标题": "测试_动态流水线",
+  "画布": "1280x720",
+  "每张秒": 3.5,
+  "转场秒": 0.6,
+  "风格前缀": "cinematic, highly detailed, dramatic lighting, ",
+  "输出目录": "D:/DSHworkspace/B站/成片/_测试动态",
+  "镜头": [
+    {
+      "提示词": "a giant white nine-tailed fox lying on top of a modern glass skyscraper at dusk, misty city skyline behind",
+      "运镜": "推近",
+      "动态": 3.0
+    },
+    {
+      "提示词": "extreme close-up of a fox eye reflecting neon city lights at night, cinematic",
+      "运镜": "右到左"
+    }
+  ]
+}

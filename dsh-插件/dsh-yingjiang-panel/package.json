@@ -2,7 +2,7 @@
   "name": "dsh-yingjiang-panel",
   "version": "0.1.0",
   "private": true,
-  "description": "影匠依据面板 —— 在 DSH 右侧栏显示「这一轮我读了哪些文件、做了哪些动作」。数据来自 DSH 自己写的 tool/call 记录。",
+  "description": "影匠面板 —— 在 DSH 侧栏放「记忆」「依据」两个面板，里面是本地网页。数据来自 DSH 自己写的 tool/call 记录。",
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -15,11 +15,8 @@
       "patch": "./cordis.patch.yml"
     },
     "client": {
-      "inject": [
-        "@deepseek-ai/dsh-client-ui-slots",
-        "@deepseek-ai/dsh-client-ui-sidebar-right"
-      ],
-      "platform": "web"
+      "platform": "web",
+      "immediately": true
     },
     "manifestVersion": 1
   }

@@ -1,0 +1,129 @@
+{
+  "_说明": "MiniMax-H3 本地视频：一张图（或首帧+尾帧）→ 一段**带声音**的视频。这是飞彩有、影匠一直没有的那一项。节点图照抄 ComfyUI 自带的官方模板 video_minimax_h3_i2v.json（site-packages/comfyui_workflow_templates_json/templates/），不是自己猜的。占位符 __IMAGE__ / __LAST__ 由 引擎.图生视频 换。",
+
+  "6": {
+    "class_type": "UNETLoader",
+    "inputs": { "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors", "weight_dtype": "default" },
+    "_meta": { "title": "MiniMax-H3 主模型（fl2va = 首尾帧→视频+音频）" }
+  },
+
+  "121": {
+    "class_type": "LoraLoaderModelOnly",
+    "inputs": {
+      "model": ["6", 0],
+      "lora_name": "minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+      "strength_model": 1.0
+    },
+    "_meta": { "title": "★ 8 步加速 LoRA —— 不挂它要 20 步以上，慢一倍半" }
+  },
+
+  "13": {
+    "class_type": "CLIPLoader",
+    "inputs": { "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors", "type": "minimax", "device": "default" },
+    "_meta": { "title": "文本/视觉编码器（type 必须是 minimax）" }
+  },
+
+  "11": {
+    "class_type": "VAELoader",
+    "inputs": { "vae_name": "minimax_h3_video_vae_int8_convrot.safetensors" },
+    "_meta": { "title": "视频 VAE" }
+  },
+
+  "24": {
+    "class_type": "VAELoader",
+    "inputs": { "vae_name": "minimax_h3_audio_vae_fp32.safetensors" },
+    "_meta": { "title": "★ 音频 VAE —— 声音是从这里解出来的" }
+  },
+
+  "5": {
+    "class_type": "LoadImage",
+    "inputs": { "image": "__IMAGE__", "upload": "image" },
+    "_meta": { "title": "首帧图" }
+  },
+
+  "104": {
+    "class_type": "MiniMaxH3ImageToVideo",
+    "inputs": {
+      "clip": ["13", 0],
+      "vae": ["11", 0],
+      "prompt": "__POS__",
+      "width": 832,
+      "height": 480,
+      "length": 124,
+      "first_frame": ["5", 0]
+    },
+    "_meta": { "title": "图像转视频（length 必须是 17k+5 的网格：124≈5秒，训练区间约 124-362）" }
+  },
+
+  "15": {
+    "class_type": "RandomNoise",
+    "inputs": { "noise_seed": "__SEED__" },
+    "_meta": { "title": "噪声种子" }
+  },
+
+  "17": {
+    "class_type": "KSamplerSelect",
+    "inputs": { "sampler_name": "res_multistep" },
+    "_meta": { "title": "采样器（官方就是 res_multistep）" }
+  },
+
+  "9": {
+    "class_type": "BasicScheduler",
+    "inputs": { "model": ["121", 0], "scheduler": "simple", "steps": 8, "denoise": 1.0 },
+    "_meta": { "title": "步数：配 8 步 LoRA 用 8；不挂 LoRA 要 20+" }
+  },
+
+  "16": {
+    "class_type": "BasicGuider",
+    "inputs": { "model": ["121", 0], "conditioning": ["104", 0] },
+    "_meta": { "title": "引导（条件由 104 直接给，没有单独的负面词节点）" }
+  },
+
+  "14": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": ["15", 0],
+      "guider": ["16", 0],
+      "sampler": ["17", 0],
+      "sigmas": ["9", 0],
+      "latent_image": ["104", 1]
+    },
+    "_meta": { "title": "采样" }
+  },
+
+  "10": {
+    "class_type": "VAEDecode",
+    "inputs": { "samples": ["14", 0], "vae": ["11", 0] },
+    "_meta": { "title": "解画面" }
+  },
+
+  "23": {
+    "class_type": "VAEDecodeAudio",
+    "inputs": { "samples": ["14", 0], "vae": ["24", 0] },
+    "_meta": { "title": "解声音" }
+  },
+
+  "91": {
+    "class_type": "CreateVideo",
+    "inputs": { "images": ["10", 0], "audio": ["23", 0], "fps": 24 },
+    "_meta": { "title": "画面 + 声音合成一条视频" }
+  },
+
+  "92": {
+    "class_type": "SaveVideo",
+    "inputs": { "video": ["91", 0], "filename_prefix": "影匠片", "format": "auto", "codec": "auto" },
+    "_meta": { "title": "存视频" }
+  },
+
+  "_规格": {
+    "来源": "ComfyUI 官方模板 video_minimax_h3_i2v.json，逐节点照抄。",
+    "★ 和 wan22_i2v 不一样的三处": "① 采样器是 **SamplerCustomAdvanced**（不是 KSampler），所以提示词不走 CLIPTextEncode，而是塞进 MiniMaxH3ImageToVideo 的 `prompt`；② 条件由 **MiniMaxH3ImageToVideo 直接吐**（[0]=条件 [1]=隐变量），没有单独的负面词节点；③ 有**第二个 VAE**（音频），采样结果同时解画面和声音，最后 CreateVideo 把两路合起来。",
+    "可缺": [],
+    "要求": [
+      { "节点": "UNETLoader", "字段": "unet_name", "名字须含": ["minimax_h3"],
+        "为什么": "H3 系列的隐空间和 wan 不通" },
+      { "节点": "CLIPLoader", "字段": "type", "等于": "minimax",
+        "为什么": "编码器类型选错直接报维度不匹配" }
+    ]
+  }
+}

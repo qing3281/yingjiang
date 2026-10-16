@@ -1,5 +1,30 @@
-// dsh-yingjiang-panel —— 把自己挂进 DSH 的插件栈。
-// 形状照抄 dsh-free-search / dsh-better-sidebar 的 patch 层。
+# dsh-yingjiang-panel —— 把自己挂进 DSH 的插件栈。
+#
+# ★★ 2026-10-16 01:1x 修 —— 这个文件的头两行原来是 `//` 注释。
+#
+# 用户 01:1x 原话：「你这还能自己拉起来呀，我等了3分钟都没见着呢，还是我自己主动开的。插件更是没有。」
+#
+# 我在这之前报了三次「做完了」，还去改 client.js 的形状（title 要函数、slots 从 ctx.slots 拿）。
+# 那些改动都对、都该改 —— 但**页签不出现的真原因在这个文件里**：
+#
+#     // dsh-yingjiang-panel —— 把自己挂进 DSH 的插件栈。     ← 这一行
+#     // 形状照抄 dsh-free-search / dsh-better-sidebar 的 patch 层。
+#
+# **YAML 的注释是 `#`，不是 `//`。** `//` 是 JavaScript 的注释。
+# 头两行不是注释、也不是合法的 YAML 节点 → 整个文件解析不出来
+# → `insert` 那一行从来没被执行 → 插件从来没进插件树
+# → `apply()` 从来没被调用 → 右侧栏当然一个页签都没有。
+#
+# 判据（下次别再靠猜）：把 node_modules 里两个**确定在跑**的插件的 patch 文件打开对照 ——
+#     dsh-context\cordis.patch.yml        第 5 行起：`- insert:` / `  - id: dsh-context`
+#     dsh-better-sidebar\cordis.patch.yml 注释全部是 `#`
+# 两份都一个 `//` 都没有。**形状照抄的对象要在眼前，不能凭记忆。**
+#
+# 为什么「装了 / 文件一样 / 自测过了」三条全真还是不出现：
+# 那三条量的都是 **client.js 和 package.json**，**没有一条量到这个文件能不能被解析**。
+# 又是「判据说 OK、其实什么都没量」—— 第 11 次。
+#
+# 加新页签时：改 lib/client.js 顶上的「页签们」，不动这个文件。
 - insert:
     - id: yingjiang-panel
       name: dsh-yingjiang-panel

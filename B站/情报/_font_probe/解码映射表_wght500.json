@@ -1,0 +1,17 @@
+{
+ "ref": "NotoSansSC-VF wght=500",
+ "hit": 4,
+ "total": 362,
+ "mapping": {
+  "E40A": "直",
+  "E40C": "世",
+  "E41F": "十",
+  "E4DE": "一"
+ },
+ "dist": {
+  "E40A": 31,
+  "E40C": 34,
+  "E41F": 4,
+  "E4DE": 0
+ }
+}

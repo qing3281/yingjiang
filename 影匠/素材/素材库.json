@@ -1,0 +1,617 @@
+{
+  "版本": 1,
+  "更新": "2026-10-14 02:05:44",
+  "说明": "影匠 · 一致性素材库（角色/场景/道具/服装/风格）",
+  "素材": {
+    "char_叶云": {
+      "id": "char_叶云",
+      "名": "叶云",
+      "英文名": "Ye Yun",
+      "类别": "character",
+      "描述": "男，青年，黑长直，红衣，长剑",
+      "英文描述": "",
+      "标签": [
+        "男主",
+        "剑客"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\char_叶云.png",
+      "图源": "D:\\DSHworkspace\\影匠\\素材\\图\\_自测_叶云.png",
+      "绑定时间": "2026-10-14 01:58:39",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 01:58:39",
+      "改时间": "2026-10-14 01:58:39"
+    },
+    "char_苏晚": {
+      "id": "char_苏晚",
+      "名": "苏晚",
+      "英文名": "Su Wan",
+      "类别": "character",
+      "描述": "女，少年，银白长发披肩，紫色杏眼，冷白皮，白色长裙",
+      "英文描述": "",
+      "标签": [
+        "女主",
+        "药师"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\char_苏晚.png",
+      "图源": "D:\\DSHworkspace\\影匠\\素材\\图\\_自测_苏晚.png",
+      "绑定时间": "2026-10-14 01:58:39",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 01:58:39",
+      "改时间": "2026-10-14 01:58:39"
+    },
+    "scene_破庙": {
+      "id": "scene_破庙",
+      "名": "破庙",
+      "英文名": "Ruined Temple",
+      "类别": "scene",
+      "描述": "荒废古庙，断壁残垣，月光从破洞洒下，尘埃漂浮",
+      "英文描述": "",
+      "标签": [
+        "夜",
+        "室外"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\scene_破庙.png",
+      "图源": "D:\\DSHworkspace\\影匠\\素材\\图\\_自测_破庙.png",
+      "绑定时间": "2026-10-14 01:58:39",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 01:58:39",
+      "改时间": "2026-10-14 01:58:39"
+    },
+    "prop_青铜剑": {
+      "id": "prop_青铜剑",
+      "名": "青铜剑",
+      "英文名": "Bronze Sword",
+      "类别": "prop",
+      "描述": "三尺青铜古剑，剑身有暗红纹路，剑柄缠黑布",
+      "英文描述": "",
+      "标签": [
+        "兵器"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\prop_青铜剑.png",
+      "图源": "D:\\DSHworkspace\\影匠\\素材\\图\\_自测_青铜剑.png",
+      "绑定时间": "2026-10-14 01:58:39",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 01:58:39",
+      "改时间": "2026-10-14 01:58:39"
+    },
+    "cost_叶云_·_夜行装": {
+      "id": "cost_叶云_·_夜行装",
+      "名": "叶云 · 夜行装",
+      "英文名": "",
+      "类别": "costume",
+      "描述": "黑色劲装，束腰，披风",
+      "英文描述": "",
+      "标签": [
+        "破庙",
+        "夜",
+        "潜行"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\cost_叶云_·_夜行装.png",
+      "图源": "D:\\DSHworkspace\\影匠\\素材\\图\\_自测_叶云_·_夜行装.png",
+      "绑定时间": "2026-10-14 01:58:39",
+      "关联角色": "叶云",
+      "启用": true,
+      "建时间": "2026-10-14 01:58:39",
+      "改时间": "2026-10-14 01:58:39"
+    },
+    "cost_叶云_·_常服": {
+      "id": "cost_叶云_·_常服",
+      "名": "叶云 · 常服",
+      "英文名": "",
+      "类别": "costume",
+      "描述": "素白长衫，青色腰带",
+      "英文描述": "",
+      "标签": [
+        "客栈",
+        "白天"
+      ],
+      "别名": [],
+      "参考图": "",
+      "图源": "",
+      "绑定时间": "",
+      "关联角色": "叶云",
+      "启用": true,
+      "建时间": "2026-10-14 01:58:39",
+      "改时间": "2026-10-14 01:58:39"
+    },
+    "style_3d-xianxia": {
+      "id": "style_3d-xianxia",
+      "名": "3D国漫仙侠",
+      "英文名": "3d-xianxia",
+      "类别": "style",
+      "描述": "仙侠/修真/玄幻长篇；御剑、法阵、宗门、飞升等东方玄幻题材",
+      "英文描述": "Chinese 3D animation, CG rendering, xianxia fantasy, gilded gold and crimson accents, ice blue and purple haze palette, ethereal oriental atmosphere, magical particle effects, volumetric lighting",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🐉"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\3d-xianxia.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\3d-xianxia.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_anime-cel": {
+      "id": "style_anime-cel",
+      "名": "日系赛璐璐",
+      "英文名": "anime-cel",
+      "类别": "style",
+      "描述": "校园日常/青春恋爱/治愈系；强情绪特写与人物群像",
+      "英文描述": "Japanese anime cel shading, Kyoto Animation quality, warm orange and sakura pink palette, sky blue and silver tones, detailed hand-drawn look, soft light bloom, delicate emotional expressions",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🌸"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\anime-cel.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\anime-cel.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_cyberpunk": {
+      "id": "style_cyberpunk",
+      "名": "赛博朋克",
+      "英文名": "cyberpunk",
+      "类别": "style",
+      "描述": "近未来反乌托邦/黑客/义体；雨夜都市、霓虹街景",
+      "英文描述": "cyberpunk aesthetic, neon-lit dark sci-fi, electric blue and magenta palette, chrome silver accents, holographic reflections, wet surface reflections, high-tech dystopian atmosphere",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🌃"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\cyberpunk.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\cyberpunk.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_cyberpunk-anime": {
+      "id": "style_cyberpunk-anime",
+      "名": "赛博日漫",
+      "英文名": "cyberpunk-anime",
+      "类别": "style",
+      "描述": "赛博题材的日式动画表达；机甲、义体、电子脑、故障艺术",
+      "英文描述": "cyberpunk anime fusion, Ghost in the Shell and Akira style, deep purple and electric blue palette, fluorescent orange and dark silver, glitch art effects, holographic UI overlays, mechanical details",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🤖"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\cyberpunk-anime.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\cyberpunk-anime.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_dark-gothic": {
+      "id": "style_dark-gothic",
+      "名": "暗黑哥特",
+      "英文名": "dark-gothic",
+      "类别": "style",
+      "描述": "黑暗奇幻/宗教恐怖/魂系世界观；古堡、教堂、深渊",
+      "英文描述": "dark gothic fantasy, Soulsborne aesthetic, abyss black and blood red palette, rusted copper and ghost green, heavy fog atmosphere, dramatic chiaroscuro lighting, epic dark tone",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🦇"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\dark-gothic.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\dark-gothic.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_disney-3d": {
+      "id": "style_disney-3d",
+      "名": "迪士尼3D",
+      "英文名": "disney-3d",
+      "类别": "style",
+      "描述": "童话/合家欢/冒险喜剧；拟人化角色、夸张表情演出",
+      "英文描述": "Disney Pixar 3D animation, cartoon rendering, candy pink and sky blue palette, sunshine yellow and mint green, exaggerated expressive characters, sparkle and magic dust effects, cheerful fairy tale atmosphere",
+      "标签": [
+        "风格",
+        "飞彩",
+        "✨"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\disney-3d.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\disney-3d.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_dreamy-pastel": {
+      "id": "style_dreamy-pastel",
+      "名": "梦幻柔彩",
+      "英文名": "dreamy-pastel",
+      "类别": "style",
+      "描述": "MV/情绪短片/治愈系；回忆、梦境、抒情段落",
+      "英文描述": "dreamy pastel illustration, soft focus ethereal glow, lavender purple and peach pink palette, cream yellow and mint blue, stardust particle effects, watercolor diffusion, healing romantic atmosphere",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🦄"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\dreamy-pastel.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\dreamy-pastel.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_ghibli": {
+      "id": "style_ghibli",
+      "名": "吉卜力田园",
+      "英文名": "ghibli",
+      "类别": "style",
+      "描述": "田园奇幻/成长冒险/自然题材；乡野、森林、飞行、日常魔法",
+      "英文描述": "Studio Ghibli watercolor style, hand-painted pastoral, grass green and wheat gold palette, sky blue and cloud white, warm sunlight through canopy, gentle breeze movement, cozy magical atmosphere",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🍃"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\ghibli.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\ghibli.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_horror-thriller": {
+      "id": "style_horror-thriller",
+      "名": "惊悚恐怖",
+      "英文名": "horror-thriller",
+      "类别": "style",
+      "描述": "恐怖/悬疑/惊悚；密室、走廊、夜探、灵异",
+      "英文描述": "horror thriller, dark low-key lighting, pitch black and pale white palette, putrid green and dark red, flickering light effects, heavy vignette, creeping fog, oppressive claustrophobic atmosphere",
+      "标签": [
+        "风格",
+        "飞彩",
+        "👻"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\horror-thriller.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\horror-thriller.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_ink-wash": {
+      "id": "style_ink-wash",
+      "名": "墨韵国风",
+      "英文名": "ink-wash",
+      "类别": "style",
+      "描述": "古风/武侠意境/诗词叙事；山水、留白、写意转场",
+      "英文描述": "Chinese ink wash painting, sumi-e brushwork, gongbi and splashed ink fusion, ink black and rice paper white, vermillion red and mineral blue accents, generous negative space, ethereal misty atmosphere",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🎨"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\ink-wash.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\ink-wash.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_korean-webtoon": {
+      "id": "style_korean-webtoon",
+      "名": "韩漫唯美",
+      "英文名": "korean-webtoon",
+      "类别": "style",
+      "描述": "都市言情/偶像/职场恋爱；现代唯美人物特写",
+      "英文描述": "Korean webtoon semi-realistic illustration, soft glow and smooth shading, rose pink and moonlight blue palette, champagne gold and mist gray, bokeh background blur, backlit hair glow, romantic K-drama atmosphere",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🎊"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\korean-webtoon.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\korean-webtoon.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_marvel-dc": {
+      "id": "style_marvel-dc",
+      "名": "美漫超英",
+      "英文名": "marvel-dc",
+      "类别": "style",
+      "描述": "超英/异能战斗/热血成长；大招、群战、英雄登场",
+      "英文描述": "Marvel DC superhero, comic book inspired style, steel gray and justice blue palette, flame red and thunder gold, dynamic action poses, energy effects, blockbuster epic tone",
+      "标签": [
+        "风格",
+        "飞彩",
+        "⚡"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\marvel-dc.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\marvel-dc.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_nolan-epic": {
+      "id": "style_nolan-epic",
+      "名": "诺兰大片",
+      "英文名": "nolan-epic",
+      "类别": "style",
+      "描述": "硬核科幻/犯罪/悬疑大片；冷峻对白、实拍质感、大场面",
+      "英文描述": "Christopher Nolan cinematic style, IMAX film photography, steel blue and concrete gray palette, deep ocean ink and glacier white, practical effects realism, restrained intense atmosphere, cerebral epic tone",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🎬"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\nolan-epic.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\nolan-epic.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_oil-painting": {
+      "id": "style_oil-painting",
+      "名": "古典油画",
+      "英文名": "oil-painting",
+      "类别": "style",
+      "描述": "欧洲古典/宫廷/宗教/历史正剧；室内伦勃朗光、静物特写",
+      "英文描述": "classical oil painting, Renaissance master brushwork, Rembrandt lighting, deep brown and dark gold palette, crimson and ivory white, rich impasto texture, Tyndall light effect, fine art museum quality",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🖼️"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\oil-painting.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\oil-painting.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_pixel-retro": {
+      "id": "style_pixel-retro",
+      "名": "像素复古",
+      "英文名": "pixel-retro",
+      "类别": "style",
+      "描述": "游戏题材/怀旧短片/喜剧；打怪、闯关、8bit 过场",
+      "英文描述": "pixel art, 16-bit retro game style, high saturation primary colors, gem blue and bright yellow, crisp pixel grid rendering, nostalgic 8-bit aesthetic, charming sprite design",
+      "标签": [
+        "风格",
+        "飞彩",
+        "👾"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\pixel-retro.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\pixel-retro.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_post-apocalypse": {
+      "id": "style_post-apocalypse",
+      "名": "末日废土",
+      "英文名": "post-apocalypse",
+      "类别": "style",
+      "描述": "废土/公路/生存题材；荒漠、废车、拾荒、沙暴",
+      "英文描述": "post-apocalyptic wasteland, Mad Max desert aesthetic, gritty grain texture, dust yellow and rust red palette, charred black and faded khaki, sandstorm haze, desolate savage atmosphere",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🏜️"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\post-apocalypse.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\post-apocalypse.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_sci-fi-epic": {
+      "id": "style_sci-fi-epic",
+      "名": "史诗科幻",
+      "英文名": "sci-fi-epic",
+      "类别": "style",
+      "描述": "太空歌剧/星际战争/硬科幻；舰队、巨构、行星级场面",
+      "英文描述": "epic science fiction, cinematic CG rendering, space black and plasma blue palette, engine orange and titanium silver, massive scale composition, particle beam effects, hard sci-fi realism",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🚀"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\sci-fi-epic.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\sci-fi-epic.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_steampunk": {
+      "id": "style_steampunk",
+      "名": "蒸汽朋克",
+      "英文名": "steampunk",
+      "类别": "style",
+      "描述": "维多利亚架空/机械发明/冒险；飞艇、齿轮、工坊",
+      "英文描述": "steampunk Victorian industrial aesthetic, brass and steam machinery, antique bronze and rust orange palette, deep brown tones, riveted leather textures, clockwork mechanical details, retro-industrial romanticism",
+      "标签": [
+        "风格",
+        "飞彩",
+        "⚙️"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\steampunk.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\steampunk.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_ukiyoe": {
+      "id": "style_ukiyoe",
+      "名": "浮世绘和风",
+      "英文名": "ukiyoe",
+      "类别": "style",
+      "描述": "日本江户题材/和风传说/歌舞伎；波、云、花魁、武士",
+      "英文描述": "ukiyo-e Japanese woodblock print style, flat composition with bold outlines, indigo blue and vermillion red palette, decorative cloud patterns, gold leaf accents, dramatic kabuki-inspired poses, classic elegance",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🌊"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\ukiyoe.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\ukiyoe.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_urban-realistic": {
+      "id": "style_urban-realistic",
+      "名": "都市写实",
+      "英文名": "urban-realistic",
+      "类别": "style",
+      "描述": "现代都市/刑侦/职场写实；街头、雨夜、车流",
+      "英文描述": "urban realistic photography, modern city natural and artificial light mix, neon purple and streetlamp warm yellow palette, deep sky blue and asphalt gray, rain bokeh effects, long exposure light trails, cinematic urban atmosphere",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🏙️"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\urban-realistic.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\urban-realistic.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_vintage-film": {
+      "id": "style_vintage-film",
+      "名": "复古胶片",
+      "英文名": "vintage-film",
+      "类别": "style",
+      "描述": "年代戏/怀旧回忆/文艺片；80-90 年代、老照片质感",
+      "英文描述": "vintage analog film, Kodak Fuji film stock tones, warm yellow and faded cyan palette, caramel brown and cream white, film grain texture, lens flare, slight overexposure, nostalgic soft atmosphere",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🎞️"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\vintage-film.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\vintage-film.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_wuxia-realistic": {
+      "id": "style_wuxia-realistic",
+      "名": "写实武侠",
+      "英文名": "wuxia-realistic",
+      "类别": "style",
+      "描述": "武侠/江湖/古装动作；竹林对决、客栈、轻功",
+      "英文描述": "realistic Chinese wuxia, cinematic CG rendering, ink teal and maple red palette, smoke gray and moonlight white, flowing robes and sharp martial arts action, epic sweeping atmosphere, classical Chinese warrior aesthetic",
+      "标签": [
+        "风格",
+        "飞彩",
+        "⚔️"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\wuxia-realistic.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\wuxia-realistic.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    },
+    "style_zombie-apocalypse": {
+      "id": "style_zombie-apocalypse",
+      "名": "丧尸末世",
+      "英文名": "zombie-apocalypse",
+      "类别": "style",
+      "描述": "丧尸/末世求生/群像灾难；废墟、夜行、尸潮",
+      "英文描述": "zombie apocalypse, Walking Dead style, oppressive desolation, decay green and blood red palette, haze gray and bone white, blood mist effects, flashlight beams in darkness, desperate survival atmosphere",
+      "标签": [
+        "风格",
+        "飞彩",
+        "🧟"
+      ],
+      "别名": [],
+      "参考图": "D:\\DSHworkspace\\影匠\\素材\\图\\风格预览\\zombie-apocalypse.png",
+      "图源": "D:\\DSHworkspace\\网盘\\_飞彩说明\\_风格预览\\zombie-apocalypse.png",
+      "绑定时间": "2026-10-14 02:05:44",
+      "关联角色": "",
+      "启用": true,
+      "建时间": "2026-10-14 02:05:44",
+      "改时间": "2026-10-14 02:05:44"
+    }
+  },
+  "数量": {
+    "character": 2,
+    "costume": 2,
+    "prop": 1,
+    "scene": 1,
+    "style": 23
+  }
+}

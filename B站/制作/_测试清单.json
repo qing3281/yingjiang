@@ -1,0 +1,10 @@
+{
+  "画布": "1280x720",
+  "fps": 16,
+  "转场秒": 0.6,
+  "片段": [
+    {"类型": "视频", "文件": "D:/Comfy-Desktop/ComfyUI-Shared/output/Wan出片/z-image-turbo_00002__00001_.mp4"},
+    {"类型": "图",   "文件": "D:/Comfy-Desktop/ComfyUI-Shared/output/出片_00001_.png", "秒": 4.0, "运镜": "右到左"},
+    {"类型": "视频", "文件": "D:/Comfy-Desktop/ComfyUI-Shared/output/Wan出片/z-image-turbo_00002__00002_.mp4"}
+  ]
+}

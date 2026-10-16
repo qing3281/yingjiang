@@ -1,0 +1,168 @@
+{
+  "标题": "今天别开门",
+  "画布": "1920x1080",
+  "每张秒": 6.5,
+  "转场秒": 0.6,
+  "BGM": "D:\\DSHworkspace\\B站\\素材\\BGM\\admiralbob77_-_The_Broken.mp3",
+  "_注释": "三分钟悬疑短剧，四幕 24 镜。三种镜头：①「有声」→ MiniMax-H3（15秒、自带音轨与人声对白）②「动态」→ Z-Image 出静帧 + Wan 2.2 14B I2V 转动态 ③其余 → Z-Image 静帧 + Ken Burns 运镜。角色锁写法见「角色」字段（唯一实测有效的写法：主语前的形容词短语，全句只出现一次）。",
+  "风格前缀": "cinematic film still, night, moody low-key lighting, cold cyan and sodium-orange palette, heavy atmosphere, shallow depth of field, 35mm film grain, ",
+  "角色": "a lone tired man in his thirties, short black hair, grey hoodie under a dark jacket, gaunt face, ",
+  "输出目录": "D:/DSHworkspace/B站/成片/今天别开门",
+  "投稿": {
+    "标题": "今天别开门",
+    "副标题": "第七天，纸条上的字变了",
+    "简介": "整整六天，每天回家，门缝里都塞着同一张纸条：今天别开门。\n他以为是恶作剧。直到第七天，字变了。\n\n——\n全片由本地 AI 生成：Qwen-Image 2512 出静帧，MiniMax-H3 出带声音的动态镜头，Wan 2.2 I2V 14B + LightX2V 4步 LoRA 出动作镜头，PyAV 合成。未使用任何云端生成服务。",
+    "标签": [
+      "AI动画",
+      "AI短片",
+      "悬疑",
+      "AIGC",
+      "原创短片",
+      "惊悚"
+    ],
+    "分区": 27,
+    "AI声明": true
+  },
+  "镜头": [
+    {
+      "提示词": "a narrow stairwell of an old walk-up apartment building at night, one flickering sound-activated bulb, peeling walls, seen from below, a man in a dark jacket walking up the last flight, long shadow on the wall, wide shot",
+      "运镜": "推近",
+      "有声": {
+        "秒": 15,
+        "提示词": "Cinematic night scene, an old apartment stairwell. A single bulb flickers and hums. A tired man in a grey hoodie climbs the last flight of stairs, keys jingling in his hand. He stops at his door and exhales. Silence except for his breathing and the electrical hum of the bulb. Slow push-in, low-key lighting, 35mm film grain."
+      },
+      "字幕": "今天别开门。"
+    },
+    {
+      "提示词": "extreme close-up of a folded paper note wedged in the door gap of an old wooden apartment door, handwritten pencil Chinese characters, dim corridor light, dust in the air",
+      "运镜": "推近",
+      "字幕": "第六天。门缝里又塞着同一张纸条。"
+    },
+    {
+      "提示词": "close-up of a man's hand pulling a folded paper note out of a door gap, the note held between thumb and finger, dim corridor light, cold tones",
+      "运镜": "右到左",
+      "字幕": "他以为是恶作剧。"
+    },
+    {
+      "提示词": "a man standing in a dark doorway looking down at a small paper note in his hand, face half in shadow, warm light spilling from the room behind him, medium shot",
+      "运镜": "推近",
+      "字幕": "字迹工整，纸是新的。"
+    },
+    {
+      "提示词": "a small apartment at night lit only by the fridge light, an unmade sofa, an instant noodle cup on the table, a man sitting on the floor with his back against the sofa staring at nothing, wide shot",
+      "运镜": "左到右",
+      "字幕": "这间屋里，只有他和一碗泡面。"
+    },
+    {
+      "提示词": "close-up of a kitchen drawer pulled open, a small stack of identical folded paper notes already piled inside, dim overhead light, top-down angle",
+      "运镜": "推近",
+      "字幕": "抽屉里已经躺着五张。"
+    },
+    {
+      "提示词": "a corridor of an old apartment building in the morning, a closed wooden door with a folded paper note already wedged in the gap, cold grey daylight from a window at the end, static wide shot",
+      "运镜": "静止",
+      "字幕": "第七天的早晨，纸条比他的闹钟还准时。"
+    },
+    {
+      "提示词": "a row of six small identical paper notes laid out in a precise line on a wooden table, each with handwritten pencil characters, harsh overhead lamp light, top-down macro shot",
+      "运镜": "推近",
+      "字幕": "他把六张排成一排，一个字都没变。"
+    },
+    {
+      "提示词": "a man standing in a dim corridor knocking on a neighbouring apartment door, the door covered in a dusty paper seal and a faded official notice, no answer coming, cold light, wide shot",
+      "运镜": "推近",
+      "动态": 5.0,
+      "字幕": "隔壁的门上，贴着三年前的封条。"
+    },
+    {
+      "提示词": "macro close-up of a dusty official paper seal pasted across an apartment door and doorframe, faded red stamp and small printed date, peeled edges, cold corridor light",
+      "运镜": "推近",
+      "字幕": "此房空置。落款是三年前。"
+    },
+    {
+      "提示词": "close-up of a man's hands installing a small home security camera above his apartment door with tape, dim corridor light, wires hanging loose, medium shot from below",
+      "运镜": "推近",
+      "字幕": "他装了个摄像头。"
+    },
+    {
+      "提示词": "close-up of a small home security camera lying disconnected on a shoe cabinet, its lens deliberately turned to face the apartment door, cables cut cleanly, dust, cold corridor light",
+      "运镜": "推近",
+      "字幕": "第二天，摄像头被拆了，镜头朝里。"
+    },
+    {
+      "提示词": "a man sitting in front of a laptop in a dark room, the screen showing only grey static, his face lit by the glow, hands frozen above the keyboard, medium shot, dread",
+      "运镜": "推近",
+      "字幕": "录像里只有一片雪花。"
+    },
+    {
+      "提示词": "extreme close-up of a paper note in a door gap on the sixth night, the same pencil characters but pressed deeper into the paper, dim flickering corridor light",
+      "运镜": "推近",
+      "字幕": "而纸条，还是准时到了。"
+    },
+    {
+      "提示词": "extreme close-up of a single paper note in a door gap, the pencil characters different this time, deeper grooves scored into the paper, a harsh flashlight beam raking across it at an angle, pitch black background",
+      "运镜": "推近",
+      "有声": {
+        "秒": 15,
+        "提示词": "Cinematic night scene. Extreme close-up of a handwritten note wedged in a door gap, flashlight beam raking across the paper. A man's breathing is fast and shallow. His hand trembles as he pulls the note out and unfolds it. Long silence. Then, barely a whisper: 'Why.' Slow push-in, pitch black background, single harsh light source."
+      },
+      "字幕": "第七天，字变了。"
+    },
+    {
+      "提示词": "close-up of a man's hand resting on a worn brass door handle, knuckles pale, the hand trembling slightly, dim corridor light behind, extreme tension",
+      "运镜": "推近",
+      "字幕": "他握着门把手，手心全是汗。"
+    },
+    {
+      "提示词": "a man's hand pushing open an old wooden apartment door, the door swinging inward into complete darkness, a thin blade of corridor light cutting across the floor, wide low angle",
+      "运镜": "推近",
+      "动态": 5.0,
+      "字幕": "门没有锁。"
+    },
+    {
+      "提示词": "an entirely empty apartment interior, no furniture, no pictures, bare walls with pale rectangles where frames used to hang, dust on the floor, a single bare bulb swinging, wide shot, deeply unsettling",
+      "运镜": "推近",
+      "有声": {
+        "秒": 15,
+        "提示词": "Cinematic interior. An entirely empty apartment, no furniture, bare walls with pale rectangles where pictures used to hang. A single bare bulb swings slowly, throwing moving shadows. A man walks into frame and stops. His footsteps echo far too loudly on the bare floor. Only the bulb creaks. He breathes out, unsteady. Very slow push-in, cold overhead light, deeply unsettling."
+      },
+      "字幕": "屋里什么都没有。"
+    },
+    {
+      "提示词": "a single dining table left alone in the middle of an otherwise empty apartment, one smartphone lying on it face up, the screen lit and glowing in the dark room, wide shot from the doorway",
+      "运镜": "推近",
+      "字幕": "只剩餐桌上一部手机。"
+    },
+    {
+      "提示词": "macro close-up of a smartphone screen in a dark room showing an incoming call, the caller ID displaying the phone owner's own name, screen glow bleeding into surrounding darkness",
+      "运镜": "推近",
+      "字幕": "来电显示：他自己的名字。"
+    },
+    {
+      "提示词": "close-up of a man holding a phone to his ear in a dark empty room, his face lit only by the screen glow, eyes wide, mouth slightly open, disbelief, shallow depth of field",
+      "运镜": "推近",
+      "有声": {
+        "秒": 15,
+        "提示词": "Cinematic dark interior. Close-up of a tired man holding a phone to his ear, his face lit only by the screen glow. He listens. From the earpiece, a voice identical to his own speaks slowly and calmly: 'You finally opened it.' The man slowly lowers the phone and stares at it. Absolute silence. Slow push-in on his face, shallow depth of field, cold blue screen light."
+      },
+      "字幕": "「你终于开门了。」"
+    },
+    {
+      "提示词": "a man standing alone at the far end of an empty apartment, seen from behind, looking back over his shoulder toward the open door, the door slowly swinging shut on its own, thin light narrowing, wide shot",
+      "运镜": "推近",
+      "动态": 5.0,
+      "字幕": "他回头。门，在慢慢关上。"
+    },
+    {
+      "提示词": "the corridor side of an old apartment door seen from outside, the door now shut, a brand new folded paper note already wedged in the gap, a flickering bulb above, static wide shot, nothing else in frame",
+      "运镜": "静止",
+      "字幕": "门外，又多了一张纸条。"
+    },
+    {
+      "提示词": "extreme close-up of a fresh paper note in a door gap, pencil characters crisp and newly written, the flashlight beam gone, only the dim flickering corridor bulb, final frame, held",
+      "运镜": "推近",
+      "字幕": "今天。别开门。"
+    }
+  ],
+  "BGM音量": 0.16
+}

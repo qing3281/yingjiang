@@ -1,0 +1,326 @@
+{
+  "标题": "趁热吃",
+  "引擎": "minimax",
+  "画布": "1920x1080",
+  "每张秒": 5.17,
+  "转场秒": 0.0,
+  "出图线": "zimage",
+
+  "风格前缀": "cinematic film still, night exterior in heavy rain, moody low-key lighting, cold cyan shadows against warm sodium-orange practicals, wet reflective surfaces, heavy atmosphere, shallow depth of field, 35mm film grain, ",
+  "风格前缀_室内": "cinematic film still, dim old apartment interior at night, single warm tungsten bulb, cold cyan window light, dust in the air, heavy atmosphere, shallow depth of field, 35mm film grain, ",
+  "风格前缀_清晨": "cinematic film still, early morning light through an old apartment window, desaturated warm dawn tones, dust motes, quiet stillness, shallow depth of field, 35mm film grain, ",
+
+  "角色": "a thin young Chinese man in his mid-twenties, short black hair wet from rain, black-framed glasses, yellow delivery-company rain jacket over a dark hoodie, tired face, ",
+  "参考": "D:\\tts\\_ref\\ref_a.wav",
+  "BGM": "D:\\DSHworkspace\\B站\\素材\\BGM\\flatwound_-_The_Long_Goodbye.mp3",
+  "BGM音量": 0.10,
+  "旁白音量": 1.0,
+  "输出目录": "D:\\DSHworkspace\\B站\\成片\\趁热吃",
+
+  "投稿": {
+    "活动": "AI MV 大赛",
+    "副标题": "他送的最后一份外卖，地址是一栋三年前就拆了的楼",
+    "简介": "台风夜，骑手小陈接到最后一单。\n地址是长风路 11 号 —— 那栋楼三年前就拆了。\n他打过去，电话通了。\n对面说：你终于来了。\n\n全片由本地 AI 生成：Z-Image-Turbo 出定妆静帧，MiniMax-H3 fl2va 逐镜生成 5 秒带同期声的视频（画面与中文对白在同一次扩散里联合生成），PyAV 完成拼接、字幕与混音"
+  },
+
+  "镜头": [
+    {
+      "幕": "一 · 暴雨接单",
+      "提示词": "heavy rain hammering an empty asphalt street at night, neon signs reflected in deep puddles, no people, deep blue and orange reflections",
+      "运镜": "静止",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot. Heavy rain hammers an empty asphalt street at night, neon reflections trembling in deep puddles. No people. Audio: pouring rain, distant thunder, water rushing in a drain.",
+      "字幕": "台风天，最后一单。"
+    },
+    {
+      "幕": "一 · 暴雨接单",
+      "提示词": "riding an electric scooter through torrential rain at night, seen from the side, headlight cutting through the downpour, water spraying up",
+      "运镜": "跟拍",
+      "秒": 5.17,
+      "画面": "Cinematic shot. The young courier rides an electric scooter through torrential rain at night, seen from the side, headlight cutting through the downpour. He shouts over the rain in Chinese: \"最后一单，送完就收工。\" Audio: heavy rain, electric motor whine, tyres on wet asphalt.",
+      "说": "最后一单，送完就收工。",
+      "字幕": "最后一单，送完就收工。"
+    },
+    {
+      "幕": "一 · 暴雨接单",
+      "提示词": "extreme close up of a phone screen held in a wet gloved hand, delivery app showing an order address, raindrops on the glass, screen glow on wet fingers",
+      "运镜": "推近",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot, extreme close up. A phone screen held in a wet gloved hand, a delivery app showing an order address, raindrops sliding across the glass. No people. Audio: rain, a phone notification chime.",
+      "字幕": "长风路 11 号，3 单元，402。"
+    },
+    {
+      "幕": "一 · 暴雨接单",
+      "提示词": "the young courier stopped under a shop awning at night, staring down at his phone, rain dripping off his hood, disbelief on his face",
+      "运镜": "静止",
+      "秒": 5.17,
+      "画面": "Cinematic shot. The young courier has stopped under a shop awning, staring down at his phone, rain dripping off the edge of his hood. He looks up and speaks in Chinese, uneasy: \"这楼……不是拆了三年了吗？\" Audio: rain on the awning, distant traffic, clear Chinese dialogue.",
+      "说": "这楼……不是拆了三年了吗？",
+      "字幕": "这楼……不是拆了三年了吗？"
+    },
+    {
+      "幕": "一 · 暴雨接单",
+      "提示词": "a derelict six-storey apartment block at night in the rain, dark rubble and demolition fencing around it, every window black except one lit window on the fourth floor",
+      "运镜": "推近",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot. Slow push-in on a derelict six-storey apartment block at night in the rain, demolition fencing around its base, every window black except for one lit window on the fourth floor. No people. Audio: rain, wind, a loose metal sheet creaking.",
+      "字幕": "整栋楼黑着。只有四楼那扇窗，亮着。"
+    },
+    {
+      "幕": "一 · 暴雨接单",
+      "提示词": "the young courier on his scooter holding a phone to his ear, rain streaming down his face, neon light on one side of his face",
+      "运镜": "静止",
+      "秒": 5.17,
+      "画面": "Cinematic shot. The young courier sits on his scooter holding a phone to his ear, rain streaming down his face, neon light cutting across one cheek. He speaks in Chinese, hesitant: \"喂？您的外卖到了，可您这地址——\" Audio: rain, phone line hiss, clear Chinese dialogue.",
+      "说": "喂？您的外卖到了，可您这地址——",
+      "字幕": "喂？您的外卖到了，可您这地址——"
+    },
+    {
+      "幕": "一 · 暴雨接单",
+      "提示词": "extreme close up of a wet phone screen in the rain, call connected timer running, handset icon glowing, water beading on the glass",
+      "运镜": "静止",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot, extreme close up. A wet phone screen in the rain, a call-connected timer running, the handset icon glowing, water beading on the glass. No people, no dialogue. Audio: rain, the soft hiss of an open phone line.",
+      "字幕": ""
+    },
+    {
+      "幕": "一 · 暴雨接单",
+      "提示词": "medium close up of the young courier on his scooter, phone at his ear, his expression changing from confusion to unease, rain backlit by the headlight",
+      "运镜": "推近",
+      "秒": 5.17,
+      "画面": "Cinematic shot, medium close up. The young courier holds the phone to his ear, his expression shifting from confusion to unease. From the earpiece comes an old man's voice in Chinese, quiet and certain. Audio: rain, a faint old man's voice on the phone.",
+      "说": "",
+      "字幕": "「你终于来了。」"
+    },
+
+    {
+      "幕": "二 · 上楼",
+      "提示词": "a pitch-black old apartment stairwell, one flickering fluorescent tube, peeling paint, concrete steps wet with tracked rain",
+      "运镜": "上摇",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot. A pitch-black old apartment stairwell, one fluorescent tube flickering and buzzing, peeling paint, concrete steps wet with tracked-in rain. No people. Audio: a buzzing fluorescent tube, dripping water, faint rain outside.",
+      "字幕": "楼道没电。那盏灯，是自己亮的。"
+    },
+    {
+      "幕": "二 · 上楼",
+      "提示词": "the young courier climbing a dark stairwell from behind, wet jacket shining, phone torch lighting the steps ahead of him",
+      "运镜": "跟拍",
+      "秒": 5.17,
+      "画面": "Cinematic shot from behind. The young courier climbs a dark stairwell, his wet jacket shining, phone torch lighting the steps ahead. He counts under his breath in Chinese between breaths: \"402……402……\" Audio: footsteps on wet concrete, heavy breathing, rain outside.",
+      "说": "402……402……",
+      "字幕": "402……402……"
+    },
+    {
+      "幕": "二 · 上楼",
+      "提示词": "extreme close up of a plastic delivery bag held at the courier's side, rain water running down the bag and dripping off the corner, logo visible",
+      "运镜": "静止",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot, extreme close up. A plastic delivery bag held at the courier's side, rainwater running down the bag and dripping off one corner. No people, no dialogue. Audio: rain, water dripping onto concrete, a distant door creaking.",
+      "字幕": ""
+    },
+    {
+      "幕": "二 · 上楼",
+      "提示词": "the young courier standing in front of an old apartment door numbered 402, fist half-raised to knock, dim light from above, torn paper seals on the door frame",
+      "运镜": "静止",
+      "秒": 5.17,
+      "画面": "Cinematic shot. The young courier stands in front of an old apartment door numbered 402, one fist half-raised to knock. He hesitates, lowers his hand, then speaks quietly in Chinese: \"有人吗？\" Audio: rain outside, silence in the corridor, clear quiet Chinese dialogue.",
+      "说": "有人吗？",
+      "字幕": "有人吗？"
+    },
+    {
+      "幕": "二 · 上楼",
+      "提示词": "an old apartment door swinging slowly open by itself, warm amber light spilling out into the dark corridor, seen from the courier's point of view",
+      "运镜": "推近",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot. An old apartment door swings slowly open by itself, warm amber light spilling out into the dark corridor, seen from the courier's point of view. No people, no dialogue. Audio: a long wooden creak, then stillness, warm room tone leaking out.",
+      "字幕": ""
+    },
+    {
+      "幕": "二 · 上楼",
+      "提示词": "inside a clean old apartment room, a small square dining table set with two bowls, two pairs of chopsticks and several hot dishes, steam rising, no one seated",
+      "运镜": "推近",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot, slow push-in. Inside a clean old apartment room, a small square dining table set with two bowls, two pairs of chopsticks and several hot dishes, steam rising. No one is seated. Audio: quiet room tone, the faint clink of a lid, rain against the window.",
+      "字幕": "屋里没人。桌上有两副碗筷。"
+    },
+    {
+      "幕": "二 · 上楼",
+      "提示词": "the young courier standing frozen in the open doorway of the old apartment, delivery bag in hand, looking into the empty lit room, rain dripping from his jacket onto the floor",
+      "运镜": "静止",
+      "秒": 5.17,
+      "画面": "Cinematic shot. The young courier stands frozen in the open doorway, delivery bag in hand, looking into the empty lit room, rain dripping from his jacket onto the floor. He swallows and speaks in Chinese, barely audible: \"大爷？\" Audio: dripping water, quiet room tone, clear Chinese dialogue.",
+      "说": "大爷？",
+      "字幕": "大爷？"
+    },
+    {
+      "幕": "二 · 上楼",
+      "提示词": "extreme close up of a wet phone buzzing and lighting up in a dark corridor, incoming call with no caller ID, screen glow on peeling wall paint",
+      "运镜": "静止",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot, extreme close up. A wet phone buzzes and lights up in a dark corridor, an incoming call with no caller ID, screen glow on peeling wall paint. No people, no dialogue. Audio: a phone vibrating on a hard surface, rain, an empty corridor.",
+      "字幕": ""
+    },
+
+    {
+      "幕": "三 · 两副碗筷",
+      "提示词": "the young courier sitting at the edge of a chair in the old apartment, phone pressed to his ear, delivery bag still on his back, steam from the table in front of him",
+      "运镜": "静止",
+      "秒": 5.17,
+      "画面": "Cinematic shot. The young courier sits on the edge of a chair, phone pressed to his ear, delivery bag still on his back, steam rising from the table in front of him. He listens, then speaks in Chinese: \"大爷，您……在家？\" Audio: room tone, rain at the window, an old man's voice through the phone.",
+      "说": "大爷，您……在家？",
+      "字幕": "大爷，您……在家？"
+    },
+    {
+      "幕": "三 · 两副碗筷",
+      "提示词": "close up of a bowl of hot soup on an old table, steam rising and curling in the warm light, chopsticks resting on the rim",
+      "运镜": "静止",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot, close up. A bowl of hot soup on an old table, steam rising and curling in the warm light, chopsticks resting on the rim. No people. From off-screen comes an old man's voice in Chinese. Audio: quiet room tone, the faint clink of ceramic.",
+      "说": "",
+      "字幕": "「在。一直都在。」"
+    },
+    {
+      "幕": "三 · 两副碗筷",
+      "提示词": "the young courier looking around a spotless old apartment living room, everything dusted and orderly, a wall clock, framed photos on the wall, warm single-bulb light",
+      "运镜": "环视",
+      "秒": 5.17,
+      "画面": "Cinematic shot. The young courier looks around a spotless old apartment living room, everything dusted and orderly, framed photos on the wall. He speaks in Chinese, puzzled: \"这楼不是要拆吗？您怎么还住这儿？\" Audio: room tone, a clock ticking, rain outside.",
+      "说": "这楼不是要拆吗？您怎么还住这儿？",
+      "字幕": "这楼不是要拆吗？您怎么还住这儿？"
+    },
+    {
+      "幕": "三 · 两副碗筷",
+      "提示词": "close up of the young courier's face lit by warm bulb light, phone at his ear, his eyes lowering as he listens, rain shadows on the wall behind",
+      "运镜": "推近",
+      "秒": 5.17,
+      "画面": "Cinematic shot, close up. The young courier's face lit by a warm bulb, phone at his ear, his eyes lowering as he listens. An old man's voice comes quietly through the phone in Chinese. Audio: quiet room tone, a clock ticking.",
+      "说": "",
+      "字幕": "「拆了，我就没地方等他了。」"
+    },
+    {
+      "幕": "三 · 两副碗筷",
+      "提示词": "extreme close up of a framed photograph on an old apartment wall, a young man in a graduation gown smiling, glass slightly dusty, warm light raking across it",
+      "运镜": "静止",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot, extreme close up. A framed photograph on an old apartment wall, a young man in a graduation gown smiling, the glass slightly dusty, warm light raking across it. No people, no dialogue. Audio: quiet room tone, a clock ticking, distant rain.",
+      "字幕": ""
+    },
+    {
+      "幕": "三 · 两副碗筷",
+      "提示词": "the young courier looking up at the framed photograph, his eyes glassy, warm light on his wet hair, chair creaking under him",
+      "运镜": "静止",
+      "秒": 5.17,
+      "画面": "Cinematic shot. The young courier looks up at the framed photograph, his eyes glassy, warm light on his wet hair. He speaks in Chinese, quietly: \"他……多久没回来了？\" Audio: room tone, a chair creaking, rain at the window.",
+      "说": "他……多久没回来了？",
+      "字幕": "他……多久没回来了？"
+    },
+    {
+      "幕": "三 · 两副碗筷",
+      "提示词": "close up of the young courier listening, phone against his ear, steam from the table drifting through the light in front of his face",
+      "运镜": "推近",
+      "秒": 5.17,
+      "画面": "Cinematic shot, close up. The young courier listens, phone against his ear, steam from the table drifting through the light in front of his face. An old man's voice answers through the phone in Chinese. Audio: quiet room tone, a clock ticking.",
+      "说": "",
+      "字幕": "「三年。三年零四个月。」"
+    },
+    {
+      "幕": "三 · 两副碗筷",
+      "提示词": "the young courier looking down at the phone in his other hand, thumb hovering, the glow of the screen on his face, uneaten food steaming in the foreground",
+      "运镜": "静止",
+      "秒": 5.17,
+      "画面": "Cinematic shot. The young courier looks down at the phone in his other hand, thumb hovering over the screen, its glow on his face, uneaten food steaming in the foreground. He speaks in Chinese, almost to himself: \"我也……两年没回家了。\" Audio: room tone, rain at the window, clear quiet Chinese dialogue.",
+      "说": "我也……两年没回家了。",
+      "字幕": "我也……两年没回家了。"
+    },
+    {
+      "幕": "三 · 两副碗筷",
+      "提示词": "the young courier picking up chopsticks at the old table, the two place settings in frame, warm bulb light, steam rising between them",
+      "运镜": "静止",
+      "秒": 5.17,
+      "画面": "Cinematic shot. The young courier picks up his chopsticks at the old table, the two place settings in frame, steam rising between them. An old man's voice comes through the phone, warm and amused, in Chinese. Audio: chopsticks on ceramic, quiet room tone.",
+      "说": "",
+      "字幕": "「吃吧。趁热。」"
+    },
+
+    {
+      "幕": "四 · 天亮",
+      "提示词": "close up of the young courier eating, head down, a tear running down his cheek and falling, warm light on his face, steam from the bowl",
+      "运镜": "推近",
+      "秒": 5.17,
+      "画面": "Cinematic shot, close up. The young courier eats with his head down, a tear running down his cheek and falling. No dialogue. Audio: quiet eating sounds, a clock ticking, rain softening outside.",
+      "字幕": ""
+    },
+    {
+      "幕": "四 · 天亮",
+      "提示词": "an old apartment window at night with rain running down the glass, the storm easing, faint city light beyond, curtains still",
+      "运镜": "静止",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot. An old apartment window at night with rain running down the glass, the storm easing, faint city light beyond. No people, no dialogue. Audio: rain slowing to a drizzle, a clock ticking, quiet room tone.",
+      "字幕": ""
+    },
+    {
+      "幕": "四 · 天亮",
+      "提示词": "the young courier asleep with his head down on the old dining table, empty bowls beside him, warm bulb light, delivery bag still on the chair",
+      "运镜": "推近",
+      "秒": 5.17,
+      "画面": "Cinematic shot, slow push-in. The young courier is asleep with his head down on the old dining table, empty bowls beside him, the delivery bag still hanging on the chair. No dialogue. Audio: slow breathing, a clock ticking, faint rain.",
+      "字幕": ""
+    },
+    {
+      "幕": "四 · 天亮",
+      "提示词": "early morning sunlight through an old apartment window, dust motes in the beam, the empty dining table with two used bowls, warm dawn tones",
+      "运镜": "静止",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot. Early morning sunlight comes through an old apartment window, dust motes floating in the beam, the empty dining table with two used bowls. No people, no dialogue. Audio: morning birds, faint traffic far away, quiet room tone.",
+      "字幕": ""
+    },
+    {
+      "幕": "四 · 天亮",
+      "提示词": "the young courier waking up at the old table in morning light, lifting his head, looking around the now-empty room, confusion on his face",
+      "运镜": "静止",
+      "秒": 5.17,
+      "画面": "Cinematic shot. The young courier wakes at the old table in morning light, lifts his head, looks around the now-empty room. He speaks in Chinese, hoarse: \"大爷？\" Audio: morning birds, a chair scraping, quiet room tone.",
+      "说": "大爷？",
+      "字幕": "大爷？"
+    },
+    {
+      "幕": "四 · 天亮",
+      "提示词": "the young courier walking out of a derelict apartment building into grey morning light, demolition fencing behind him, looking back over his shoulder at the building",
+      "运镜": "拉远",
+      "秒": 5.17,
+      "画面": "Cinematic shot, pulling back. The young courier walks out of a derelict apartment building into grey morning light, demolition fencing behind him, and looks back over his shoulder at the building. No dialogue. Audio: morning traffic, wind, a loose metal sheet creaking.",
+      "字幕": "楼还是那栋楼。还是在拆。"
+    },
+    {
+      "幕": "四 · 天亮",
+      "提示词": "extreme close up of a phone screen in morning light showing a five-star delivery rating and a short anonymous comment, cracks in the screen glass",
+      "运镜": "推近",
+      "秒": 5.17,
+      "无角色": true,
+      "画面": "Cinematic shot, extreme close up. A phone screen in morning light shows a five-star delivery rating and a short anonymous comment, cracks in the screen glass. No people, no dialogue. Audio: morning traffic, a phone notification chime.",
+      "字幕": "★★★★★「趁热吃」——匿名"
+    },
+    {
+      "幕": "四 · 天亮",
+      "提示词": "close up of the young courier standing in grey morning light holding a phone to his ear, wet hair drying, a small tired smile forming as the call connects",
+      "运镜": "推近",
+      "秒": 5.17,
+      "画面": "Cinematic shot, close up. The young courier stands in grey morning light holding a phone to his ear, wet hair drying, a small tired smile forming as the call connects. He speaks in Chinese, quietly: \"妈，我下周回。\" Audio: morning traffic, wind, clear Chinese dialogue.",
+      "说": "妈，我下周回。",
+      "字幕": "妈，我下周回。"
+    }
+  ]
+}

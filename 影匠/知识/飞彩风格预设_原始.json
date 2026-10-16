@@ -1,0 +1,191 @@
+{
+  "来源": "网盘\\_飞彩解包\\Win\\.next\\static\\chunks\\9490-a7bad63d9cae38d9.js",
+  "说明": "飞彩 Studio 内置风格预设的完整原始字段。keywords = 送模型的英文提示词（与影匠 风格提示词.json 的「提示词」逐字一致）；prompt = 面向用户的中文描述，影匠既有 json 缺这一项；emoji / label 同源。",
+  "数量": 23,
+  "预设": [
+    {
+      "id": "3d-xianxia",
+      "中文": "3D国漫仙侠",
+      "emoji": "🐉",
+      "提示词": "Chinese 3D animation, CG rendering, xianxia fantasy, gilded gold and crimson accents, ice blue and purple haze palette, ethereal oriental atmosphere, magical particle effects, volumetric lighting",
+      "中文描述": "3D国漫CG渲染，玄幻仙侠风，鎏金、绯红、冰蓝、紫霞色调，东方仙气华丽感",
+      "场景": "仙侠/修真/玄幻长篇；御剑、法阵、宗门、飞升等东方玄幻题材"
+    },
+    {
+      "id": "anime-cel",
+      "中文": "日系赛璐璐",
+      "emoji": "🌸",
+      "提示词": "Japanese anime cel shading, Kyoto Animation quality, warm orange and sakura pink palette, sky blue and silver tones, detailed hand-drawn look, soft light bloom, delicate emotional expressions",
+      "中文描述": "日系赛璐璐手绘动画感，暖橘、樱粉、天空蓝色调，清新治愈电影质感",
+      "场景": "校园日常/青春恋爱/治愈系；强情绪特写与人物群像"
+    },
+    {
+      "id": "cyberpunk",
+      "中文": "赛博朋克",
+      "emoji": "🌃",
+      "提示词": "cyberpunk aesthetic, neon-lit dark sci-fi, electric blue and magenta palette, chrome silver accents, holographic reflections, wet surface reflections, high-tech dystopian atmosphere",
+      "中文描述": "赛博朋克霓虹光影，电光蓝、品红、铬银色调，潮湿阴暗科技感",
+      "场景": "近未来反乌托邦/黑客/义体；雨夜都市、霓虹街景"
+    },
+    {
+      "id": "cyberpunk-anime",
+      "中文": "赛博日漫",
+      "emoji": "🤖",
+      "提示词": "cyberpunk anime fusion, Ghost in the Shell and Akira style, deep purple and electric blue palette, fluorescent orange and dark silver, glitch art effects, holographic UI overlays, mechanical details",
+      "中文描述": "赛博朋克日系动画，深紫、电光蓝、荧光橙色调，硬核科幻日式细腻美学",
+      "场景": "赛博题材的日式动画表达；机甲、义体、电子脑、故障艺术"
+    },
+    {
+      "id": "dark-gothic",
+      "中文": "暗黑哥特",
+      "emoji": "🦇",
+      "提示词": "dark gothic fantasy, Soulsborne aesthetic, abyss black and blood red palette, rusted copper and ghost green, heavy fog atmosphere, dramatic chiaroscuro lighting, epic dark tone",
+      "中文描述": "暗黑哥特魂系油画质感，深渊黑、血红、锈铜色调，压抑沉重史诗感",
+      "场景": "黑暗奇幻/宗教恐怖/魂系世界观；古堡、教堂、深渊"
+    },
+    {
+      "id": "disney-3d",
+      "中文": "迪士尼3D",
+      "emoji": "✨",
+      "提示词": "Disney Pixar 3D animation, cartoon rendering, candy pink and sky blue palette, sunshine yellow and mint green, exaggerated expressive characters, sparkle and magic dust effects, cheerful fairy tale atmosphere",
+      "中文描述": "迪士尼皮克斯3D卡通渲染，糖果粉、天空蓝、阳光黄色调，欢快梦幻童话感",
+      "场景": "童话/合家欢/冒险喜剧；拟人化角色、夸张表情演出"
+    },
+    {
+      "id": "dreamy-pastel",
+      "中文": "梦幻柔彩",
+      "emoji": "🦄",
+      "提示词": "dreamy pastel illustration, soft focus ethereal glow, lavender purple and peach pink palette, cream yellow and mint blue, stardust particle effects, watercolor diffusion, healing romantic atmosphere",
+      "中文描述": "梦幻柔彩柔焦朦胧，薰衣草紫、蜜桃粉、奶油黄色调，温柔治愈浪漫感",
+      "场景": "MV/情绪短片/治愈系；回忆、梦境、抒情段落"
+    },
+    {
+      "id": "ghibli",
+      "中文": "吉卜力田园",
+      "emoji": "🍃",
+      "提示词": "Studio Ghibli watercolor style, hand-painted pastoral, grass green and wheat gold palette, sky blue and cloud white, warm sunlight through canopy, gentle breeze movement, cozy magical atmosphere",
+      "中文描述": "吉卜力水彩手绘田园风，草绿、麦金、天蓝色调，温暖质朴奇幻感",
+      "场景": "田园奇幻/成长冒险/自然题材；乡野、森林、飞行、日常魔法"
+    },
+    {
+      "id": "horror-thriller",
+      "中文": "惊悚恐怖",
+      "emoji": "👻",
+      "提示词": "horror thriller, dark low-key lighting, pitch black and pale white palette, putrid green and dark red, flickering light effects, heavy vignette, creeping fog, oppressive claustrophobic atmosphere",
+      "中文描述": "恐怖惊悚暗调摄影，漆黑、惨白、腐绿、暗红色调，窒息压抑悬念感",
+      "场景": "恐怖/悬疑/惊悚；密室、走廊、夜探、灵异"
+    },
+    {
+      "id": "ink-wash",
+      "中文": "墨韵国风",
+      "emoji": "🎨",
+      "提示词": "Chinese ink wash painting, sumi-e brushwork, gongbi and splashed ink fusion, ink black and rice paper white, vermillion red and mineral blue accents, generous negative space, ethereal misty atmosphere",
+      "中文描述": "中国水墨工笔泼墨结合，墨黑、宣白、朱砂红色调，空灵写意东方气韵",
+      "场景": "古风/武侠意境/诗词叙事；山水、留白、写意转场"
+    },
+    {
+      "id": "korean-webtoon",
+      "中文": "韩漫唯美",
+      "emoji": "🎎",
+      "提示词": "Korean webtoon semi-realistic illustration, soft glow and smooth shading, rose pink and moonlight blue palette, champagne gold and mist gray, bokeh background blur, backlit hair glow, romantic K-drama atmosphere",
+      "中文描述": "韩漫唯美半写实插画，玫瑰粉、月光蓝、香槟金色调，唯美浪漫韩剧氛围",
+      "场景": "都市言情/偶像/职场恋爱；现代唯美人物特写"
+    },
+    {
+      "id": "marvel-dc",
+      "中文": "美漫超英",
+      "emoji": "⚡",
+      "提示词": "Marvel DC superhero, comic book inspired style, steel gray and justice blue palette, flame red and thunder gold, dynamic action poses, energy effects, blockbuster epic tone",
+      "中文描述": "美漫超英电影级CG，钢铁灰、正义蓝、烈焰红色调，热血大片质感",
+      "场景": "超英/异能战斗/热血成长；大招、群战、英雄登场"
+    },
+    {
+      "id": "nolan-epic",
+      "中文": "诺兰大片",
+      "emoji": "🎬",
+      "提示词": "Christopher Nolan cinematic style, IMAX film photography, steel blue and concrete gray palette, deep ocean ink and glacier white, practical effects realism, restrained intense atmosphere, cerebral epic tone",
+      "中文描述": "诺兰IMAX胶片级摄影，钢蓝、混凝土灰、冰川白色调，冷峻严肃史诗厚重感",
+      "场景": "硬核科幻/犯罪/悬疑大片；冷峻对白、实拍质感、大场面"
+    },
+    {
+      "id": "oil-painting",
+      "中文": "古典油画",
+      "emoji": "🖼ï¸",
+      "提示词": "classical oil painting, Renaissance master brushwork, Rembrandt lighting, deep brown and dark gold palette, crimson and ivory white, rich impasto texture, Tyndall light effect, fine art museum quality",
+      "中文描述": "古典油画文艺复兴笔触，深棕、暗金、猩红色调，厚重写实艺术殿堂感",
+      "场景": "欧洲古典/宫廷/宗教/历史正剧；室内伦勃朗光、静物特写"
+    },
+    {
+      "id": "pixel-retro",
+      "中文": "像素复古",
+      "emoji": "👾",
+      "提示词": "pixel art, 16-bit retro game style, high saturation primary colors, gem blue and bright yellow, crisp pixel grid rendering, nostalgic 8-bit aesthetic, charming sprite design",
+      "中文描述": "16bit像素复古游戏风，高饱和红、宝石蓝、亮黄色调，怀旧精致感",
+      "场景": "游戏题材/怀旧短片/喜剧；打怪、闯关、8bit 过场"
+    },
+    {
+      "id": "post-apocalypse",
+      "中文": "末日废土",
+      "emoji": "🏜ï¸",
+      "提示词": "post-apocalyptic wasteland, Mad Max desert aesthetic, gritty grain texture, dust yellow and rust red palette, charred black and faded khaki, sandstorm haze, desolate savage atmosphere",
+      "中文描述": "末日废土荒漠美学，沙尘黄、铁锈红、焦黑色调，苍凉狂野生存感",
+      "场景": "废土/公路/生存题材；荒漠、废车、拾荒、沙暴"
+    },
+    {
+      "id": "sci-fi-epic",
+      "中文": "史诗科幻",
+      "emoji": "🚀",
+      "提示词": "epic science fiction, cinematic CG rendering, space black and plasma blue palette, engine orange and titanium silver, massive scale composition, particle beam effects, hard sci-fi realism",
+      "中文描述": "史诗科幻星际大片级CG，星空黑、等离子蓝、引擎橙色调，宏大硬科幻质感",
+      "场景": "太空歌剧/星际战争/硬科幻；舰队、巨构、行星级场面"
+    },
+    {
+      "id": "steampunk",
+      "中文": "蒸汽朋克",
+      "emoji": "⚙️",
+      "提示词": "steampunk Victorian industrial aesthetic, brass and steam machinery, antique bronze and rust orange palette, deep brown tones, riveted leather textures, clockwork mechanical details, retro-industrial romanticism",
+      "中文描述": "蒸汽朋克维多利亚工业美学，古铜金、铁锈橙、深棕色调，复古厚重工业感",
+      "场景": "维多利亚架空/机械发明/冒险；飞艇、齿轮、工坊"
+    },
+    {
+      "id": "ukiyoe",
+      "中文": "浮世绘和风",
+      "emoji": "🌊",
+      "提示词": "ukiyo-e Japanese woodblock print style, flat composition with bold outlines, indigo blue and vermillion red palette, decorative cloud patterns, gold leaf accents, dramatic kabuki-inspired poses, classic elegance",
+      "中文描述": "浮世绘日本版画，平面构图粗线条，靛蓝、朱红、藤黄色调，古朴典雅戏剧感",
+      "场景": "日本江户题材/和风传说/歌舞伎；波、云、花魁、武士"
+    },
+    {
+      "id": "urban-realistic",
+      "中文": "都市写实",
+      "emoji": "🏙ï¸",
+      "提示词": "urban realistic photography, modern city natural and artificial light mix, neon purple and streetlamp warm yellow palette, deep sky blue and asphalt gray, rain bokeh effects, long exposure light trails, cinematic urban atmosphere",
+      "中文描述": "都市写实现代城市摄影级，霓虹紫、路灯暖黄、天幕深蓝色调，真实细腻电影感",
+      "场景": "现代都市/刑侦/职场写实；街头、雨夜、车流"
+    },
+    {
+      "id": "vintage-film",
+      "中文": "复古胶片",
+      "emoji": "📽ï¸",
+      "提示词": "vintage analog film, Kodak Fuji film stock tones, warm yellow and faded cyan palette, caramel brown and cream white, film grain texture, lens flare, slight overexposure, nostalgic soft atmosphere",
+      "中文描述": "复古胶片柯达富士色调，暖黄、褪色青、焦糖棕色调，温柔怀旧文艺感",
+      "场景": "年代戏/怀旧回忆/文艺片；80-90 年代、老照片质感"
+    },
+    {
+      "id": "wuxia-realistic",
+      "中文": "写实武侠",
+      "emoji": "⚔️",
+      "提示词": "realistic Chinese wuxia, cinematic CG rendering, ink teal and maple red palette, smoke gray and moonlight white, flowing robes and sharp martial arts action, epic sweeping atmosphere, classical Chinese warrior aesthetic",
+      "中文描述": "写实武侠电影级CG，墨青、枫红、烟灰、月白色调，大气磅礴江湖意境",
+      "场景": "武侠/江湖/古装动作；竹林对决、客栈、轻功"
+    },
+    {
+      "id": "zombie-apocalypse",
+      "中文": "丧尸末世",
+      "emoji": "🧟",
+      "提示词": "zombie apocalypse, Walking Dead style, oppressive desolation, decay green and blood red palette, haze gray and bone white, blood mist effects, flashlight beams in darkness, desperate survival atmosphere",
+      "中文描述": "丧尸末世写实恐怖，腐败绿、凝血红、阴霾灰色调，紧张绝望末世求生感",
+      "场景": "丧尸/末世求生/群像灾难；废墟、夜行、尸潮"
+    }
+  ]
+}

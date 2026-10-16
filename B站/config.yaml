@@ -1,0 +1,77 @@
+# ============================================================================
+#  biliup-rs v0.2.4 投稿配置文件（模板 / 参考）
+# ----------------------------------------------------------------------------
+#  ⚠️ 重要：本版本只认 YAML！
+#     源码 crates/biliup/src/uploader.rs 第 51-56 行：
+#         pub fn load_config(config: &Path) -> error::Result<Config> {
+#             let file = std::fs::File::open(config)?;
+#             let config: Config = serde_yaml::from_reader(file)?;   // ← 固定 YAML
+#     所以不要把它改名成 config.toml，也不要用 TOML 语法，会直接解析失败。
+#
+#  ⚠️ 两条互斥的投稿路径：
+#     A) 命令行参数投稿（推荐日常用，见 上传视频.ps1）
+#          biliup.exe -u cookies.json upload --title "标题" --tid 47 视频.mp4
+#     B) 配置文件投稿（本文件，适合"按目录批量匹配"）
+#          biliup.exe -u cookies.json upload -c config.yaml
+#        走 B 路径时，命令行里的 --title/--tag/--tid 等【全部被忽略】，
+#        一切以本文件为准；且 video_path 位置参数也不需要给（给了也没用）。
+#
+#  字段依据：v0.2.4 源码 crates/biliup/src/uploader/bilibili.rs 的 Studio 结构体
+# ============================================================================
+
+# 【可选】上传线路：bda2 | ws | qn | bldsa | tx | txa | bda | alia
+# 不写 = 让 biliup 自动测速挑选（通常是最好的选择）
+line: bda2
+
+# 【可选，默认 3】单视频文件最大并发数。线路有限速时调大反而更慢，实测着调。
+limit: 3
+
+# 【必填】streamers 的 key = 视频文件的匹配模式（Unix shell 风格 glob）
+#         value = 这一批视频用哪套投稿参数
+streamers:
+
+  # ↓ 这个 key 就是视频文件的 glob。注意：正斜杠 / 也能用，反斜杠请写 \\
+  "D:/DSHworkspace/B站/成品/*.mp4":
+
+    # ------- 以下 9 个字段在 YAML 里【必须出现】，少一个就报解析错误 -------
+    copyright: 1                 # 1=自制(原创)  2=转载
+    source: ""                   # 转载来源；copyright=1 时留空字符串
+    tid: 47                      # 投稿分区；47 = 动画区 / 短片·手书·配音（AI 短片推荐）
+    cover: ""                    # 封面【本地绝对路径】；留空 = 投稿后由 B站自动截帧
+    title: "示例标题"             # 稿件标题（B站上限 80 字）
+    desc_format_id: 0            # 简介格式 id，固定填 0
+    desc: |                      # 简介（B站上限 2000 字）；| 表示保留下面的换行
+      【AI生成声明】本视频画面由人工智能（AI）生成，音频与剪辑由人工完成。
+      这里是简介正文。
+    dynamic: ""                  # 投稿同时发的空间动态，可留空
+    tag: "AI动画,AI短片,AI生成"    # 标签，英文逗号分隔（B站最多 10 个）
+
+    # ------- 以下是可选项，不写就用默认值（源码里带 #[serde(default)]）-------
+    dtime: ~                     # 定时发布时间：10 位 Unix 时间戳（秒）。
+                                 # ~ 表示不定时、立即投稿。
+                                 # 定了时必须 > 当前时间 + 4 小时，否则 B站拒绝。
+    dolby: 0                     # 是否开启杜比音效 0/1
+    lossless_music: 0            # 是否开启 Hi-Res 0/1（命令行里叫 --hires）
+    no_reprint: 0                # 0=允许转载  1=禁止转载
+    open_elec: 0                 # 是否开启充电 0/1
+    interactive: 0               # 互动视频 0=否
+    mission_id: ~                # 活动 id，一般不需要
+    open_subtitle: false         # 是否开放字幕
+    subtitle:                    # 字幕设置
+      open: 0
+      lan: ""
+    up_selection_reply: false    # 精选评论（仅 --submit app 时生效，本版本实际总走 app）
+    up_close_reply: false        # 关闭评论（同上）
+    up_close_danmu: false        # 关闭弹幕（同上）
+
+  # 可以写多组：不同的目录 / 不同的稿件参数
+  # "D:/DSHworkspace/B站/成品/系列二/*.mp4":
+  #   copyright: 1
+  #   source: ""
+  #   tid: 47
+  #   cover: "D:/DSHworkspace/B站/封面/系列二.jpg"
+  #   title: "系列二 第1集"
+  #   desc_format_id: 0
+  #   desc: "【AI生成声明】本视频画面由人工智能（AI）生成。"
+  #   dynamic: ""
+  #   tag: "AI动画,AI短片"

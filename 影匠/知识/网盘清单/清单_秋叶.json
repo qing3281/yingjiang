@@ -1,0 +1,137 @@
+[
+ {
+  "name": "ComfyUI-aki/ComfyUI-aki-v3.2.7z",
+  "size": 3021080084,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/旧版本/ComfyUI-aki-v3.7z",
+  "size": 2634775597,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/旧版本/ComfyUI-aki-v2.7z",
+  "size": 3512395676,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/旧版本/ComfyUI-aki-v1.6.7z",
+  "size": 3200253991,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/旧版本/ComfyUI-aki-v1.7.7z",
+  "size": 3930918590,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/anything-v5-PrtRE.safetensors",
+  "size": 2132626102,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/入门工作流/各种工作流链接.txt",
+  "size": 292,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/入门工作流/ComfyUI_Workflows.zip",
+  "size": 85182642,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+  "size": 15687142551,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+  "size": 20970379616,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11p_sd15_softedge_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11p_sd15s2_lineart_anime_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11p_sd15_lineart_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11f1e_sd15_tile_fp16.safetensors",
+  "size": 722601104,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11e_sd15_shuffle_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11p_sd15_scribble_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11p_sd15_canny_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11p_sd15_inpaint_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11p_sd15_mlsd_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11p_sd15_openpose_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11p_sd15_normalbae_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11e_sd15_ip2p_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11p_sd15_seg_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/ControlNet/control_v11f1p_sd15_depth_fp16.safetensors",
+  "size": 722601100,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/vae/minimax_h3_video_vae_fp16.safetensors",
+  "size": 5207808496,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/vae/minimax_h3_audio_vae_fp32.safetensors",
+  "size": 605254808,
+  "url": null
+ },
+ {
+  "name": "ComfyUI-aki/models/vae/flux-ae.safetensors",
+  "size": 335304388,
+  "url": null
+ }
+]

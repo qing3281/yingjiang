@@ -1,0 +1,44 @@
+{
+  "标题": "它记得",
+  "画布": "1920x1080",
+  "每张秒": 5.0,
+  "转场秒": 0.8,
+  "BGM": null,
+  "_注释": "角色锁的三条实测教训（都踩过坑）：1) 不要写成「The recurring character, identical in every shot」——recurring / every shot 是复数语义，模型照着画一群（实测五个镜头出 2/2/3/3/2 个机器人）。2) 不要加「exactly one robot in the entire frame」——Z-Image 是蒸馏模型，负面条件走 ConditioningZeroOut，否定句完全无效，反而因重复提及 robot 让数量更多。3) 唯一有效的写法：把角色描述压成主语前的形容词短语（放「角色」字段，每条提示词前面拼一次），全句只出现一次，用 lone 限定。",
+  "风格前缀": "cinematic anime film still, highly detailed, dramatic golden hour light, volumetric rays, muted teal and amber palette, shallow depth of field, ",
+  "角色": "a lone small round-bodied robot, single large round glass eye, dented pale blue-grey metal shell, stubby legs, thin arms, ",
+  "输出目录": "D:/DSHworkspace/B站/成片/它记得",
+  "投稿": {
+    "活动": "AI MV 大赛",
+    "标题": "它记得",
+    "副标题": "废弃城市里，它还在原地等一个不会回来的人",
+    "简介": "它没有等到那个人。\n但它把整座城市，连同那一天的黄昏，一起记了三十年。\n\n——\n全片由本地 AI 生成：Z-Image-Turbo 出静帧，Wan 2.2 I2V 14B + LightX2V 4步 LoRA 出动态镜头，PyAV 合成运镜与转场。未使用任何云端生成服务。",
+    "标签": ["AI动画", "AI MV 大赛", "AI短片", "AIGC", "原创动画", "治愈"],
+    "分区": 27,
+    "AI声明": true
+  },
+  "镜头": [
+    {
+      "提示词": "sitting on the edge of a ruined rooftop, legs dangling over the void, abandoned overgrown city skyline to the horizon, a few scattered lights flickering on, dusk, medium wide shot",
+      "运镜": "推近",
+      "动态": 5.0
+    },
+    {
+      "提示词": "macro close-up of its single round glass eye filling the frame, cracked and dusted, the warm lights of a passing train reflected inside the lens, blurred train and city behind",
+      "运镜": "右到左"
+    },
+    {
+      "提示词": "walking away from camera far down an abandoned street swallowed by vines and moss, a collapsed elevated highway overhead, shafts of sunlight cutting through the ruins",
+      "运镜": "左到右",
+      "动态": 5.0
+    },
+    {
+      "提示词": "aerial view of a vast ruined city at sunset, broken towers and collapsed roads stretching to the horizon, one tiny lone robot far below on an empty street, epic scale, film grain",
+      "运镜": "推近"
+    },
+    {
+      "提示词": "backlit ending shot on a wide empty road at sunset, seen from behind, its single round glass eye glowing warm amber, one long shadow stretching toward the camera, dust in the air, emotional",
+      "运镜": "推近"
+    }
+  ]
+}

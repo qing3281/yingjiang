@@ -1,0 +1,205 @@
+{
+  "1": {
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Qwen-Image-Edit-2511 主模型"
+    },
+    "inputs": {
+      "unet_name": "qwen_image_edit_2511_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    }
+  },
+  "2": {
+    "class_type": "ModelSamplingAuraFlow",
+    "_meta": {
+      "title": "采样偏移"
+    },
+    "inputs": {
+      "shift": 3.1,
+      "model": [
+        "1",
+        0
+      ]
+    }
+  },
+  "3": {
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Qwen2.5-VL 文本/视觉编码器"
+    },
+    "inputs": {
+      "clip_name": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+      "type": "qwen_image"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Qwen-Image VAE"
+    },
+    "inputs": {
+      "vae_name": "qwen_image_vae.safetensors"
+    }
+  },
+  "10": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "参考图1（角色）"
+    },
+    "inputs": {
+      "image": "example.png"
+    }
+  },
+  "11": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "参考图2（场景）"
+    },
+    "inputs": {
+      "image": "example.png"
+    }
+  },
+  "12": {
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "参考图3（道具/风格）"
+    },
+    "inputs": {
+      "image": "example.png"
+    }
+  },
+  "20": {
+    "class_type": "TextEncodeQwenImageEditPlus",
+    "_meta": {
+      "title": "正向：提示词 + 三张参考图"
+    },
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "prompt": "a cinematic photograph",
+      "vae": [
+        "4",
+        0
+      ],
+      "image1": [
+        "10",
+        0
+      ],
+      "image2": [
+        "11",
+        0
+      ],
+      "image3": [
+        "12",
+        0
+      ]
+    }
+  },
+  "21": {
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "负面（Qwen-Edit 官方留空）"
+    },
+    "inputs": {
+      "clip": [
+        "3",
+        0
+      ],
+      "text": ""
+    }
+  },
+  "30": {
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "画布尺寸"
+    },
+    "inputs": {
+      "width": 1328,
+      "height": 1328,
+      "batch_size": 1
+    }
+  },
+  "40": {
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "采样（官方推荐 Steps 20 / CFG 4.0）"
+    },
+    "inputs": {
+      "model": [
+        "2",
+        0
+      ],
+      "seed": 0,
+      "steps": 20,
+      "cfg": 4.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "positive": [
+        "20",
+        0
+      ],
+      "negative": [
+        "21",
+        0
+      ],
+      "latent_image": [
+        "30",
+        0
+      ],
+      "denoise": 1.0
+    }
+  },
+  "50": {
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "解码"
+    },
+    "inputs": {
+      "samples": [
+        "40",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    }
+  },
+  "9": {
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "存图"
+    },
+    "inputs": {
+      "filename_prefix": "影匠",
+      "images": [
+        "50",
+        0
+      ]
+    }
+  },
+  "_规格": {
+    "说明": "这个模板把参考图喂进 TextEncodeQwenImageEditPlus，用 VAE 把参考图编成隐变量再拼进条件。两条硬要求：① UNETLoader 必须是图像编辑模型（纯文生图模型没见过这种条件，出满屏棋盘格废图）；② 不许挂 Lightning 蒸馏 LoRA —— 实测（同种子同参考图，见 作品/锁脸A_8步CFG1.png 与 锁脸B_20步CFG4.png）：LoRA strength 1.0 + 8步/CFG1.0 出糊图，摘掉 LoRA 用 20步/CFG4.0 才是干净锁脸图。那个 LoRA 是给 bf16/fp8 主模型蒸馏的，配 int8_convrot 量化模型直接崩。",
+    "可缺": [],
+    "要求": [
+      {
+        "节点": "UNETLoader",
+        "字段": "unet_name",
+        "名字须含": [
+          "edit"
+        ],
+        "为什么": "必须是图像编辑模型；纯文生图模型出棋盘格"
+      },
+      {
+        "节点": "UNETLoader",
+        "字段": "unet_name",
+        "名字须含": [
+          "int8_convrot"
+        ],
+        "为什么": "本机验过的量化格式，与 z_image_turbo_int8_convrot 同一路"
+      }
+    ]
+  }
+}

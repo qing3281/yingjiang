@@ -1,0 +1,7 @@
+﻿这些是搭建投稿通道时从 biliup-rs v0.2.4 源码和官方文档抓下来的原始参考材料，
+用来核对参数名。日常投稿用不到，可以删。
+
+- uploader.rs / cli.rs / main.rs / bilibili.rs / credential.rs / uploader_mod.rs：crates 源码，配置格式与字段名以这些为准
+- config.yaml.example：上游自带的配置示例
+- readme_upstream.md：biliup-rs 的 README（注意仓库已归档）
+- tidref.html：biliup 官方分区 tid 对照表

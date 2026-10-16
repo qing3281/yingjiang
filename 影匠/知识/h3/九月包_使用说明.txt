@@ -1,0 +1,8 @@
+本文件夹是整合包配套的全部模型（不含在整合包压缩包里）。
+
+用法：把本文件夹里的所有子文件夹（diffusion_models、loras、text_encoders、vae 等），
+整体复制到 整合包目录\ComfyUI\models\ 下，遇到同名文件夹选择合并即可。
+
+放好后的路径示例：
+  Comfyui-WF-2026.8.8\ComfyUI\models\diffusion_models\minimax_h3_hybrid_fl2va_ref2va_b25-49-int8.safetensors
+  Comfyui-WF-2026.8.8\ComfyUI\models\loras\GunFu.safetensors

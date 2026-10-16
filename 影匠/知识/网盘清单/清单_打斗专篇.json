@@ -1,0 +1,72 @@
+[
+ {
+  "name": "1.MINIMAX打斗专篇/【Work-Fisher】MINIMAX-H3打斗专用全自动工作流.json",
+  "size": 221582,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/【Work-Fisher】纯净版整合包（只包含MINIMAX-H3）/Comfyui-WF-2026.8.8.7z",
+  "size": 13564811400,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/【Work-Fisher】纯净版整合包（只包含MINIMAX-H3）/解压一定要用7Z（不然报错别问我）.exe",
+  "size": 1657896,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/custom_nodes/ComfyUI-PT_H3ConcatAVLatent/nodes.py",
+  "size": 2033,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/custom_nodes/ComfyUI-PT_H3ConcatAVLatent/__init__.py",
+  "size": 368,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/custom_nodes/ComfyUI-PT_H3ConcatAVLatent/README.md",
+  "size": 1839,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/【Work-Fisher】纯净版整合包（只包含MINIMAX-H3）/models（放入comfyui modes文件夹即可，直接替换）/diffusion_models/minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+  "size": 20970379616,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/【Work-Fisher】纯净版整合包（只包含MINIMAX-H3）/models（放入comfyui modes文件夹即可，直接替换）/diffusion_models/minimax_h3_fl2va_int8_convrot.safetensors",
+  "size": 34038892334,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/【Work-Fisher】纯净版整合包（只包含MINIMAX-H3）/models（放入comfyui modes文件夹即可，直接替换）/text encoders/qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+  "size": 27141342152,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/【Work-Fisher】纯净版整合包（只包含MINIMAX-H3）/models（放入comfyui modes文件夹即可，直接替换）/text encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+  "size": 15687142551,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/【Work-Fisher】纯净版整合包（只包含MINIMAX-H3）/models（放入comfyui modes文件夹即可，直接替换）/vae/minimax_h3_audio_vae_fp32.safetensors",
+  "size": 605254808,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/【Work-Fisher】纯净版整合包（只包含MINIMAX-H3）/models（放入comfyui modes文件夹即可，直接替换）/vae/minimax_h3_video_vae_fp16.safetensors",
+  "size": 5207808496,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/custom_nodes/ComfyUI-PT_H3ConcatAVLatent/__pycache__/nodes.cpython-312.pyc",
+  "size": 2136,
+  "url": null
+ },
+ {
+  "name": "1.MINIMAX打斗专篇/custom_nodes/ComfyUI-PT_H3ConcatAVLatent/__pycache__/__init__.cpython-312.pyc",
+  "size": 433,
+  "url": null
+ }
+]

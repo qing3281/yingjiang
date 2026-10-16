@@ -1,0 +1,44 @@
+所在位置 D:\_远程部署.ps1:12 字符: 14
++ function 璁?$m) {
++              ~
+function 声明中缺少 function 主体。
+所在位置 D:\_远程部署.ps1:12 字符: 14
++ function 璁?$m) {
++              ~
+表达式或语句中包含意外的标记“)”。
+所在位置 D:\_远程部署.ps1:16 字符: 15
++ function 姝?$鍚? [scriptblock]$鍧? {
++               ~
+function 声明中缺少 function 主体。
+所在位置 D:\_远程部署.ps1:16 字符: 33
++ function 姝?$鍚? [scriptblock]$鍧? {
++                                 ~
+表达式或语句中包含意外的标记“{”。
+所在位置 D:\_远程部署.ps1:20 字符: 7
++   璁?"<<< 缁撴潫锛?鍚? 鐢ㄦ椂 $([math]::Round(((Get-Date)-$t).TotalSeconds,1)) ...
++       ~
+重定向运算符后面缺少文件规范。
+所在位置 D:\_远程部署.ps1:20 字符: 6
++   璁?"<<< 缁撴潫锛?鍚? 鐢ㄦ椂 $([math]::Round(((Get-Date)-$t).TotalSeconds,1)) ...
++      ~
+“<”运算符是为将来使用而保留的。
+所在位置 D:\_远程部署.ps1:20 字符: 8
++   璁?"<<< 缁撴潫锛?鍚? 鐢ㄦ椂 $([math]::Round(((Get-Date)-$t).TotalSeconds,1)) ...
++        ~
+重定向运算符后面缺少文件规范。
+所在位置 D:\_远程部署.ps1:20 字符: 7
++   璁?"<<< 缁撴潫锛?鍚? 鐢ㄦ椂 $([math]::Round(((Get-Date)-$t).TotalSeconds,1)) ...
++       ~
+“<”运算符是为将来使用而保留的。
+所在位置 D:\_远程部署.ps1:20 字符: 8
++   璁?"<<< 缁撴潫锛?鍚? 鐢ㄦ椂 $([math]::Round(((Get-Date)-$t).TotalSeconds,1)) ...
++        ~
+“<”运算符是为将来使用而保留的。
+所在位置 D:\_远程部署.ps1:109 字符: 134
++ ... cuda',torch.version.cuda,'鍙敤',torch.cuda.is_available(),'鍗?,(torch.c ...
++                                                                 ~
+参数列表中缺少参量。
+并未报告所有分析错误。请更正报告的错误并重试。
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordException
+    + FullyQualifiedErrorId : MissingFunctionBody
+ 

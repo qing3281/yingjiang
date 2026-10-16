@@ -1,0 +1,286 @@
+Work-Fisher 整合包模型 SHA-256
+
+生成日期：2026-09-28
+共 69 个文件，144,236,152,074 字节（约 134.3 GB）。
+FILE 路径相对于整合包根目录；MODELS 文件夹里的内容放进 ComfyUI/models 后就是这个路径。
+校验方法（PowerShell）：Get-FileHash -Algorithm SHA256 "文件路径"
+
+==== 模型文件（31 个） ====
+
+SHA256  cff5558af4cbebb06447c2ab8f5ca2e97ccceb4fa3b9fdc0af0d6e546170bf53
+BYTES   34004449966
+FILE    ComfyUI/models/diffusion_models/FeiHou_MiniMax-H3_Remix_v0.6_int8_convrot_v2.safetensors
+
+SHA256  a629cfea8d89a071b140c6e1935dc9a23e72de6badc18975a2bb9e6d1423d76d
+BYTES   20970379632
+FILE    ComfyUI/models/diffusion_models/minimax_h3_hybrid_fl2va_ref2va_b25-49-int8.safetensors
+
+SHA256  cb74113cb03faecd79611b01fd7fd642f0aa60d6f0b95086abee214d75eaa57d
+BYTES   7256783064
+FILE    ComfyUI/models/diffusion_models/qwen_image_2.1_int8_convrot.safetensors
+
+SHA256  7b70711ebf13051bac4b637247f2e6f0db5e1c6da88af3f28ad0165c6483c8c4
+BYTES   1381153616
+FILE    ComfyUI/models/latent_upscale_models/h3_upscaler_sharpness_2000steps_v0.1_fp32.safetensors
+
+SHA256  043e5a48e161610ef6c3ea974645220354d06fa618abca15f76d084812eb55c2
+BYTES   690592672
+FILE    ComfyUI/models/latent_upscale_models/minimax_h3_latent_upscaler_3d_fp16.safetensors
+
+SHA256  975083859a69cd1bd503e026e987c27cf2b66e97d992db353d2ceb7d0b175791
+BYTES   155110272
+FILE    ComfyUI/models/loras/GunFu.safetensors
+
+SHA256  5b3edb09e9d6029439badf9bc9db4ba4a355ae679b0810888de82c4793c0bac8
+BYTES   155110280
+FILE    ComfyUI/models/loras/H3_Combat_V2.safetensors
+
+SHA256  593b074e8eb17bf9f858c3586fc12f53038dbfdd9634e146fe34a17e2661ca40
+BYTES   10093356
+FILE    ComfyUI/models/loras/H3_speed_slider_1.1.safetensors
+
+SHA256  683e8d0d0d3eea1845fc4211b8e7ff95a10498c9d49c4e3459f7d4a7a59a58eb
+BYTES   167830416
+FILE    ComfyUI/models/loras/Kook_qwen_2.1_rmsh_c1-st6000.safetensors
+
+SHA256  a678a3657cefd5c2c2712f892da2f71be53c3f252e335557e918854f8abc579f
+BYTES   155110272
+FILE    ComfyUI/models/loras/Motion_Repair.safetensors
+
+SHA256  7dd837f4c5420d4ec59f3ff1757b3f9d264a6c0f120d65d9c4f59c77584dd0be
+BYTES   596451528
+FILE    ComfyUI/models/loras/MysticXXX_MMH3-V1.safetensors
+
+SHA256  d03c0ca3dd47c0de4c26c9c56562d12e7c968442c9decbb14d4b16bd5db3843d
+BYTES   159436408
+FILE    ComfyUI/models/loras/VNCCS_QI2_PoseStudioV1.1.safetensors
+
+SHA256  c8168ebc17bbacc4296103dda2fec1ba85b24392fa08cf2bfbcef0cff0dc3cc8
+BYTES   1956193000
+FILE    ComfyUI/models/loras/minimax_h3_fl2v_turbo_4step_v1.2_768p_comfyui_bf16.safetensors
+
+SHA256  2339acdf19bfe123f46b971ea35d367a84adb85de43627e1eceafa5a5b2b111e
+BYTES   1956193000
+FILE    ComfyUI/models/loras/minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors
+
+SHA256  a117f18682a22a0381cadd9832da0afe9912f604305b3e44310b5aa1919734cc
+BYTES   794888704
+FILE    ComfyUI/models/loras/minimax_h3_turbo_v4_step600_ema_DasiwaREF2VAHybridV1_0_curveproj1025_compat_v001.safetensors
+
+SHA256  7098acf3ee75028fd9fcd948f50fcc8d995057fabb76f86bd3ca2c0ffc58e409
+BYTES   620285592
+FILE    ComfyUI/models/loras/minimax_h3_turbo_v4_step600_ema_pruned_comfyui.safetensors
+
+SHA256  c38b8f9c43614c91a2847d290d9c5b3341536acb4d6d8ce2d825d4caf7eaee6b
+BYTES   155109488
+FILE    ComfyUI/models/loras/wushu_spatial_physics_v2_1000_pruned.safetensors
+
+SHA256  601769d0c6311628840a7bc5896b2a1035661f0ae2bddc602b782b955c95d3d8
+BYTES   22046928
+FILE    ComfyUI/models/semantic_bridge/t8_compat/BUNNY_H3_ActionLogic_Bridge_V1_T8_Compat.safetensors
+
+SHA256  4649839491c8df1ebc9bed2de158ad2a45b53ed1d3b311d92a69056b6764f101
+BYTES   1159030464
+FILE    ComfyUI/models/text_encoders/mmproj-qwen3vl_8b_heretic-f16.gguf
+
+SHA256  32707d01b427e488af252b95c551989aad59f9fec611a694f5db6bde7f0f1f6c
+BYTES   9471072252
+FILE    ComfyUI/models/text_encoders/qwen3.5_qwen_image_2.1_pe_i2i.int8_convrot.safetensors
+
+SHA256  9182abae56fe05459840a86d22abd21f972061c92fce032630af680c8c5178d3
+BYTES   9471072252
+FILE    ComfyUI/models/text_encoders/qwen3.5_qwen_image_2.1_pe_t2i.int8_convrot.safetensors
+
+SHA256  35a88d51044231fe332301d7a62aa81e3f2cba62febeb446e2c1e3e0ef76f2c6
+BYTES   15687142551
+FILE    ComfyUI/models/text_encoders/qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors
+
+SHA256  68bdc82bc1b66851162ae656225e7e2068166b603db19bd5d5a3b90eb12669a9
+BYTES   17534334616
+FILE    ComfyUI/models/text_encoders/qwen3vl_8b_bf16.safetensors
+
+SHA256  1338274ac7a6344f262a16c7a52d1bd7fe789307d252733b23ea421126e5d343
+BYTES   5027785376
+FILE    ComfyUI/models/text_encoders/qwen3vl_8b_heretic-Q4_K_M.gguf
+
+SHA256  8e505d95dd1561d47abd43d4238fd40d9bb1ae9e147ed0a4cba778d76ae4db48
+BYTES   605254808
+FILE    ComfyUI/models/vae/minimax_h3_audio_vae_fp32.safetensors
+
+SHA256  7c1f131492e7eddacaac9069a61b81bdd39de5cc96561e677c5eab1cdce5e522
+BYTES   5207808496
+FILE    ComfyUI/models/vae/minimax_h3_video_vae_fp16.safetensors
+
+SHA256  bb21f7473051e1ac368515dd3f2e15cd44d7a11748ee8823e1ddca3e4876b7c9
+BYTES   675509688
+FILE    ComfyUI/models/vae/qwen_image_2.1_vae_bf16.safetensors
+
+SHA256  1dd2c67f3f29734d48709513ed181d4f351966d76ba95f77a5cff8e1daf547fa
+BYTES   178418892
+FILE    ComfyUI/models/vosr2/VOSR2/Qwen-Image-vae-2d/diffusion_pytorch_model.safetensors
+
+SHA256  bdcaa81e4c675b6074de643e27daafe73eb8125d4d0264d1bf30a004e9644b71
+BYTES   5576385424
+FILE    ComfyUI/models/vosr2/VOSR2/checkpoints/ema_model.safetensors
+
+SHA256  e6229a9534958a9e38e75ee330f172f19aaa42e2426b3d6ced8d12e7da8c4f5e
+BYTES   1217506936
+FILE    ComfyUI/models/vosr2/VOSR2/dinov2_vitl14.safetensors
+
+SHA256  d5383ea8f4877b2472eb973e0fd72d557c7da5d3611bd527ceeb1d7162cbf428
+BYTES   1217586395
+FILE    ComfyUI/models/vosr2/VOSR2/dinov2_vitl14_pretrain.pth
+
+==== 占位与配置小文件（38 个） ====
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/audio_encoders/put_audio_encoder_models_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/background_removal/put_background_removal_models_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/checkpoints/put_checkpoints_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/clip/put_clip_or_text_encoder_models_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/clip_vision/put_clip_vision_models_here
+
+SHA256  9ceb1178472945273cfe1750b145505b184caa619ce1622f4276af416b43c9bd
+BYTES   2006
+FILE    ComfyUI/models/configs/anything_v3.yaml
+
+SHA256  20d5cacce812609112d416743168ad6f7d50be148ac264f84b525c763444ae39
+BYTES   1943
+FILE    ComfyUI/models/configs/v1-inference.yaml
+
+SHA256  9ceb1178472945273cfe1750b145505b184caa619ce1622f4276af416b43c9bd
+BYTES   2006
+FILE    ComfyUI/models/configs/v1-inference_clip_skip_2.yaml
+
+SHA256  5715c16a6b468bdb56608b640315c14158a5c4738273566a8282f31bac07d6bc
+BYTES   2030
+FILE    ComfyUI/models/configs/v1-inference_clip_skip_2_fp16.yaml
+
+SHA256  7810fd779a7ddc4d9676bcfe65162f4bfd7c527153527c1b1f103186d5e1d7ec
+BYTES   1967
+FILE    ComfyUI/models/configs/v1-inference_fp16.yaml
+
+SHA256  e174a0c212462e9f96bf5ce9327b5ee166d071ec62d6869b8199454347c8406d
+BYTES   2063
+FILE    ComfyUI/models/configs/v1-inpainting-inference.yaml
+
+SHA256  0e3db941233ede7ddfb365f5f6d29fb05f767eb8e5e602cd83bb17d905da1f8e
+BYTES   1883
+FILE    ComfyUI/models/configs/v2-inference-v.yaml
+
+SHA256  91733e58dd236c56e5b12ecdf5e9e65a429da742e9e960c752bc1e87dba24f7f
+BYTES   1884
+FILE    ComfyUI/models/configs/v2-inference-v_fp32.yaml
+
+SHA256  b2379501101f1dd2c7eb1e50d24dedace0378048ab3aef4c78a434944785b044
+BYTES   1856
+FILE    ComfyUI/models/configs/v2-inference.yaml
+
+SHA256  6fbaddd67592412df331982abf208b02dfec89f97d642a604d4953c52d32bc25
+BYTES   1857
+FILE    ComfyUI/models/configs/v2-inference_fp32.yaml
+
+SHA256  8dc746eaf2747d983cd0dc4ce18172659f05b74dcfbbb33b33f53c045351ea47
+BYTES   4608
+FILE    ComfyUI/models/configs/v2-inpainting-inference.yaml
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/controlnet/put_controlnets_and_t2i_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/detection/put_detection_models_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/diffusers/put_diffusers_models_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/diffusion_models/put_diffusion_model_files_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/embeddings/put_embeddings_or_textual_inversion_concepts_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/frame_interpolation/put_frame_interpolation_models_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/geometry_estimation/put_geometry_estimation_models_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/gligen/put_gligen_models_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/hypernetworks/put_hypernetworks_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/latent_upscale_models/put_latent_upscale_models_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/loras/put_loras_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/model_patches/put_model_patches_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/optical_flow/put_optical_flow_models_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/photomaker/put_photomaker_models_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/style_models/put_t2i_style_model_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/text_encoders/put_text_encoder_files_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/unet/put_unet_files_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/upscale_models/put_esrgan_and_other_upscale_models_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/vae/put_vae_here
+
+SHA256  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BYTES   0
+FILE    ComfyUI/models/vae_approx/put_taesd_encoder_pth_and_taesd_decoder_pth_here
+
+SHA256  1e294faf15188e06fcb72ce09652e8fb7368bd77b8dd794b5b39fe77d610681b
+BYTES   811
+FILE    ComfyUI/models/vosr2/VOSR2/Qwen-Image-vae-2d/config.json
+
+SHA256  63b2f423eafae1f684ca860eb8fd0e81aa5fac858397f783d8f337871241c281
+BYTES   816
+FILE    ComfyUI/models/vosr2/VOSR2/args.json

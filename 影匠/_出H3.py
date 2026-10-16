@@ -119,8 +119,44 @@ def 建图(图名, 词, 号, 种子值, 前缀, 末帧名=""):
     return 图d
 
 
+def 读动态(戏):
+    """从 `04-动态提示词.md` 读每格的「动作」—— 这才是 H3 真正要的那一句。
+
+    ★ 2026-10-16 02:15 补的。病根：
+      原 `读格()` 只从 `02-九宫格.md` 抠 `- 动作:`，而**楚子航那部的九宫格里根本没有这一项**
+      （它给的是 `- 提示词:` / `- 重点:` / `- 光色:`）。照原样跑，32 格会**全部**退化成
+      兜底的那句「轻微的自然动作」—— 而成片里一镜动不动，正是用户从头骂到尾的
+      「**一镜里像看图片**」。**整部的动作全丢，而日志一个字都不报。**
+
+      格式（`04-动态提示词.md`）：
+          ## 锚点3 —— 她现形
+          ### 3-2 推进
+          - 动作：……这一格从头到尾怎么动……
+          - 强度：7
+      映射：锚点 N 的第 M 条 = 第 (N−1)×4+M 格（8 锚点 × 4 条 = 32 格）。
+
+    ★ 判据：跑之前先看打印出来的「动作」那句是不是这一格自己的话。
+      要是 32 行一模一样，就是又走上了兜底那条路。
+    """
+    路 = os.path.join(根, "作品", 戏, "04-动态提示词.md")
+    if not os.path.isfile(路):
+        return {}
+    文 = open(路, encoding="utf-8").read()
+    出 = {}
+    当前号 = 0
+    for 行 in 文.splitlines():
+        m = re.match(r"^###\s*(\d+)\s*[-－—]\s*(\d+)", 行)
+        if m:
+            当前号 = (int(m.group(1)) - 1) * 4 + int(m.group(2))
+            continue
+        m = re.match(r"^-\s*\*{0,2}动作\*{0,2}\s*[:：]\s*(.+)$", 行)
+        if m and 当前号:
+            出[当前号] = m.group(1).strip()
+    return 出
+
+
 def 读格(戏):
-    """从 02-九宫格.md 读每格的动作 + 提示词，用来拼 H3 的运动词。"""
+    """格表 = `02-九宫格.md` 的每格信息 + `04-动态提示词.md` 的每格动作。"""
     路 = os.path.join(根, "作品", 戏, "02-九宫格.md")
     文 = open(路, encoding="utf-8").read()
     块 = re.split(r"^##\s*格\s*(\d+)\s*(?:——|--|—)\s*(.+?)\s*$", 文, flags=re.M)
@@ -132,18 +168,37 @@ def 读格(戏):
             m = re.search(rf"^-\s*\*{{0,2}}{键}\*{{0,2}}\s*[:：]\s*(.*)$", 体, flags=re.M)
             return m.group(1).strip() if m else ""
 
-        出[号] = {"题": 题, "景别": 抠("景别"), "动作": 抠("动作"), "光色": 抠("光色")}
+        出[号] = {"题": 题, "景别": 抠("景别"), "动作": 抠("动作"), "光色": 抠("光色"),
+                  "重点": 抠("重点")}
+
+    # ★ 九宫格里没有 `- 动作:` 时，从 04-动态提示词.md 补
+    缺 = [k for k, v in 出.items() if not v["动作"]]
+    if 缺:
+        动 = 读动态(戏)
+        for k in 缺:
+            if 动.get(k):
+                出[k]["动作"] = 动[k]
+        补上 = len([k for k in 缺 if 出[k]["动作"]])
+        print(f"  动作：九宫格里缺 {len(缺)} 格 → 从 04-动态提示词.md 补上 {补上} 格")
+        if 补上 < len(缺):
+            print(f"  ★ 还有 {len(缺) - 补上} 格没有动作，会退化成「轻微的自然动作」："
+                  f"{sorted(k for k in 缺 if not 出[k]['动作'])}")
     return 出
 
 
 def main():
-    global 步数
+    global 步数, 宽, 高
     ap = argparse.ArgumentParser()
     ap.add_argument("戏")
     ap.add_argument("--只格", default="")
     ap.add_argument("--端点", default="本机")
     ap.add_argument("--跳过已有", action="store_true")
     ap.add_argument("--步数", type=int, default=步数)
+    ap.add_argument("--宽", type=int, default=宽,
+                    help="★ 默认 1280。**必须跟首帧的宽高比一致**，不然拼片时人会被拉变形。"
+                         "本作首帧全是 1344×768（1.75），所以出片要用 --宽 1344 --高 768。"
+                         "H3 要求宽高都是 32 的倍数：1344=32×42 ✓　768=32×24 ✓")
+    ap.add_argument("--高", type=int, default=高, help="见 --宽")
     ap.add_argument("--种子偏移", type=int, default=0,
                     help="在 种子 + 号×1009 之上再加一个偏移。重抽同一格时用 —— "
                          "★ 别用「不传就是新种子」那种写法：那样就复现不出来了")
@@ -161,6 +216,7 @@ def main():
                          "留空＝用原版。")
     参 = ap.parse_args()
     步数 = 参.步数
+    宽, 高 = 参.宽, 参.高
 
     服务 = 端点(参.端点)
     图目录 = os.path.join(根, "作品", 参.戏)
@@ -171,6 +227,29 @@ def main():
     号们 = ([int(x) for x in 参.只格.split(",") if x.strip()]
             if 参.只格 else sorted(格表))
     print(f"端点 {参.端点} {服务}　{len(号们)} 格　{宽}×{高} {帧数}帧 @{帧率}fps　{步数} 步")
+
+    # ★★ 出图前闸（2026-10-16 04:20 加；用户 m00275「两个我都要」）══════════════
+    # 位置：**提交 /prompt 之前**，一个进程只过一遍闸（不是每格一遍）。
+    # 报红 → sys.exit(2)，**这个进程一帧都不出**。
+    # 为什么：用户要「让我日常也记得读红线」，但我 04:16 自己回的是 ——
+    #   **读一遍拦不住我，退出码能。** 所以闸在这儿，不在我的记忆里。
+    # 想过闸的判据、每一条跑哪条命令：见 `_出图前闸.py` 抬头 + `_判据挂命令.py`。
+    # 想临时绕过：设环境变量 `影匠_不过闸=1`。绕过会把那行字**打出来**，不许偷偷绕。
+    if os.environ.get("影匠_不过闸") != "1":
+        闸路 = os.path.join(os.path.dirname(根), "_出图前闸.py")
+        if os.path.isfile(闸路):
+            r闸 = subprocess.run([sys.executable, "-X", "utf8", 闸路, "--作品", 参.戏],
+                                 capture_output=True)
+            if r闸.returncode != 0:
+                print("  ★★ 出图前闸拦住 —— 一帧都不出。闸打印的原文：")
+                for _l in (r闸.stdout or b"").decode("utf-8", "replace").strip().splitlines()[-30:]:
+                    print("     " + _l)
+                sys.exit(2)
+            print("  ✓ 出图前闸过（%s）。" % 闸路)
+        else:
+            print("  ★ 出图前闸找不到 %s —— 这一轮**没闸**。" % 闸路)
+    else:
+        print("  ★★ 影匠_不过闸=1：这一轮是**绕过闸**出的图。")
 
     t全 = time.time()
     for k, 号 in enumerate(号们, 1):

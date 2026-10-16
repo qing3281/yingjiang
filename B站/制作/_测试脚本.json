@@ -1,0 +1,15 @@
+{
+  "标题": "测试_神兽在城市",
+  "画布": "1920x1080",
+  "每张秒": 4.0,
+  "转场秒": 0.8,
+  "BGM": null,
+  "风格前缀": "masterpiece, best quality, cinematic photography, volumetric light, film grain, ",
+  "输出目录": "D:/DSHworkspace/B站/制作/_测试出片",
+  "镜头": [
+    { "提示词": "a giant white nine-tailed fox spirit resting on the roof of a modern glass office tower, city skyline at blue hour, mist around its tails", "运镜": "推近" },
+    { "提示词": "close-up of the fox spirit's eye reflecting neon signs of a rainy city street below", "运镜": "拉远" },
+    { "提示词": "a green dragon coiled around a suspension bridge at night, cars streaming across, low clouds", "运镜": "左到右" },
+    { "提示词": "the dragon's head descending toward a small noodle stand on a rooftop, warm lantern light, steam rising", "运镜": "右下左上" }
+  ]
+}

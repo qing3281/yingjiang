@@ -1,0 +1,16 @@
+{
+ "模型": {
+  "diffusion_models/wan2.2_ti2v_5B_fp16.safetensors": 9999658848,
+  "diffusion_models/z_image_turbo_int8_convrot.safetensors": 6201001296,
+  "vae/ae.safetensors": 335304388,
+  "vae/wan2.2_vae.safetensors": 1409400960,
+  "text_encoders/qwen_3_4b_fp8_mixed.safetensors": 5631994051,
+  "text_encoders/qwen_3_4b_fp8_mixed.safetensors.bad-023634": 799178752,
+  "text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors": 6735906897
+ },
+ "环境": {
+  "python": "3.12.10",
+  "机器": "DESKTOP-776BJTA",
+  "torch": "导入失败 No module named 'torch'"
+ }
+}
